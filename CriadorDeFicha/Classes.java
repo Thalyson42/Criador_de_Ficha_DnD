@@ -8,6 +8,7 @@ public class Classes {
 	private static Proficiencia proficiencia;
 	private static Equipamentos equips;
 	private static Magias magias;
+	private static Idiomas idiomas;
 	
 	public String getNome() {
 		return nome;
@@ -38,6 +39,12 @@ public class Classes {
 	}
 	public void setMagias(Magias magias) {
 		Classes.magias = magias;
+	}
+	public Idiomas getIdiomas() {
+		return idiomas;
+	}
+	public void setIdiomas(Idiomas idiomas) {
+		Classes.idiomas = idiomas;
 	}
 	
 	

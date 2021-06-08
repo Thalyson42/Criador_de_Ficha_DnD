@@ -50,6 +50,7 @@ public class Main {
 				classes.setProficiencia(proficiencia);
 				classes.setEquips(equips);
 				classes.setMagias(magias);
+				classes.setIdiomas(idiomas);
 //Escolhendo raça
 				
 				boolean LoopMraca = true;
@@ -79,7 +80,7 @@ public class Main {
 							switch(anaoOpcao) {
 							case 1:
 								racas.anaoDescricao();
-								racas.anaoTracos_raciais();
+							//	racas.anaoTracos_raciais();
 								racas.anaoSRcolina();
 								racas.anaoSRmontanha();
 								System.in.read();

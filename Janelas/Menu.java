@@ -6,6 +6,14 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import CriadorDeFicha.Classes;
+import CriadorDeFicha.Equipamentos;
+import CriadorDeFicha.Idiomas;
+import CriadorDeFicha.Magias;
+import CriadorDeFicha.Proficiencia;
+import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -17,6 +25,7 @@ import java.awt.Font;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Menu extends JFrame {
 
@@ -53,14 +62,26 @@ public class Menu extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(32, 527, 152, 164);
+		lblNewLabel.setBounds(10, 221, 291, 459);
 		contentPane.add(lblNewLabel);
 		
 		JButton criar_ficha = new JButton("Criar Ficha Do Personagem");
 		criar_ficha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				CriarFichaJanela criarficha = new CriarFichaJanela();
+				FichaDoPersonagem ficha = new FichaDoPersonagem();
+				Proficiencia proficiencia = new Proficiencia();
+				Equipamentos equips = new Equipamentos();
+				Magias magias = new Magias();
+				Idiomas idiomas = new Idiomas();
+				Classes classes = new Classes();
+				classes.salvarFicha(ficha);
+				classes.setEquips(equips);
+				classes.setProficiencia(proficiencia);
+				classes.setMagias(magias);
+				classes.setIdiomas(idiomas);
+				
+				EscolherRacaJanela criarficha = new EscolherRacaJanela(classes);
 				criarficha.setVisible(true);
 				setVisible(false);
 			}
