@@ -16,7 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
 import CriadorDeFicha.Classes;
 import CriadorDeFicha.Racas;
 
@@ -40,6 +39,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
@@ -62,32 +62,32 @@ public class EscolherRacaJanela extends JFrame {
 	private JTextField txtEscolhaUmIdioma;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
-	private static final String subRacaNomes [] = {"anao_da_colina", "anao_da_montanha", "alto_elfo", "elfo_da_floresta", "drow", "halfling_pes_leves", "halfling_robusto", "gnomo_da_floresta", "gnomo_das_rochas"};
-	private static final String subImagens [] = {"/img/anao_da_colina.png", "/img/anao_da_montanha.png", "/img/alto_elfo.png", "/img/elfo_da_floresta.png", "/img/drow.png", "/img/halfling_pes_leves.png", "/img/halfling_robusto.png", "/img/gnomo_da_floresta.png", "/img/gnomo_das_rochas.png"};
-	private final Icon icones2[] = {
-			new ImageIcon(getClass().getResource(subImagens[0])),
-			new ImageIcon(getClass().getResource(subImagens[1])),
-			new ImageIcon(getClass().getResource(subImagens[2])),
-			new ImageIcon(getClass().getResource(subImagens[3])),
-			new ImageIcon(getClass().getResource(subImagens[4])),
-			new ImageIcon(getClass().getResource(subImagens[5])),
-			new ImageIcon(getClass().getResource(subImagens[6])),
-			new ImageIcon(getClass().getResource(subImagens[7])),
-			new ImageIcon(getClass().getResource(subImagens[8]))
-	};
-	private static final String nomes [] = {"Anao", "Elfo", "Halfling", "Humano", "Draconato", "Gnomo", "Meio_elfo", "Meio_orc", "Tiefling"};
-	private static final String imagens [] = {"/img/anao.png", "/img/elfo.png", "/img/halfling.png", "/img/humano.png", "/img/draconato.png", "/img/gnomo.png", "/img/meio_elfo.png", "/img/meio_orc.png", "/img/tiefling.png"};
-	private final Icon icones[] = {
-			new ImageIcon(getClass().getResource(imagens[0])),
-			new ImageIcon(getClass().getResource(imagens[1])),
-			new ImageIcon(getClass().getResource(imagens[2])),
-			new ImageIcon(getClass().getResource(imagens[3])),
-			new ImageIcon(getClass().getResource(imagens[4])),
-			new ImageIcon(getClass().getResource(imagens[5])),
-			new ImageIcon(getClass().getResource(imagens[6])),
-			new ImageIcon(getClass().getResource(imagens[7])),
-			new ImageIcon(getClass().getResource(imagens[8]))
-	};
+//	private static final String subRacaNomes [] = {"anao_da_colina", "anao_da_montanha", "alto_elfo", "elfo_da_floresta", "drow", "halfling_pes_leves", "halfling_robusto", "gnomo_da_floresta", "gnomo_das_rochas"};
+//	private static final String subImagens [] = {"/img/anao_da_colina.png", "/img/anao_da_montanha.png", "/img/alto_elfo.png", "/img/elfo_da_floresta.png", "/img/drow.png", "/img/halfling_pes_leves.png", "/img/halfling_robusto.png", "/img/gnomo_da_floresta.png", "/img/gnomo_das_rochas.png"};
+//	private final Icon icones2[] = {
+//			new ImageIcon(getClass().getResource(subImagens[0])),
+//			new ImageIcon(getClass().getResource(subImagens[1])),
+//			new ImageIcon(getClass().getResource(subImagens[2])),
+//			new ImageIcon(getClass().getResource(subImagens[3])),
+//			new ImageIcon(getClass().getResource(subImagens[4])),
+//			new ImageIcon(getClass().getResource(subImagens[5])),
+//			new ImageIcon(getClass().getResource(subImagens[6])),
+//			new ImageIcon(getClass().getResource(subImagens[7])),
+//			new ImageIcon(getClass().getResource(subImagens[8]))
+//	};
+//	private static final String nomes [] = {"Anao", "Elfo", "Halfling", "Humano", "Draconato", "Gnomo", "Meio_elfo", "Meio_orc", "Tiefling"};
+//	private static final String imagens [] = {"/img/anao.png", "/img/elfo.png", "/img/halfling.png", "/img/humano.png", "/img/draconato.png", "/img/gnomo.png", "/img/meio_elfo.png", "/img/meio_orc.png", "/img/tiefling.png"};
+//	private final Icon icones[] = {
+//			new ImageIcon(getClass().getResource(imagens[0])),
+//			new ImageIcon(getClass().getResource(imagens[1])),
+//			new ImageIcon(getClass().getResource(imagens[2])),
+//			new ImageIcon(getClass().getResource(imagens[3])),
+//			new ImageIcon(getClass().getResource(imagens[4])),
+//			new ImageIcon(getClass().getResource(imagens[5])),
+//			new ImageIcon(getClass().getResource(imagens[6])),
+//			new ImageIcon(getClass().getResource(imagens[7])),
+//			new ImageIcon(getClass().getResource(imagens[8]))
+//	};
 	/**
 	 * Launch the application.
 	 */
@@ -159,11 +159,13 @@ public class EscolherRacaJanela extends JFrame {
 					comboBox_1.setModel(subRacaCombobox(nomes[comboBox.getSelectedIndex()]));
 					tabbedPane.setSelectedIndex(1);
 					
+				}else if(nomes[comboBox.getSelectedIndex()].equals("Meio_elfo") || nomes[comboBox.getSelectedIndex()].equals("Humano")) {
+					tabbedPane.setSelectedIndex(2);
 				}else {
 					setVisible(false);
-					EscolherClasse escolherClasse = new EscolherClasse();
-					escolherClasse.setVisible(true);
+					EscolherClasse escolherClasse = new EscolherClasse(classe);
 					racas.salvarRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
+					escolherClasse.setVisible(true);
 				}
 			}
 		}
@@ -225,6 +227,7 @@ public class EscolherRacaJanela extends JFrame {
 		tabbedPane.addTab("Sub-Raça", null, panel_1, null);
 		
 		txtEscolhaUmaSubraa = new JTextField();
+		txtEscolhaUmaSubraa.setEditable(false);
 		txtEscolhaUmaSubraa.setText("Escolha uma sub-ra\u00E7a");
 		txtEscolhaUmaSubraa.setBounds(20, 457, 119, 20);
 		txtEscolhaUmaSubraa.setColumns(10);
@@ -232,10 +235,14 @@ public class EscolherRacaJanela extends JFrame {
 		JButton btnNewButton_2 = new JButton("AVAN\u00C7AR");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EscolherClasse escolherClasse = new EscolherClasse();
-				racas.salvarRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
-				setVisible(false);
-				escolherClasse.setVisible(true);
+				if(subRacaNomes[subRacaSelecionada(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()))].equals("alto_elfo")) {
+					tabbedPane.setSelectedIndex(2);
+				}else {
+					EscolherClasse escolherClasse = new EscolherClasse(classe);
+					racas.salvarRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
+					setVisible(false);
+					escolherClasse.setVisible(true);					
+				}
 			}
 		});
 		btnNewButton_2.setBounds(369, 619, 105, 36);
@@ -275,6 +282,7 @@ public class EscolherRacaJanela extends JFrame {
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("An\u00E3o");
 		buttonGroup.add(rdbtnNewRadioButton);
 		rdbtnNewRadioButton.setBounds(72, 108, 109, 23);
+		rdbtnNewRadioButton.setActionCommand("Anão");
 		panel_2.add(rdbtnNewRadioButton);
 		
 		txtEscolhaUmIdioma = new JTextField();
@@ -287,100 +295,114 @@ public class EscolherRacaJanela extends JFrame {
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Comum");
 		buttonGroup.add(rdbtnNewRadioButton_1);
 		rdbtnNewRadioButton_1.setBounds(72, 134, 109, 23);
+		rdbtnNewRadioButton_1.setActionCommand("Comum");
 		panel_2.add(rdbtnNewRadioButton_1);
 		
 		JRadioButton rdbtnNewRadioButton_2 = new JRadioButton("\u00C9lfico");
 		buttonGroup.add(rdbtnNewRadioButton_2);
 		rdbtnNewRadioButton_2.setBounds(72, 160, 109, 23);
+		rdbtnNewRadioButton_2.setActionCommand("Élfico");
 		panel_2.add(rdbtnNewRadioButton_2);
 		
 		JRadioButton rdbtnNewRadioButton_3 = new JRadioButton("Gigante");
 		buttonGroup.add(rdbtnNewRadioButton_3);
 		rdbtnNewRadioButton_3.setBounds(72, 186, 109, 23);
+		rdbtnNewRadioButton_3.setActionCommand("Gigante");
 		panel_2.add(rdbtnNewRadioButton_3);
 		
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Goblin");
 		buttonGroup.add(rdbtnNewRadioButton_4);
 		rdbtnNewRadioButton_4.setBounds(72, 212, 109, 23);
+		rdbtnNewRadioButton_4.setActionCommand("Goblin");
 		panel_2.add(rdbtnNewRadioButton_4);
 		
 		JRadioButton rdbtnNewRadioButton_5 = new JRadioButton("Halfling");
 		buttonGroup.add(rdbtnNewRadioButton_5);
 		rdbtnNewRadioButton_5.setBounds(72, 238, 109, 23);
+		rdbtnNewRadioButton_5.setActionCommand("Halfling");
 		panel_2.add(rdbtnNewRadioButton_5);
 		
 		JRadioButton rdbtnNewRadioButton_6 = new JRadioButton("Orc");
 		buttonGroup.add(rdbtnNewRadioButton_6);
 		rdbtnNewRadioButton_6.setBounds(72, 264, 109, 23);
+		rdbtnNewRadioButton_6.setActionCommand("Orc");
 		panel_2.add(rdbtnNewRadioButton_6);
 		
 		JRadioButton rdbtnNewRadioButton_7 = new JRadioButton("Abissal");
 		buttonGroup.add(rdbtnNewRadioButton_7);
 		rdbtnNewRadioButton_7.setBounds(72, 369, 109, 23);
+		rdbtnNewRadioButton_7.setActionCommand("Abissal");
 		panel_2.add(rdbtnNewRadioButton_7);
 		
 		JRadioButton rdbtnNewRadioButton_8 = new JRadioButton("Celestial");
 		buttonGroup.add(rdbtnNewRadioButton_8);
 		rdbtnNewRadioButton_8.setBounds(72, 395, 109, 23);
+		rdbtnNewRadioButton_8.setActionCommand("Celestial");
 		panel_2.add(rdbtnNewRadioButton_8);
 		
 		JRadioButton rdbtnNewRadioButton_9 = new JRadioButton("Dialeto Subterr\u00E2neo");
 		buttonGroup.add(rdbtnNewRadioButton_9);
-		rdbtnNewRadioButton_9.setBounds(72, 421, 127, 23);
+		rdbtnNewRadioButton_9.setBounds(72, 421, 147, 23);
+		rdbtnNewRadioButton_9.setActionCommand("Dialeto Subterrâneo");
 		panel_2.add(rdbtnNewRadioButton_9);
 		
 		JRadioButton rdbtnNewRadioButton_10 = new JRadioButton("Drac\u00F4nico");
 		buttonGroup.add(rdbtnNewRadioButton_10);
 		rdbtnNewRadioButton_10.setBounds(72, 447, 109, 23);
+		rdbtnNewRadioButton_10.setActionCommand("Dracônico");
 		panel_2.add(rdbtnNewRadioButton_10);
 		
 		JRadioButton rdbtnNewRadioButton_11 = new JRadioButton("Infernal");
 		buttonGroup.add(rdbtnNewRadioButton_11);
 		rdbtnNewRadioButton_11.setBounds(72, 473, 109, 23);
+		rdbtnNewRadioButton_11.setActionCommand("Infernal");
 		panel_2.add(rdbtnNewRadioButton_11);
 		
 		JRadioButton rdbtnNewRadioButton_12 = new JRadioButton("Primordial");
 		buttonGroup.add(rdbtnNewRadioButton_12);
 		rdbtnNewRadioButton_12.setBounds(72, 499, 109, 23);
+		rdbtnNewRadioButton_12.setActionCommand("Primordial");
 		panel_2.add(rdbtnNewRadioButton_12);
 		
 		JRadioButton rdbtnNewRadioButton_13 = new JRadioButton("Silvestre");
 		buttonGroup.add(rdbtnNewRadioButton_13);
 		rdbtnNewRadioButton_13.setBounds(72, 525, 109, 23);
+		rdbtnNewRadioButton_13.setActionCommand("Silvestre");
 		panel_2.add(rdbtnNewRadioButton_13);
 		
 		JRadioButton rdbtnNewRadioButton_14 = new JRadioButton("Subcomum");
 		buttonGroup.add(rdbtnNewRadioButton_14);
 		rdbtnNewRadioButton_14.setBounds(72, 551, 109, 23);
+		rdbtnNewRadioButton_14.setActionCommand("Subcomum");
 		panel_2.add(rdbtnNewRadioButton_14);
-		
+
 	
 		JButton btnNewButton_3 = new JButton("AVAN\u00C7AR");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				rdbtnNewRadioButton_1.setActionCommand("Comum");
-				rdbtnNewRadioButton_1.setActionCommand("\u00C9lfico");
-				rdbtnNewRadioButton_1.setActionCommand("Gigante");
-				rdbtnNewRadioButton_1.setActionCommand("Goblin");
-				rdbtnNewRadioButton_1.setActionCommand("Halfling");
-				rdbtnNewRadioButton_1.setActionCommand("Orc");
-				rdbtnNewRadioButton_1.setActionCommand("Abissal");
-				rdbtnNewRadioButton_1.setActionCommand("Celestial");
-				rdbtnNewRadioButton_1.setActionCommand("Dialeto Subterr\\u00E2neo");
-				rdbtnNewRadioButton_1.setActionCommand("Drac\\u00F4nico");
-				rdbtnNewRadioButton_1.setActionCommand("Infernal");
-				rdbtnNewRadioButton_1.setActionCommand("Primordial");
-				rdbtnNewRadioButton_1.setActionCommand("Silvestre");
-				rdbtnNewRadioButton_1.setActionCommand("Subcomum");
-				
-				for(int i = 0; i < buttonGroup.getButtonCount(); i++) {
-					if(buttonGroup.getSelection().isSelected()) {
-						JOptionPane.showMessageDialog(null, "selecionado");
-					}
+				if(subRacaNomes[subRacaSelecionada(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()))].equals("alto_elfo")) {
+					ButtonModel b = buttonGroup.getSelection();
+					String t = b.getActionCommand();
+					racas.salvarRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
+					classe.getFicha().setIdiomas(t);
+					EscolherClasse escolherClasseJanela = new EscolherClasse(classe);
+					setVisible(false);
+					escolherClasseJanela.setVisible(true);
+					
+				}else {
+					ButtonModel b = buttonGroup.getSelection();
+					String t = b.getActionCommand();
+					racas.salvarRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
+					classe.getFicha().setIdiomas(t);
+					EscolherClasse escolherClasseJanela = new EscolherClasse(classe);
+					setVisible(false);
+					escolherClasseJanela.setVisible(true);
 				}
+				
 			}
 		});
 		btnNewButton_3.setBounds(916, 616, 89, 23);
+		tabbedPane.setEnabledAt(2, false);
 		panel_2.add(btnNewButton_3);
 		
 	}

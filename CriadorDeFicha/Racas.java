@@ -451,7 +451,6 @@ public class Racas extends Classes{
 		getFicha().setInteligencia(1);
 		List<String> proficiencias_equips = Arrays.asList("Espadas longas", "Espadas curtas", "Arcos longos", "Arcos curtos");
 		getFicha().setProfi_equips(proficiencias_equips);
-		getFicha().setIdiomas(getIdiomas().setIdioma(1));
 	}
 	
 	public String getElfoDaFloresta() {
@@ -727,7 +726,6 @@ public class Racas extends Classes{
 		getFicha().setCarisma(1);
 		getFicha().setDeslocamento("9");
 		getFicha().setIdiomas("Comum");
-		getFicha().setIdiomas(getIdiomas().setIdioma(1));
 	}
 	
 //Draconato
@@ -1246,7 +1244,6 @@ public class Racas extends Classes{
 				+ "colocar você pra dormir.\r\n\n");
 		getFicha().setIdiomas("Comum");
 		getFicha().setIdiomas("Élfico");
-		getFicha().setIdiomas(getIdiomas().setIdioma(1));
 	}
 	
 //Meio-Orc
