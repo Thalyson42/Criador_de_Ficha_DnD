@@ -62,32 +62,32 @@ public class EscolherRacaJanela extends JFrame {
 	private JTextField txtEscolhaUmIdioma;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
-//	private static final String subRacaNomes [] = {"anao_da_colina", "anao_da_montanha", "alto_elfo", "elfo_da_floresta", "drow", "halfling_pes_leves", "halfling_robusto", "gnomo_da_floresta", "gnomo_das_rochas"};
-//	private static final String subImagens [] = {"/img/anao_da_colina.png", "/img/anao_da_montanha.png", "/img/alto_elfo.png", "/img/elfo_da_floresta.png", "/img/drow.png", "/img/halfling_pes_leves.png", "/img/halfling_robusto.png", "/img/gnomo_da_floresta.png", "/img/gnomo_das_rochas.png"};
-//	private final Icon icones2[] = {
-//			new ImageIcon(getClass().getResource(subImagens[0])),
-//			new ImageIcon(getClass().getResource(subImagens[1])),
-//			new ImageIcon(getClass().getResource(subImagens[2])),
-//			new ImageIcon(getClass().getResource(subImagens[3])),
-//			new ImageIcon(getClass().getResource(subImagens[4])),
-//			new ImageIcon(getClass().getResource(subImagens[5])),
-//			new ImageIcon(getClass().getResource(subImagens[6])),
-//			new ImageIcon(getClass().getResource(subImagens[7])),
-//			new ImageIcon(getClass().getResource(subImagens[8]))
-//	};
-//	private static final String nomes [] = {"Anao", "Elfo", "Halfling", "Humano", "Draconato", "Gnomo", "Meio_elfo", "Meio_orc", "Tiefling"};
-//	private static final String imagens [] = {"/img/anao.png", "/img/elfo.png", "/img/halfling.png", "/img/humano.png", "/img/draconato.png", "/img/gnomo.png", "/img/meio_elfo.png", "/img/meio_orc.png", "/img/tiefling.png"};
-//	private final Icon icones[] = {
-//			new ImageIcon(getClass().getResource(imagens[0])),
-//			new ImageIcon(getClass().getResource(imagens[1])),
-//			new ImageIcon(getClass().getResource(imagens[2])),
-//			new ImageIcon(getClass().getResource(imagens[3])),
-//			new ImageIcon(getClass().getResource(imagens[4])),
-//			new ImageIcon(getClass().getResource(imagens[5])),
-//			new ImageIcon(getClass().getResource(imagens[6])),
-//			new ImageIcon(getClass().getResource(imagens[7])),
-//			new ImageIcon(getClass().getResource(imagens[8]))
-//	};
+	private static final String subRacaNomes [] = {"anao_da_colina", "anao_da_montanha", "alto_elfo", "elfo_da_floresta", "drow", "halfling_pes_leves", "halfling_robusto", "gnomo_da_floresta", "gnomo_das_rochas"};
+	private static final String subImagens [] = {"/img/anao_da_colina.png", "/img/anao_da_montanha.png", "/img/alto_elfo.png", "/img/elfo_da_floresta.png", "/img/drow.png", "/img/halfling_pes_leves.png", "/img/halfling_robusto.png", "/img/gnomo_da_floresta.png", "/img/gnomo_das_rochas.png"};
+	private final Icon icones2[] = {
+			new ImageIcon(getClass().getResource(subImagens[0])),
+			new ImageIcon(getClass().getResource(subImagens[1])),
+			new ImageIcon(getClass().getResource(subImagens[2])),
+			new ImageIcon(getClass().getResource(subImagens[3])),
+			new ImageIcon(getClass().getResource(subImagens[4])),
+			new ImageIcon(getClass().getResource(subImagens[5])),
+			new ImageIcon(getClass().getResource(subImagens[6])),
+			new ImageIcon(getClass().getResource(subImagens[7])),
+			new ImageIcon(getClass().getResource(subImagens[8]))
+	};
+	private static final String nomes [] = {"Anao", "Elfo", "Halfling", "Humano", "Draconato", "Gnomo", "Meio_elfo", "Meio_orc", "Tiefling"};
+	private static final String imagens [] = {"/img/anao.png", "/img/elfo.png", "/img/halfling.png", "/img/humano.png", "/img/draconato.png", "/img/gnomo.png", "/img/meio_elfo.png", "/img/meio_orc.png", "/img/tiefling.png"};
+	private final Icon icones[] = {
+			new ImageIcon(getClass().getResource(imagens[0])),
+			new ImageIcon(getClass().getResource(imagens[1])),
+			new ImageIcon(getClass().getResource(imagens[2])),
+			new ImageIcon(getClass().getResource(imagens[3])),
+			new ImageIcon(getClass().getResource(imagens[4])),
+			new ImageIcon(getClass().getResource(imagens[5])),
+			new ImageIcon(getClass().getResource(imagens[6])),
+			new ImageIcon(getClass().getResource(imagens[7])),
+			new ImageIcon(getClass().getResource(imagens[8]))
+	};
 	/**
 	 * Launch the application.
 	 */
@@ -104,15 +104,15 @@ public class EscolherRacaJanela extends JFrame {
 		});
 	}
 	
-	public class JRadioButtonAction implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
+//	public class JRadioButtonAction implements ActionListener {
+//
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//			// TODO Auto-generated method stub
+//			
+//		}
+//		
+//	}
 
 	/**
 	 * Create the frame.

@@ -6,25 +6,20 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Barbaro extends Classes{
-//	private String nome = "Barbaro";
-//	private FichaDoPersonagem ficha;
-//	private Proficiencia proficiencia;
-//	private Equipamentos equips;
+	private final List<String> pericias = Arrays.asList("Adestrar Animais", "Atletismo", "Intimidação", "Natureza", "Percepção", "Sobrevivência");
+	private final int max_quantidade_pericias = 2;
 	
-//	public String getBarbaro() {
-//		return nome;
-//	}
-//	
-//	public FichaDoPersonagem getFicha() {
-//		return ficha;
-//	}
-//	
-//	public void setFicha(FichaDoPersonagem ficha) {
-//		this.ficha = ficha;
-//	}
+	public List<String> getPericiasList() {
+		return this.pericias;
+	}
 	
-	public void barbaroDescricao() {
-		System.out.println("Um humano alto membro de alguma tribo caminha em\r\n"
+	public int getMaxQuantidadePericias() {
+		return this.max_quantidade_pericias;
+	}
+	
+	public String barbaroDescricao() {
+		String descricao = "BARBARO\r\n\n"
+				+ "Um humano alto membro de alguma tribo caminha em\r\n"
 				+ "meio a uma nevasca, coberto por peles e empunhando seu\r\n"
 				+ "machado. Ele gargalha à medida que avança em direção\r\n"
 				+ "do gigante do gelo que ousou caçar os alces que o seu povo\r\n"
@@ -47,64 +42,12 @@ public class Barbaro extends Classes{
 				+ "Para cada bárbaro, a fúria é um poder que preenche não\r\n"
 				+ "apenas o frenesi de batalha, mas também reflexos,\r\n"
 				+ "resiliência e proezas de força incríveis.\r\n"
-				+ "\n"
-				+ "INSTINTO PRIMITICO\r\n"
-				+ "\n"
-				+ "As pessoas das cidades e vilas costumam se vangloriar de\r\n"
-				+ "como seus meios civilizados os diferencia dos animais,\r\n"
-				+ "como se renegar sua própria natureza fosse um indicio de\r\n"
-				+ "superioridade. Para um bárbaro, no entanto, a civilização\r\n"
-				+ "não é nenhuma virtude, mas um sinal de fraqueza. Os\r\n"
-				+ "fortes abraçam a sua natureza selvagem\r\n"
-				+ "– instintos\r\n"
-				+ "aguçados, fisicalidade primitiva e fúria voraz. Bárbaros\r\n"
-				+ "ficam desconfortáveis quando estão cercados por\r\n"
-				+ "muralhas e multidões. Eles crescem na natureza\r\n"
-				+ "selvagem de suas terras natais: a tundra, selva ou\r\n"
-				+ "pradarias onde suas tribos vivem e caçam.\r\n"
-				+ "Os bárbaros se sentem mais vivos em meio ao caos do\r\n"
-				+ "combate. Eles podem entrar num estado de furor quando\r\n"
-				+ "sua fúria toma controle, concedendo\r\n"
-				+ "-lhes força e\r\n"
-				+ "resiliência sobre\r\n"
-				+ "-humanas. Um bárbaro pode consumir\r\n"
-				+ "desse reservatório de fúria apenas algumas vezes antes\r\n"
-				+ "de descansar, mas essas poucas fúrias geralmente são\r\n"
-				+ "suficientes para derrotar seja lá o que está ameaçando o\r\n"
-				+ "seu caminho.\r\n"
-				+ "\n"
-				+ "UMA VIDA DE PERIGO\r\n"
-				+ "\n"
-				+ "Nem todos os membros de uma tribo ditos como\r\n"
-				+ "“bárbaros” por descendentes de sociedades civilizadas\r\n"
-				+ "pertencem a classe bárbaro. Um bárbaro de verdade\r\n"
-				+ "dentre essas pessoas é tão incomum quanto um guerreiro\r\n"
-				+ "bem treinado em uma cidade, e ele possui um papel\r\n"
-				+ "similar como protetor do povo e líder em tempos de\r\n"
-				+ "guerra. A vida na natureza selvagem do mundo é cheia de\r\n"
-				+ "perigos: tribos rivais, clima mortal e monstros terríveis.\r\n"
-				+ "Bárbaros investem em direção ao perigo de cabeça para\r\n"
-				+ "que o seu povo não precise fazê-lo.\r\n"
-				+ "Sua coragem em frente ao perigo torna os bárbaros\r\n"
-				+ "perfeitos para se aventurarem. Peregrinar é, muitas\r\n"
-				+ "vezes, um meio de vida para tribos nativas e a vida\r\n"
-				+ "desenraizada de um aventureiro é um empecilho pequeno\r\n"
-				+ "para um bárbaro. Alguns bárbaros sentem falta das\r\n"
-				+ "estruturas familiares bem forjadas de suas tribos, mas,\r\n"
-				+ "eventualmente, encontram uma forma de substituí-las\r\n"
-				+ "por laços formados entre os membros dos seus grupos de\r\n"
-				+ "aventura.\r\n");
+				+ "\n";
+		return descricao;
 	}
 	
-	public void barbaroConstrucaoRapida() {
-		System.out.println("Você pode construir um bárbaro rapidamente seguindo\r\n"
-				+ "essas sugestões. Primeiro, coloque seu valor de habilidade\r\n"
-				+ "mais alto em Força, seguido de Constituição. Segundo,\r\n"
-				+ "escolha o antecedente forasteiro.\r\n");
-	}
-	
-	public void barbaroTabela() {
-		System.out.println("O Bárbaro\r\n"
+	public String barbaroTabela() {
+		String tabelaBarbaro = "O Bárbaro\r\n"
 				+ "Nível	Bônus de Proficiência	Características		Fúrias	Dano de Fúria\r\n"
 				+ "1°			  +2		  Fúria, Defesa semArmadura	  2 		+2\r\n"
 				+ "2° +2 Ataque Descuidado,\r\n"
@@ -145,11 +88,12 @@ public class Barbaro extends Classes{
 				+ "19° +6 Incremento no Valor de\r\n"
 				+ "Habilidade\r\n"
 				+ "6 +4\r\n"
-				+ "20° +6 Campeão Primitivo Ilimitado +4\r\n");
+				+ "20° +6 Campeão Primitivo Ilimitado +4\r\n";
+		return tabelaBarbaro;
 	}
 	
-	public void barbaroCaracteristicasClasse() {
-		System.out.println("PONTOS DE VIDA\r\n"
+	public String barbaroCaracteristicasClasse() {
+		String caracteristicas = "PONTOS DE VIDA\r\n"
 				+ "\n"
 				+ "Dado de Vida: 1d12 por nível de bárbaro\r\n"
 				+ "Pontos de Vida no 1° Nível: 12 + seu modificador de\r\n"
@@ -177,33 +121,27 @@ public class Barbaro extends Classes{
 				+ "corpo-a-corpo\r\n"
 				+ "- (a) dois machados de mão ou (b) qualquer arma\r\n"
 				+ "simples\r\n"
-				+ "- Um pacote de aventureiro e quatro azagaias\r\n");
+				+ "- Um pacote de aventureiro e quatro azagaias\r\n";
+		return caracteristicas;
 	}
 	
 	public void setBarbaro() {
 		setNome("Barbaro");
 		getFicha().setClasse(getNome());
-		System.out.println("barbaro nivel - "+getFicha().getNivel());
 		getFicha().setBonus_proficiencia(2);
 		List<String> profiRes = Arrays.asList("Força", "Constituição");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().SetResistencia(profiRes);
 		
 		List<String> proficiencia_equips = Arrays.asList("Armaduras leves", "Armaduras médias", "Escudos", "Armas simples", "Armas marciais");
 		getProficiencia().SetProfEquips(proficiencia_equips);
-		
-		List<String> pericias = Arrays.asList("Adestrar Animais", "Atletismo", "Intimidação", "Natureza", "Percepção", "Sobrevivência");
-		getProficiencia().setPericias(pericias, 2);
-		
-//		this.ficha = this.proficiencia.getFicha();
-		
-		System.out.println("--Equipamentos--");
-		System.out.println("Você começa com os seguintes equipamentos, além dos equipamentos"
-				+ "concedidos pelo seu antecedente:");
-		
-		getEquips().iniciaAllarmas();
-		equips1();
-		equips2();
+			
+//		System.out.println("--Equipamentos--");
+//		System.out.println("Você começa com os seguintes equipamentos, além dos equipamentos"
+//				+ "concedidos pelo seu antecedente:");
+//		
+//		getEquips().iniciaAllarmas();
+//		equips1();
+//		equips2();
 		
 		for(int i = 0; i < getEquips().getArmas_simples_CAC().size(); i++) {
 			if(Objects.equals(new String("Azagaia"), getEquips().getArmas_simples_CAC().get(i))) {

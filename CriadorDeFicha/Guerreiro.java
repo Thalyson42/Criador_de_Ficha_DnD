@@ -22,6 +22,75 @@ public class Guerreiro extends Classes{
 //		return this.ficha;
 //	}
 	
+	public String guerreiroDescricao() {
+		String descricao = "GUERREIRO\r\n"
+				+ "Uma humana em sua armadura de batalha empunha seu\r\n"
+				+ "escudo antes de ir ao encontro de um bando de goblins.\r\n"
+				+ "Um elfo atrás dela, em seu corselete de couro batido,\r\n"
+				+ "salpica os goblins com flechas atiradas de seu primoroso\r\n"
+				+ "arco. O meio-orc próximo, dá ordens visando coordenar os\r\n"
+				+ "ataques dos dois combatentes para obter a melhor\r\n"
+				+ "vantagem.\r\n"
+				+ "Um anão em sua cota de malha coloca seu escudo\r\n"
+				+ "entre à clava de um ogro e seu companheiro, direcionando\r\n"
+				+ "o ataque mortal para o outro lado. Seu companheiro, um\r\n"
+				+ "meio-elfo em sua brunea, brande suas duas cimitarras em\r\n"
+				+ "um turbilhão de golpes, rodeando o ogro a procura de um\r\n"
+				+ "ponto fraco em suas defesas.\r\n"
+				+ "Um gladiador luta por esporte em uma arena, um\r\n"
+				+ "mestre com seu tridente e rede, hábil em prender os\r\n"
+				+ "inimigos e arrastá-los para delírio da plateia – e sua\r\n"
+				+ "própria vantagem tática. A espada de seu oponente\r\n"
+				+ "lampeja com um brilho azul um instante antes de um\r\n"
+				+ "relâmpago atingi-lo pelas costas.\r\n"
+				+ "Todos esses heróis são guerreiros, talvez a mais\r\n"
+				+ "diversificada classe de personagens nos mundos de\r\n"
+				+ "DUNGEONS & DRAGONS. Cavaleiros em missões, lordes\r\n"
+				+ "conquistadores, campeões reais, infantaria de elite,\r\n"
+				+ "mercenários rígidos e bandidos reis, como guerreiros, eles\r\n"
+				+ "compartilham de uma maestria com armas e armaduras\r\n"
+				+ "sem precedentes, bem como um vasto conhecimento e\r\n"
+				+ "habilidades em combate. E eles estão bem familiarizados\r\n"
+				+ "com a morte, seja simplesmente conhecendo-a ou\r\n"
+				+ "desafiando-a cara a cara.\r\n";
+		
+		return descricao;
+	}
+	
+	public String guerreiroCaracteristicas() {
+		String caracteristicas = "CARACTERÍSTICAS DE CLASSE\r\n"
+				+ "Como um guerreiro, você adquire as seguintes\r\n"
+				+ "características de classe.\r\n"
+				+ "PONTOS DE VIDA\r\n"
+				+ "Dado de Vida: 1d10 por nível de guerreiro\r\n"
+				+ "Pontos de Vida no 1° Nível: 10 + seu modificador de\r\n"
+				+ "Constituição\r\n"
+				+ "Pontos de Vida nos Níveis Seguintes: 1d10 (ou 6) +\r\n"
+				+ "seu modificador de Constituição por nível de guerreiro\r\n"
+				+ "após o 1°\r\n"
+				+ "PROFICIÊNCIAS\r\n"
+				+ "Armaduras: Todas as armaduras, escudos\r\n"
+				+ "Armas: Armas simples, armas marciais\r\n"
+				+ "Ferramentas: nenhum\r\n"
+				+ "Testes de Resistência: Força, Constituição\r\n"
+				+ "Perícias: Escolha duas dentre Acrobacia, Adestrar\r\n"
+				+ "animais, Atletismo, História, Intuição, Intimidação,\r\n"
+				+ "Percepção e Sobrevivência"
+				+ "EQUIPAMENTO\r\n"
+				+ "Você começa com o seguinte equipamento, além do\r\n"
+				+ "equipamento concedido pelo seu antecedente:\r\n"
+				+ "- (a) cota de malha ou (b) gibão de peles, arco longo e 20\r\n"
+				+ "flechas\r\n"
+				+ "- (a) uma arma marcial e um escudo ou (b) duas armas\r\n"
+				+ "marciais\r\n"
+				+ "- (a) uma besta leve e 20 virotes ou (b) dois machados de\r\n"
+				+ "arremesso\r\n"
+				+ "- (a) uma pacote de aventureiro ou (b) um pacote de\r\n"
+				+ "explorador";
+		
+		return caracteristicas;
+	}
+	
 	public void setGuerreiro() {
 		getFicha().setClasse("Guerreiro");
 		getFicha().setBonus_proficiencia(2);
@@ -319,7 +388,7 @@ public class Guerreiro extends Classes{
 					+ "com uma arma de ataque à distância.\n");;
 		break;
 		
-		case "Combate com Armas Grander":
+		case "Combate com Armas Grandes":
 			System.out.println("--COMBATE COM ARMAS GRANDES--\r\n"
 					+ "Quando você rolar um 1 ou um 2 num dado de dano de\r\n"
 					+ "um ataque com arma corpo-a-corpo que você esteja\r\n"

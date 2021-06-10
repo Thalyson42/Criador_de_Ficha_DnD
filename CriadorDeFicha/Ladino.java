@@ -22,6 +22,73 @@ public class Ladino extends Classes{
 //		return this.ficha;
 //	}
 	
+	public String ladinoDescricao() {
+		String descricao = "LADINO\r\n"
+				+ "Sinalizando para seus companheiros esperarem, uma\r\n"
+				+ "halfling esgueira-se à frente pelo corredor da masmorra.\r\n"
+				+ "Ela encosta seus ouvidos na porta, puxa suas ferramentas\r\n"
+				+ "e abre a fechadura em um piscar de olhos. Ela então\r\n"
+				+ "desaparece nas sombras, ao mesmo tempo em que seu\r\n"
+				+ "companheiro guerreiro se move para abrir a porta com\r\n"
+				+ "um chute.\r\n"
+				+ "Uma humana espreita nas sombras de um beco,\r\n"
+				+ "enquanto seu cúmplice se prepara para a parte dele na\r\n"
+				+ "emboscada. Quando seu alvo – um notório traficante de\r\n"
+				+ "escravos – passa pelo beco, seu cúmplice grita, o\r\n"
+				+ "traficante de escravos vem investigar e a lâmina da\r\n"
+				+ "assassina corta sua garganta antes mesmo dele ser capaz\r\n"
+				+ "de emitir qualquer som.\r\n"
+				+ "Disfarçando uma risadinha, uma gnoma agita seus\r\n"
+				+ "dedos e magicamente surrupia o molho de chaves do cinto\r\n"
+				+ "do guarda. No momento seguinte, as chaves estão em\r\n"
+				+ "suas mãos, a porta da cela está aberta e ela e seus\r\n"
+				+ "companheiros estão livres para escapar.\r\n"
+				+ "Ladinos contam com sua perícia, furtividade e as\r\n"
+				+ "vulnerabilidades de seus inimigos para obter vantagem\r\n"
+				+ "em qualquer situação. Eles possuem uma habilidade\r\n"
+				+ "especial para encontrar a solução para praticamente\r\n"
+				+ "qualquer problema, demonstrando desenvoltura e\r\n"
+				+ "versatilidade, a chave de qualquer grupo aventureiro de\r\n"
+				+ "sucesso.";
+		
+		return descricao;
+	}
+	
+	public String ladinoCaracteristicas() {
+		String caracteristicas = "CARACTERÍSTICAS DE CLASSE\r\n"
+				+ "Como um ladino, você adquire as seguintes\r\n"
+				+ "características de classe.\r\n"
+				+ "PONTOS DE VIDA\r\n"
+				+ "Dado de Vida: 1d8 por nível de ladino\r\n"
+				+ "Pontos de Vida no 1° Nível: 8 + seu modificador de\r\n"
+				+ "Constituição\r\n"
+				+ "Pontos de Vida nos Níveis Seguintes: 1d8 (ou 5) + seu\r\n"
+				+ "modificador de Constituição por nível de ladino após o\r\n"
+				+ "1°\r\n"
+				+ "PROFICIÊNCIAS\r\n"
+				+ "Armaduras: Armaduras leves\r\n"
+				+ "Armas: Armas simples, bestas de mão, espadas longas,\r\n"
+				+ "rapieiras, espadas curtas\r\n"
+				+ "Ferramentas: Ferramentas de ladrão\r\n"
+				+ "Testes de Resistência: Destreza, Inteligência\r\n"
+				+ "Perícias: Escolha quatro dentre Acrobacia, Atletismo,\r\n"
+				+ "Atuação, Enganação, Furtividade, Intimidação,\r\n"
+				+ "Intuição, Investigação, Percepção, Persuasão e\r\n"
+				+ "Prestidigitação"
+				+ "EQUIPAMENTO\r\n"
+				+ "Você começa com o seguinte equipamento, além do\r\n"
+				+ "equipamento concedido pelo seu antecedente:\r\n"
+				+ "- (a) uma rapieira ou (b) uma espada longa\r\n"
+				+ "- (a) um arco curto e uma aljava com 20 flechas ou (b)\r\n"
+				+ "uma espada curta\r\n"
+				+ "- (a) um pacote de assaltante ou (b) um pacote de\r\n"
+				+ "aventureiro ou (c) um pacote de explorador\r\n"
+				+ "- Armadura de couro, duas adagas e ferramentas de\r\n"
+				+ "ladrão\r\n";
+		
+		return caracteristicas;
+	}
+	
 	public void setLadino() {
 		getFicha().setClasse("Ladino");
 		getFicha().setBonus_proficiencia(2);

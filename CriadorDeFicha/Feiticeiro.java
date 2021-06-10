@@ -22,8 +22,8 @@ public class Feiticeiro extends Classes{
 //		return this.ficha;
 //	}
 	
-	public void descricao() {
-		System.out.println("FEITICEIRO\r\n\n"
+	public String feiticeiroDescricao() {
+		String descricao = "FEITICEIRO\r\n\n"
 				+ "Com olhos brilhando dourado, uma\r\n"
 				+ "humana estica suas mãos e libera o fogo\r\n"
 				+ "dracônico que queima em suas veias. A\r\n"
@@ -51,71 +51,12 @@ public class Feiticeiro extends Classes{
 				+ "desconhecidas. Não é possível estudar feitiçaria como se\r\n"
 				+ "aprende um idioma, assim como não se aprende a viver\r\n"
 				+ "uma vida lendária. Ninguém escolhe a feitiçaria: os\r\n"
-				+ "poderes escolhem o feiticeiro. MAGIA BRUTA\r\n"
-				+ "A magia é parte de todo feiticeiro, inundando corpo,\r\n"
-				+ "mente e espirito com um poder latente que espera para\r\n"
-				+ "ser dominado. Alguns feiticeiro carregam magia que\r\n"
-				+ "emerge de uma antiga linhagem infundida com a magia\r\n"
-				+ "dos dragões. Outros carregam uma magia bruta,\r\n"
-				+ "incontrolável dentro de si, uma tormenta caótica que se\r\n"
-				+ "manifesta de formas inexplicáveis.\r\n"
-				+ "A aparência dos poderes de feitiçaria são vastamente\r\n"
-				+ "imprevisíveis. Algumas linhagens dracônicas produzem\r\n"
-				+ "apenas um feiticeiro por geração, porém, em outras linhas\r\n"
-				+ "de descendência, todos os indivíduos serão feiticeiros. A\r\n"
-				+ "maior parte do tempo, os talentos de feitiçaria aparecem\r\n"
-				+ "aparentemente ao acaso. Alguns feiticeiros não\r\n"
-				+ "conseguem determinar a origem do seu poder, enquanto\r\n"
-				+ "outros o relacionam com estranhos eventos de suas vidas.\r\n"
-				+ "O toque de um corruptor, a b\r\n"
-				+ "ênção de uma dríade no\r\n"
-				+ "nascimento de um bebê ou experimentar a água de uma\r\n"
-				+ "fonte misteriosa podem conceder o dom da feitiçaria.\r\n"
-				+ "Também é possível adquirir esse dom de uma divindade\r\n"
-				+ "da magia, da exposição as forças elementais dos Planos\r\n"
-				+ "Interiores ou do caos alucinante do Limbo ou ao\r\n"
-				+ "vislumbrar o funcionamento interno da realidade.\r\n"
-				+ "Os feiticeiros não veem serventia em grimórios ou\r\n"
-				+ "antigos tomos de conhecimento místico buscados pelos\r\n"
-				+ "magos, nem buscam um patrono para conceder\r\n"
-				+ "-lhes suas\r\n"
-				+ "magias, como um bruxo faz. Ao aprender a explorar e\r\n"
-				+ "canalizar sua própria magia inata, eles descobrem novas\r\n"
-				+ "e incríveis formas de liberar esse poder. PODERES INEXPLICÁVEIS\r\n"
-				+ "Os feiticeiros são raros no mundo e é incomum encontrar\r\n"
-				+ "um feiticeiro que não esteja envolvido na vida de\r\n"
-				+ "aventuras de alguma forma. Pessoas com poder mágico\r\n"
-				+ "fluindo em suas veias descobrem cedo que o poder não\r\n"
-				+ "gosta de ficar quieto. A magia de um feiticeiro gosta de\r\n"
-				+ "ser exercida e tem uma tendência de fluir de maneiras\r\n"
-				+ "imprevisíveis se não for chamada.\r\n"
-				+ "Muitas vezes, os feiticeiros\r\n"
-				+ " tem motivações obscuras ou\r\n"
-				+ " quixotescas que os leva a aventuras.\r\n"
-				+ " Alguns buscam uma maior compreensão da\r\n"
-				+ "força mágica que os infunde ou a resposta do mistério de\r\n"
-				+ "sua origem. Outros, esperam encontrar uma forma de se\r\n"
-				+ "livrar dele ou de liberar seu potencial máximo.\r\n"
-				+ "Independente dos seus objetivos, os feiticeiros são tão\r\n"
-				+ "uteis para um grupo de aventureiros quanto os magos,\r\n"
-				+ "compensando a falta de variedade de conhecimento\r\n"
-				+ "mágico com uma enorme flexibilidade no uso das magias\r\n"
-				+ "que eles conhecem.\r\n\n");
+				+ "poderes escolhem o feiticeiro.";
+		return descricao;
 	}
 	
-	public void construcaoRapida() {
-		System.out.println("CONSTRUÇÃO RÁPIDA\r\n\n"
-				+ "Você pode construir um feiticeiro rapidamente seguindo\r\n"
-				+ "essas sugestões. Primeiro, coloque seu valor de habilidade\r\n"
-				+ "mais alto em Carisma, seguido de Constituição. Segundo,\r\n"
-				+ "escolha o antecedente eremita. Terceiro, escolha os\r\n"
-				+ "truques luz, prestidigitação, raio de gelo e toque chocante,\r\n"
-				+ "além das seguintes magias de 1° nível: escudo arcano e\r\n"
-				+ "misseis mágicos.\r\n\n");
-	}
-	
-	public void caracteristicasClasse() {
-		System.out.println("CARACTERÍSTICAS DE CLASSE\r\n\n"
+	public String caracteristicasClasse() {
+		String caracteristicas = "CARACTERÍSTICAS DE CLASSE\r\n\n"
 				+ "Como um feiticeiro, você adquire as seguintes\r\n"
 				+ "características de classe.\r\n\n"
 				+ "PONTOS DE VIDA\r\n\n"
@@ -139,7 +80,9 @@ public class Feiticeiro extends Classes{
 				+ "simples\r\n"
 				+ "- (a) uma bolsa de componentes ou (b) um foco arcano\r\n"
 				+ "- (a) um pacote de explorador ou (b) um pacote de\r\n"
-				+ "aventureiro\r\n\n");
+				+ "aventureiro\r\n\n";
+		
+		return caracteristicas;
 	}
 	
 	public void setFeiticeiro() {

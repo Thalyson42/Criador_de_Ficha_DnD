@@ -14,6 +14,76 @@ public class Patrulheiro extends Classes{
 //	private Equipamentos equips;
 //	private Magias magias;
 	
+	public String patrulheiroDescricao() {
+		String descricao = "PATRULHEIRO\r\n"
+				+ "De aparência áspera e\r\n"
+				+ "selvagem, um humano\r\n"
+				+ "espreita sozinho através das\r\n"
+				+ "sombras das árvores, caçando\r\n"
+				+ "os orcs que ele sabe estarem\r\n"
+				+ "planejando um assalto a uma\r\n"
+				+ "fazenda próxima. Segurando\r\n"
+				+ "uma espada curta em cada mão,\r\n"
+				+ "ele se transforma em um vendaval\r\n"
+				+ "de aço, talando um inimigo após o outro.\r\n"
+				+ "Após se evadir de um cone de ar congelante,\r\n"
+				+ "uma elfa encontra\r\n"
+				+ "-se de pé e saca seu arco das costas,\r\n"
+				+ "disparando uma flecha no dragão branco. Ignorando a\r\n"
+				+ "onda de medo que emana do dragão, assim como ignorou\r\n"
+				+ "o frio do seu sopro, ela envia uma flecha após a outro\r\n"
+				+ "tentando encontrar as brechas entre as espessas escamas\r\n"
+				+ "do dragão.\r\n"
+				+ "Erguendo sua mão para o alto, um meio\r\n"
+				+ "-elfo assobia\r\n"
+				+ "para o falcão que o circunda acima, chamando o pássaro\r\n"
+				+ "de volta para o seu lado. Sussurrando instruções em\r\n"
+				+ "Élfico, ele aponta para o urso\r\n"
+				+ "-coruja que ele estava\r\n"
+				+ "rastreando e envia o falcão para distrair a criatura\r\n"
+				+ "enquanto ele prepara seu arco.\r\n"
+				+ "Longe do alvoroço das cidades e vilas, passando das\r\n"
+				+ "divisas que abrigam a fazendas mais longínquas dos\r\n"
+				+ "horrores do ermo, entre as árvores densas de florestas\r\n"
+				+ "sem trilhas e através das vastas planícies vazias, os\r\n"
+				+ "patrulheiros mantem sua vigília interminável. ";
+		
+		return descricao;
+	}
+	
+	public String patrulheiroCaracteristicas() {
+		String caracteristicas = "CARACTERÍSTICAS DE CLASSE\r\n"
+				+ "Como um patrulheiro, você adquire as seguintes\r\n"
+				+ "características de classe.\r\n"
+				+ "PONTOS DE VIDA\r\n"
+				+ "Dado de Vida: 1d10 por nível de patrulheiro\r\n"
+				+ "Pontos de Vida no 1° Nível: 10 + seu modificador de\r\n"
+				+ "Constituição\r\n"
+				+ "Pontos de Vida nos Níveis Seguintes: 1d10 (ou 6) +\r\n"
+				+ "seu modificador de Constituição por nível de\r\n"
+				+ "patrulheiro após o 1°\r\n"
+				+ "PROFICIÊNCIAS\r\n"
+				+ "Armaduras: Armaduras leves, armaduras médias,\r\n"
+				+ "escudos\r\n"
+				+ "Armas: Armas simples, armas marciais\r\n"
+				+ "Ferramentas: Nenhuma\r\n"
+				+ "Testes de Resistência: Força, Destreza\r\n"
+				+ "Perícias: Escolha três dentre Acrobacia, Adestrar\r\n"
+				+ "Animais, Atletismo, Furtividade, Intuição,\r\n"
+				+ "Investigação, Natureza, Percepção e Sobrevivência\n"
+				+ "EQUIPAMENTO\r\n"
+				+ "Você começa com o seguinte equipamento, além do\r\n"
+				+ "equipamento concedido pelo seu antecedente:\r\n"
+				+ "- (a) camisão de malha ou (b) armadura de couro\r\n"
+				+ "- (a) duas espadas curtas ou (b) duas armas simples\r\n"
+				+ "corpo-a-corpo\r\n"
+				+ "- (a) um pacote de explorador ou (b) um pacote de\r\n"
+				+ "aventureiro\r\n"
+				+ "- Um arco longo e uma aljava com 20 flechas";
+		
+		return caracteristicas;
+	}
+	
 	public void setPatrulheiro() {
 		getFicha().setClasse("Patrulheiro");
 		getFicha().setBonus_proficiencia(2);

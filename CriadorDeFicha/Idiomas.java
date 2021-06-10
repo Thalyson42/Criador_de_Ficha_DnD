@@ -73,7 +73,7 @@ public class Idiomas {
 		return idiomas_escolhidos;
 	}
 	
-	public List<String> setIdioma(String idioma) {
+	public List<String> setIdioma(int count, List<String> idioma) {
 		ArrayList<String> idiomas = new ArrayList<String>();
 		idioma.addAll(idiomas);
 		ArrayList<String> falado_por = new ArrayList<String>();

@@ -14,6 +14,72 @@ public class Paladino extends Classes{
 //	private Equipamentos equips;
 //	private Magias magias;
 	
+	public String paladinoDescricao() {
+		String descricao = "PALADINO\r\n"
+				+ "Vestido em uma armadura de placas que reluz a luz do\r\n"
+				+ "sol, a despeito da poeira e sujeira de uma longa viagem,\r\n"
+				+ "um humano larga sua espada e escudo e coloca suas mãos\r\n"
+				+ "em um homem fatalmente ferido. Radiação divina brilha\r\n"
+				+ "de suas mãos, o ferimento do homem se fecha e seus olhos\r\n"
+				+ "se arregalam com espanto.\r\n"
+				+ "Um anão se esgueira por detrás de um afloramento,\r\n"
+				+ "seu manto negro o torna praticamente invisível durante a\r\n"
+				+ "noite, e observa uma banda de guerra orc celebrando sua\r\n"
+				+ "recente vitória. Silenciosamente, ele espreita em meio a\r\n"
+				+ "eles e sussurra seu juramento e dois orcs morrem antes\r\n"
+				+ "mesmo de perceberem que ele estava ali.\r\n"
+				+ "Com um cabelo prateado que brilha com um raio de\r\n"
+				+ "luz que parece iluminar apenas ele, um elfo gargalha com\r\n"
+				+ "exultação. Sua lança golpeia num piscar, como o dos seus\r\n"
+				+ "olhos, perfurando de novo e de novo em um gigante\r\n"
+				+ "contorcendo\r\n"
+				+ "-se, até que finalmente sua luz supera a\r\n"
+				+ "escuridão dele.\r\n"
+				+ "Seja lá quais forem suas origens e suas missões,\r\n"
+				+ "paladinos são unidos pelos seus juramentos de se\r\n"
+				+ "imporem contra as forças do mal. Quer seja jurado ante o\r\n"
+				+ "altar de um deus com um sacerdote como testemunha,\r\n"
+				+ "quer seja em um clareira sagrada diante dos espíritos da\r\n"
+				+ "natureza e seres feéricos, ou em um momento de\r\n"
+				+ "desespero e aflição com os mortos como únicas\r\n"
+				+ "testemunhas, o juramento de um paladino é um laço\r\n"
+				+ "poderoso. Ele é uma fonte de poder que transforma um\r\n"
+				+ "guerreiro devotado em um campeão abençoado.\r\n";
+		
+		return descricao;
+	}
+	
+	public String paladinoCaracteristicas() {
+		String caracteristicas = "CARACTERÍSTICAS DE CLASSE\r\n"
+				+ "Como um paladino, você adquire as seguintes\r\n"
+				+ "características de classe.\r\n"
+				+ "PONTOS DE VIDA\r\n"
+				+ "Dado de Vida: 1d10 por nível de paladino\r\n"
+				+ "Pontos de Vida no 1° Nível: 10 + seu modificador de\r\n"
+				+ "Constituição\r\n"
+				+ "Pontos de Vida nos Níveis Seguintes: 1d10 (ou 6) +\r\n"
+				+ "seu modificador de Constituição por nível de paladino\r\n"
+				+ "após o 1°\n"
+				+ "PROFICIÊNCIAS\r\n"
+				+ "Armaduras: Todas as armaduras, escudos\r\n"
+				+ "Armas: Armas simples, armas marciais\r\n"
+				+ "Ferramentas: Nenhum\r\n"
+				+ "Testes de Resistência: Sabedoria, Carisma\r\n"
+				+ "Perícias: Escolha duas dentre Atletismo, Intuição,\r\n"
+				+ "Intimidação, Medicina, Persuasão e Religião\r\n"
+				+ "EQUIPAMENTO\r\n"
+				+ "Você começa com o seguinte equipamento, além do\r\n"
+				+ "equipamento concedido pelo seu antecedente:\r\n"
+				+ "- (a) uma arma marcial e um escudo ou (b) duas armas\r\n"
+				+ "marciais\r\n"
+				+ "- (a) cinco azagaias ou (b) qualquer arma simples corpoa-corpo\r\n"
+				+ "- (a) um pacote de sacerdote ou (b) um pacote de\r\n"
+				+ "aventureiro\r\n"
+				+ "- Cota de malha e um símbolo sagrado\r\n";
+		
+		return caracteristicas;
+	}
+	
 	public void setPaladino() {
 		getFicha().setClasse("Paladino");
 		getFicha().setBonus_proficiencia(2);

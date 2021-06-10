@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import CriadorDeFicha.AtribuirHabilidades;
 import CriadorDeFicha.Classes;
 import CriadorDeFicha.Equipamentos;
 import CriadorDeFicha.Idiomas;
@@ -74,12 +75,14 @@ public class Menu extends JFrame {
 				Equipamentos equips = new Equipamentos();
 				Magias magias = new Magias();
 				Idiomas idiomas = new Idiomas();
+				AtribuirHabilidades atribuirHabilidades = new AtribuirHabilidades();
 				Classes classes = new Classes();
 				classes.salvarFicha(ficha);
 				classes.setEquips(equips);
 				classes.setProficiencia(proficiencia);
 				classes.setMagias(magias);
 				classes.setIdiomas(idiomas);
+				classes.setAtribuirHabilidades(atribuirHabilidades);
 				
 				EscolherRacaJanela criarficha = new EscolherRacaJanela(classes);
 				criarficha.setVisible(true);

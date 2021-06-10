@@ -9,12 +9,16 @@ public class Classes {
 	private static Equipamentos equips;
 	private static Magias magias;
 	private static Idiomas idiomas;
+	private static AtribuirHabilidades atribuirHabilidades;
 	
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		Classes.nome = nome;
+	}
+	public void setAtribuirHabilidades(AtribuirHabilidades atribuirHabilidades) {
+		Classes.atribuirHabilidades = atribuirHabilidades;
 	}
 	public FichaDoPersonagem getFicha() {
 		return ficha;
@@ -45,6 +49,9 @@ public class Classes {
 	}
 	public void setIdiomas(Idiomas idiomas) {
 		Classes.idiomas = idiomas;
+	}
+	public AtribuirHabilidades getAtribuirHabilidades() {
+		return atribuirHabilidades;
 	}
 	
 	

@@ -14,8 +14,8 @@ public class Bardo extends Classes{
 //	private Equipamentos equips;
 //	private Magias magias;
 	
-	public void bardoDescricao() {
-		System.out.println("Cantarolando enquanto entrelaça os seus dedos\r\n"
+	public String bardoDescricao() {
+		String descricao = "Cantarolando enquanto entrelaça os seus dedos\r\n"
 				+ "em volta de um monumento antigo em uma ruina\r\n"
 				+ "a muito esquecida, uma meio\r\n"
 				+ "-elfa vestida em couros\r\n"
@@ -37,85 +37,12 @@ public class Bardo extends Classes{
 				+ "o bardo tece sua magia através de palavras e\r\n"
 				+ "música para inspirar aliados, desmoralizar\r\n"
 				+ "oponentes, manipular mentes, criar ilusões e,\r\n"
-				+ "até mesmo, curar ferimentos.\r\n"
-				+ "\n"
-				+ "MÚSICA E MAGIA\r\n"
-				+ "\n"
-				+ "No mundo de D&D, palavras e música não são meras\r\n"
-				+ "vibrações do ar, mas vocalizações com poder próprio. O\r\n"
-				+ "bardo é um mestre da canção, discurso e a magia contida\r\n"
-				+ "neles. Os bardos dizem que o multiverso foi criado a\r\n"
-				+ "partir da palavra, que as palavras dos deuses lhe deram\r\n"
-				+ "forma, e os ecos dessas Palavras de Criação primordiais\r\n"
-				+ "ainda ressoam através do cosmos. A música dos bardos é\r\n"
-				+ "uma tentativa de capitar e aproveitar esses ecos,\r\n"
-				+ "sutilmente tecidas em suas magias e poderes.\r\n"
-				+ "A maior força dos bardos é sua completa versatilidade.\r\n"
-				+ "Muitos bardos preferem ficar as margens do combate,\r\n"
-				+ "usando suas magias para inspirar seus aliados e\r\n"
-				+ "atrapalhar seus oponentes à distância. Porém, os bardos\r\n"
-				+ "são capazes de se defender em combate corporal, se\r\n"
-				+ "necessário, usando suas magias para aprimorar suas\r\n"
-				+ "espadas e armaduras. Suas magias inclinam\r\n"
-				+ "-se para os\r\n"
-				+ "encantamentos e ilusões ao invés de magias notavelmente\r\n"
-				+ "destrutivas. Eles possuem um vasto conhecimento de\r\n"
-				+ "muitos assuntos e uma aptidão natural que lhes permite\r\n"
-				+ "fazer praticamente tudo bem. Bardos se tornam mestres\r\n"
-				+ "dos talentos que eles definem em suas mentes para a\r\n"
-				+ "perfeição, de performance musical até conhecimento\r\n"
-				+ "exotérico.\r\n"
-				+ "\n"
-				+ "APRENDENDO COM A EXPERIÊNCIA\r\n"
-				+ "\n"
-				+ "Os verdadeiros bardos não são comuns no mundo. Nem\r\n"
-				+ "todo menestrel cantando em uma taverna ou bobo\r\n"
-				+ "saltitando na corte real é um bardo. Descobrir a magia\r\n"
-				+ "escondida na música requer árduo estudo e um pouco de\r\n"
-				+ "talento natural que a maioria dos trovadores e\r\n"
-				+ "malabaristas não tem. No entanto, pode ser difícil\r\n"
-				+ "perceber a diferença entre esses artistas e bardos\r\n"
-				+ "verdadeiros. A vida de um bardo é gasta vagando através\r\n"
-				+ "dos lugares coletando conhecimento, contando histórias e\r\n"
-				+ "vivendo da gratidão das audiências, muito parecido com\r\n"
-				+ "qualquer outro artista. Porém, um profundo\r\n"
-				+ "conhecimento, um nível de perícia musical e um toque de\r\n"
-				+ "magia diferencia os bardos dos seus companheiros.\r\n"
-				+ "Com raridade os bardos se estabelecem em algum\r\n"
-				+ "lugar por um longo tempo e, seu desejo natural por\r\n"
-				+ "viagens\r\n"
-				+ "– para encontrar novos contos para contar, novas\r\n"
-				+ "perícias para aprender e novas descobertas além do\r\n"
-				+ "horizonte\r\n"
-				+ "– tornam a carreira de aventureiro um\r\n"
-				+ "chamado natural. Cada aventura é uma oportunidade\r\n"
-				+ "de aprendizado, de praticar uma variedade de perícias, de\r\n"
-				+ "entrar em tumbas a muito esquecidas, de descobrir\r\n"
-				+ "antigos trabalhos místicos, de decifrar tomos ancestrais,\r\n"
-				+ "de viajar para lugares estranhos ou de encontrar\r\n"
-				+ "criaturas exóticas. Os bardos adoram acompanhar heróis\r\n"
-				+ "para testemunhar seus feitos em primeira mão. Um bardo\r\n"
-				+ "que puder contar uma história incrivelmente inspiradora\r\n"
-				+ "de feitos pessoais ganhará renome dentre outros bardos.\r\n"
-				+ "De fato, após contar tantas histórias sobre os poderosos\r\n"
-				+ "feitos conseguidos por heróis, muitos bardos tomam essa\r\n"
-				+ "inspiração em seus corações e assumem os papeis\r\n"
-				+ "heroicos eles mesmos.\r\n");
+				+ "até mesmo, curar ferimentos.\r\n";
+		return descricao;
 	}
 	
-	public void bardoConstrucaoRapido() {
-		System.out.println("Você pode construir um bardo\r\n"
-				+ "rapidamente seguindo essas\r\n"
-				+ "sugestões. Primeiro, coloque seu valor de\r\n"
-				+ "habilidade mais alto em Carisma, seguido de Destreza.\r\n"
-				+ "Segundo, escolha o antecedente artista. Terceiro, escolha\r\n"
-				+ "os truques globos de luz e zombaria viciosa, além das\r\n"
-				+ "seguintes magias de 1° nível: enfeitiçar pessoa, detectar\r\n"
-				+ "magia, palavra curativa e onda trovejante.\r\n");
-	}
-	
-	public void bardoCaracteristicas() {
-		System.out.println("PONTOS DE VIDA\r\n\n"
+	public String bardoCaracteristicas() {
+		String caracteristicas = "PONTOS DE VIDA\r\n\n"
 				+ "Dado de Vida: 1d8 por nível de bardo\r\n"
 				+ "Pontos de Vida no 1° Nível: 8 + seu modificador de\r\n"
 				+ "Constituição\r\n"
@@ -135,7 +62,8 @@ public class Bardo extends Classes{
 				+ "arma simples\r\n"
 				+ "- (a) um pacote de diplomata ou (b) um pacote de artista\r\n"
 				+ "- (a) um lute ou (b) qualquer outro instrumento musical\r\n"
-				+ "- Armadura de couro e uma adaga\r\n\n");
+				+ "- Armadura de couro e uma adaga\r\n\n";
+		return caracteristicas;
 	}
 	
 	public void setBardo() {

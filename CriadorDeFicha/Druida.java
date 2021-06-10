@@ -14,8 +14,8 @@ public class Druida extends Classes{
 //	private Equipamentos equips;
 //	private Magias magias;
 	
-	public void Descricao() {
-		System.out.println("DRUIDA\r\n\n"
+	public String druidaDescricao() {
+		String descricao = "DRUIDA\r\n\n"
 				+ "Erguendo um cajado retorcido envolto em azevinho, uma\r\n"
 				+ "elfa invoca a fúria da tempestade e convoca raios\r\n"
 				+ "explosivos de eletricidade para destruir os orcs\r\n"
@@ -33,63 +33,12 @@ public class Druida extends Classes{
 				+ "druidas são encarnações da resistência, astúcia e fúria da\r\n"
 				+ "natureza. Eles não se consideram donos da natureza. Ao\r\n"
 				+ "invés disso, eles se veem como extensões da vontade\r\n"
-				+ "indomável da natureza.\r\n\n"
-				+ "FORÇA DA NATUREZA\r\n\n"
-				+ "Os druidas reverenciam a natureza acima de tudo,\r\n"
-				+ "adquirindo suas magias e outros poderes mágicos, ou da\r\n"
-				+ "força da natureza per si ou de uma divindade da\r\n"
-				+ "natureza. Muitos druidas buscam uma espiritualidade\r\n"
-				+ "mística de união transcendental com a natureza ao invés\r\n"
-				+ "de se devotarem a uma entidade divina, enquanto outros\r\n"
-				+ "servem deuses da natureza selvagem, animais ou forças\r\n"
-				+ "elementais. As antigas tradições druídicas, algumas vezes\r\n"
-				+ "são chamadas de Crença Antiga, contrastando com a\r\n"
-				+ "adoração de deuses em templos ou santuários.\r\n"
-				+ "As magias de druida são orientadas para a natureza e\r\n"
-				+ "para os animais – o poder da presa e garra, do sol e da\r\n"
-				+ "lua, do fogo e da tormenta. Os druidas também adquirem\r\n"
-				+ "a habilidade de transformarem em animais e alguns\r\n"
-				+ "druidas fazem estudos pessoais dessa pratica, chegando\r\n"
-				+ "até mesmo ao ponto de preferirem formas animais a suas\r\n"
-				+ "formas naturais.\r\n\n"
-				+ "PRESERVAÇÃO DO EQUILÍBRIO\r\n\n"
-				+ "Para os druidas, a natureza existe em um equilíbrio\r\n"
-				+ "precário. Os quatro elementos que fizeram o mundo –\r\n"
-				+ "água, ar, fogo e terra – devem permanecer em equilíbrio.\r\n"
-				+ "Se um elemento começar a ganhar mais poder que os\r\n"
-				+ "outros, o mundo pode ser destruído, se transformando em\r\n"
-				+ "um dos planos elementais e se despedaçando em seus\r\n"
-				+ "componentes elementais. Por tanto, os druidas se opõem a\r\n"
-				+ "cultos de Elementais Malignos e outros que promovem\r\n"
-				+ "um elemento, excluindo os outros.\r\n"
-				+ "Os druidas também estão preocupados com o delicado\r\n"
-				+ "equilíbrio ecológico que sustenta a vida animal e vegetal e\r\n"
-				+ "a necessidade do povo civilizado de viver em harmonia\r\n"
-				+ "com a natureza, não em oposição a ela. Os druidas\r\n"
-				+ "aceitam a crueldade da natureza, mas odeiam o que não é\r\n"
-				+ "natural, incluindo aberrações (como observadores e\r\n"
-				+ "devoradores de mentes) e mortos-vivos (como zumbis e\r\n"
-				+ "vampiros). Os druidas, as vezes, lideram incursões contra\r\n"
-				+ "tais criaturas, especialmente quando os monstros\r\n"
-				+ "invadem o território do druida.\r\n"
-				+ "Druidas, as vezes, são encontrados guardando locais\r\n"
-				+ "sagrados ou vigiando regiões de natureza intocada.\r\n"
-				+ "Porém, quando um perigo significante surge, ameaçando\r\n"
-				+ "o equilíbrio da natureza ou as terras que eles protegem,\r\n"
-				+ "os druidas tomam papeis mais ativos em combate contra\r\n"
-				+ "as ameaças, como aventureiros.\r\n\n");
+				+ "indomável da natureza.\r\n\n";
+		return descricao;
 	}
-	
-	public void ConstrucaoRapida() {
-		System.out.println("CONSTRUÇÃO RÁPIDA\r\n\n"
-				+ "Você pode construir um druida rapidamente seguindo\r\n"
-				+ "essas sugestões. Primeiro, coloque seu valor de habilidade\r\n"
-				+ "mais alto em Sabedoria, seguido de Constituição.\r\n"
-				+ "Segundo, escolha o antecedente eremita.\r\n\n");
-	}
-	
-	public void CaracteristicasClasse() {
-		System.out.println("CARACTERÍSTICAS DE CLASSE\r\n\n"
+
+	public String CaracteristicasClasse() {
+		String caracteristicas = "CARACTERÍSTICAS DE CLASSE\r\n\n"
 				+ "Como um druida, você adquire as seguintes\r\n"
 				+ "características de classe.\r\n\n"
 				+ "PONTOS DE VIDA\r\n\n"
@@ -120,7 +69,8 @@ public class Druida extends Classes{
 				+ "(a) um pacote de estudioso ou (b) um pacote de\r\n"
 				+ "explorador\r\n"
 				+ "- Armadura de couro, um pacote de aventureiro e um\r\n"
-				+ "foco druídico\r\n\n");
+				+ "foco druídico\r\n\n";
+		return caracteristicas;
 	}
 	
 	

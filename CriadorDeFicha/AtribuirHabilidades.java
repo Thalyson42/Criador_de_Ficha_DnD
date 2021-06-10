@@ -12,23 +12,39 @@ public class AtribuirHabilidades extends Classes{
 	private Scanner entrada = new Scanner(System.in);
 //	private FichaDoPersonagem ficha;
 	
-	public void setSorte() {
-		Integer[] D4d6 = new Integer[4];
-		
-		for(int i = 0; i < 6; i++) {
-			int soma = 0;
-
-			for(int c = 0; c < 4; c++) {
-				D4d6[c] = random.nextInt((6 - 1) + 1) + 1;	
-			}
+//	public void setSorte() {
+//		Integer[] D4d6 = new Integer[4];
+//		
+//		for(int i = 0; i < 6; i++) {
+//			int soma = 0;
+//
+//			for(int c = 0; c < 4; c++) {
+//				D4d6[c] = random.nextInt((6 - 1) + 1) + 1;	
+//			}
+//	
+//			Arrays.sort(D4d6, Collections.reverseOrder());
+//			for(int c = 0; c < 3; c++) {
+//				soma += D4d6[c];
+//			}
+//			this.dadosAtributos.add(soma);
+//		}
+//		Collections.sort(dadosAtributos, Collections.reverseOrder());
+//	}
 	
-			Arrays.sort(D4d6, Collections.reverseOrder());
-			for(int c = 0; c < 3; c++) {
-				soma += D4d6[c];
-			}
-			this.dadosAtributos.add(soma);
+	public int setSorte() {
+		Integer[] D4d6 = new Integer[4];
+		int soma = 0;
+		
+		for(int c = 0; c < 4; c++) {
+			D4d6[c] = random.nextInt((6 - 1) + 1) + 1;	
 		}
-		Collections.sort(dadosAtributos, Collections.reverseOrder());
+		
+		Arrays.sort(D4d6, Collections.reverseOrder());
+		for(int c = 0; c < 3; c++) {
+			soma += D4d6[c];
+		}
+		
+		return soma;
 	}
 
 	public ArrayList<Integer> getDadosAtributos() {
@@ -148,6 +164,59 @@ public class AtribuirHabilidades extends Classes{
 				
 			}
 		}
+		getFicha().setPontos_vida();
+		getFicha().setClasseDeArmadura();
+		
+	}
+	
+	public void setAtributo(ArrayList<Integer> atributos) {
+		for(int i = 0; i < atributos.size(); i++) {
+			int soma;
+			switch(i) {
+			case 0:
+				soma = getFicha().getForca();
+				soma += atributos.get(i);
+				getFicha().setForca(soma);
+				getFicha().setForca_mod();
+			break;
+			
+			case 1:
+				soma = getFicha().getDestreza();
+				soma += atributos.get(i);
+				getFicha().setDestreza(soma);
+				getFicha().setDestreza_mod();
+			break;
+			
+			case 2:
+				soma = getFicha().getConstituicao();
+				soma += atributos.get(i);
+				getFicha().setConstituicao(soma);
+				getFicha().setConstituicao_mod();
+			break;
+			
+			case 3:
+				soma = getFicha().getInteligencia();
+				soma += atributos.get(i);
+				getFicha().setInteligencia(soma);
+				getFicha().setInteligencia_mod();
+			break;
+			
+			case 4:
+				soma = getFicha().getSabedoria();
+				soma += atributos.get(i);
+				getFicha().setSabedoria(soma);
+				getFicha().setSabedoria_mod();
+			break;
+			
+			case 5:
+				soma = getFicha().getCarisma();
+				soma += atributos.get(i);
+				getFicha().setCarisma(soma);
+				getFicha().setCarisma_mod();
+			break;
+			}
+		}
+					
 		getFicha().setPontos_vida();
 		getFicha().setClasseDeArmadura();
 		

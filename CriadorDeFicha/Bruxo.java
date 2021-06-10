@@ -22,8 +22,8 @@ public class Bruxo extends Classes{
 //		return this.ficha;
 //	}
 	
-	public void bruxoDescricao() {
-		System.out.println("Com um pseudodragão enrolado em seu ombro, um jovem\r\n"
+	public String bruxoDescricao() {
+		String descricao ="Com um pseudodragão enrolado em seu ombro, um jovem\r\n"
 				+ "elfo vestindo robes dourados sorri calorosamente, tecendo\r\n"
 				+ "um charme mágico através de suas doces palavras e\r\n"
 				+ "dobrando a sentinela do palácio como deseja.\r\n"
@@ -42,65 +42,12 @@ public class Bruxo extends Classes{
 				+ "antigo de seres como nobres fadas, demônios, diabos,\r\n"
 				+ "bruxas e entidades alienígenas do Reino Distante, os\r\n"
 				+ "bruxos remontam segredos arcanos para aprimorar seus\r\n"
-				+ "próprios poderes.\r\n\n"
-				+ "JURAMENTO E DÍVIDA\r\n\n"
-				+ "Um bruxo é definido por um pacto com uma entidade\r\n"
-				+ "transcendental. Às vezes o relacionamento entre um\r\n"
-				+ "bruxo e seu patrono é como o de um clérigo com sua\r\n"
-				+ "divindade, apesar de os seres que servem como patronos\r\n"
-				+ "para os bruxos não serem deuses. Um bruxo poderia\r\n"
-				+ "liderar um culto dedicado a um príncipe-demônio, um\r\n"
-				+ "arquidemônio ou uma entidade completamente alienígena\r\n"
-				+ "– seres que, normalmente, não são servidos por clérigos.\r\n"
-				+ "Muitas vezes, porém, esse arranjo é mais similar ao\r\n"
-				+ "realizado entre um mestre e seu aprendiz. O bruxo\r\n"
-				+ "aprende e aumenta seu poder, ao custo de serviços\r\n"
-				+ "ocasionais realizados em nome do seu patrono.\r\n"
-				+ "A magia outorgada ao bruxo varia de pequenas, mas\r\n"
-				+ "duradouras alterações à pessoa do bruxo (tais como a\r\n"
-				+ "habilidade de ver no escuro ou de ler qualquer idioma) até\r\n"
-				+ "o acesso a poderosas magias. Diferente dos magos\r\n"
-				+ "livrescos, os bruxos suplementam sua magia com\r\n"
-				+ "facilidade em combate. Eles se sentem confortáveis em\r\n"
-				+ "armaduras leves e sabem usar armas simples.\r\n\n"
-				+ "ESCAVANDO SEGREDOS\r\n\n"
-				+ "Os bruxos são guiados por um insaciável desejo por\r\n"
-				+ "conhecimento e poder, que os compele aos seus pactos e\r\n"
-				+ "molda suas vidas. Essa sede leva os bruxos a fazerem\r\n"
-				+ "seus pactos e também molda suas carreiras.\r\n"
-				+ "Histórias de bruxos criando elos com corruptores são\r\n"
-				+ "vastamente conhecidos. Porém, muitos bruxos servem\r\n"
-				+ "patronos que não são abissais. Algumas vezes um\r\n"
-				+ "viajante na floresta chega a uma estranhamente bela\r\n"
-				+ "torre, conhece seu senhor ou senhora feérico e acaba por\r\n"
-				+ "fazer um pacto sem ter total ciência disso. E, as vezes,\r\n"
-				+ "enquanto vasculha em tomos de conhecimento proibido, a\r\n"
-				+ "mente brilhante, porem enlouquecida de um estudante é\r\n"
-				+ "levada a realidades além do mundo material em direção a\r\n"
-				+ "seres alienígenas habitantes do vazio exterior.\r\n"
-				+ "Quando um pacto é selado, a sede de conhecimento e\r\n"
-				+ "poder do bruxo não pode ser saciada com mero estudo e\r\n"
-				+ "pesquisa. Ninguém faz um pacto com uma entidade tão\r\n"
-				+ "poderosa se não deseja usar esse poder atrás de\r\n"
-				+ "benefícios. Em vez disso, a grande maioria dos bruxos\r\n"
-				+ "gastam seus dias em uma perseguição desenfreada por\r\n"
-				+ "seus objetivos, que normalmente os leva a algum tipo de\r\n"
-				+ "aventura. Além disso, as demandas de seus patronos\r\n"
-				+ "também leva os bruxos a se aventurar.\r\n"
-				+ "");
+				+ "próprios poderes.\r\n\n";
+		return descricao;
 	}
 	
-	public void bruxoContrucaoRapida() {
-		System.out.println("Você pode construir um bruxo rapidamente seguindo\r\n"
-				+ "essas sugestões. Primeiro, coloque seu valor de habilidade\r\n"
-				+ "mais alto em Carisma, seguido de Constituição. Segundo,\r\n"
-				+ "escolha o antecedente charlatão. Terceiro, escolha os\r\n"
-				+ "truques rajada mística e toque arrepiante, além das\r\n"
-				+ "seguintes magias de 1° nível: enfeitiçar pessoa e raio de bruxa.\r\n");
-	}
-	
-	public void bruxoCaracteristicas() {
-		System.out.println("PONTOS DE VIDA\r\n\n"
+	public String bruxoCaracteristicas() {
+		String caracteristicas = "PONTOS DE VIDA\r\n\n"
 				+ "Dado de Vida: 1d8 por nível de bruxo\r\n"
 				+ "Pontos de Vida no 1° Nível: 8 + seu modificador de Constituição.\r\n"
 				+ "Pontos de Vida nos Níveis Seguintes: 1d8 (ou 5) + seu\r\n"
@@ -121,7 +68,8 @@ public class Bruxo extends Classes{
 				+ "- (a) uma bolsa de componentes ou (b) um foco arcano\r\n"
 				+ "- (a) um pacote de estudioso ou (b) um pacote de\r\n"
 				+ "explorador\r\n"
-				+ "- Armadura de couro, qualquer arma simples e duas adagas.\r\n\n");
+				+ "- Armadura de couro, qualquer arma simples e duas adagas.\r\n\n";
+		return caracteristicas;
 	}
 	
 	public void setBruxo() {

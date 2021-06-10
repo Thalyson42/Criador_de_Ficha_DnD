@@ -14,6 +14,72 @@ public class Monge extends Classes{
 //	private Equipamentos equips;
 //	private Magias magias;
 	
+	public String mongeDescricao() {
+		String descricao = "MONGE\r\n"
+				+ "Seus punhos criam um borrão enquanto defletem uma\r\n"
+				+ "revoada de flechas que vem vindo, uma meio\r\n"
+				+ "-elfa corre\r\n"
+				+ "sobre uma barricada e se arremessa nas maciças fileiras\r\n"
+				+ "de hobgoblins do outro lado. Ela gira entre eles,\r\n"
+				+ "distribuindo seus golpes e enviando\r\n"
+				+ "-os para o chão, até\r\n"
+				+ "que, finalmente, apenas ela está de pé.\r\n"
+				+ "Respirando profundamente, um humano coberto por\r\n"
+				+ "tatuagens toma uma postura de batalha. Quando os\r\n"
+				+ "primeiro orcs em investida alcançam\r\n"
+				+ "-no, ele exala e uma\r\n"
+				+ "rajada de fogo é expelida de sua boca, engolfando seus\r\n"
+				+ "oponentes.\r\n"
+				+ "Movendo\r\n"
+				+ "-se com o silêncio da noite, uma halfling com\r\n"
+				+ "vestes negras pisa em uma sombra embaixo de um arco e\r\n"
+				+ "emerge de outra mancha sombria numa sacada a poucos\r\n"
+				+ "passos de distância. Ela desliza sua\r\n"
+				+ "l\r\n"
+				+ "âmina para fora da\r\n"
+				+ "bainha de panos enrolados e se esgueira através da janela\r\n"
+				+ "aberto em direção ao príncipe tirano, tão vulnerável no\r\n"
+				+ "abraço do sono.\r\n"
+				+ "Qualquer que seja suas disciplinas, os monges partilha\r\n"
+				+ "de sua habilidade de aproveitar magicamente da energia\r\n"
+				+ "que flui em seus corpos. Se canalizada como um exibição\r\n"
+				+ "impressionante de maestria do combate, ou como um foco\r\n"
+				+ "mais sutil de habilidade defensiva e velocidade, essa\r\n"
+				+ "energia infunde tudo que um monge faz.";
+		
+		return descricao;
+	}
+	
+	public String mongeCaracteristicas() {
+		String caracteristicas = "CARACTERÍSTICAS DE CLASSE\r\n"
+				+ "Como um monge, você adquire as seguintes\r\n"
+				+ "características de classe.\r\n"
+				+ "PONTOS DE VIDA\r\n"
+				+ "Dado de Vida: 1d8 por nível de monge\r\n"
+				+ "Pontos de Vida no 1° Nível: 8 + seu modificador de\r\n"
+				+ "Constituição\r\n"
+				+ "Pontos de Vida nos Níveis Seguintes: 1d8 (ou 5) + seu\r\n"
+				+ "modificador de Constituição por nível de monge após o\r\n"
+				+ "1°\r\n"
+				+ "PROFICIÊNCIAS\r\n"
+				+ "Armaduras: Nenhuma\r\n"
+				+ "Armas: Armas simples, espadas curtas\r\n"
+				+ "Ferramentas: Escolha um tipo de ferramenta de artesão\r\n"
+				+ "ou um instrumento musical\r\n"
+				+ "Testes de Resistência: Força, Destreza\r\n"
+				+ "Perícias: Escolha duas dentre Acrobacia, Atletismo,\r\n"
+				+ "Furtividade, História, Intuição e Religião\r\n"
+				+ "EQUIPAMENTO\r\n"
+				+ "Você começa com o seguinte equipamento, além do\r\n"
+				+ "equipamento concedido pelo seu antecedente:\r\n"
+				+ "- (a) uma espada curta ou (b) qualquer arma simples\r\n"
+				+ "- (a) um pacote de explorador ou (b) um pacote de\r\n"
+				+ "aventureiro\r\n"
+				+ "- 10 dardos";
+		
+		return caracteristicas;
+	}
+	
 	public void setMonge() {
 		getFicha().setClasse("Monge");
 		getFicha().setBonus_proficiencia(2);

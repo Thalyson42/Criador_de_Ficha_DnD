@@ -7,17 +7,13 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Proficiencia extends Classes{
-//	private FichaDoPersonagem ficha;
-//	private Equipamentos equips;
-//	
-//	public void setFicha(FichaDoPersonagem ficha) {
-//		this.ficha = ficha;
-//	}
-//	
-//	public FichaDoPersonagem getFicha() {
-//		return this.ficha;
-//	}
+	private List<String> pericias = Arrays.asList("Acrobacia", "Adestrar Animais", "Arcanismo", "Atletismo", "Enganação", "História", "Intuição", "Intimidação", "Investigação",
+			"Medicina", "Natereza", "Percepção", "Atuação", "Persuasão", "Religião", "Prestidigitação", "Furtividade", "Sobrevivência");
 	
+	public List<String> getPericias() {
+		return pericias;
+	}
+
 	public void setPericias(List<String> p, int contador) {
 		Scanner entrada = new Scanner(System.in);
 		ArrayList<String> pericias = new ArrayList<String>();

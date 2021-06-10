@@ -14,8 +14,8 @@ public class Clerigo extends Classes{
 //	private Equipamentos equips;
 //	private Magias magias;
 	
-	public void clerigoDescricao() {
-		System.out.println("CLÉRIGO\r\n\n"
+	public String clerigoDescricao() {
+		String descricao = "CLÉRIGO\r\n\n"
 				+ "Os braços e olhos erguem-se na direção do sol e com uma\r\n"
 				+ "prece em seus lábios, um elfo começa a brilhar com luz\r\n"
 				+ "própria, que irradia para curar seus surrados\r\n"
@@ -33,64 +33,12 @@ public class Clerigo extends Classes{
 				+ "distante plano dos deuses. Tão variados quanto os deuses\r\n"
 				+ "que servem, clérigos se esforçam para ser a própria mão\r\n"
 				+ "de seus deuses. Não é apenas um sacerdote comum, mas\r\n"
-				+ "alguém investido de poder divino.\r\n\n"
-				+ "CURANDEIROS E COMBATENTES\r\n\n"
-				+ "Magia divina, como o nome sugere, é o poder dos deuses\r\n"
-				+ "fluindo deles para o mundo mortal. Clérigos são os\r\n"
-				+ "condutores desse poder, manifestando-o através de efeitos\r\n"
-				+ "milagrosos. Os deuses não conferem esse poder a\r\n"
-				+ "qualquer um que o queira, mas apenas àqueles escolhidos\r\n"
-				+ "para cumprir o chamado.\r\n"
-				+ "Fazer uso do poder divino não envolve estudo ou\r\n"
-				+ "treinamento. Um clérigo pode aprender ritos antigos e\r\n"
-				+ "preces específicas, mas a habilidade de usar magias\r\n"
-				+ "divinas depende de devoção e de uma intuição poderosa\r\n"
-				+ "sobre os desejos da divindade.\r\n"
-				+ "Clérigos combinam o poder mágico de curar e inspirar\r\n"
-				+ "seus aliados com magias que ferem e debilitam seus\r\n"
-				+ "inimigos. Eles podem causar medo e pavor, espalhar\r\n"
-				+ "pragas ou venenos, e até lançar fogo divino para consumir\r\n"
-				+ "seus inimigos. Para aqueles malfeitores que merecem\r\n"
-				+ "uma maça na têmpora, o clérigo se utiliza de seu\r\n"
-				+ "treinamento de combate para enfrentar seus inimigos\r\n"
-				+ "corpo-a-corpo, auxiliado pelo poder divino.\r\n\n"
-				+ "AGENTES DIVINOS\r\n\n"
-				+ "Nem todo acólito ou servo em um templo ou santuário é\r\n"
-				+ "necessariamente um clérigo. Alguns sacerdotes são\r\n"
-				+ "chamados para uma vida simples de servidão,\r\n"
-				+ "propagando a vontade de seu deus através de preces e\r\n"
-				+ "sacrifício, e não através de magia ou poderio militar. Em\r\n"
-				+ "algumas cidades, o sacerdócio equivale a um escritório\r\n"
-				+ "político, visto como um degrau sólido para alcançar\r\n"
-				+ "patamares superiores de autoridade e não envolvendo\r\n"
-				+ "qualquer comunhão com a divindade. Clérigos\r\n"
-				+ "verdadeiros são raros nas estruturas hierárquicas.\r\n"
-				+ "Quando um clérigo inicia uma vida como aventureiro,\r\n"
-				+ "geralmente é porque seu deus exigiu assim. Perseguir os\r\n"
-				+ "objetivos de um deus geralmente envolve enfrentar\r\n"
-				+ "perigos além dos limites da civilização, destruindo o mal\r\n"
-				+ "ou buscando relíquias sagradas em tumbas antigas.\r\n"
-				+ "Muitos clérigos são ainda requisitados para defender os\r\n"
-				+ "adoradores de seu deus, o que pode significar combater\r\n"
-				+ "ogros em fúria, negociar a paz entre nações ou selar um\r\n"
-				+ "portal que permitiria que um corruptor entrasse no Plano\r\n"
-				+ "Material.\r\n"
-				+ "A maioria dos clérigos aventureiros mantém conexões\r\n"
-				+ "com templos e ordens de sua religião. Um templo pode\r\n"
-				+ "pedir a ajuda de um clérigo ou um sumo-sacerdote pode\r\n"
-				+ "ter poder suficiente para exigir seus serviços.\r\n\n");
+				+ "alguém investido de poder divino.\r\n\n";
+		return descricao;
 	}
-	
-	public void clerigoConstrucaorapida() {
-		System.out.println("CONSTRUÇÃO RÁPIDA\r\n\n"
-				+ "Você pode fazer um clérigo rapidamente ao seguir estas\r\n"
-				+ "sugestões. Primeiro, Sabedoria deve ser sua habilidade\r\n"
-				+ "mais alta, seguido de Força ou Constituição. Segundo,\r\n"
-				+ "escolha o antecedente Acólito.\r\n\n");
-	}
-	
-	public void clerigoCaracteristicasClasse() {
-		System.out.println("PONTOS DE VIDA\r\n\n"
+		
+	public String clerigoCaracteristicasClasse() {
+		String caracteristicas = "PONTOS DE VIDA\r\n\n"
 				+ "Dado de Vida: 1d8 por nível de clérigo\r\n"
 				+ "Pontos de Vida no 1° Nível: 8 + seu modificador de\r\n"
 				+ "Constituição\r\n"
@@ -116,7 +64,8 @@ public class Clerigo extends Classes{
 				+ "simples\r\n"
 				+ "- (a) um pacote de sacerdote ou (b) um pacote de\r\n"
 				+ "aventureiro\r\n"
-				+ "- Um escudo e um símbolo sagrado\r\n\n");
+				+ "- Um escudo e um símbolo sagrado\r\n\n";
+		return caracteristicas;
 	}
 	
 	public void setClerigo() {

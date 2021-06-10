@@ -14,6 +14,75 @@ public class Mago extends Classes{
 //	private Equipamentos equips;
 //	private Magias magias;
 	
+	public String magoDescricao() {
+		String descricao = "MAGO\r\n"
+				+ "Vestida com uma túnica prata que denota seu posto,\r\n"
+				+ "uma elfa fecha seus olhos para distanciar\r\n"
+				+ "-se das\r\n"
+				+ "distrações do campo de batalha e entoa o seu canto\r\n"
+				+ "sereno. Dedos se agitam à sua frente, ela completa sua\r\n"
+				+ "magia e lança uma pequena centelha de fogo em direção dos inimigos, explodindo em chamas o incêndio que\r\n"
+				+ "engolfa os soldados.\r\n"
+				+ "Verificando mais de uma vez o seu trabalho, um\r\n"
+				+ "humano inscreve um círculo mágico com giz no chão de\r\n"
+				+ "pedra, então espalha pó de ferro ao longo de cada linha e\r\n"
+				+ "curva graciosas. Quando o círculo está completo, ele\r\n"
+				+ "murmura um longo encantamento. Um buraco se abre no\r\n"
+				+ "espaço dentro do círculo, trazendo um cheiro de enxofre\r\n"
+				+ "de outro plano bem distante.\r\n"
+				+ "Agachado no chão em um cruzamento da masmorra,\r\n"
+				+ "um gnomo joga um punhado de pequenos ossos com\r\n"
+				+ "símbolos místicos escritos, murmurando algumas\r\n"
+				+ "palavras de poder sobre eles. Ele fecha os olhos para\r\n"
+				+ "receber as visões mais claramente, acena com a cabeça\r\n"
+				+ "lentamente, então abre os olhos e aponta para baixo,\r\n"
+				+ "indicando a passagem à sua esquerda.\r\n"
+				+ "Os magos são usuários de magia soberanos, unidos e\r\n"
+				+ "definidos como uma classe pelas magias que conjuram\r\n"
+				+ ".\r\n"
+				+ "Usufruindo de uma trama sutil de magia que permeia o\r\n"
+				+ "cosmos, os magos conjuram magias explosivas de fogo,\r\n"
+				+ "arcos de relâmpagos, enganos sutis e controle de mentes\r\n"
+				+ "de força bruta. Sua magia invoca monstros de outros\r\n"
+				+ "planos de existência, vislumbra o futuro ou transforma\r\n"
+				+ "inimigos mortos em zumbis. Suas magias mais poderosas\r\n"
+				+ "podem transformar uma substância em outra, evocar\r\n"
+				+ "meteoros que caem do céu ou abrir portais para outros\r\n"
+				+ "mundos.";
+		
+		return descricao;
+	}
+	
+	public String magoCaracteristicas() {
+		String caracteristicas = "CARACTERÍSTICAS DE CLASSE\r\n"
+				+ "Como um mago, você adquire as seguintes características\r\n"
+				+ "de classe.\r\n"
+				+ "PONTOS DE VIDA\r\n"
+				+ "Dado de Vida: 1d6 por nível de mago\r\n"
+				+ "Pontos de Vida no 1° Nível: 6 + seu modificador de\r\n"
+				+ "Constituição\r\n"
+				+ "Pontos de Vida nos Níveis Seguintes: 1d6 (ou 4) + seu\r\n"
+				+ "modificador de Constituição por nível de mago após o\r\n"
+				+ "1°\r\n"
+				+ "PROFICIÊNCIAS\r\n"
+				+ "Armaduras: Nenhuma\r\n"
+				+ "Armas: Adagas, dardos, fundas, bordões, bestas leves\r\n"
+				+ "Ferramentas: Nenhuma\r\n"
+				+ "Testes de Resistência: Inteligência, Sabedoria\r\n"
+				+ "Perícias: Escolha duas entre Arcanismo, História,\r\n"
+				+ "Intuição, Investigação, Medicina e Religião\r\n"
+				+ "EQUIPAMENTO\r\n"
+				+ "Você começa com o seguinte equipamento, além do\r\n"
+				+ "equipamento concedido pelo seu antecedente:\r\n"
+				+ "- (a) um bordão ou (b) uma adaga\r\n"
+				+ "- (a) uma bolsa de componentes ou (b) um foco arcano\r\n"
+				+ "- (a) um pacote de estudioso ou (b) um pacote de\r\n"
+				+ "explorador\r\n"
+				+ "Um grimório";
+		
+		return caracteristicas;
+	}
+	
 	public void setMago() {
 		getFicha().setClasse("Mago");
 		getFicha().setBonus_proficiencia(2);
