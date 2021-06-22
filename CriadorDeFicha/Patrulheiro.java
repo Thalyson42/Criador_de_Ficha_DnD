@@ -94,9 +94,9 @@ public class Patrulheiro extends Classes{
 		getProficiencia().SetResistencia(profResistencia);
 		List<String> profPericias = Arrays.asList("Adestrar Animais", "Atletismo", "Furtividade", "Intuição", "Investigação", "Natureza", "Percepção", "Sobrevivência");
 		getProficiencia().setPericias(profPericias, 3);
-		equips1();
-		equips2();
-		equips3();
+//		equips1();
+//		equips2();
+//		equips3();
 	}
 	
 	public int pontosVidaLV1(int modConstituicao) {
@@ -129,77 +129,77 @@ public class Patrulheiro extends Classes{
 		return proficiencia+ModCarisma;
 	}
 	
-	public void equips1() {
-		Scanner entrada = new Scanner(System.in);
-		List<String> equip1 = Arrays.asList("Brunea", "Armadura de couro");
-		boolean menuLoop = false;
-		int menu = 0;
-		while(menuLoop == false) {
-			do {
-				System.out.println("Escolha uma opção:");
-				
-				for(int i = 0; i < equip1.size(); i++) {
-					System.out.println((i+1)+ " - " +equip1.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Digite um numero!");
-					entrada.next();
-				}
-				
-				menu = entrada.nextInt();
-			}while(menu <= 0 || menu > 2);
-			menuLoop = confirmarDecisao(equip1.get(menu));
-		}
-		
-		switch(menu) {
-		case 1:
-			getFicha().setEquipamentos("Brunea");
-		break;
-		
-		case 2:
-			getFicha().setEquipamentos("Armadura de Couro");
-		break;
-		}
-	}
-	
-	public void equips2() {
-		Scanner entrada = new Scanner(System.in);
-		List<String> equip1 = Arrays.asList("Duas espadas curtas", "Duas armas simples corpo-a-corpo");
-		boolean menuLoop = false;
-		int menu = 0;
-		while(menuLoop == false) {
-			do {
-				System.out.println("Escolha uma opção:");
-				
-				for(int i = 0; i < equip1.size(); i++) {
-					System.out.println((i+1)+ " - " +equip1.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Digite um numero!");
-					entrada.next();
-				}
-				
-				menu = entrada.nextInt();
-			}while(menu <= 0 || menu > 2);
-			menuLoop = confirmarDecisao(equip1.get(menu));
-		}
-		
-		switch(menu) {
-		case 1:
-			getFicha().setEquipamentos("Espada curta (2)");
-		break;
-		
-		case 2:
-			getFicha().setEquipamentos(getEquips().setArmaCACSimples(2));
-		break;
-		}
-	}
-	
-	public void equips3() {
-		getFicha().setEquipamentos(getEquips().setPacotes("Pacote de Explorador", "Pacote de Aventureiro"));
-	}
+//	public void equips1() {
+//		Scanner entrada = new Scanner(System.in);
+//		List<String> equip1 = Arrays.asList("Brunea", "Armadura de couro");
+//		boolean menuLoop = false;
+//		int menu = 0;
+//		while(menuLoop == false) {
+//			do {
+//				System.out.println("Escolha uma opção:");
+//				
+//				for(int i = 0; i < equip1.size(); i++) {
+//					System.out.println((i+1)+ " - " +equip1.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				menu = entrada.nextInt();
+//			}while(menu <= 0 || menu > 2);
+//			menuLoop = confirmarDecisao(equip1.get(menu));
+//		}
+//		
+//		switch(menu) {
+//		case 1:
+//			getFicha().setEquipamentos("Brunea");
+//		break;
+//		
+//		case 2:
+//			getFicha().setEquipamentos("Armadura de Couro");
+//		break;
+//		}
+//	}
+//	
+//	public void equips2() {
+//		Scanner entrada = new Scanner(System.in);
+//		List<String> equip1 = Arrays.asList("Duas espadas curtas", "Duas armas simples corpo-a-corpo");
+//		boolean menuLoop = false;
+//		int menu = 0;
+//		while(menuLoop == false) {
+//			do {
+//				System.out.println("Escolha uma opção:");
+//				
+//				for(int i = 0; i < equip1.size(); i++) {
+//					System.out.println((i+1)+ " - " +equip1.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				menu = entrada.nextInt();
+//			}while(menu <= 0 || menu > 2);
+//			menuLoop = confirmarDecisao(equip1.get(menu));
+//		}
+//		
+//		switch(menu) {
+//		case 1:
+//			getFicha().setEquipamentos("Espada curta (2)");
+//		break;
+//		
+//		case 2:
+//			getFicha().setEquipamentos(getEquips().setArmaCACSimples(2));
+//		break;
+//		}
+//	}
+//	
+//	public void equips3() {
+//		getFicha().setEquipamentos(getEquips().setPacotes("Pacote de Explorador", "Pacote de Aventureiro"));
+//	}
 
 	public boolean confirmarDecisao(String opcao) {
 		Scanner entrada = new Scanner(System.in);

@@ -81,10 +81,10 @@ public class Clerigo extends Classes{
 		List<String> profPericias = Arrays.asList("História", "Intuição", "Medicina", "Persuasão", "Religião");
 		getProficiencia().setPericias(profPericias, 2);
 //		this.ficha = this.proficiencia.getFicha();
-		equips1();
-		equips2();
-		equips3();
-		equips4();
+//		equips1();
+//		equips2();
+//		equips3();
+//		equips4();
 		getFicha().setEquipamentos("Escudo");
 		getFicha().setEquipamentos("Símbolo sagrado");
 //		this.magias.setFicha(ficha);
@@ -124,57 +124,57 @@ public class Clerigo extends Classes{
 		return proficiencia+ModCarisma;
 	}
 	
-	public void equips1() {
-		
-	}
-	
-	public void equips2() {
-		
-	}
-	
-	public void equips3() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip1Loop = false;
-		while(equip1Loop == false) {
-			int equip1Menu;
-			System.out.println("Escolha entre (1) uma besta leve e 20 virotes ou (2) qualquer arma simples.");
-			
-			equip1Menu = entrada.nextInt();
-			switch(equip1Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher uma besta leve e 20 virotes? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_simples_distancia().size(); i++) {
-							if(Objects.equals(new String("Besta leve"), getEquips().getArmas_simples_distancia().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_simples_distancia().get(i));
-							}
-						}
-						getFicha().setEquipamentos("Virotes (20)");
-						decisaoLoop = true;
-						equip1Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				getFicha().setEquipamentos(getEquips().setArmasSimples());
-			break;
-			}
-		}
-	}
-	
-	public void equips4() {
-		getEquips().setPacotes("Pacote de Sacerdote", "Pacote de Aventureiro");
-	}
+//	public void equips1() {
+//		
+//	}
+//	
+//	public void equips2() {
+//		
+//	}
+//	
+//	public void equips3() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip1Loop = false;
+//		while(equip1Loop == false) {
+//			int equip1Menu;
+//			System.out.println("Escolha entre (1) uma besta leve e 20 virotes ou (2) qualquer arma simples.");
+//			
+//			equip1Menu = entrada.nextInt();
+//			switch(equip1Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.println("Tem certeza que deseja escolher uma besta leve e 20 virotes? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						for(int i = 0; i < getEquips().getArmas_simples_distancia().size(); i++) {
+//							if(Objects.equals(new String("Besta leve"), getEquips().getArmas_simples_distancia().get(i))) {
+//								getFicha().setEquipamentos(getEquips().getArmas_simples_distancia().get(i));
+//							}
+//						}
+//						getFicha().setEquipamentos("Virotes (20)");
+//						decisaoLoop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}
+//				
+//			break;
+//			
+//			case 2:
+//				getFicha().setEquipamentos(getEquips().setArmasSimples());
+//			break;
+//			}
+//		}
+//	}
+//	
+//	public void equips4() {
+//		getEquips().setPacotes("Pacote de Sacerdote", "Pacote de Aventureiro");
+//	}
 //Clérigo feats padrao
 	public void clerigoFeatsPadrao() {
 		System.out.println("CONJURAÇÃO\r\n\n"

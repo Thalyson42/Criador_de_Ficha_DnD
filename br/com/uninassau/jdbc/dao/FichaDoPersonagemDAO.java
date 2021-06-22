@@ -38,7 +38,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		}catch(SQLException msg) {
-			System.err.println("Erro: " + msg);
+			msg.printStackTrace();
 		}
 	}
 	
@@ -53,7 +53,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -79,7 +79,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -93,23 +93,23 @@ public class FichaDoPersonagemDAO {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, usuario.getPersonagem().get(pos).getBio_cod());
 			stmt.setInt(2, usuario.getPersonagem().get(pos).getIdpersonagem());
-			stmt.setString(4, usuario.getPersonagem().get(pos).getIdade());
-			stmt.setString(5, usuario.getPersonagem().get(pos).getTamanho());
-			stmt.setString(6, usuario.getPersonagem().get(pos).getAltura());
-			stmt.setString(7, usuario.getPersonagem().get(pos).getPeso());
-			stmt.setString(8, usuario.getPersonagem().get(pos).getOlhos());
-			stmt.setString(9, usuario.getPersonagem().get(pos).getPele());
-			stmt.setString(10, usuario.getPersonagem().get(pos).getCabelo());
-			stmt.setString(11, usuario.getPersonagem().get(pos).getAparencia_personagem());
-			stmt.setString(12, usuario.getPersonagem().get(pos).getAliados_organizacoes());
-			stmt.setString(13, usuario.getPersonagem().get(pos).getHistoria_personagem());
-			stmt.setString(14, usuario.getPersonagem().get(pos).getCaracteristicas_tracos_adicionais());
-			stmt.setString(15, usuario.getPersonagem().get(pos).getTesouro());
+			stmt.setString(3, usuario.getPersonagem().get(pos).getIdade());
+			stmt.setString(4, usuario.getPersonagem().get(pos).getTamanho());
+			stmt.setString(5, usuario.getPersonagem().get(pos).getAltura());
+			stmt.setString(6, usuario.getPersonagem().get(pos).getPeso());
+			stmt.setString(7, usuario.getPersonagem().get(pos).getOlhos());
+			stmt.setString(8, usuario.getPersonagem().get(pos).getPele());
+			stmt.setString(9, usuario.getPersonagem().get(pos).getCabelo());
+			stmt.setString(10, usuario.getPersonagem().get(pos).getAparencia_personagem());
+			stmt.setString(11, usuario.getPersonagem().get(pos).getAliados_organizacoes());
+			stmt.setString(12, usuario.getPersonagem().get(pos).getHistoria_personagem());
+			stmt.setString(13, usuario.getPersonagem().get(pos).getCaracteristicas_tracos_adicionais());
+			stmt.setString(14, usuario.getPersonagem().get(pos).getTesouro());
 			stmt.execute();
 			stmt.close();
 			
 		} catch (SQLException msg) {
-			System.err.println("Erro: " + msg);
+			msg.printStackTrace();
 		}
 	}
 	
@@ -124,7 +124,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -151,7 +151,7 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -170,7 +170,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException msg) {
-			System.err.println("Erro: " + msg);
+			msg.printStackTrace();
 		}
 	}
 	
@@ -185,7 +185,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -202,13 +202,13 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (Exception e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
 	
 	public void salvarCaracteristicas(Usuario usuario, int pos) {
-		String sql = "INSERT INTO caracteristicas (idcaracteristicas, personagem_idpersonagem, defeitos, vinculos, ideal, pesototal) "
+		String sql = "INSERT INTO caracteristicas (idcaracteristicas, personagem_idpersonagem, defeitos, vinculos, ideais, pesototal) "
 				+ "values (?,?,?,?,?,?)";
 		
 		PreparedStatement stmt = null;
@@ -224,7 +224,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException msg) {
-			System.err.println("Erro: " + msg);
+			msg.printStackTrace();
 		}
 	}
 	
@@ -239,12 +239,12 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
 	public void alterarCaracteristicas(Usuario usuario, int pos) {
-		String sql = "Update caracteristicas SET defeitos=?, vinculos=?, ideal=?, pesototal=? WHERE idcaracteristicas="+usuario.getPersonagem().get(pos).getIdcaracteristica();
+		String sql = "Update caracteristicas SET defeitos=?, vinculos=?, ideais=?, pesototal=? WHERE idcaracteristicas="+usuario.getPersonagem().get(pos).getIdcaracteristica();
 		
 		PreparedStatement stmt = null;
 		
@@ -257,24 +257,23 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
 	public void salvarTracosPersonalidade(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO tracos_personalidade (idtracos_personalidade, caracteristicas_idcaracteristicas, tracos_personalidade) values (?,?,?)";
+		String sql = "INSERT INTO tracos_personalidade (caracteristicas_idcaracteristicas, tracos_personalidade) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdtracos_personalidade().get(i));
-			stmt.setInt(2, usuario.getPersonagem().get(pos).getIdcaracteristica());
-			stmt.setString(3, usuario.getPersonagem().get(pos).getTracos_personalidade().get(i));
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdcaracteristica());
+			stmt.setString(2, usuario.getPersonagem().get(pos).getTracos_personalidade().get(i));
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -289,7 +288,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -304,7 +303,7 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -341,7 +340,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -356,7 +355,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -389,7 +388,7 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -411,7 +410,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -426,7 +425,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -446,12 +445,12 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (Exception e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();;
 		}
 	}
 	
 	public void salvarTeste_resistencia(Usuario usuario, int pos) {
-		String sql = "INSERT INTO teste_resistencia (idteste_resistencia, personagem_idpersonagem, teste_forca, teste_destreza, teste_constituicao, teste_inteligencia, teste_sabedoria) values (?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO teste_resistencia (idteste_resistencia, personagem_idpersonagem, teste_forca, teste_destreza, teste_constituicao, teste_inteligencia, teste_sabedoria, teste_carisma) values (?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement stmt = null;
 		
@@ -468,7 +467,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -483,7 +482,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -508,19 +507,18 @@ public class FichaDoPersonagemDAO {
 	}
 	
 	public void salvarFerramentas_pericias(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO array_ferramentas_pericias (idarray_ferramentas_pericias, caracteristicas_idcaracteristicas, array_ferramentas_pericias) values (?,?,?)";
+		String sql = "INSERT INTO array_ferramentas_pericias (caracteristicas_idcaracteristicas, array_ferramentas_pericias) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdprofi_ferramentas_peri().get(i));
-			stmt.setInt(2, usuario.getPersonagem().get(pos).getIdcaracteristica());
-			stmt.setString(3, usuario.getPersonagem().get(pos).getProfi_ferramentas_peri().get(i));
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdcaracteristica());
+			stmt.setString(2, usuario.getPersonagem().get(pos).getProfi_ferramentas_peri().get(i));
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -535,7 +533,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -555,19 +553,18 @@ public class FichaDoPersonagemDAO {
 	}
 	
 	public void salvarEquipamentos(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO array_equipamentos (idarray_equipamentos, caracteristicas_idcaracteristicas, array_equipamentos) values (?,?,?)";
+		String sql = "INSERT INTO array_equipamentos (caracteristicas_idcaracteristicas, array_equipamentos) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdequipamentos().get(i));
-			stmt.setInt(2, usuario.getPersonagem().get(pos).getIdcaracteristica());
-			stmt.setString(3, usuario.getPersonagem().get(pos).getEquipamentos().get(i));
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdcaracteristica());
+			stmt.setString(2, usuario.getPersonagem().get(pos).getEquipamentos().get(i));
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -582,7 +579,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -602,19 +599,18 @@ public class FichaDoPersonagemDAO {
 	}
 	
 	public void salvarIdioma(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO array_idioma (idarray_idioma, caracteristicas_idcaracteristicas, array_idioma) values (?,?,?)";
+		String sql = "INSERT INTO array_idioma (caracteristicas_idcaracteristicas, array_idioma) values (?,?)";
 		
 		PreparedStatement stmt =null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdidiomas().get(i));
-			stmt.setInt(2, usuario.getPersonagem().get(pos).getIdcaracteristica());
-			stmt.setString(3, usuario.getPersonagem().get(pos).getIdiomas().get(i));
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdcaracteristica());
+			stmt.setString(2, usuario.getPersonagem().get(pos).getIdiomas().get(i));
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -629,7 +625,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -644,12 +640,12 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
 	public void salvarConfirmarTesteResistencia(Usuario usuario, int pos) {
-		String sql = "INSERT INTO Confirmar_teste_resistencia (idConfirmar_teste_resistencia, personagem_idpersonagem, C_teste_forca, C_teste_destreza, C_teste_constituicao, C_teste_inteligencia, C_teste_sabedoria, C_teste_carisma) "
+		String sql = "INSERT INTO Confirma_teste_resistencia (idConfirma_teste_resistencia, personagem_idpersonagem, C_teste_forca, C_teste_destreza, C_teste_constituicao, C_teste_inteligencia, C_teste_sabedoria, C_teste_carisma) "
 				+ "values (?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement stmt = null;
@@ -667,7 +663,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -682,7 +678,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -702,7 +698,7 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -738,7 +734,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -753,7 +749,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: " + e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -787,24 +783,23 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
 	public void salvarTracosRaciais(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO tracos_raciais (idtracos_raciais, personagem_idpersonagem, tracos_raciais) values (?,?,?)";
+		String sql = "INSERT INTO tracos_raciais (personagem_idpersonagem, tracos_raciais) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdtracos_raciais().get(i));
-			stmt.setInt(2, usuario.getPersonagem().get(pos).getIdpersonagem());
-			stmt.setString(3, usuario.getPersonagem().get(pos).getTracosraciais().get(i));
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdpersonagem());
+			stmt.setString(2, usuario.getPersonagem().get(pos).getTracosraciais().get(i));
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -819,7 +814,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -839,19 +834,18 @@ public class FichaDoPersonagemDAO {
 	}
 	
 	public void salvarClasseFeats(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO classe_feats (idclasse_feats, personagem_idpersonagem, classe_feats) values (?,?,?)";
+		String sql = "INSERT INTO classe_feats (personagem_idpersonagem, classe_feats) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdclasse_feats().get(i));
-			stmt.setInt(2, usuario.getPersonagem().get(pos).getIdpersonagem());
-			stmt.setString(3, usuario.getPersonagem().get(pos).getClassefeats().get(i));
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdpersonagem());
+			stmt.setString(2, usuario.getPersonagem().get(pos).getClassefeats().get(i));
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -866,7 +860,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -881,24 +875,23 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
 	public void salvarProfiEquips(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO profi_equips (idprofi_equips, personagem_idpersonagem, profi_equips) values (?,?,?)";
+		String sql = "INSERT INTO profi_equips (personagem_idpersonagem, profi_equips) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdprofi_equips().get(i));
 			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdpersonagem());
-			stmt.setString(1, usuario.getPersonagem().get(pos).getProfi_equips().get(i));
+			stmt.setString(2, usuario.getPersonagem().get(pos).getProfi_equips().get(i));
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -913,7 +906,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -928,7 +921,7 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -951,7 +944,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -965,7 +958,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -985,7 +978,7 @@ public class FichaDoPersonagemDAO {
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1002,7 +995,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1017,7 +1010,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1033,7 +1026,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1050,7 +1043,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1065,7 +1058,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1081,7 +1074,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1098,7 +1091,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1113,7 +1106,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1129,7 +1122,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1146,7 +1139,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1161,7 +1154,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1177,7 +1170,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1194,7 +1187,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1209,7 +1202,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1225,7 +1218,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1242,7 +1235,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1257,7 +1250,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1273,7 +1266,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1290,7 +1283,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1305,7 +1298,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1321,7 +1314,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1338,7 +1331,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1353,7 +1346,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1369,7 +1362,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1386,7 +1379,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1401,7 +1394,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1417,7 +1410,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1434,7 +1427,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1449,7 +1442,7 @@ public class FichaDoPersonagemDAO {
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 	
@@ -1465,7 +1458,7 @@ public class FichaDoPersonagemDAO {
 			stmt.close();
 			
 		} catch (SQLException e) {
-			System.err.println("Erro: "+e);
+			e.printStackTrace();
 		}
 	}
 }

@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Barbaro extends Classes{
 	private final List<String> pericias = Arrays.asList("Adestrar Animais", "Atletismo", "Intimidação", "Natureza", "Percepção", "Sobrevivência");
 	private final int max_quantidade_pericias = 2;
+
 	
 	public List<String> getPericiasList() {
 		return this.pericias;
@@ -133,15 +134,7 @@ public class Barbaro extends Classes{
 		getProficiencia().SetResistencia(profiRes);
 		
 		List<String> proficiencia_equips = Arrays.asList("Armaduras leves", "Armaduras médias", "Escudos", "Armas simples", "Armas marciais");
-		getProficiencia().SetProfEquips(proficiencia_equips);
-			
-//		System.out.println("--Equipamentos--");
-//		System.out.println("Você começa com os seguintes equipamentos, além dos equipamentos"
-//				+ "concedidos pelo seu antecedente:");
-//		
-//		getEquips().iniciaAllarmas();
-//		equips1();
-//		equips2();
+		getProficiencia().SetProfEquips(proficiencia_equips);			
 		
 		for(int i = 0; i < getEquips().getArmas_simples_CAC().size(); i++) {
 			if(Objects.equals(new String("Azagaia"), getEquips().getArmas_simples_CAC().get(i))) {
@@ -153,141 +146,6 @@ public class Barbaro extends Classes{
 		
 	}
 
-//	public void setEquips(Equipamentos equips) {
-//		this.equips = equips;
-//	}
-	
-	public void equips1() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip1Loop = false;
-		while(equip1Loop == false) {
-			int equip1Menu;
-			System.out.println("Escolha entre (1) um machado grande ou (2) qualquer arma marcial corpo-a-corpo.");
-			
-			equip1Menu = entrada.nextInt();
-			switch(equip1Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher Machado Grande? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_marciais_CAC().size(); i++) {
-							if(Objects.equals(new String("Machado Grande"), getEquips().getArmas_marciais_CAC().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_marciais_CAC().get(i));
-							}
-						}
-						decisaoLoop = true;
-						equip1Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				getFicha().setEquipamentos(getEquips().setArmaCACMarcial());
-			break;
-			}
-		}
-	}
-	
-	public void equips2() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip2Loop = false;
-		while(equip2Loop == false) {
-			int equip2Menu;
-			System.out.println("Escolha entre (1) dois machados de mão ou (2) qualquer arma simples.");
-			
-			equip2Menu = entrada.nextInt();
-			switch(equip2Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher os dois machados de mão? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_simples_CAC().size(); i++) {
-							if(Objects.equals(new String("Machadinha"), getEquips().getArmas_simples_CAC().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_simples_CAC().get(i) +" (2)");
-							}
-						}
-						decisaoLoop = true;
-						equip2Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				char decisaocase2;
-				boolean decisao2Loop = false;
-				boolean case2Loop = false;
-				int escolha;
-				while(case2Loop == false) {
-					
-					do {
-						System.out.println("Escolha uma das armas:");
-					
-						System.out.println("Nome     Dano     Propriedades");
-						for(int i = 0; i < getEquips().getArmas_simples_CAC().size(); i++) {
-							System.out.println((i+1) +" - " +getEquips().getArmas_simples_CAC().get(i) +" | " +getEquips().getAS_CAC_dano().get(i) +" | " +getEquips().getAS_CAC_propriedades().get(i));
-						}
-						
-						for(int i = 0; i < getEquips().getArmas_simples_distancia().size(); i++) {
-							System.out.printf((i+getEquips().getArmas_simples_CAC().size()+1) +" - " +getEquips().getArmas_simples_distancia().get(i) +" | " +getEquips().getAS_D_dano().get(i) +" | " +getEquips().getAS_D_propriedades().get(i));
-						}
-						
-						while(!entrada.hasNextInt()) {
-							System.out.println("Por favor digite um numero!");
-							entrada.next();
-						}
-						
-						escolha = entrada.nextInt();
-					}while(escolha <= 0 || escolha > (getEquips().getArmas_simples_CAC().size()+getEquips().getArmas_simples_distancia().size()-1));
-					
-					while(decisao2Loop == false) {
-						if(escolha <= getEquips().getArmas_simples_CAC().size()) {
-							System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getEquips().getArmas_simples_CAC().get(escolha-1));
-							
-							decisaocase2 = entrada.next().charAt(0);
-							if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-								getFicha().setEquipamentos(getEquips().getArmas_simples_CAC().get(escolha-1));
-								case2Loop = true;
-								decisao2Loop = true;
-								equip2Loop = true;
-							}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-								decisao2Loop = true;
-							}
-							
-						}else {
-							System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getEquips().getArmas_simples_CAC().get(escolha-1));
-							
-							decisaocase2 = entrada.next().charAt(0);
-							if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-								getFicha().setEquipamentos(getEquips().getArmas_simples_distancia().get(escolha-getEquips().getArmas_simples_CAC().size()-1));
-								decisao2Loop = true;
-								equip2Loop = true;
-							}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-								decisao2Loop = true;
-							}
-						}
-					}
-					
-				}
-			break;
-			}
-		}
-	}
 	
 //Barbaro feats
 	public void barFuria() {

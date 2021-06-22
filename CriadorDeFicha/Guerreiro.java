@@ -102,10 +102,10 @@ public class Guerreiro extends Classes{
 		List<String> profPericias = Arrays.asList("Acrobocia", "Adrestrar Animais", "Atletismo", "História", "Intuição", "Intimidação", "Percepção", "Sobrevivência");
 		getProficiencia().setPericias(profPericias, 2);
 //		this.ficha = this.proficiencia.getFicha();
-		equips1();
-		equips2();
-		equips3();
-		equips4();
+//		equips1();
+//		equips2();
+//		equips3();
+//		equips4();
 		setEstiloDeLuta();
 	}
 	
@@ -139,177 +139,177 @@ public class Guerreiro extends Classes{
 		return proficiencia+ModCarisma;
 	}
 	
-	public void equips1() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip1Loop = false;
-		while(equip1Loop == false) {
-			int equip1Menu;
-			System.out.println("Escolha entre (1) uma Cota de malha ou (2) Gibão de peles, arco longo e 20 flechas.");
-			
-			equip1Menu = entrada.nextInt();
-			switch(equip1Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher uma Cota de malha? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						getFicha().setEquipamentos("Cota de malha");
-						decisaoLoop = true;
-						equip1Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				char decisaocase2;
-				boolean decisao2Loop = false;
-				while(decisao2Loop == false) {
-					System.out.println("Tem certeza que deseja escolher um Gibão de peles, um arco longo e 20 flechas? (Y/N)");
-					
-					decisaocase2 = entrada.next().charAt(0);
-					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_marciais_distancia().size(); i++) {
-							if(Objects.equals(new String("Arco Longo"), getEquips().getArmas_marciais_distancia().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_marciais_distancia().get(i));
-							}
-						}
-						getFicha().setEquipamentos("Arco Longo");
-						getFicha().setEquipamentos("20 Flechas");
-						getFicha().setEquipamentos("Gibão de peles");
-						decisao2Loop = true;
-						equip1Loop = true;
-					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-						decisao2Loop = true;
-					}
-				}
-		   break;
-			}
-		}
-	}
-	
-	public void equips2() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip2Loop = false;
-		while(equip2Loop == false) {
-			int equip2Menu;
-			
-			System.out.println("Escolha uma das opções:\n(1) Uma arma marcial e um escudo ou (2) Duas armas marciais.");
-			
-			while(!entrada.hasNextInt()) {
-				System.out.println("Digite um numero!");
-				entrada.next();
-			}
-			
-			equip2Menu = entrada.nextInt();
-			switch(equip2Menu) {
-			case 1:
-				char decisao;
-				System.out.println("Tem certeza que deseja uma arma marcial e um escudo? (Y/N)");
-				
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					decisao = entrada.next().charAt(0);
-					if(decisao == 'Y' || decisao == 'y') {
-						equip2Loop = true;
-						decisaoLoop = true;
-						getFicha().setEquipamentos(getEquips().setArmasMarciais(1));
-						getFicha().setEquipamentos("Escudo");
-					}else if(decisao == 'N' || decisao == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-			break;
-			
-			case 2:
-				char decisao2;
-				System.out.println("Tem certeza que deseja duas arma marciais? (Y/N)");
-				
-				boolean decisao2Loop = false;
-				while(decisao2Loop == false) {
-					decisao2 = entrada.next().charAt(0);
-					if(decisao2 == 'Y' || decisao2 == 'y') {
-						equip2Loop = true;
-						decisao2Loop = true;
-						getFicha().setEquipamentos(getEquips().setArmasMarciais(2));
-					}else if(decisao2 == 'N' || decisao2 == 'n') {
-						decisao2Loop = true;
-					}
-					
-				}
-			break;
-			
-			default:
-				System.out.println("Digite uma opção valida!");
-			break;
-			}
-			
-		}
-	}
-	
-	public void equips3() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip1Loop = false;
-		while(equip1Loop == false) {
-			int equip1Menu;
-			System.out.println("Escolha entre (1) uma Besta leve e 20 virotes ou (2) dois machados de arremessos.");
-			
-			equip1Menu = entrada.nextInt();
-			switch(equip1Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher uma besta leve e 20 virotes? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_simples_distancia().size(); i++) {
-							if(Objects.equals(new String("Besta leve"), getEquips().getArmas_simples_distancia().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_simples_distancia().get(i));
-							}
-						}
-						getFicha().setEquipamentos("Virotes (20)");
-						decisaoLoop = true;
-						equip1Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				char decisaocase2;
-				boolean decisao2Loop = false;
-				while(decisao2Loop == false) {
-					System.out.println("Tem certeza que deseja escolher dois machados de arremesso? (Y/N)");
-					
-					decisaocase2 = entrada.next().charAt(0);
-					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-						getFicha().setEquipamentos("Machado de arremesso (2)");
-						decisao2Loop = true;
-						equip1Loop = true;
-					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-						decisao2Loop = true;
-					}
-				}
-		   break;
-			}
-		}
-	}
-	
-	public void equips4() {
-		getFicha().setEquipamentos(getEquips().setPacotes("Pacote de Aventureiro", "Pacote de Explorador"));
-	}
+//	public void equips1() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip1Loop = false;
+//		while(equip1Loop == false) {
+//			int equip1Menu;
+//			System.out.println("Escolha entre (1) uma Cota de malha ou (2) Gibão de peles, arco longo e 20 flechas.");
+//			
+//			equip1Menu = entrada.nextInt();
+//			switch(equip1Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.println("Tem certeza que deseja escolher uma Cota de malha? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						getFicha().setEquipamentos("Cota de malha");
+//						decisaoLoop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}
+//				
+//			break;
+//			
+//			case 2:
+//				char decisaocase2;
+//				boolean decisao2Loop = false;
+//				while(decisao2Loop == false) {
+//					System.out.println("Tem certeza que deseja escolher um Gibão de peles, um arco longo e 20 flechas? (Y/N)");
+//					
+//					decisaocase2 = entrada.next().charAt(0);
+//					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//						for(int i = 0; i < getEquips().getArmas_marciais_distancia().size(); i++) {
+//							if(Objects.equals(new String("Arco Longo"), getEquips().getArmas_marciais_distancia().get(i))) {
+//								getFicha().setEquipamentos(getEquips().getArmas_marciais_distancia().get(i));
+//							}
+//						}
+//						getFicha().setEquipamentos("Arco Longo");
+//						getFicha().setEquipamentos("20 Flechas");
+//						getFicha().setEquipamentos("Gibão de peles");
+//						decisao2Loop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//				}
+//		   break;
+//			}
+//		}
+//	}
+//	
+//	public void equips2() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip2Loop = false;
+//		while(equip2Loop == false) {
+//			int equip2Menu;
+//			
+//			System.out.println("Escolha uma das opções:\n(1) Uma arma marcial e um escudo ou (2) Duas armas marciais.");
+//			
+//			while(!entrada.hasNextInt()) {
+//				System.out.println("Digite um numero!");
+//				entrada.next();
+//			}
+//			
+//			equip2Menu = entrada.nextInt();
+//			switch(equip2Menu) {
+//			case 1:
+//				char decisao;
+//				System.out.println("Tem certeza que deseja uma arma marcial e um escudo? (Y/N)");
+//				
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					decisao = entrada.next().charAt(0);
+//					if(decisao == 'Y' || decisao == 'y') {
+//						equip2Loop = true;
+//						decisaoLoop = true;
+//						getFicha().setEquipamentos(getEquips().setArmasMarciais(1));
+//						getFicha().setEquipamentos("Escudo");
+//					}else if(decisao == 'N' || decisao == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}
+//			break;
+//			
+//			case 2:
+//				char decisao2;
+//				System.out.println("Tem certeza que deseja duas arma marciais? (Y/N)");
+//				
+//				boolean decisao2Loop = false;
+//				while(decisao2Loop == false) {
+//					decisao2 = entrada.next().charAt(0);
+//					if(decisao2 == 'Y' || decisao2 == 'y') {
+//						equip2Loop = true;
+//						decisao2Loop = true;
+//						getFicha().setEquipamentos(getEquips().setArmasMarciais(2));
+//					}else if(decisao2 == 'N' || decisao2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//					
+//				}
+//			break;
+//			
+//			default:
+//				System.out.println("Digite uma opção valida!");
+//			break;
+//			}
+//			
+//		}
+//	}
+//	
+//	public void equips3() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip1Loop = false;
+//		while(equip1Loop == false) {
+//			int equip1Menu;
+//			System.out.println("Escolha entre (1) uma Besta leve e 20 virotes ou (2) dois machados de arremessos.");
+//			
+//			equip1Menu = entrada.nextInt();
+//			switch(equip1Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.println("Tem certeza que deseja escolher uma besta leve e 20 virotes? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						for(int i = 0; i < getEquips().getArmas_simples_distancia().size(); i++) {
+//							if(Objects.equals(new String("Besta leve"), getEquips().getArmas_simples_distancia().get(i))) {
+//								getFicha().setEquipamentos(getEquips().getArmas_simples_distancia().get(i));
+//							}
+//						}
+//						getFicha().setEquipamentos("Virotes (20)");
+//						decisaoLoop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}
+//				
+//			break;
+//			
+//			case 2:
+//				char decisaocase2;
+//				boolean decisao2Loop = false;
+//				while(decisao2Loop == false) {
+//					System.out.println("Tem certeza que deseja escolher dois machados de arremesso? (Y/N)");
+//					
+//					decisaocase2 = entrada.next().charAt(0);
+//					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//						getFicha().setEquipamentos("Machado de arremesso (2)");
+//						decisao2Loop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//				}
+//		   break;
+//			}
+//		}
+//	}
+//	
+//	public void equips4() {
+//		getFicha().setEquipamentos(getEquips().setPacotes("Pacote de Aventureiro", "Pacote de Explorador"));
+//	}
 	
 //Estilos	
 		public void setEstiloDeLuta() {

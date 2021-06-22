@@ -96,9 +96,9 @@ public class Feiticeiro extends Classes{
 		List<String> profPericias = Arrays.asList("Arcanismo", "Enganação", "Intuição", "Intimidação", "Persuasão", "Religião");
 		getProficiencia().setPericias(profPericias, 2);
 //		this.ficha = this.proficiencia.getFicha();
-		equips1();
-		equips2();
-		equips3();
+//		equips1();
+//		equips2();
+//		equips3();
 //		this.magias.setFicha(ficha);
 		getMagias().truquesFeiticeiro();
 		getMagias().setMagiasFeiticeiroLV1();
@@ -137,121 +137,121 @@ public class Feiticeiro extends Classes{
 		return proficiencia+ModCarisma;
 	}
 	
-	public void equips1() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip1Loop = false;
-		while(equip1Loop == false) {
-			int equip1Menu;
-			System.out.println("Escolha entre (1) uma besta leve e 20 virotes ou (2) qualquer arma simples.");
-			
-			equip1Menu = entrada.nextInt();
-			switch(equip1Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher uma besta leve e 20 virotes? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_simples_distancia().size(); i++) {
-							if(Objects.equals(new String("Besta leve"), getEquips().getArmas_simples_distancia().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_simples_distancia().get(i));
-							}
-						}
-						getFicha().setEquipamentos("Virotes (20)");
-						decisaoLoop = true;
-						equip1Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				getFicha().setEquipamentos(getEquips().setArmasSimples());
-			break;
-			}
-		}
-	}
-	
-	public void equips2() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equips2Loop = false;
-		while(equips2Loop == false) {
-			int equip2Menu;
-			System.out.println("Escolha uma das opções:\n1 - Bolsa de componentes\n2 - Foco arcano\n");
-			
-			while(!entrada.hasNextInt()) {
-				System.out.println("Por favor digite um numero!");
-				entrada.next();
-			}
-			
-			equip2Menu = entrada.nextInt();
-			switch(equip2Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("--Bolsa de Componentes--\n"
-							+ "Trata-se de uma pequena\r\n"
-							+ "bolsa de couro à prova d'água que pode ser fixada em um\r\n"
-							+ "cinto. Ela possui compartimentos para armazenar todos\r\n"
-							+ "os componentes materiais e outros itens especiais que\r\n"
-							+ "você precisa para lançar suas magias, exceto os\r\n"
-							+ "componentes que possuem um custo específico (conforme\r\n"
-							+ "indicado na descrição da magia).\n");
-					System.out.printf("Tem certeza que deseja escolher Bolsa de componentes? (Y/N)\n");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						getFicha().setEquipamentos("Bolsa de componentes");
-						decisaoLoop = true;
-						equips2Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-				}
-			break;
-			
-			case 2:
-				char decisaocase2;
-				boolean decisao2Loop = false;
-					
-				while(decisao2Loop == false) {	
-					System.out.println("--Foco arcano--\n"
-							+ "Um foco arcano é um item especial –\r\n"
-							+ "um orbe, um cristal, um bastão, um cajado especialmente\r\n"
-							+ "construído, uma varinha de madeira, ou algum item\r\n"
-							+ "semelhante – projetado para canalizar o poder de magias\r\n"
-							+ "arcanas. Um feiticeiro, bruxo ou mago podem usá-lo como\r\n"
-							+ "um foco de conjuração, conforme descrito no capítulo 10.\n");
-					System.out.printf("Tem certeza que deseja escolher Foco arcano? (Y/N)\n");
-					
-					decisaocase2 = entrada.next().charAt(0);
-					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-						getFicha().setEquipamentos("Foco Arcano");
-						decisao2Loop = true;
-						equips2Loop = true;
-					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-						decisao2Loop = true;
-					}
-				}
-				
-			break;	
-			
-			default:
-				System.out.println("Essa opção não existe!");
-			break;
-			}		
-		}
-	}
-	
-	public void equips3() {
-		getEquips().setPacotes("Pacote de Explorador", "Pacote de Aventureiro");
-	}
+//	public void equips1() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip1Loop = false;
+//		while(equip1Loop == false) {
+//			int equip1Menu;
+//			System.out.println("Escolha entre (1) uma besta leve e 20 virotes ou (2) qualquer arma simples.");
+//			
+//			equip1Menu = entrada.nextInt();
+//			switch(equip1Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.println("Tem certeza que deseja escolher uma besta leve e 20 virotes? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						for(int i = 0; i < getEquips().getArmas_simples_distancia().size(); i++) {
+//							if(Objects.equals(new String("Besta leve"), getEquips().getArmas_simples_distancia().get(i))) {
+//								getFicha().setEquipamentos(getEquips().getArmas_simples_distancia().get(i));
+//							}
+//						}
+//						getFicha().setEquipamentos("Virotes (20)");
+//						decisaoLoop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}
+//				
+//			break;
+//			
+//			case 2:
+//				getFicha().setEquipamentos(getEquips().setArmasSimples());
+//			break;
+//			}
+//		}
+//	}
+//	
+//	public void equips2() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equips2Loop = false;
+//		while(equips2Loop == false) {
+//			int equip2Menu;
+//			System.out.println("Escolha uma das opções:\n1 - Bolsa de componentes\n2 - Foco arcano\n");
+//			
+//			while(!entrada.hasNextInt()) {
+//				System.out.println("Por favor digite um numero!");
+//				entrada.next();
+//			}
+//			
+//			equip2Menu = entrada.nextInt();
+//			switch(equip2Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.println("--Bolsa de Componentes--\n"
+//							+ "Trata-se de uma pequena\r\n"
+//							+ "bolsa de couro à prova d'água que pode ser fixada em um\r\n"
+//							+ "cinto. Ela possui compartimentos para armazenar todos\r\n"
+//							+ "os componentes materiais e outros itens especiais que\r\n"
+//							+ "você precisa para lançar suas magias, exceto os\r\n"
+//							+ "componentes que possuem um custo específico (conforme\r\n"
+//							+ "indicado na descrição da magia).\n");
+//					System.out.printf("Tem certeza que deseja escolher Bolsa de componentes? (Y/N)\n");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						getFicha().setEquipamentos("Bolsa de componentes");
+//						decisaoLoop = true;
+//						equips2Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//				}
+//			break;
+//			
+//			case 2:
+//				char decisaocase2;
+//				boolean decisao2Loop = false;
+//					
+//				while(decisao2Loop == false) {	
+//					System.out.println("--Foco arcano--\n"
+//							+ "Um foco arcano é um item especial –\r\n"
+//							+ "um orbe, um cristal, um bastão, um cajado especialmente\r\n"
+//							+ "construído, uma varinha de madeira, ou algum item\r\n"
+//							+ "semelhante – projetado para canalizar o poder de magias\r\n"
+//							+ "arcanas. Um feiticeiro, bruxo ou mago podem usá-lo como\r\n"
+//							+ "um foco de conjuração, conforme descrito no capítulo 10.\n");
+//					System.out.printf("Tem certeza que deseja escolher Foco arcano? (Y/N)\n");
+//					
+//					decisaocase2 = entrada.next().charAt(0);
+//					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//						getFicha().setEquipamentos("Foco Arcano");
+//						decisao2Loop = true;
+//						equips2Loop = true;
+//					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//				}
+//				
+//			break;	
+//			
+//			default:
+//				System.out.println("Essa opção não existe!");
+//			break;
+//			}		
+//		}
+//	}
+//	
+//	public void equips3() {
+//		getEquips().setPacotes("Pacote de Explorador", "Pacote de Aventureiro");
+//	}
 	
 	public void FeatsPadrao() {
 		System.out.println("CONJURAÇÃO\r\n\n"

@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Equipamentos {
 //Armas//mudar
+	private List<String> ArmasSimples = Arrays.asList("Adaga", "Azagaia", "Bordão", "Clava Grande", "Foice Curta", "Lança", "Maça", "Machadinha", "Martelo Leve", "Porrete", "Arco Curto", "Besta leve", "Dardo", "Funda");
 	private ArrayList<String> Armas_simples_CAC = new ArrayList<String>();
 	private List<String> ArmasSimplesCAC = Arrays.asList("Adaga", "Azagaia", "Bordão", "Clava Grande", "Foice Curta", "Lança", "Maça", "Machadinha", "Martelo Leve", "Porrete");
 	private ArrayList<Integer> AS_CAC_preco = new ArrayList<Integer>();
@@ -82,6 +83,14 @@ public class Equipamentos {
 		this.AM_D_dano.addAll(this.AMDdano);
 		this.AM_D_peso.addAll(this.AMDpeso);
 		this.AM_D_propriedades.addAll(this.AMDpropriedades);
+	}
+	
+	public List<String> getArmasSimples(){
+		return ArmasSimples;
+	}
+	
+	public List<String> getArmasSimplesCAC(){
+		return ArmasSimplesCAC;
 	}
 	
 	public ArrayList<String> getArmas_simples_CAC() {
@@ -164,359 +173,359 @@ public class Equipamentos {
 		return AM_D_propriedades;
 	}
 	
-	public String setArmasSimples() {
-		iniciaAllarmas();
-		Scanner entrada = new Scanner(System.in);
-		char decisaocase2;
-		int escolha;
-		
-		do {
-			System.out.println("Escolha uma das armas:");
-			
-			System.out.println("Nome     Dano     Propriedades");
-			for(int i = 0; i < getArmas_simples_CAC().size(); i++) {
-				System.out.println((i+1) +" - " +getArmas_simples_CAC().get(i) +" | " +getAS_CAC_dano().get(i) +" | " +getAS_CAC_propriedades().get(i));
-			}
-			
-			for(int i = 0; i < getArmas_simples_distancia().size(); i++) {
-				System.out.printf((i+getArmas_simples_CAC().size()+1) +" - " +getArmas_simples_distancia().get(i) +" | " +getAS_D_dano().get(i) +" | " +getAS_D_propriedades().get(i));
-			}
-			
-			while(!entrada.hasNextInt()) {
-				System.out.println("Por favor digite um numero!");
-				entrada.next();
-			}
-			
-			escolha = entrada.nextInt();
-		}while(escolha <= 0 || escolha > (getArmas_simples_CAC().size()+getArmas_simples_distancia().size()-1));
-		
-		boolean decisao2Loop = false;
-		while(decisao2Loop == false) {
-			if(escolha <= getArmas_simples_CAC().size()) {
-				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha-1));
-				
-				decisaocase2 = entrada.next().charAt(0);
-				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-					return getArmas_simples_CAC().get(escolha-1);
-				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-					decisao2Loop = true;
-				}
-				
-			}else {
-				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha-1));
-				
-				decisaocase2 = entrada.next().charAt(0);
-				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-					return getArmas_simples_distancia().get(escolha-getArmas_simples_CAC().size()-1);
-				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-					decisao2Loop = true;
-				}
-			}
-		}
-		return null;
-	}
+//	public String setArmasSimples() {
+//		iniciaAllarmas();
+//		Scanner entrada = new Scanner(System.in);
+//		char decisaocase2;
+//		int escolha;
+//		
+//		do {
+//			System.out.println("Escolha uma das armas:");
+//			
+//			System.out.println("Nome     Dano     Propriedades");
+//			for(int i = 0; i < getArmas_simples_CAC().size(); i++) {
+//				System.out.println((i+1) +" - " +getArmas_simples_CAC().get(i) +" | " +getAS_CAC_dano().get(i) +" | " +getAS_CAC_propriedades().get(i));
+//			}
+//			
+//			for(int i = 0; i < getArmas_simples_distancia().size(); i++) {
+//				System.out.printf((i+getArmas_simples_CAC().size()+1) +" - " +getArmas_simples_distancia().get(i) +" | " +getAS_D_dano().get(i) +" | " +getAS_D_propriedades().get(i));
+//			}
+//			
+//			while(!entrada.hasNextInt()) {
+//				System.out.println("Por favor digite um numero!");
+//				entrada.next();
+//			}
+//			
+//			escolha = entrada.nextInt();
+//		}while(escolha <= 0 || escolha > (getArmas_simples_CAC().size()+getArmas_simples_distancia().size()-1));
+//		
+//		boolean decisao2Loop = false;
+//		while(decisao2Loop == false) {
+//			if(escolha <= getArmas_simples_CAC().size()) {
+//				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha-1));
+//				
+//				decisaocase2 = entrada.next().charAt(0);
+//				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//					return getArmas_simples_CAC().get(escolha-1);
+//				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//					decisao2Loop = true;
+//				}
+//				
+//			}else {
+//				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha-1));
+//				
+//				decisaocase2 = entrada.next().charAt(0);
+//				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//					return getArmas_simples_distancia().get(escolha-getArmas_simples_CAC().size()-1);
+//				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//					decisao2Loop = true;
+//				}
+//			}
+//		}
+//		return null;
+//	}
 	
-	public ArrayList<String> setArmasSimples(int count) {
-		iniciaAllarmas();
-		Scanner entrada = new Scanner(System.in);
-		ArrayList<String> armas = new ArrayList<String>();
-		char decisaocase2;
-		int escolha;
-		while(count != 0) {
-			boolean decisao2Loop = false;
-			do {
-				System.out.println("Escolha uma das armas:");
-			
-				System.out.println("Nome     Dano     Propriedades");
-				for(int i = 0; i < getArmas_simples_CAC().size(); i++) {
-					System.out.println((i+1) +" - " +getArmas_simples_CAC().get(i) +" | " +getAS_CAC_dano().get(i) +" | " +getAS_CAC_propriedades().get(i));
-				}
-				
-				for(int i = 0; i < getArmas_simples_distancia().size(); i++) {
-					System.out.printf((i+getArmas_simples_CAC().size()+1) +" - " +getArmas_simples_distancia().get(i) +" | " +getAS_D_dano().get(i) +" | " +getAS_D_propriedades().get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Por favor digite um numero!");
-					entrada.next();
-				}
-				
-				escolha = entrada.nextInt();
-			}while(escolha <= 0 || escolha > (getArmas_simples_CAC().size()+getArmas_simples_distancia().size()-1));
-			
-			while(decisao2Loop == false) {
-				if(escolha <= getArmas_simples_CAC().size()) {
-					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha-1));
-					
-					decisaocase2 = entrada.next().charAt(0);
-					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-						armas.add(getArmas_simples_CAC().get(escolha-1));
-						count--;
-						decisao2Loop = true;
-					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-						decisao2Loop = true;
-					}
-					
-				}else {
-					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha-1));
-					
-					decisaocase2 = entrada.next().charAt(0);
-					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-						armas.add(getArmas_simples_distancia().get(escolha-getArmas_simples_CAC().size()-1));
-						count--;
-						decisao2Loop = true;
-					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-						decisao2Loop = true;
-					}
-				}
-			}
-		}
-		return armas;
-	}
+//	public ArrayList<String> setArmasSimples(int count) {
+//		iniciaAllarmas();
+//		Scanner entrada = new Scanner(System.in);
+//		ArrayList<String> armas = new ArrayList<String>();
+//		char decisaocase2;
+//		int escolha;
+//		while(count != 0) {
+//			boolean decisao2Loop = false;
+//			do {
+//				System.out.println("Escolha uma das armas:");
+//			
+//				System.out.println("Nome     Dano     Propriedades");
+//				for(int i = 0; i < getArmas_simples_CAC().size(); i++) {
+//					System.out.println((i+1) +" - " +getArmas_simples_CAC().get(i) +" | " +getAS_CAC_dano().get(i) +" | " +getAS_CAC_propriedades().get(i));
+//				}
+//				
+//				for(int i = 0; i < getArmas_simples_distancia().size(); i++) {
+//					System.out.printf((i+getArmas_simples_CAC().size()+1) +" - " +getArmas_simples_distancia().get(i) +" | " +getAS_D_dano().get(i) +" | " +getAS_D_propriedades().get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Por favor digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				escolha = entrada.nextInt();
+//			}while(escolha <= 0 || escolha > (getArmas_simples_CAC().size()+getArmas_simples_distancia().size()-1));
+//			
+//			while(decisao2Loop == false) {
+//				if(escolha <= getArmas_simples_CAC().size()) {
+//					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha-1));
+//					
+//					decisaocase2 = entrada.next().charAt(0);
+//					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//						armas.add(getArmas_simples_CAC().get(escolha-1));
+//						count--;
+//						decisao2Loop = true;
+//					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//					
+//				}else {
+//					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha-1));
+//					
+//					decisaocase2 = entrada.next().charAt(0);
+//					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//						armas.add(getArmas_simples_distancia().get(escolha-getArmas_simples_CAC().size()-1));
+//						count--;
+//						decisao2Loop = true;
+//					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//				}
+//			}
+//		}
+//		return armas;
+//	}
 	
-	public String setArmaCACSimples() {
-		iniciaAllarmas();
-		Scanner entrada = new Scanner(System.in);
-		boolean ArmaCACSimplesLoop = false;
-		while(ArmaCACSimplesLoop == false) {
-			int escolha;
-			
-			do {
-				System.out.println("Escolha uma das armas:");
-			
-				System.out.println("Nome       Dano       Propriedades");
-				for(int i = 0; i < getArmas_simples_CAC().size(); i++) {
-					System.out.println(i +" - " +getArmas_simples_CAC().get(i) +" | " +getAS_CAC_dano().get(i) +" | " +getAS_CAC_propriedades().get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Por favor digite um numero!");
-					entrada.next();
-				}
-				
-				escolha = entrada.nextInt();
-			}while(escolha < 0 || escolha > getArmas_simples_CAC().size()-1);
-			
-			boolean decisao2Loop = false;
-			while(decisao2Loop == false) {
-				char decisaocase2;
-				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha));
-				
-				decisaocase2 = entrada.next().charAt(0);
-				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-					return getArmas_simples_CAC().get(escolha);
-				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-					decisao2Loop = true;
-				}
-			}
-		}
-		return null;
-	}
+//	public String setArmaCACSimples() {
+//		iniciaAllarmas();
+//		Scanner entrada = new Scanner(System.in);
+//		boolean ArmaCACSimplesLoop = false;
+//		while(ArmaCACSimplesLoop == false) {
+//			int escolha;
+//			
+//			do {
+//				System.out.println("Escolha uma das armas:");
+//			
+//				System.out.println("Nome       Dano       Propriedades");
+//				for(int i = 0; i < getArmas_simples_CAC().size(); i++) {
+//					System.out.println(i +" - " +getArmas_simples_CAC().get(i) +" | " +getAS_CAC_dano().get(i) +" | " +getAS_CAC_propriedades().get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Por favor digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				escolha = entrada.nextInt();
+//			}while(escolha < 0 || escolha > getArmas_simples_CAC().size()-1);
+//			
+//			boolean decisao2Loop = false;
+//			while(decisao2Loop == false) {
+//				char decisaocase2;
+//				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_simples_CAC().get(escolha));
+//				
+//				decisaocase2 = entrada.next().charAt(0);
+//				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//					return getArmas_simples_CAC().get(escolha);
+//				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//					decisao2Loop = true;
+//				}
+//			}
+//		}
+//		return null;
+//	}
 	
-	public ArrayList<String> setArmaCACSimples(int count) {
-		iniciaAllarmas();
-		ArrayList<String> armasCACSimples = new ArrayList<String>();
-		armasCACSimples.addAll(getArmas_simples_CAC());
-		ArrayList<String> armasEscolhidas = new ArrayList<String>();
-		Scanner entrada = new Scanner(System.in);
-		count = 2;
-		while(count != 0) {
-			int escolha;
-			
-			do {
-				System.out.println("Escolha uma das armas:");
-			
-				System.out.println("Nome       Dano       Propriedades");
-				for(int i = 0; i < armasCACSimples.size(); i++) {
-					for(int c = 0; c < getArmas_simples_CAC().size(); c++) {
-						if(Objects.equals(armasCACSimples.get(i), getArmas_simples_CAC().get(c))) {
-							System.out.println(i +" - " +armasCACSimples.get(i) +" | " +getAS_CAC_dano().get(c) +" | " +getAS_CAC_propriedades().get(c));
-						}
-					}
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Por favor digite um numero!");
-					entrada.next();
-				}
-				
-				escolha = entrada.nextInt();
-			}while(escolha < 0 || escolha > armasCACSimples.size()-1);
-			
-			boolean decisao2Loop = false;
-			while(decisao2Loop == false) {
-				char decisaocase2;
-				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", armasCACSimples.get(escolha));
-				
-				decisaocase2 = entrada.next().charAt(0);
-				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-					armasEscolhidas.add(armasCACSimples.get(escolha));
-					count--;
-					decisao2Loop = true;
-				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-					decisao2Loop = true;
-				}
-			}
-		}
-		return armasEscolhidas;
-	}
+//	public ArrayList<String> setArmaCACSimples(int count) {
+//		iniciaAllarmas();
+//		ArrayList<String> armasCACSimples = new ArrayList<String>();
+//		armasCACSimples.addAll(getArmas_simples_CAC());
+//		ArrayList<String> armasEscolhidas = new ArrayList<String>();
+//		Scanner entrada = new Scanner(System.in);
+//		count = 2;
+//		while(count != 0) {
+//			int escolha;
+//			
+//			do {
+//				System.out.println("Escolha uma das armas:");
+//			
+//				System.out.println("Nome       Dano       Propriedades");
+//				for(int i = 0; i < armasCACSimples.size(); i++) {
+//					for(int c = 0; c < getArmas_simples_CAC().size(); c++) {
+//						if(Objects.equals(armasCACSimples.get(i), getArmas_simples_CAC().get(c))) {
+//							System.out.println(i +" - " +armasCACSimples.get(i) +" | " +getAS_CAC_dano().get(c) +" | " +getAS_CAC_propriedades().get(c));
+//						}
+//					}
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Por favor digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				escolha = entrada.nextInt();
+//			}while(escolha < 0 || escolha > armasCACSimples.size()-1);
+//			
+//			boolean decisao2Loop = false;
+//			while(decisao2Loop == false) {
+//				char decisaocase2;
+//				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", armasCACSimples.get(escolha));
+//				
+//				decisaocase2 = entrada.next().charAt(0);
+//				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//					armasEscolhidas.add(armasCACSimples.get(escolha));
+//					count--;
+//					decisao2Loop = true;
+//				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//					decisao2Loop = true;
+//				}
+//			}
+//		}
+//		return armasEscolhidas;
+//	}
 	
-	public String setArmaCACMarcial() {
-		iniciaAllarmas();
-		Scanner entrada = new Scanner(System.in);
-		boolean ArmaCACSimplesLoop = false;
-		while(ArmaCACSimplesLoop == false) {
-			int escolha;
-			
-			do {
-				System.out.println("Escolha uma das armas:");
-			
-				System.out.println("Nome       Dano       Propriedades");
-				for(int i = 0; i < getArmas_marciais_CAC().size(); i++) {
-					System.out.println(i +" - " +getArmas_marciais_CAC().get(i) +" | " +getAM_CAC_dano().get(i) +" | " +getAM_CAC_propriedades().get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Por favor digite um numero!");
-					entrada.next();
-				}
-				
-				escolha = entrada.nextInt();
-			}while(escolha < 0 || escolha > getArmas_marciais_CAC().size()-1);
-			
-			boolean decisao2Loop = false;
-			while(decisao2Loop == false) {
-				char decisaocase2;
-				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha));
-				
-				decisaocase2 = entrada.next().charAt(0);
-				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-					return getArmas_marciais_CAC().get(escolha);
-				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-					decisao2Loop = true;
-				}
-			}
-		}
-		return null;
-	}
+//	public String setArmaCACMarcial() {
+//		iniciaAllarmas();
+//		Scanner entrada = new Scanner(System.in);
+//		boolean ArmaCACSimplesLoop = false;
+//		while(ArmaCACSimplesLoop == false) {
+//			int escolha;
+//			
+//			do {
+//				System.out.println("Escolha uma das armas:");
+//			
+//				System.out.println("Nome       Dano       Propriedades");
+//				for(int i = 0; i < getArmas_marciais_CAC().size(); i++) {
+//					System.out.println(i +" - " +getArmas_marciais_CAC().get(i) +" | " +getAM_CAC_dano().get(i) +" | " +getAM_CAC_propriedades().get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Por favor digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				escolha = entrada.nextInt();
+//			}while(escolha < 0 || escolha > getArmas_marciais_CAC().size()-1);
+//			
+//			boolean decisao2Loop = false;
+//			while(decisao2Loop == false) {
+//				char decisaocase2;
+//				System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha));
+//				
+//				decisaocase2 = entrada.next().charAt(0);
+//				if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//					return getArmas_marciais_CAC().get(escolha);
+//				}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//					decisao2Loop = true;
+//				}
+//			}
+//		}
+//		return null;
+//	}
 	
 	
-	public ArrayList<String> setArmasMarciais(int count) {
-		iniciaAllarmas();
-		Scanner entrada = new Scanner(System.in);
-		ArrayList<String> armas = new ArrayList<String>();
-		int escolha;
-		while(count != 0) {
-			do {
-				System.out.println("Escolha uma das armas:");
-			
-				System.out.println("Nome     Dano     Propriedades");
-				for(int i = 0; i < getArmas_marciais_CAC().size(); i++) {
-					System.out.println((i+1) +" - " +getArmas_marciais_CAC().get(i) +" | " +getAM_CAC_dano().get(i) +" | " +getAM_CAC_propriedades().get(i));
-				}
-				
-				for(int i = 0; i < getArmas_marciais_distancia().size(); i++) {
-					System.out.printf((i+getArmas_marciais_CAC().size()+1) +" - " +getArmas_marciais_distancia().get(i) +" | " +getAM_D_dano().get(i) +" | " +getAM_D_propriedades().get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Por favor digite um numero!");
-					entrada.next();
-				}
-				
-				escolha = entrada.nextInt();
-			}while(escolha <= 0 || escolha > (getArmas_marciais_CAC().size()+getArmas_marciais_distancia().size()-1));
-			
-			boolean decisaoLoop = false;
-			while(decisaoLoop == false) {
-				char decisao;
-				if(escolha <= getArmas_marciais_CAC().size()) {
-					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha-1));
-					
-					decisao = entrada.next().charAt(0);
-					if(decisao == 'Y' || decisao == 'y') {
-						armas.add(getArmas_marciais_CAC().get(escolha-1));
-						count--;
-						decisaoLoop = true;
-					}else if(decisao == 'N' || decisao == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}else {
-					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha-1));
-					
-					decisao = entrada.next().charAt(0);
-					if(decisao == 'Y' || decisao == 'y') {
-						armas.add(getArmas_marciais_distancia().get(escolha-getArmas_marciais_CAC().size()-1));
-						count--;
-						decisaoLoop = true;
-					}else if(decisao == 'N' || decisao == 'n') {
-						decisaoLoop = true;
-					}
-				}
-			}
-		}
-		return armas;
-	}
+//	public ArrayList<String> setArmasMarciais(int count) {
+//		iniciaAllarmas();
+//		Scanner entrada = new Scanner(System.in);
+//		ArrayList<String> armas = new ArrayList<String>();
+//		int escolha;
+//		while(count != 0) {
+//			do {
+//				System.out.println("Escolha uma das armas:");
+//			
+//				System.out.println("Nome     Dano     Propriedades");
+//				for(int i = 0; i < getArmas_marciais_CAC().size(); i++) {
+//					System.out.println((i+1) +" - " +getArmas_marciais_CAC().get(i) +" | " +getAM_CAC_dano().get(i) +" | " +getAM_CAC_propriedades().get(i));
+//				}
+//				
+//				for(int i = 0; i < getArmas_marciais_distancia().size(); i++) {
+//					System.out.printf((i+getArmas_marciais_CAC().size()+1) +" - " +getArmas_marciais_distancia().get(i) +" | " +getAM_D_dano().get(i) +" | " +getAM_D_propriedades().get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Por favor digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				escolha = entrada.nextInt();
+//			}while(escolha <= 0 || escolha > (getArmas_marciais_CAC().size()+getArmas_marciais_distancia().size()-1));
+//			
+//			boolean decisaoLoop = false;
+//			while(decisaoLoop == false) {
+//				char decisao;
+//				if(escolha <= getArmas_marciais_CAC().size()) {
+//					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha-1));
+//					
+//					decisao = entrada.next().charAt(0);
+//					if(decisao == 'Y' || decisao == 'y') {
+//						armas.add(getArmas_marciais_CAC().get(escolha-1));
+//						count--;
+//						decisaoLoop = true;
+//					}else if(decisao == 'N' || decisao == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}else {
+//					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha-1));
+//					
+//					decisao = entrada.next().charAt(0);
+//					if(decisao == 'Y' || decisao == 'y') {
+//						armas.add(getArmas_marciais_distancia().get(escolha-getArmas_marciais_CAC().size()-1));
+//						count--;
+//						decisaoLoop = true;
+//					}else if(decisao == 'N' || decisao == 'n') {
+//						decisaoLoop = true;
+//					}
+//				}
+//			}
+//		}
+//		return armas;
+//	}
 	
-	public String setArmasMarciais() {
-		iniciaAllarmas();
-		Scanner entrada = new Scanner(System.in);
-		int escolha;
-		int count =1;
-		String arma = null;
-		while(count != 0) {
-			do {
-				System.out.println("Escolha uma das armas:");
-			
-				System.out.println("Nome     Dano     Propriedades");
-				for(int i = 0; i < getArmas_marciais_CAC().size(); i++) {
-					System.out.println((i+1) +" - " +getArmas_marciais_CAC().get(i) +" | " +getAM_CAC_dano().get(i) +" | " +getAM_CAC_propriedades().get(i));
-				}
-				
-				for(int i = 0; i < getArmas_marciais_distancia().size(); i++) {
-					System.out.printf((i+getArmas_marciais_CAC().size()+1) +" - " +getArmas_marciais_distancia().get(i) +" | " +getAM_D_dano().get(i) +" | " +getAM_D_propriedades().get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Por favor digite um numero!");
-					entrada.next();
-				}
-				
-				escolha = entrada.nextInt();
-			}while(escolha <= 0 || escolha > (getArmas_marciais_CAC().size()+getArmas_marciais_distancia().size()-1));
-			
-			boolean decisaoLoop = false;
-			while(decisaoLoop == false) {
-				char decisao;
-				if(escolha <= getArmas_marciais_CAC().size()) {
-					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha-1));
-					
-					decisao = entrada.next().charAt(0);
-					if(decisao == 'Y' || decisao == 'y') {
-						arma = getArmas_marciais_CAC().get(escolha-1);
-						count--;
-						decisaoLoop = true;
-					}else if(decisao == 'N' || decisao == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}else {
-					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha-1));
-					
-					decisao = entrada.next().charAt(0);
-					if(decisao == 'Y' || decisao == 'y') {
-						arma = getArmas_marciais_distancia().get(escolha-getArmas_marciais_CAC().size()-1);
-						count--;
-						decisaoLoop = true;
-					}else if(decisao == 'N' || decisao == 'n') {
-						decisaoLoop = true;
-					}
-				}
-			}
-		}
-		return arma;
-	}
+//	public String setArmasMarciais() {
+//		iniciaAllarmas();
+//		Scanner entrada = new Scanner(System.in);
+//		int escolha;
+//		int count =1;
+//		String arma = null;
+//		while(count != 0) {
+//			do {
+//				System.out.println("Escolha uma das armas:");
+//			
+//				System.out.println("Nome     Dano     Propriedades");
+//				for(int i = 0; i < getArmas_marciais_CAC().size(); i++) {
+//					System.out.println((i+1) +" - " +getArmas_marciais_CAC().get(i) +" | " +getAM_CAC_dano().get(i) +" | " +getAM_CAC_propriedades().get(i));
+//				}
+//				
+//				for(int i = 0; i < getArmas_marciais_distancia().size(); i++) {
+//					System.out.printf((i+getArmas_marciais_CAC().size()+1) +" - " +getArmas_marciais_distancia().get(i) +" | " +getAM_D_dano().get(i) +" | " +getAM_D_propriedades().get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Por favor digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				escolha = entrada.nextInt();
+//			}while(escolha <= 0 || escolha > (getArmas_marciais_CAC().size()+getArmas_marciais_distancia().size()-1));
+//			
+//			boolean decisaoLoop = false;
+//			while(decisaoLoop == false) {
+//				char decisao;
+//				if(escolha <= getArmas_marciais_CAC().size()) {
+//					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha-1));
+//					
+//					decisao = entrada.next().charAt(0);
+//					if(decisao == 'Y' || decisao == 'y') {
+//						arma = getArmas_marciais_CAC().get(escolha-1);
+//						count--;
+//						decisaoLoop = true;
+//					}else if(decisao == 'N' || decisao == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}else {
+//					System.out.printf("Tem certeza que deseja escolher %s? (Y/N)\n", getArmas_marciais_CAC().get(escolha-1));
+//					
+//					decisao = entrada.next().charAt(0);
+//					if(decisao == 'Y' || decisao == 'y') {
+//						arma = getArmas_marciais_distancia().get(escolha-getArmas_marciais_CAC().size()-1);
+//						count--;
+//						decisaoLoop = true;
+//					}else if(decisao == 'N' || decisao == 'n') {
+//						decisaoLoop = true;
+//					}
+//				}
+//			}
+//		}
+//		return arma;
+//	}
 	
 //Fim armas
 
@@ -526,6 +535,15 @@ public class Equipamentos {
 	private List<String> artesao = Arrays.asList("Ferramentas de carpinteiro", "Ferramentas de cartógrafo", "Ferramentas de costureiro", "Ferramentas de coureiro", "Ferramentas de entalhador", "Ferramentas de ferreiro", "Ferramentas de funileiro", "Ferramentas de joalheiro", "Ferramentas de oleiro", "Ferramentas de pedreiro", "Ferramentas de pintor", "Ferramentas de sapateiro", "Ferramentas de vidreiro", "Suprimentos de alquimista", "Suprimentos de cervejeiro", "Untesílios de conzinheiro");
 	private List<Integer> custoFerramentas = Arrays.asList(8, 15, 1, 5, 1, 20, 50, 25, 10, 10, 10, 5, 30, 50, 20, 10, 1, 25, 25, 35, 2, 12, 30, 30, 2, 6, 3, 30, 25, 25, 15, 5, 5, 1, 5, 1, 50);
 	private List<Double> pesoFerramentas = Arrays.asList(3.0, 3.0, 2.5, 2.5, 2.5, 4.0, 5.0, 1.0, 1.5, 4.0, 2.5, 2.5, 2.5, 4.0, 4.5, 2.5, 4.0, 1.0, 0.5, 1.0, 0.5, 1.0, 3.0, 1.0, 0.5, 1.5, 1.0, 3.0, 5.0, 1.5, 2.5, 1.5, 0.0, 0.0, 0.0, 0.25, 1.0);
+	
+	
+	public List<String> getInstrumentoMusical() {
+		return this.music;
+	}
+	
+	public List<String> getFerramentaArtesao() {
+		return this.artesao;
+	}
 	
 	public List<String> getFerramentas() {
 		return this.ferramentas;
@@ -543,161 +561,161 @@ public class Equipamentos {
 		return this.music;
 	}
 	
-	public void getInstrumentoMusical() {
-		for(int i = 0; i < this.ferramentas.size(); i++) {
-			for(int c = 0; c < this.music.size(); c++) {
-				if(this.music.get(c).equals(this.ferramentas.get(i)) == true) System.out.println("Ferramenta - " +this.ferramentas.get(i) +"Custo - " +this.custoFerramentas.get(i) +"Peso - " +this.pesoFerramentas.get(i));
-			}
-		}
-	}
-//usage?
-	public void getInstrumentoMusical(String music) {
-		for(int i = 0; i < this.ferramentas.size(); i++) {
-			if(music.equals(this.ferramentas.get(i)) == true) System.out.println("Ferramenta - " +this.ferramentas.get(i) +"Custo - " +this.custoFerramentas.get(i) +"Peso - " +this.pesoFerramentas.get(i));
-		}
-	}
+//	public void getInstrumentoMusical() {
+//		for(int i = 0; i < this.ferramentas.size(); i++) {
+//			for(int c = 0; c < this.music.size(); c++) {
+//				if(this.music.get(c).equals(this.ferramentas.get(i)) == true) System.out.println("Ferramenta - " +this.ferramentas.get(i) +"Custo - " +this.custoFerramentas.get(i) +"Peso - " +this.pesoFerramentas.get(i));
+//			}
+//		}
+//	}
+////usage?
+//	public void getInstrumentoMusical(String music) {
+//		for(int i = 0; i < this.ferramentas.size(); i++) {
+//			if(music.equals(this.ferramentas.get(i)) == true) System.out.println("Ferramenta - " +this.ferramentas.get(i) +"Custo - " +this.custoFerramentas.get(i) +"Peso - " +this.pesoFerramentas.get(i));
+//		}
+//	}
 
-	public ArrayList<String> setInstrumentoMusical(int count) {
-		ArrayList<String> musics = new ArrayList<String>();
-		musics.addAll(this.music);
-		Scanner entrada = new Scanner(System.in);
-		ArrayList<String> escolhidos = new ArrayList<String>();
-		while(count != 0) {
-			int opcao;
-			do {
-				for(int i = 0; i< musics.size(); i++) {
-					System.out.println(i +" - " +musics.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Essa opção não existe!");
-					entrada.next();
-				}
-				
-				opcao = entrada.nextInt();
-			}while(opcao < 0 || opcao > musics.size());
-			
-			boolean decisaoLoop = false;
-			char decisao;
-			while(decisaoLoop == false) {
-				System.out.println("Tem certeza que deseja " +musics.get(opcao) +"? (Y/N)");
-				decisao = entrada.next().charAt(0);
-				
-				if('Y' == decisao || 'y' == decisao) {
-					escolhidos.add(musics.get(opcao));
-					musics.remove(opcao);
-					count--;
-					decisaoLoop = true;
-				}else if('N' == decisao || 'n' == decisao) decisaoLoop = true;	
-			}
-		}
-		
-		return escolhidos;
-	}
+//	public ArrayList<String> setInstrumentoMusical(int count) {
+//		ArrayList<String> musics = new ArrayList<String>();
+//		musics.addAll(this.music);
+//		Scanner entrada = new Scanner(System.in);
+//		ArrayList<String> escolhidos = new ArrayList<String>();
+//		while(count != 0) {
+//			int opcao;
+//			do {
+//				for(int i = 0; i< musics.size(); i++) {
+//					System.out.println(i +" - " +musics.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Essa opção não existe!");
+//					entrada.next();
+//				}
+//				
+//				opcao = entrada.nextInt();
+//			}while(opcao < 0 || opcao > musics.size());
+//			
+//			boolean decisaoLoop = false;
+//			char decisao;
+//			while(decisaoLoop == false) {
+//				System.out.println("Tem certeza que deseja " +musics.get(opcao) +"? (Y/N)");
+//				decisao = entrada.next().charAt(0);
+//				
+//				if('Y' == decisao || 'y' == decisao) {
+//					escolhidos.add(musics.get(opcao));
+//					musics.remove(opcao);
+//					count--;
+//					decisaoLoop = true;
+//				}else if('N' == decisao || 'n' == decisao) decisaoLoop = true;	
+//			}
+//		}
+//		
+//		return escolhidos;
+//	}
 	
-	public String setInstrumentoMusical() {
-		Scanner entrada = new Scanner(System.in);
-		boolean menuLoop = false;
-		while(menuLoop == false) {
-			int opcao;
-			do {
-				for(int i = 0; i< this.music.size(); i++) {
-					System.out.println(i +" - " +this.music.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Essa opção não existe!");
-					entrada.next();
-				}
-				
-				opcao = entrada.nextInt();
-			}while(opcao < 0 || opcao > this.music.size());
-			
-			boolean decisaoLoop = false;
-			char decisao;
-			while(decisaoLoop == false) {
-				System.out.println("Tem certeza que deseja " +this.music.get(opcao) +"? (Y/N)");
-				decisao = entrada.next().charAt(0);
-				
-				if('Y' == decisao || 'y' == decisao) {
-					return this.music.get(opcao);
-				}else if('N' == decisao || 'n' == decisao) decisaoLoop = true;	
-			}
-		}
-		
-		return null;
-	}
+//	public String setInstrumentoMusical() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean menuLoop = false;
+//		while(menuLoop == false) {
+//			int opcao;
+//			do {
+//				for(int i = 0; i< this.music.size(); i++) {
+//					System.out.println(i +" - " +this.music.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Essa opção não existe!");
+//					entrada.next();
+//				}
+//				
+//				opcao = entrada.nextInt();
+//			}while(opcao < 0 || opcao > this.music.size());
+//			
+//			boolean decisaoLoop = false;
+//			char decisao;
+//			while(decisaoLoop == false) {
+//				System.out.println("Tem certeza que deseja " +this.music.get(opcao) +"? (Y/N)");
+//				decisao = entrada.next().charAt(0);
+//				
+//				if('Y' == decisao || 'y' == decisao) {
+//					return this.music.get(opcao);
+//				}else if('N' == decisao || 'n' == decisao) decisaoLoop = true;	
+//			}
+//		}
+//		
+//		return null;
+//	}
 	
-	public ArrayList<String> setFerramentaArtesao(int count) {
-		ArrayList<String> ferramentaArtesao = new ArrayList<String>();
-		ferramentaArtesao.addAll(this.artesao);
-		Scanner entrada = new Scanner(System.in);
-		ArrayList<String> escolhidos = new ArrayList<String>();
-		while(count != 0) {
-			int opcao;
-			do {
-				for(int i = 0; i< ferramentaArtesao.size(); i++) {
-					System.out.println(i +" - " +ferramentaArtesao.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Essa opção não existe!");
-					entrada.next();
-				}
-				
-				opcao = entrada.nextInt();
-			}while(opcao < 0 || opcao > ferramentaArtesao.size());
-			
-			boolean decisaoLoop = false;
-			char decisao;
-			while(decisaoLoop == false) {
-				System.out.println("Tem certeza que deseja " +ferramentaArtesao.get(opcao) +"? (Y/N)");
-				decisao = entrada.next().charAt(0);
-				
-				if('Y' == decisao || 'y' == decisao) {
-					escolhidos.add(ferramentaArtesao.get(opcao));
-					ferramentaArtesao.remove(opcao);
-					count--;
-					decisaoLoop = true;
-				}else if('N' == decisao || 'n' == decisao) decisaoLoop = true;	
-			}
-		}
-		
-		return escolhidos;
-	}
+//	public ArrayList<String> setFerramentaArtesao(int count) {
+//		ArrayList<String> ferramentaArtesao = new ArrayList<String>();
+//		ferramentaArtesao.addAll(this.artesao);
+//		Scanner entrada = new Scanner(System.in);
+//		ArrayList<String> escolhidos = new ArrayList<String>();
+//		while(count != 0) {
+//			int opcao;
+//			do {
+//				for(int i = 0; i< ferramentaArtesao.size(); i++) {
+//					System.out.println(i +" - " +ferramentaArtesao.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Essa opção não existe!");
+//					entrada.next();
+//				}
+//				
+//				opcao = entrada.nextInt();
+//			}while(opcao < 0 || opcao > ferramentaArtesao.size());
+//			
+//			boolean decisaoLoop = false;
+//			char decisao;
+//			while(decisaoLoop == false) {
+//				System.out.println("Tem certeza que deseja " +ferramentaArtesao.get(opcao) +"? (Y/N)");
+//				decisao = entrada.next().charAt(0);
+//				
+//				if('Y' == decisao || 'y' == decisao) {
+//					escolhidos.add(ferramentaArtesao.get(opcao));
+//					ferramentaArtesao.remove(opcao);
+//					count--;
+//					decisaoLoop = true;
+//				}else if('N' == decisao || 'n' == decisao) decisaoLoop = true;	
+//			}
+//		}
+//		
+//		return escolhidos;
+//	}
 	
-	public String setFerramentaArtesao() {
-		Scanner entrada = new Scanner(System.in);
-		boolean menuLoop = false;
-		while(menuLoop == false) {
-			int opcao;
-			do {
-				for(int i = 0; i< this.artesao.size(); i++) {
-					System.out.println(i +" - " +this.artesao.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Essa opção não existe!");
-					entrada.next();
-				}
-				
-				opcao = entrada.nextInt();
-			}while(opcao < 0 || opcao > this.artesao.size());
-			
-			boolean decisaoLoop = false;
-			char decisao;
-			while(decisaoLoop == false) {
-				System.out.println("Tem certeza que deseja " +this.artesao.get(opcao) +"? (Y/N)");
-				decisao = entrada.next().charAt(0);
-				
-				if('Y' == decisao || 'y' == decisao) {
-					return this.artesao.get(opcao);
-				}else if('N' == decisao || 'n' == decisao) decisaoLoop = true;	
-			}
-		}
-		
-		return null;
-	}
+//	public String setFerramentaArtesao() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean menuLoop = false;
+//		while(menuLoop == false) {
+//			int opcao;
+//			do {
+//				for(int i = 0; i< this.artesao.size(); i++) {
+//					System.out.println(i +" - " +this.artesao.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Essa opção não existe!");
+//					entrada.next();
+//				}
+//				
+//				opcao = entrada.nextInt();
+//			}while(opcao < 0 || opcao > this.artesao.size());
+//			
+//			boolean decisaoLoop = false;
+//			char decisao;
+//			while(decisaoLoop == false) {
+//				System.out.println("Tem certeza que deseja " +this.artesao.get(opcao) +"? (Y/N)");
+//				decisao = entrada.next().charAt(0);
+//				
+//				if('Y' == decisao || 'y' == decisao) {
+//					return this.artesao.get(opcao);
+//				}else if('N' == decisao || 'n' == decisao) decisaoLoop = true;	
+//			}
+//		}
+//		
+//		return null;
+//	}
 	
 //Ferramentas Fim
 
@@ -711,137 +729,137 @@ public class Equipamentos {
 	private List<String> pacoteExplorador = Arrays.asList("Mochila", "Saco de Dormir", "Kit de Refeição", "Caixa de Fogo", "Tocha (10)", "Dias de Rações (10)", "Cantil", "Corda de Cânhamo 15 metros");
 	private List<String> pacoteSacerdote = Arrays.asList("Mochila", "Coberto", "Vela (10)", "Caixa de Fogo", "Caixa de Esmolas", "Bloco de Incenso (2)", "Incensário", "Vestes", "Dias de Rações (2)", "Cantil");
 
-	public ArrayList<String> setPacotes(String pac1, String pac2) {
-		Scanner entrada = new Scanner(System.in);
-		boolean pacoteLoop = false;
-		while(pacoteLoop == false) {
-			int pacoteMenu;
-			System.out.println("Escolha um pacote de equipamentos:\n1 - " +pac1  +"\n2 - " +pac2);
-			
-			while(!entrada.hasNextInt()) {
-				System.out.println("Por favor digite um numero!");
-				entrada.next();
-			}
-			
-			pacoteMenu = entrada.nextInt();
-			switch(pacoteMenu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					getPacotes(pac1);
-					System.out.println("Tem certeza que deseja escolher " +pac1 +"? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						return confirmarPacotes(pac1);
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-				}
-			break;
-			
-			case 2:
-				char decisaocase2;
-				boolean decisao2Loop = false;
-					
-				while(decisao2Loop == false) {	
-					getPacotes(pac2);
-					System.out.println("Tem certeza que deseja escolher " +pac2 +"? (Y/N)");
-					
-					decisaocase2 = entrada.next().charAt(0);
-					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-						return confirmarPacotes(pac2);
-					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-						decisao2Loop = true;
-					}
-				}
-				
-			break;	
-			
-			default:
-				System.out.println("Essa opção não existe!");
-			break;
-			}		
-		}
-		
-		return null;
-	}
-	
-	public ArrayList<String> setPacotes(String pac1, String pac2, String pac3) {
-		Scanner entrada = new Scanner(System.in);
-		boolean pacoteLoop = false;
-		while(pacoteLoop == false) {
-			int pacoteMenu;
-			System.out.println("Escolha um pacote de equipamentos:\n1 - " +pac1  +"\n2 - " +pac2 +"\n3 - " +pac3);
-			
-			while(!entrada.hasNextInt()) {
-				System.out.println("Por favor digite um numero!");
-				entrada.next();
-			}
-			
-			pacoteMenu = entrada.nextInt();
-			switch(pacoteMenu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					getPacotes(pac1);
-					System.out.println("Tem certeza que deseja escolher " +pac1 +"? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						return confirmarPacotes(pac1);
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-				}
-			break;
-			
-			case 2:
-				char decisaocase2;
-				boolean decisao2Loop = false;
-					
-				while(decisao2Loop == false) {	
-					getPacotes(pac2);
-					System.out.println("Tem certeza que deseja escolher " +pac2 +"? (Y/N)");
-					
-					decisaocase2 = entrada.next().charAt(0);
-					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-						return confirmarPacotes(pac2);
-					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-						decisao2Loop = true;
-					}
-				}
-				
-			break;	
-			
-			case 3:
-				char decisaocase3;
-				boolean decisao3Loop = false;
-					
-				while(decisao3Loop == false) {	
-					getPacotes(pac2);
-					System.out.println("Tem certeza que deseja escolher " +pac3 +"? (Y/N)");
-					
-					decisaocase3 = entrada.next().charAt(0);
-					if(decisaocase3 == 'Y' || decisaocase3 == 'y') {
-						return confirmarPacotes(pac2);
-					}else if(decisaocase3 == 'N' || decisaocase3 == 'n') {
-						decisao3Loop = true;
-					}
-				}
-				
-			break;	
-			
-			default:
-				System.out.println("Essa opção não existe!");
-			break;
-			}		
-		}
-		
-		return null;
-	}
+//	public ArrayList<String> setPacotes(String pac1, String pac2) {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean pacoteLoop = false;
+//		while(pacoteLoop == false) {
+//			int pacoteMenu;
+//			System.out.println("Escolha um pacote de equipamentos:\n1 - " +pac1  +"\n2 - " +pac2);
+//			
+//			while(!entrada.hasNextInt()) {
+//				System.out.println("Por favor digite um numero!");
+//				entrada.next();
+//			}
+//			
+//			pacoteMenu = entrada.nextInt();
+//			switch(pacoteMenu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					getPacotes(pac1);
+//					System.out.println("Tem certeza que deseja escolher " +pac1 +"? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						return confirmarPacotes(pac1);
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//				}
+//			break;
+//			
+//			case 2:
+//				char decisaocase2;
+//				boolean decisao2Loop = false;
+//					
+//				while(decisao2Loop == false) {	
+//					getPacotes(pac2);
+//					System.out.println("Tem certeza que deseja escolher " +pac2 +"? (Y/N)");
+//					
+//					decisaocase2 = entrada.next().charAt(0);
+//					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//						return confirmarPacotes(pac2);
+//					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//				}
+//				
+//			break;	
+//			
+//			default:
+//				System.out.println("Essa opção não existe!");
+//			break;
+//			}		
+//		}
+//		
+//		return null;
+//	}
+//	
+//	public ArrayList<String> setPacotes(String pac1, String pac2, String pac3) {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean pacoteLoop = false;
+//		while(pacoteLoop == false) {
+//			int pacoteMenu;
+//			System.out.println("Escolha um pacote de equipamentos:\n1 - " +pac1  +"\n2 - " +pac2 +"\n3 - " +pac3);
+//			
+//			while(!entrada.hasNextInt()) {
+//				System.out.println("Por favor digite um numero!");
+//				entrada.next();
+//			}
+//			
+//			pacoteMenu = entrada.nextInt();
+//			switch(pacoteMenu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					getPacotes(pac1);
+//					System.out.println("Tem certeza que deseja escolher " +pac1 +"? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						return confirmarPacotes(pac1);
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//				}
+//			break;
+//			
+//			case 2:
+//				char decisaocase2;
+//				boolean decisao2Loop = false;
+//					
+//				while(decisao2Loop == false) {	
+//					getPacotes(pac2);
+//					System.out.println("Tem certeza que deseja escolher " +pac2 +"? (Y/N)");
+//					
+//					decisaocase2 = entrada.next().charAt(0);
+//					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//						return confirmarPacotes(pac2);
+//					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//				}
+//				
+//			break;	
+//			
+//			case 3:
+//				char decisaocase3;
+//				boolean decisao3Loop = false;
+//					
+//				while(decisao3Loop == false) {	
+//					getPacotes(pac2);
+//					System.out.println("Tem certeza que deseja escolher " +pac3 +"? (Y/N)");
+//					
+//					decisaocase3 = entrada.next().charAt(0);
+//					if(decisaocase3 == 'Y' || decisaocase3 == 'y') {
+//						return confirmarPacotes(pac2);
+//					}else if(decisaocase3 == 'N' || decisaocase3 == 'n') {
+//						decisao3Loop = true;
+//					}
+//				}
+//				
+//			break;	
+//			
+//			default:
+//				System.out.println("Essa opção não existe!");
+//			break;
+//			}		
+//		}
+//		
+//		return null;
+//	}
 	
 	public ArrayList<String> confirmarPacotes(String pac){
 		ArrayList<String> pacote = new ArrayList<String>();
@@ -1000,35 +1018,35 @@ public class Equipamentos {
 		return this.Escudos.get(0);
 	}
 	
-	public String setEquipsCharlatao() {
-		Scanner entrada = new Scanner(System.in);
-		List<String> lists = Arrays.asList("(10) Garrafas tampadas preenchidas com líquidos coloridos", "Conjunto de dados viciados", "Baralho de cartas marcadas", "Anel de sinete de um duque imaginário");
-		boolean menuLoop = false;
-		int opcao = 0;
-		while(menuLoop == false) {
-			do {
-				while(!entrada.hasNextInt()) {
-					System.out.println("Digite um numero!");
-					entrada.next();
-				}
-				opcao = entrada.nextInt();
-			}while(opcao < 0 || opcao > lists.size());
-			
-			boolean decisaoLoop = false;
-			char decisao;
-			while(decisaoLoop == false) {
-				System.out.println("Tem certeza que deseja " +lists.get(opcao) +"? (Y/N)");
-				decisao = entrada.next().charAt(0);
-				if(decisao == 'Y' || decisao == 'y') {
-					decisaoLoop = true;
-					menuLoop = true;
-					return lists.get(opcao);
-				}else if(decisao == 'N' || decisao == 'n'){
-					decisaoLoop = true;
-				}
-			}
-		}
-		
-		return null;
-	}
+//	public String setEquipsCharlatao() {
+//		Scanner entrada = new Scanner(System.in);
+//		List<String> lists = Arrays.asList("(10) Garrafas tampadas preenchidas com líquidos coloridos", "Conjunto de dados viciados", "Baralho de cartas marcadas", "Anel de sinete de um duque imaginário");
+//		boolean menuLoop = false;
+//		int opcao = 0;
+//		while(menuLoop == false) {
+//			do {
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Digite um numero!");
+//					entrada.next();
+//				}
+//				opcao = entrada.nextInt();
+//			}while(opcao < 0 || opcao > lists.size());
+//			
+//			boolean decisaoLoop = false;
+//			char decisao;
+//			while(decisaoLoop == false) {
+//				System.out.println("Tem certeza que deseja " +lists.get(opcao) +"? (Y/N)");
+//				decisao = entrada.next().charAt(0);
+//				if(decisao == 'Y' || decisao == 'y') {
+//					decisaoLoop = true;
+//					menuLoop = true;
+//					return lists.get(opcao);
+//				}else if(decisao == 'N' || decisao == 'n'){
+//					decisaoLoop = true;
+//				}
+//			}
+//		}
+//		
+//		return null;
+//	}
 }

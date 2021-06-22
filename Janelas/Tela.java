@@ -20,6 +20,8 @@ import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
 
+import CriadorDeFicha.Classes;
+
 public class Tela extends JFrame {
 
 	private JPanel contentPane;
@@ -33,7 +35,7 @@ public class Tela extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Tela frame = new Tela(null);
+					Tela frame = new Tela(null, null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +47,7 @@ public class Tela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Tela(Usuario usuario) {
+	public Tela(Usuario usuario, Classes classe) {
 		setResizable(false);
 		setTitle("Tela de Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,7 +87,7 @@ public class Tela extends JFrame {
 					if(usuariodao.verificarLogin(usuario)) {
 						JOptionPane.showMessageDialog(null, "Login feito!");
 						setVisible(false);
-						Menu menu = new Menu();
+						Menu menu = new Menu(classe);
 						menu.setVisible(true);
 						
 					}else {

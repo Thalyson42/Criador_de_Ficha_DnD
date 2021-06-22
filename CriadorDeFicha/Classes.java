@@ -10,6 +10,7 @@ public class Classes {
 	private static Magias magias;
 	private static Idiomas idiomas;
 	private static AtribuirHabilidades atribuirHabilidades;
+	private static Antecedentes antecedentes;
 	
 	public String getNome() {
 		return nome;
@@ -54,5 +55,11 @@ public class Classes {
 		return atribuirHabilidades;
 	}
 	
+	public Antecedentes getAntecedentes() {
+		return antecedentes;
+	}
+	public void setAntecedens(Antecedentes antecedentes) {
+		Classes.antecedentes = antecedentes;
+	}
 	
 }

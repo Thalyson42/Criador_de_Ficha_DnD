@@ -3,8 +3,8 @@ package br.com.uninassau.jdbc.modelo;
 import java.util.ArrayList;
 
 public class Usuario {
-	private int idusuario;
-	private int idperfil;
+	private int idusuario =1;
+	private int idperfil =1;
 	private String login;
 	private String senha;
 	private String nome;

@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import CriadorDeFicha.Classes;
 import CriadorDeFicha.Racas;
+import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;
@@ -63,7 +64,7 @@ public class EscolherRacaJanela extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	private static final String subRacaNomes [] = {"anao_da_colina", "anao_da_montanha", "alto_elfo", "elfo_da_floresta", "drow", "halfling_pes_leves", "halfling_robusto", "gnomo_da_floresta", "gnomo_das_rochas"};
-	private static final String subImagens [] = {"/img/anao_da_colina.png", "/img/anao_da_montanha.png", "/img/alto_elfo.png", "/img/elfo_da_floresta.png", "/img/drow.png", "/img/halfling_pes_leves.png", "/img/halfling_robusto.png", "/img/gnomo_da_floresta.png", "/img/gnomo_das_rochas.png"};
+	private static final String subImagens [] = {"/img/anao_da_colina.jpg", "/img/anao_da_montanha.jpg", "/img/alto_elfo.jpg", "/img/elfo_da_floresta.jpg", "/img/drow.jpg", "/img/halfling_pes_leves.jpg", "/img/halfling_robusto.jpg", "/img/gnomo_da_floresta.jpg", "/img/gnomo_das_rochas.jpg"};
 	private final Icon icones2[] = {
 			new ImageIcon(getClass().getResource(subImagens[0])),
 			new ImageIcon(getClass().getResource(subImagens[1])),
@@ -76,7 +77,7 @@ public class EscolherRacaJanela extends JFrame {
 			new ImageIcon(getClass().getResource(subImagens[8]))
 	};
 	private static final String nomes [] = {"Anao", "Elfo", "Halfling", "Humano", "Draconato", "Gnomo", "Meio_elfo", "Meio_orc", "Tiefling"};
-	private static final String imagens [] = {"/img/anao.png", "/img/elfo.png", "/img/halfling.png", "/img/humano.png", "/img/draconato.png", "/img/gnomo.png", "/img/meio_elfo.png", "/img/meio_orc.png", "/img/tiefling.png"};
+	private static final String imagens [] = {"/img/anao.jpg", "/img/elfo.jpg", "/img/halfling.jpg", "/img/humano.jpg", "/img/draconato.jpg", "/img/gnomo.jpg", "/img/meio_elfo.jpg", "/img/meio_orc.jpg", "/img/tiefling.jpg"};
 	private final Icon icones[] = {
 			new ImageIcon(getClass().getResource(imagens[0])),
 			new ImageIcon(getClass().getResource(imagens[1])),
@@ -95,7 +96,11 @@ public class EscolherRacaJanela extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EscolherRacaJanela frame = new EscolherRacaJanela(null);
+					Racas raca = new Racas();
+					Classes classe = new Classes();
+					FichaDoPersonagem ficha = new FichaDoPersonagem();
+					classe.salvarFicha(ficha);
+					EscolherRacaJanela frame = new EscolherRacaJanela(classe);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -177,7 +182,7 @@ public class EscolherRacaJanela extends JFrame {
 		JButton btnNewButton_1 = new JButton("SAIR");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Menu menu = new Menu();
+				Menu menu = new Menu(null);
 				setVisible(false);
 				menu.setVisible(true);
 			}
@@ -219,7 +224,7 @@ public class EscolherRacaJanela extends JFrame {
 		scrollPane.setViewportView(areatext);
 		
 		background = new JLabel();
-		background.setIcon(new ImageIcon(EscolherRacaJanela.class.getResource("/img/anao.png")));
+		background.setIcon(new ImageIcon(EscolherRacaJanela.class.getResource("/img/anao.jpg")));
 		background.setBounds(-604, -12, 1650, 699);
 		panel.add(background);
 		

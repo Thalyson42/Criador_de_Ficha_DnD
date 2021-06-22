@@ -12,19 +12,26 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import CriadorDeFicha.Antecedentes;
+import CriadorDeFicha.AtribuirHabilidades;
 import CriadorDeFicha.Barbaro;
 import CriadorDeFicha.Bardo;
 import CriadorDeFicha.Bruxo;
 import CriadorDeFicha.Classes;
 import CriadorDeFicha.Clerigo;
 import CriadorDeFicha.Druida;
+import CriadorDeFicha.Equipamentos;
 import CriadorDeFicha.Feiticeiro;
 import CriadorDeFicha.Guerreiro;
+import CriadorDeFicha.Idiomas;
 import CriadorDeFicha.Ladino;
+import CriadorDeFicha.Magias;
 import CriadorDeFicha.Mago;
 import CriadorDeFicha.Monge;
 import CriadorDeFicha.Paladino;
 import CriadorDeFicha.Patrulheiro;
+import CriadorDeFicha.Proficiencia;
+import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;
@@ -42,6 +49,8 @@ import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class EscolherClasse extends JFrame {
 	
@@ -72,14 +81,14 @@ public class EscolherClasse extends JFrame {
 	private int selectionCounter = 0;
 	private JComboBox<String> comboBox_1;
 	private JComboBox<String> comboBox_2;
+	private JComboBox<String> comboBox_3;
 	private JRadioButton rdbtnNewRadioButton;
 	private JRadioButton rdbtnNewRadioButton_1;
 	private JRadioButton rdbtnNewRadioButton_2;
 	private JRadioButton rdbtnNewRadioButton_3;
 	private radioButtonHandlerGP1 rbhGroup1;
 	private radioButtonHandlerGP2 rbhGroup2;
-	private boolean radioGroup_1;
-	private boolean radioGroup_2;
+
 	
 //	private List<String> p = Arrays.asList("Acrobacia", "Adestrar Animais", "Arcanismo", "Atletismo", "Enganação", "História", "Intuição", "Intimidação", "Investigação", "Medicina", "Natereza", "Percepção", "Atuação", "Persuasão", "Religião", "Prestidigitação", "Furtividade", "Sobrevivência");
 	private JButton btnNewButton_2;
@@ -90,7 +99,7 @@ public class EscolherClasse extends JFrame {
 	
 
 	private static final String nomes [] = {"Barbaro", "Bardo", "Bruxo", "Clerigo", "Druida", "Feiticeiro", "Guerreiro", "Ladino", "Mago", "Monge", "Paladino", "Patrulheiro"};
-//	private static final String imagens [] = {"/img/barbaro.png", "/img/bardo.png", "/img/bruxo.png", "/img/clerigo.png", "/img/druida.png", "/img/feiticeiro.png", "/img/guerreiro.png", "/img/ladino.png", "/img/mago.png", "/img/monge.png", "/img/paladino.png", "/img/patrulheiro.png"};
+//	private static final String imagens [] = {"/img/barbaro.jpg", "/img/bardo.jpg", "/img/bruxo.jpg", "/img/clerigo.jpg", "/img/druida.jpg", "/img/feiticeiro.jpg", "/img/guerreiro.jpg", "/img/ladino.jpg", "/img/mago.jpg", "/img/monge.jpg", "/img/paladino.jpg", "/img/patrulheiro.jpg"};
 //	private final Icon icones[] = {
 //			new ImageIcon(getClass().getResource(imagens[0])),
 //			new ImageIcon(getClass().getResource(imagens[1])),
@@ -105,7 +114,7 @@ public class EscolherClasse extends JFrame {
 //			new ImageIcon(getClass().getResource(imagens[10])),
 //			new ImageIcon(getClass().getResource(imagens[11]))
 //	};
-	
+//	
 	/**
 	 * Launch the application.
 	 */
@@ -113,7 +122,23 @@ public class EscolherClasse extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EscolherClasse frame = new EscolherClasse(null);
+					FichaDoPersonagem ficha = new FichaDoPersonagem();
+					Proficiencia proficiencia = new Proficiencia();
+					Equipamentos equips = new Equipamentos();
+					Magias magias = new Magias();
+					Idiomas idiomas = new Idiomas();
+					AtribuirHabilidades atribuirHabilidades = new AtribuirHabilidades();
+					Antecedentes antecedentes = new Antecedentes();
+					Classes classes = new Classes();
+					classes.salvarFicha(ficha);
+					classes.setEquips(equips);
+					classes.setProficiencia(proficiencia);
+					classes.setMagias(magias);
+					classes.setIdiomas(idiomas);
+					classes.setAtribuirHabilidades(atribuirHabilidades);
+					classes.setAntecedens(antecedentes);
+					
+					EscolherClasse frame = new EscolherClasse(classes);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -152,11 +177,9 @@ public class EscolherClasse extends JFrame {
 			JRadioButton source = (JRadioButton) e.getSource();
 			
 			if(source.isSelected()) {
-				radioGroup_1 = true;
 				comboBox_1.setEnabled(false);
 				
 			}else {
-				radioGroup_1 = false;
 				comboBox_1.setEnabled(true);
 			}
 			
@@ -171,16 +194,15 @@ public class EscolherClasse extends JFrame {
 			JRadioButton source = (JRadioButton) e.getSource();
 			
 			if(source.isSelected()) {
-				radioGroup_2 = true;
 				comboBox_2.setEnabled(false);
 			}else {
-				radioGroup_2 = false;
 				comboBox_2.setEnabled(true);
 			}
 			
 		}
 		
 	}
+	
 	/**
 	 * Create the frame.
 	 */
@@ -200,9 +222,10 @@ public class EscolherClasse extends JFrame {
 		panel = new JPanel();
 		tabbedPane.addTab("Classe", null, panel, null);
 		panel.setLayout(null);
+		tabbedPane.setEnabledAt(0, false);
 		
 		comboBox = new JComboBox<String>(nomes);
-		comboBox.setMaximumRowCount(9);
+		comboBox.setMaximumRowCount(nomes.length);
 		comboBox.addItemListener(new ItemListener() {
 			
 			@Override
@@ -242,7 +265,7 @@ public class EscolherClasse extends JFrame {
 		areatext.setEditable(false);
 		scrollPane.setViewportView(areatext);
 		
-		background = new JLabel("New label");
+		background = new JLabel("/img/barbaro.jpg");
 		background.setBounds(-604, -12, 1650, 699);
 		panel.add(background);
 		
@@ -255,25 +278,10 @@ public class EscolherClasse extends JFrame {
 		btnNewButton_2.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-					for(int i = 0; i < checkList.length; i++) {
-						if (checkList[i].isSelected())
-							classe.getProficiencia().aplicandoPericia(checkList[i].getText());
-					}
-					if(!comboBox_1.isEnabled() && radioGroup_1) {
-						ButtonModel b = buttonGroup.getSelection();
-						String t = b.getActionCommand();
-						classe.getFicha().setEquipamentos(t);
-					}else {
-						classe.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
-					}
-					
-					if(!comboBox_2.isEnabled() && radioGroup_2) {
-						ButtonModel b = buttonGroup.getSelection();
-						String t = b.getActionCommand();
-						classe.getFicha().setEquipamentos(t);
-					}else {
-						classe.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
-					}
+				salvaClasse(comboBox.getItemAt(comboBox.getSelectedIndex()), classe);
+					setVisible(false);
+					AtributosJanela atributosJanele = new AtributosJanela(classe);
+					atributosJanele.setVisible(true);
 			}
 		});
 		btnNewButton_2.setBounds(935, 630, 113, 44);
@@ -295,19 +303,57 @@ public class EscolherClasse extends JFrame {
 		
 	}
 	
+	public void salvaClasse(String classe, Classes ficha) {
+		switch(classe) {
+		case "Barbaro":
+			for(int i = 0; i < checkList.length; i++) {
+				if (checkList[i].isSelected())
+					ficha.getProficiencia().aplicandoPericia(checkList[i].getText());
+			}
+			if(!comboBox_1.isEnabled()) {
+				ButtonModel b = buttonGroup.getSelection();
+				String t = b.getActionCommand();
+				ficha.getFicha().setEquipamentos(t);
+			}else {
+				ficha.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
+			}
+			
+			if(!comboBox_2.isEnabled()) {
+				ButtonModel b = buttonGroup.getSelection();
+				String t = b.getActionCommand();
+				ficha.getFicha().setEquipamentos(t);
+			}else {
+				ficha.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
+			}
+			
+			barbaro.setBarbaro();
+		break;
+		
+		case "Bardo":
+			for(int i = 0; i < checkList.length; i++) {
+				if (checkList[i].isSelected())
+					ficha.getProficiencia().aplicandoPericia(checkList[i].getText());
+			}
+			ficha.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
+			ficha.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
+			ficha.getFicha().setEquipamentos(ficha.getEquips().confirmarPacotes(comboBox_3.getItemAt(comboBox_3.getSelectedIndex())));
+			
+			bardo.setBardo();
+		}
+	}
 	
 	public void ClasseSelecionada(String classe, Classes equips) {
 		equips.getEquips().iniciaAllarmas();
 
 		switch(classe) {
 		case "Barbaro":
-			List<String> equips2 = Arrays.asList("Adaga", "Azagaia", "Bordão", "Clava Grande", "Foice Curta", "Lança", "Maça", "Machadinha", "Martelo Leve", "Porrete", "Arco Curto", "Besta leve", "Dardo", "Funda");
 			pericias(barbaro.getPericiasList(), 2);
-			aba2equipamentos("Barbaro", equips.getEquips().getArmas_marciais_CAC(), equips2);
+			aba2equipamentos("Barbaro", equips);
 		break;
 		
 		case "Bardo":
-			
+			pericias(bardo.getPericiasList(), 3);
+			aba2equipamentos("Bardo", equips);
 		break;
 		
 		case "Bruxo":
@@ -343,12 +389,13 @@ public class EscolherClasse extends JFrame {
 		}
 	}
 	
-	public void aba2equipamentos(String classe, List<String> equipamentos, List<String> equipamentos2) {
-		String[] equips = equipamentos.toArray(new String[equipamentos.size()]);
-		String[] equips2 = equipamentos.toArray(new String[equipamentos.size()]);
+	public void aba2equipamentos(String classe, Classes equipsList) {
+		String[] equips = equipsList.getEquips().getArmas_marciais_CAC().toArray(new String[equipsList.getEquips().getArmas_marciais_CAC().size()]);
+		String[] equips2 = equipsList.getEquips().getArmasSimplesCAC().toArray(new String[equipsList.getEquips().getArmasSimplesCAC().size()]);
 		switch(classe) {
 		case "Barbaro":
 			rdbtnNewRadioButton = new JRadioButton("Um Machado Grande");
+			rdbtnNewRadioButton.setSelected(true);
 			buttonGroup.add(rdbtnNewRadioButton);
 			rdbtnNewRadioButton.setFont(new Font("Monotype Corsiva", Font.PLAIN, 17));
 			rdbtnNewRadioButton.setBounds(546, 78, 178, 23);
@@ -368,6 +415,7 @@ public class EscolherClasse extends JFrame {
 			panel_1.add(comboBox_1);
 			
 			rdbtnNewRadioButton_2 = new JRadioButton("Dois Machados De M\u00E3o");
+			rdbtnNewRadioButton_2.setSelected(true);
 			buttonGroup_1.add(rdbtnNewRadioButton_2);
 			rdbtnNewRadioButton_2.setFont(new Font("Monotype Corsiva", Font.PLAIN, 17));
 			rdbtnNewRadioButton_2.setBounds(546, 199, 178, 23);
@@ -385,6 +433,25 @@ public class EscolherClasse extends JFrame {
 			comboBox_2.setBounds(589, 247, 342, 34);
 			comboBox_2.setEnabled(false);
 			panel_1.add(comboBox_2);
+		break;
+		
+		case "Bardo": //corrigir
+			String[] bardoEquips = {"Rapieira", "Espada Longa"};
+			String[] bardoPacotes = {"Pacote de Diplomata", "Pacote de Artista"};
+			String[] instrumento_musical = equipsList.getEquips().getInstrumentoMusical().toArray(new String[equipsList.getEquips().getInstrumentoMusical().size()]);
+
+			comboBox_1 = new JComboBox<String>(bardoEquips);
+			comboBox_1.setBounds(589, 121, 342, 34);
+			panel_1.add(comboBox_1);
+			
+			comboBox_2 = new JComboBox<String>(bardoPacotes);
+			comboBox_2.setBounds(589, 247, 342, 34);
+			panel_1.add(comboBox_2);
+			
+			comboBox_3 = new JComboBox<String>(instrumento_musical);
+			comboBox_3.setBounds(589, 361, 342, 34);
+			panel_1.add(comboBox_3);	
+		
 		break;
 		}
 	}

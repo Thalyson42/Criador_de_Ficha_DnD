@@ -21,12 +21,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
+import javax.swing.JScrollPane;
 
 public class Cadastrar extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField tfUsuario;
 	private JPasswordField passwordField;
+	private JTextField tfNome;
+	private JTextField tfEmail;
+	private JTextField tfSexo;
+	private JTextField tfIdade;
+	private JTextField tfTelefone;
 
 	/**
 	 * Launch the application.
@@ -51,7 +59,7 @@ public class Cadastrar extends JFrame {
 		setResizable(false);
 		setTitle("Cadastrar");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 350, 271);
+		setBounds(100, 100, 772, 546);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -67,26 +75,101 @@ public class Cadastrar extends JFrame {
 		lblNewLabel_1.setBounds(10, 102, 110, 39);
 		contentPane.add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(98, 38, 180, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		tfUsuario = new JTextField();
+		tfUsuario.setBounds(98, 38, 180, 20);
+		contentPane.add(tfUsuario);
+		tfUsuario.setColumns(10);
 		
-		JButton btnNewButton = new JButton("CADASTRAR");
-		btnNewButton.addActionListener(new ActionListener() {
+		passwordField = new JPasswordField();
+		passwordField.setBounds(98, 111, 180, 20);
+		contentPane.add(passwordField);
+		
+		tfNome = new JTextField();
+		tfNome.setColumns(10);
+		tfNome.setBounds(98, 178, 180, 20);
+		contentPane.add(tfNome);
+		
+		JLabel lblNome = new JLabel("NOME");
+		lblNome.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
+		lblNome.setBounds(10, 169, 110, 39);
+		contentPane.add(lblNome);
+		
+		JLabel lblNewLabel_1_1 = new JLabel("IDADE");
+		lblNewLabel_1_1.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
+		lblNewLabel_1_1.setBounds(10, 242, 110, 39);
+		contentPane.add(lblNewLabel_1_1);
+		
+		tfEmail = new JTextField();
+		tfEmail.setColumns(10);
+		tfEmail.setBounds(98, 317, 180, 20);
+		contentPane.add(tfEmail);
+		
+		JLabel lblEmail = new JLabel("E-MAIL");
+		lblEmail.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
+		lblEmail.setBounds(10, 308, 110, 39);
+		contentPane.add(lblEmail);
+		
+		JLabel lblNewLabel_1_2 = new JLabel("TELEFONE");
+		lblNewLabel_1_2.setFont(new Font("Monotype Corsiva", Font.BOLD, 16));
+		lblNewLabel_1_2.setBounds(10, 381, 110, 39);
+		contentPane.add(lblNewLabel_1_2);
+		
+		tfSexo = new JTextField();
+		tfSexo.setColumns(10);
+		tfSexo.setBounds(98, 453, 180, 20);
+		contentPane.add(tfSexo);
+		
+		JLabel lblSexo = new JLabel("SEXO");
+		lblSexo.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
+		lblSexo.setBounds(10, 444, 110, 39);
+		contentPane.add(lblSexo);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(333, 56, 411, 396);
+		contentPane.add(scrollPane);
+		
+		JTextArea textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
+		
+		JLabel lblDescrio = new JLabel("DESCRI\u00C7\u00C3O");
+		lblDescrio.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDescrio.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
+		lblDescrio.setBounds(465, 11, 110, 39);
+		contentPane.add(lblDescrio);
+		
+		tfIdade = new JTextField();
+		tfIdade.setColumns(10);
+		tfIdade.setBounds(98, 251, 180, 20);
+		contentPane.add(tfIdade);
+		
+		tfTelefone = new JTextField();
+		tfTelefone.setColumns(10);
+		tfTelefone.setBounds(98, 390, 180, 20);
+		contentPane.add(tfTelefone);
+		
+		JButton btnCadastrar = new JButton("CADASTRAR");
+		btnCadastrar.setFont(new Font("Monotype Corsiva", Font.BOLD, 16));
+		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					UsuarioDAO usuariodao = new UsuarioDAO();
 					
-					PreparedStatement stmt = usuariodao.getConexao().prepareStatement("SELECT * FROM usuario WHERE login='"+textField.getText()+"'");
+					PreparedStatement stmt = usuariodao.getConexao().prepareStatement("SELECT * FROM usuario WHERE login='"+tfUsuario.getText()+"'");
 					ResultSet res = stmt.executeQuery();
 					
 					if(res.next()) {
 						JOptionPane.showMessageDialog(null, "Nome de usuario já existe!");
 					}else {
-						usuario.setLogin(textField.getText());
+						usuario.setLogin(tfUsuario.getText());
 						usuario.setSenha(new String(passwordField.getPassword()));
+						usuario.setNome(tfNome.getText());
+						usuario.setIdade(tfIdade.getText());
+						usuario.setEmail(tfEmail.getText());
+						usuario.setTelefone(tfTelefone.getText());
+						usuario.setSexo(tfSexo.getText());
+						usuario.setDescricao_usuario(textArea.getText());
 						usuariodao.salvarUser(usuario);
+						usuariodao.salvarPerfil(usuario);
 						JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso!");
 						setVisible(false);
 						
@@ -100,12 +183,9 @@ public class Cadastrar extends JFrame {
 			}
 			
 		});
-		btnNewButton.setBounds(209, 181, 110, 31);
-		contentPane.add(btnNewButton);
+		btnCadastrar.setBounds(580, 463, 146, 31);
+		contentPane.add(btnCadastrar);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(98, 111, 180, 20);
-		contentPane.add(passwordField);
-	}
 
+	}
 }

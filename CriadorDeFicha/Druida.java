@@ -86,9 +86,9 @@ public class Druida extends Classes{
 		List<String> profPericias = Arrays.asList("Arcanismo", "Adrestrar Animas", "Intuição", "Medicina", "Natureza", "Percepção", "Religião", "Sobrevivência");
 		getProficiencia().setPericias(profPericias, 2);
 //		this.ficha = this.proficiencia.getFicha();
-		equips1();
-		equips2();
-		equips3();
+//		equips1();
+//		equips2();
+//		equips3();
 		getFicha().setEquipamentos("Armadura de couro");
 		getFicha().setEquipamentos(getEquips().confirmarPacotes("Pacote de Aventureiro"));
 		getFicha().setEquipamentos("Foco Druídico");
@@ -130,83 +130,83 @@ public class Druida extends Classes{
 		return proficiencia+ModCarisma;
 	}
 	
-	public void equips1() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip1Loop = false;
-		while(equip1Loop == false) {
-			int equip1Menu;
-			System.out.println("Escolha entre (1) um escudo de madeira ou (2) qualquer arma simples.");
-			
-			equip1Menu = entrada.nextInt();
-			switch(equip1Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher um escudo de madeira? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						getFicha().setEquipamentos("Escudo de madeira");
-						decisaoLoop = true;
-						equip1Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				getFicha().setEquipamentos(getEquips().setArmasSimples());
-			break;
-			}
-		}
-	}
-	
-	public void equips2() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip2Loop = false;
-		while(equip2Loop == false) {
-			int equip2Menu;
-			System.out.println("Escolha entre (1) uma Cimitarra ou (2) qualquer arma simples corpo-a-corpo.");
-			
-			equip2Menu = entrada.nextInt();
-			switch(equip2Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher Cimitarra? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_simples_CAC().size(); i++) {
-							if(Objects.equals(new String("Cimitarra"), getEquips().getArmas_simples_CAC().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_simples_CAC().get(i));
-							}
-						}
-						decisaoLoop = true;
-						equip2Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				getFicha().setEquipamentos(getEquips().setArmaCACSimples());
-			break;
-			}
-		}
-	}
-	
-	public void equips3() {
-		getEquips().setPacotes("Pacote de Estudioso", "Pacote de Explorador");
-	}
+//	public void equips1() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip1Loop = false;
+//		while(equip1Loop == false) {
+//			int equip1Menu;
+//			System.out.println("Escolha entre (1) um escudo de madeira ou (2) qualquer arma simples.");
+//			
+//			equip1Menu = entrada.nextInt();
+//			switch(equip1Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.println("Tem certeza que deseja escolher um escudo de madeira? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						getFicha().setEquipamentos("Escudo de madeira");
+//						decisaoLoop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}
+//				
+//			break;
+//			
+//			case 2:
+//				getFicha().setEquipamentos(getEquips().setArmasSimples());
+//			break;
+//			}
+//		}
+//	}
+//	
+//	public void equips2() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip2Loop = false;
+//		while(equip2Loop == false) {
+//			int equip2Menu;
+//			System.out.println("Escolha entre (1) uma Cimitarra ou (2) qualquer arma simples corpo-a-corpo.");
+//			
+//			equip2Menu = entrada.nextInt();
+//			switch(equip2Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.println("Tem certeza que deseja escolher Cimitarra? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						for(int i = 0; i < getEquips().getArmas_simples_CAC().size(); i++) {
+//							if(Objects.equals(new String("Cimitarra"), getEquips().getArmas_simples_CAC().get(i))) {
+//								getFicha().setEquipamentos(getEquips().getArmas_simples_CAC().get(i));
+//							}
+//						}
+//						decisaoLoop = true;
+//						equip2Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}
+//				
+//			break;
+//			
+//			case 2:
+//				getFicha().setEquipamentos(getEquips().setArmaCACSimples());
+//			break;
+//			}
+//		}
+//	}
+//	
+//	public void equips3() {
+//		getEquips().setPacotes("Pacote de Estudioso", "Pacote de Explorador");
+//	}
 	
 //Druida feats padrao
 	public void FeatsPadrao() {

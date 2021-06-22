@@ -17,61 +17,111 @@ public class Idiomas {
 	private List<String> alfabetos = Arrays.asList("Anão", "Comum", "Élfico", "Anão", "Anão", "Anão", "Comum", "Anão", "Infernal",
 			"Celestial", " - ", "Dracônico", "Infernal", "Anão", "Élfico", "Élfico");
 	
-	public List<String> setIdioma(List<String> idiomas, String antecedente) {
-		Scanner entrada = new Scanner(System.in);
-		ArrayList<String> idioma = new ArrayList<String>();
-		idioma.addAll(verificarIdiomas(idiomas));
-		ArrayList<String> falado_por = new ArrayList<String>();
-		falado_por.addAll(this.faladoPor);
-		ArrayList<String> alfabeto = new ArrayList<String>();
-		alfabeto.addAll(this.alfabetos);
-		
-		List<String> idiomas_escolhidos = new ArrayList<String>();
-		
-		int count;
-		int opcaoIdioma;
-		if(Objects.equals(antecedente, new String("Acólito")) || Objects.equals(antecedente, new String("Sábio"))) {
-			count = 2;
-		}else {
-			count = 1;
-		}
-		
-		while(count != 0) {
-			do{
-				System.out.println("Escolha " +count +" idiomas:");
-				System.out.println("     Idiomas         |Falado por              |Alfabeto");
-				for(int i = 0; i < idioma.size(); i++) {
-					System.out.println(i +" - " +idioma.get(i) +"        " +falado_por.get(i) +"        " +alfabeto.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Digite um numero!");
-					entrada.next();
-				}
-				
-				opcaoIdioma = entrada.nextInt();
-			}while(opcaoIdioma < 0 || opcaoIdioma > idioma.size());
-		
-			System.out.println("Tem certeza que quer o idioma " +idioma.get(opcaoIdioma) +"? (Y/N)");
-			char decisao = entrada.next().charAt(0);
-			
-			boolean decisaoLoop = false;
-			while(decisaoLoop == false) {
-				if(decisao == 'Y' || decisao == 'y') {
-					decisaoLoop = true;
-					count--;
-					idiomas_escolhidos.add(idioma.get(opcaoIdioma));
-					idioma.remove(opcaoIdioma);
-					falado_por.remove(opcaoIdioma);
-					alfabeto.remove(opcaoIdioma);
-					
-				}else if(decisao == 'N' || decisao == 'n') {
-					decisaoLoop = true;
-				}
-			}
-		}
-		return idiomas_escolhidos;
-	}
+//	public List<String> setIdioma(List<String> idiomas, String antecedente) {
+//		ArrayList<String> idioma = new ArrayList<String>();
+//		idioma.addAll(verificarIdiomas(idiomas));
+//		
+//		int count;
+//		int opcaoIdioma;
+//		if(Objects.equals(antecedente, new String("Acólito")) || Objects.equals(antecedente, new String("Sábio"))) {
+//			count = 2;
+//		}else {
+//			count = 1;
+//		}
+//		
+//		while(count != 0) {
+//			do{
+//				System.out.println("Escolha " +count +" idiomas:");
+//				System.out.println("     Idiomas         |Falado por              |Alfabeto");
+//				for(int i = 0; i < idioma.size(); i++) {
+//					System.out.println(i +" - " +idioma.get(i) +"        " +falado_por.get(i) +"        " +alfabeto.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				opcaoIdioma = entrada.nextInt();
+//			}while(opcaoIdioma < 0 || opcaoIdioma > idioma.size());
+//		
+//			System.out.println("Tem certeza que quer o idioma " +idioma.get(opcaoIdioma) +"? (Y/N)");
+//			char decisao = entrada.next().charAt(0);
+//			
+//			boolean decisaoLoop = false;
+//			while(decisaoLoop == false) {
+//				if(decisao == 'Y' || decisao == 'y') {
+//					decisaoLoop = true;
+//					count--;
+//					idiomas_escolhidos.add(idioma.get(opcaoIdioma));
+//					idioma.remove(opcaoIdioma);
+//					falado_por.remove(opcaoIdioma);
+//					alfabeto.remove(opcaoIdioma);
+//					
+//				}else if(decisao == 'N' || decisao == 'n') {
+//					decisaoLoop = true;
+//				}
+//			}
+//		}
+//		return idiomas_escolhidos;
+//	}
+	
+	
+//	public List<String> setIdioma(List<String> idiomas, String antecedente) {
+//		Scanner entrada = new Scanner(System.in);
+//		ArrayList<String> idioma = new ArrayList<String>();
+//		idioma.addAll(verificarIdiomas(idiomas));
+//		ArrayList<String> falado_por = new ArrayList<String>();
+//		falado_por.addAll(this.faladoPor);
+//		ArrayList<String> alfabeto = new ArrayList<String>();
+//		alfabeto.addAll(this.alfabetos);
+//		
+//		List<String> idiomas_escolhidos = new ArrayList<String>();
+//		
+//		int count;
+//		int opcaoIdioma;
+//		if(Objects.equals(antecedente, new String("Acólito")) || Objects.equals(antecedente, new String("Sábio"))) {
+//			count = 2;
+//		}else {
+//			count = 1;
+//		}
+//		
+//		while(count != 0) {
+//			do{
+//				System.out.println("Escolha " +count +" idiomas:");
+//				System.out.println("     Idiomas         |Falado por              |Alfabeto");
+//				for(int i = 0; i < idioma.size(); i++) {
+//					System.out.println(i +" - " +idioma.get(i) +"        " +falado_por.get(i) +"        " +alfabeto.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				opcaoIdioma = entrada.nextInt();
+//			}while(opcaoIdioma < 0 || opcaoIdioma > idioma.size());
+//		
+//			System.out.println("Tem certeza que quer o idioma " +idioma.get(opcaoIdioma) +"? (Y/N)");
+//			char decisao = entrada.next().charAt(0);
+//			
+//			boolean decisaoLoop = false;
+//			while(decisaoLoop == false) {
+//				if(decisao == 'Y' || decisao == 'y') {
+//					decisaoLoop = true;
+//					count--;
+//					idiomas_escolhidos.add(idioma.get(opcaoIdioma));
+//					idioma.remove(opcaoIdioma);
+//					falado_por.remove(opcaoIdioma);
+//					alfabeto.remove(opcaoIdioma);
+//					
+//				}else if(decisao == 'N' || decisao == 'n') {
+//					decisaoLoop = true;
+//				}
+//			}
+//		}
+//		return idiomas_escolhidos;
+//	}
 	
 	public List<String> setIdioma(int count, List<String> idioma) {
 		ArrayList<String> idiomas = new ArrayList<String>();

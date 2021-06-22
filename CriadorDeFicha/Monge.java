@@ -91,9 +91,9 @@ public class Monge extends Classes{
 		List<String> profPericias = Arrays.asList("Acrobacia", "Atletismo", "Furtividade", "História", "Intuição", "Religião");
 		getProficiencia().setPericias(profPericias, 2);
 //		this.ficha = this.proficiencia.getFicha();
-		setProfFerramentas();
-		equips1();
-		equips2();
+//		setProfFerramentas();
+//		equips1();
+//		equips2();
 		getFicha().setEquipamentos("Dardos (10)");
 		setDefesaSemArmadura();
 		setArtesMarciais();
@@ -129,79 +129,79 @@ public class Monge extends Classes{
 		return proficiencia+ModCarisma;
 	}
 	
-	public void setProfFerramentas() {
-		Scanner entrada = new Scanner(System.in);
-		List<String> ferramentasProf = Arrays.asList("Ferramenta de Artesão", "Instrumento Musical");
-		boolean menuLoop = false;
-		int menu = 0;
-		while(menuLoop == false) {
-			do {
-				System.out.println("Escolha uma opção:");
-				
-				for(int i = 0; i < ferramentasProf.size(); i++) {
-					System.out.println((i+1)+ " - " +ferramentasProf.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Digite um numero!");
-					entrada.next();
-				}
-				
-				menu = entrada.nextInt();
-			}while(menu <= 0 || menu > 2);
-			menuLoop = confirmarDecisao(ferramentasProf.get(menu));
-		}
-		
-		switch(menu) {
-		case 1:
-			getFicha().setProfi_ferramentas_peri(getEquips().setFerramentaArtesao());
-		break;
-		
-		case 2:
-			getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical());
-		break;
-		
-		default:
-		break;
-		}		
-	}
-	
-	public void equips1() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip1Loop = false;
-		List<String> equips1 = Arrays.asList("Uma Espada Curta", "ou qualquer Arma Simples");
-		int equip1Menu = 0;
-		while(equip1Loop == false) {
-			do {
-				System.out.println("Escolha uma dessas opções:");
-				for(int i =0; i <equips1.size(); i++) {
-					System.out.println((i+1) +" - " +equips1.get(i));
-				}
-				
-				while(!entrada.hasNextInt()) {
-					System.out.println("Digite um numero!");
-					entrada.next();
-				}
-				
-				equip1Menu = entrada.nextInt();	
-			}while(equip1Menu <= 0 || equip1Menu > equips1.size());
-			equip1Loop = confirmarDecisao(equips1.get(equip1Menu));
-		}
-		switch(equip1Menu) {
-		case 1:
-			getFicha().setEquipamentos("Espada Curta");
-		break;
-			
-		case 2:
-			getFicha().setEquipamentos(getEquips().setArmasSimples());
-		break;
-		}
-	}
-	
-	
-	public void equips2() {
-		getFicha().setEquipamentos(getEquips().setPacotes("Pacote de Explorador", "Pacote de Aventureiro"));
-	}
+//	public void setProfFerramentas() {
+//		Scanner entrada = new Scanner(System.in);
+//		List<String> ferramentasProf = Arrays.asList("Ferramenta de Artesão", "Instrumento Musical");
+//		boolean menuLoop = false;
+//		int menu = 0;
+//		while(menuLoop == false) {
+//			do {
+//				System.out.println("Escolha uma opção:");
+//				
+//				for(int i = 0; i < ferramentasProf.size(); i++) {
+//					System.out.println((i+1)+ " - " +ferramentasProf.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				menu = entrada.nextInt();
+//			}while(menu <= 0 || menu > 2);
+//			menuLoop = confirmarDecisao(ferramentasProf.get(menu));
+//		}
+//		
+//		switch(menu) {
+//		case 1:
+//			getFicha().setProfi_ferramentas_peri(getEquips().setFerramentaArtesao());
+//		break;
+//		
+//		case 2:
+//			getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical());
+//		break;
+//		
+//		default:
+//		break;
+//		}		
+//	}
+//	
+//	public void equips1() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip1Loop = false;
+//		List<String> equips1 = Arrays.asList("Uma Espada Curta", "ou qualquer Arma Simples");
+//		int equip1Menu = 0;
+//		while(equip1Loop == false) {
+//			do {
+//				System.out.println("Escolha uma dessas opções:");
+//				for(int i =0; i <equips1.size(); i++) {
+//					System.out.println((i+1) +" - " +equips1.get(i));
+//				}
+//				
+//				while(!entrada.hasNextInt()) {
+//					System.out.println("Digite um numero!");
+//					entrada.next();
+//				}
+//				
+//				equip1Menu = entrada.nextInt();	
+//			}while(equip1Menu <= 0 || equip1Menu > equips1.size());
+//			equip1Loop = confirmarDecisao(equips1.get(equip1Menu));
+//		}
+//		switch(equip1Menu) {
+//		case 1:
+//			getFicha().setEquipamentos("Espada Curta");
+//		break;
+//			
+//		case 2:
+//			getFicha().setEquipamentos(getEquips().setArmasSimples());
+//		break;
+//		}
+//	}
+//	
+//	
+//	public void equips2() {
+//		getFicha().setEquipamentos(getEquips().setPacotes("Pacote de Explorador", "Pacote de Aventureiro"));
+//	}
 	
 	public boolean confirmarDecisao(String opcao) {
 		Scanner entrada = new Scanner(System.in);

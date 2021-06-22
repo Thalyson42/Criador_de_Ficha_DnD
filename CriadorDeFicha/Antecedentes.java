@@ -22,26 +22,66 @@ public class Antecedentes extends Classes{
 			random = this.random.nextInt((6 - 1) + 1) + 1;
 		}
 		
-		return random;
+		return random-1;
 	}
 	
-	public List<String> getTracoRandom(String antecedente) {
-		List<String> tracos = new ArrayList<String>();
-		
-		int random = 0;
-		int reroll = 0;
-		int count = 2;
-		while(count != 0) {
-			random = getTIVD(8)-1;
+//	public int getTracoRandom(String antecedente) {
+//		int random = 0;
+//			random = getTIVD(8)-1;
+//			
+//			if(random != reroll) {
+//				tracos.add(getTraco(antecedente, random));
+//				reroll = random;
+//				count--;
+//			}
+//		}
+//		
+//		return random;
+//	}
+	
+	public String descricaoAntecedente(int i) {
+		switch(i) {
+		case 0:
+			return getacolitoDescricao();
 			
-			if(random != reroll) {
-				tracos.add(getTraco(antecedente, random));
-				reroll = random;
-				count--;
-			}
+		case 1:
+			return getArtesaoDaGuilda();
+		
+		case 2:
+			return getArtista();
+		
+		case 3:
+			return getCharlatao();
+			
+		case 4:
+			return getCriminoso();
+			
+		case 5:
+			return getEremita();
+			
+		case 6:
+			return getForasteiro();
+			
+		case 7:
+			return getHeroiDoPovo();
+		
+		case 8:
+			return getMarinheiro();
+			
+		case 9:
+			return getNobre();
+			
+		case 10:
+			return getOrfao();
+			
+		case 11:
+			return getSabio();
+			
+		case 12:
+			return getSoldado();
 		}
 		
-		return tracos;
+		return null;
 	}
 	
 	public String getIdealRandom(String antecedente) {
@@ -469,8 +509,64 @@ public class Antecedentes extends Classes{
 		return null;
 	}
 	
-	public void getacolitoDescricao() {
-		System.out.println("ACÓLITO\r\n\n"
+	public void setAntecedente(String antecedente) {
+		switch(antecedente) {
+		case "Acólito":
+			setAcolito();
+		break;
+		
+		case "Artesão de guilda":
+			setArtesaoDeGuilda();
+		break;
+		
+		case "Artista":
+			setArtista();
+		break;
+		
+		case "Charlatão":
+			setCharlatao();
+		break;
+		
+		case "Criminoso":
+			setCriminoso();
+		break;
+		
+		case "Eremita":
+			setEremita();
+		break;
+		
+		case "Forasteiro":
+			setForasteiro();
+		break;
+		
+		case "Herói do povo":
+			setHeroiDoPovo();
+		break;
+		
+		case "Marinheiro":
+			setMarinheiro();
+		break;
+		
+		case "Nobre":
+			setNobre();
+		break;
+		
+		case "Órfão":
+			setOrfao();
+		break;
+		
+		case "Sábio":
+			setSabio();
+		break;
+		
+		case "Soldado":
+			setSoldado();
+		break;
+		}
+	}
+	
+	public String getacolitoDescricao() {
+		String descricao ="ACÓLITO\r\n\n"
 				+ "Você viveu a serviço de um templo de algum deus\r\n"
 				+ "especifico ou de um panteão de deuses. Você age como um\r\n"
 				+ "intermediário entre o reino divino e o reino dos mortais,\r\n"
@@ -495,396 +591,463 @@ public class Antecedentes extends Classes{
 				+ "quando você entrou no templo), um livro de preces ou\r\n"
 				+ "uma conta de orações, 5 varetas de incenso,\r\n"
 				+ "vestimentas, um conjunto de roupas comuns e uma\r\n"
-				+ "algibeira contendo 15 po\r\n\n"
-				+ "CARACTERÍSTICA: ABRIGO DOS FIÉIS\r\n\n"
-				+ "Como um acólito, você detém o respeito daqueles que\r\n"
-				+ "compartilham de sua fé, e você pode realizar cerimônias\r\n"
-				+ "de sua divindade. Você e seus companheiros de aventura\r\n"
-				+ "podem até receber cura e caridade de um templo,\r\n"
-				+ "santuário ou outro posto de sua fé, embora devam\r\n"
-				+ "fornecer quaisquer componentes materiais necessários\r\n"
-				+ "para as magias. Aqueles que compartilham de sua\r\n"
-				+ "religião vão garantir a você (mas apenas você), custeando\r\n"
-				+ "um estilo de vida modesto.\r\n"
-				+ "Você também pode possuir laços com um templo\r\n"
-				+ "específico devotado à sua divindade ou panteão, e fixar\r\n"
-				+ "residência nele. Pode ser o templo que você está\r\n"
-				+ "acostumado a servir, se ainda tiver boas relações com ele,\r\n"
-				+ "ou um templo no qual você encontrou um novo lar.\r\n"
-				+ "Enquanto frequentar as redondezas desse templo, você\r\n"
-				+ "pode solicitar os sacerdotes para assisti-lo, desde que essa\r\n"
-				+ "assistência não seja de alguma forma perigosa e que você\r\n"
-				+ "sempre esteja em uma boa relação com seu templo.\r\n\n"
-				+ "CARACTERÍSTICAS SUGERIDAS\r\n\n"
-				+ "Acólitos são moldados pela sua experiência em templos ou\r\n"
-				+ "comunidades religiosas. Seu estudo da história e dogmas\r\n"
-				+ "de sua fé, e sua relação com os templos, santuários ou\r\n"
-				+ "hierarquias afetam seus maneirismos e ideais. Seus\r\n"
-				+ "defeitos podem ser uma hipocrisia oculta ou ideias\r\n"
-				+ "hereges, ou um ideal ou vínculo visto como fanatismo.\r\n\n");
-	}
+				+ "algibeira contendo 15 po\r\n\n";
 		
-	public void setAcolito() throws IOException {
+		return descricao;
+	}
+	
+	public String getArtesaoDaGuilda() {
+		String descricao = "ARTESÃO DE GUILDA\r\n"
+				+ "Você é membro de uma guilda de artesãos, perito em um\r\n"
+				+ "campo especifico e intimamente associado a outros\r\n"
+				+ "artesãos. Você é uma parte bem estabelecida do mundo\r\n"
+				+ "mercantil, livre, graças aos seus talentos e riqueza, das\r\n"
+				+ "restrições de uma ordem social feudal. Você aprendeu\r\n"
+				+ "suas perícias como aprendiz de um mestre artesão, com o\r\n"
+				+ "patrocínio da sua guilda, até se tornar um mestre por\r\n"
+				+ "seus próprios méritos.\r\n"
+				+ "Proficiência em Perícias: Intuição, Persuasão\r\n"
+				+ "Proficiência em Ferramentas: Um tipo de ferramenta\r\n"
+				+ "de artesão\r\n"
+				+ "Idiomas: Uma, à sua escolha\r\n"
+				+ "Equipamento: Um conjunto de ferramentas de artesão\r\n"
+				+ "(à sua escolha), uma carta de apresentação da sua\r\n"
+				+ "guilda, um conjunto de roupas de viajante e uma\r\n"
+				+ "algibeira com 15 poARTESÃO DE GUILDA\r\n"
+				+ "Você é membro de uma guilda de artesãos, perito em um\r\n"
+				+ "campo especifico e intimamente associado a outros\r\n"
+				+ "artesãos. Você é uma parte bem estabelecida do mundo\r\n"
+				+ "mercantil, livre, graças aos seus talentos e riqueza, das\r\n"
+				+ "restrições de uma ordem social feudal. Você aprendeu\r\n"
+				+ "suas perícias como aprendiz de um mestre artesão, com o\r\n"
+				+ "patrocínio da sua guilda, até se tornar um mestre por\r\n"
+				+ "seus próprios méritos.\r\n"
+				+ "Proficiência em Perícias: Intuição, Persuasão\r\n"
+				+ "Proficiência em Ferramentas: Um tipo de ferramenta\r\n"
+				+ "de artesão\r\n"
+				+ "Idiomas: Uma, à sua escolha\r\n"
+				+ "Equipamento: Um conjunto de ferramentas de artesão\r\n"
+				+ "(à sua escolha), uma carta de apresentação da sua\r\n"
+				+ "guilda, um conjunto de roupas de viajante e uma\r\n"
+				+ "algibeira com 15 po";
+		return descricao;
+	}
+	
+	public String getArtista() {
+		String descricao = "ARTISTA\r\n"
+				+ "Você cresce em frente a uma audiência. Você sabe como\r\n"
+				+ "fasciná-los, entretê-los e, até mesmo, inspirá-los. Suas\r\n"
+				+ "poesias podem avivar o coração daqueles que te ouvem,\r\n"
+				+ "despertando tristeza ou alegria, risadas ou ira. Sua\r\n"
+				+ "música ergue seus espíritos ou captura suas aflições. Seus\r\n"
+				+ "passos de dança cativam, seu humor os extasia\r\n"
+				+ "rapidamente. Qualquer que sejam as técnicas que você\r\n"
+				+ "use, sua arte é sua vida.\r\n"
+				+ "Proficiência em Perícias: Acrobacia, Atuação\r\n"
+				+ "Proficiência em Ferramentas: Kit de disfarce, um tipo\r\n"
+				+ "de instrumento musical\r\n"
+				+ "Equipamento: Um instrumento musical (à sua escolha),\r\n"
+				+ "um presente de um admirador (carta de amor, mecha\r\n"
+				+ "de cabelo ou uma bijuteria), um traje e uma algibeira\r\n"
+				+ "contendo 15 po\r\n";
+		return descricao;
+	}
+	
+	public String getCharlatao() {
+		String descricao = "CHARLATÃO\r\n"
+				+ "Você sempre teve jeito com as pessoas. Você sabe o que os\r\n"
+				+ "deixa extasiados, você pode destrinchar os desejos em\r\n"
+				+ "seus corações após alguns minutos de conversa e, com\r\n"
+				+ "algumas perguntas capciosas, você pode lê-los como se\r\n"
+				+ "eles fossem livros infantis. É um talento útil e que você\r\n"
+				+ "está perfeitamente disposto a usar em sua vantagem.\r\n"
+				+ "Você sabe o que as pessoas querem e você as entrega\r\n"
+				+ "ou, pelo menos, promete que irá entregar. O bom senso\r\n"
+				+ "deveria manter as pessoas longe de coisas que parecem\r\n"
+				+ "muito boas pra serem verdade, mas o bom senso parece\r\n"
+				+ "desaparecer quando você está por perto. A garrafa de\r\n"
+				+ "liquido cor de rosa irá, sem dúvida, curar essa brotoeja\r\n"
+				+ "horrenda, essa pomada – nada mais é que um pouco de\r\n"
+				+ "banha com uma pitada de sal de prata – pode restaurar a\r\n"
+				+ "juventude e vigor e existe uma ponte na cidade que\r\n"
+				+ "acabar de ficar a venda. Essas maravilhas soam\r\n"
+				+ "improváveis, mas você as faz soar como barganhas reais.\r\n"
+				+ "Proficiência em Perícias: Enganação, Prestidigitação\r\n"
+				+ "Proficiência em Ferramentas: Kit de disfarce, kit de\r\n"
+				+ "falsificação\r\n"
+				+ "Equipamento: Um conjunto de roupas finas, um kit de\r\n"
+				+ "disfarce, ferramentas de trapaça, à sua escolha (dez\r\n"
+				+ "garrafas tampadas preenchidas com líquidos coloridos,\r\n"
+				+ "um conjunto de dados viciados, um baralho de cartas\r\n"
+				+ "marcadas ou um anel de sinete de um duque\r\n"
+				+ "imaginário), e uma algibeira contendo 15po";
+		return descricao;
+	}
+	
+	public String getCriminoso() {
+		String descricao = "CRIMINOSO\r\n"
+				+ "Você é um criminoso experiente com um histórico de\r\n"
+				+ "contravenções. Você gastou um bom tempo entre outros\r\n"
+				+ "criminosos e ainda mantém contato com eles e com o\r\n"
+				+ "submundo do crime. Você está mais perto do que a\r\n"
+				+ "maioria do submundo do assassinato, roubo e violência\r\n"
+				+ "que prevalece no ventre da sociedade, e você sobreviveu\r\n"
+				+ "até esse ponto desprezando a lei e os regulamentos da\r\n"
+				+ "sociedade.\r\n"
+				+ "Proficiência em Perícias: Enganação, Furtividade\r\n"
+				+ "Proficiência em Ferramentas: Um tipo de kit de jogo,\r\n"
+				+ "ferramentas de ladrão\r\n"
+				+ "Equipamento: Um pé de cabra, um conjunto de roupas\r\n"
+				+ "escuras comuns com capuz e uma algibeira contendo\r\n"
+				+ "15 po";
+		return descricao;
+	}
+	
+	public String getEremita() {
+		String descricao = "EREMITA\r\n"
+				+ "Você viveu em reclusão – ou em uma comunidade isolada\r\n"
+				+ "como um monastério ou completamente sozinho – por um\r\n"
+				+ "período importante da sua vida. No tempo em que passou\r\n"
+				+ "longe do clamor da sociedade, você encontrou quietude,\r\n"
+				+ "solidão e, talvez, algumas das respostas que procurava.\r\n"
+				+ "Proficiência em Perícias: Medicina, Religião\r\n"
+				+ "Proficiência em Ferramentas: Kit de herbalismo\r\n"
+				+ "Idiomas: Um à sua escolha\r\n"
+				+ "Equipamento: Um estojo de pergaminho cheio de notas\r\n"
+				+ "dos seus estudos e orações, um cobertor de inverno,\r\n"
+				+ "um conjunto de roupas comuns, um kit de herbalismo\r\n"
+				+ "e 5 po.\r\n";
+		return descricao;
+	}
+	
+	public String getForasteiro() {
+		String descricao = "FORASTEIRO\r\n"
+				+ "Você cresceu em uma área selvagem, longe da civilização\r\n"
+				+ "e dos confortos da cidade e tecnologia. Você testemunhou\r\n"
+				+ "a migração de manadas maiores que florestas, sobreviveu\r\n"
+				+ "à climas mais extremos que qualquer citadino poderia\r\n"
+				+ "compreender e é adepto da solidão de ser a única criatura\r\n"
+				+ "pensante em quilômetros, em qualquer direção. O\r\n"
+				+ "isolamento está no seu sangue, quer você seja um\r\n"
+				+ "nômade, um explorador, um recluso, um forrageador ou\r\n"
+				+ "mesmo um saqueador. Mesmo em lugares que você não\r\n"
+				+ "conheça as características especificas do terreno, você\r\n"
+				+ "vai conseguir se virar."
+				+ "Proficiência em Perícias: Atletismo, Sobrevivência\r\n"
+				+ "Proficiência em Ferramentas: Um tipo de\r\n"
+				+ "instrumento musical\r\n"
+				+ "Idiomas: Um à sua escolha\r\n"
+				+ "Equipamento: Um bordão, uma armadilha de caça, um\r\n"
+				+ "fetiche de um animal que você matou, um conjunto de\r\n"
+				+ "roupas de viajante e uma algibeira contendo 10 po\r\n";
+		return descricao;
+	}
+	
+	public String getHeroiDoPovo() {
+		String descricao = "HERÓI DO POVO\r\n"
+				+ "Você veio de uma parcela humilde da sociedade, mas está\r\n"
+				+ "destinado a muito mais. O povo de sua vila já o reconhece\r\n"
+				+ "como campeão, e seu destino o conduz a batalhas contra\r\n"
+				+ "tiranos e monstros que ameaçam o povo aonde quer que\r\n"
+				+ "você vá.\r\n"
+				+ "Proficiência em Perícias: Adestrar Animais,\r\n"
+				+ "Sobrevivência\r\n"
+				+ "Proficiência em Ferramentas: Um tipo de ferramenta\r\n"
+				+ "de artesão, veículos (terrestre)\r\n"
+				+ "Equipamento: Um conjunto de ferramentas de artesão\r\n"
+				+ "(à sua escolha), uma pá, um pote de ferro, um conjunto\r\n"
+				+ "de roupas comuns e uma algibeira contendo 10 po\r\n";
+		return descricao;
+	}
+	
+	public String getMarinheiro() {
+		String descricao = "MARINHEIRO\r\n"
+				+ "Você navegou em um navio pelo mar por anos. Nesse\r\n"
+				+ "período, você enfrentou poderosas tormentas, monstros\r\n"
+				+ "das profundezas e aqueles que queriam afundar o seu\r\n"
+				+ "ganha-pão para as profundezas insondáveis. Seu primeiro\r\n"
+				+ "amor é a distante linha do horizonte, mas chegou a hora\r\n"
+				+ "de você por suas mãos em algo novo.\r\n"
+				+ "Converse sobre a natureza do navio que você navegou\r\n"
+				+ "anteriormente com seu Mestre. Era um navio mercante,\r\n"
+				+ "uma embarcação naval, um navio de exploração ou um\r\n"
+				+ "navio pirata? O quão famoso (ou infame) ele é? Ele era\r\n"
+				+ "muito viajado? Ele continua navegando, ou está\r\n"
+				+ "desaparecido e, provavelmente, perdido com seus\r\n"
+				+ "tripulantes?\r\n"
+				+ "Quais eram seus deveres a bordo – contramestre,\r\n"
+				+ "capitão, navegador, cozinheiro ou outra posição? Quem\r\n"
+				+ "eram o capitão e primeiro marinheiro? Você deixou o\r\n"
+				+ "navio de bem com seus companheiros ou fugiu?\r\n"
+				+ "Proficiência em Perícias: Atletismo, Percepção\r\n"
+				+ "Proficiência em Ferramentas: Ferramentas de\r\n"
+				+ "navegador, veículo (aquático)\r\n"
+				+ "Equipamento: Uma malagueta (clava), 15 metros de\r\n"
+				+ "corda de seda, uma amuleto da sorte como um pé de\r\n"
+				+ "coelho ou uma pequena pedra com um furo no centro\r\n"
+				+ "(ou você pode rolar uma bugiganga da tabela\r\n"
+				+ "Bugigangas no capítulo 5), um conjunto de trajes\r\n"
+				+ "comuns e uma algibeira contendo 10 po";
+		return descricao;
+	}
+	
+	public String getNobre() {
+		String descricao = "NOBRE\r\n"
+				+ "Você entende de riqueza, poder e privilégios. Você carrega\r\n"
+				+ "um título de nobreza, sua família possui terras, coleta\r\n"
+				+ "impostos e exerce uma influência política significativa.\r\n"
+				+ "Você pode ser um aristocrata mimado pouco familiarizado\r\n"
+				+ "com o trabalho ou com o desconforto, um ex-comerciante\r\n"
+				+ "elevado à nobreza ou um malandro deserdado com um\r\n"
+				+ "sentido desproporcional de direitos. Ou pode ser um dono\r\n"
+				+ "de terra honesto e trabalhador que se preocupa com as\r\n"
+				+ "pessoas que vivem e trabalham em sua terra, sutilmente\r\n"
+				+ "ciente da sua responsabilidade para com eles.\r\n"
+				+ "Converse com seu Mestre para chegar a um título\r\n"
+				+ "adequado e determinar a quantidade de autoridade esse\r\n"
+				+ "título carrega. Um título de nobreza não fica com você – é\r\n"
+				+ "conectado a uma família inteira, e qualquer título que\r\n"
+				+ "você possuir passará para seus filhos. Você não precisa\r\n"
+				+ "determinar seu título de nobreza sozinho, você também\r\n"
+				+ "deve conversar com seu Mestre para descrever sua\r\n"
+				+ "família e a influência dela sobre você.\r\n"
+				+ "Sua família é antiga e estabelecida ou só recentemente\r\n"
+				+ "você foi agraciado com seu título? Qual a influência que\r\n"
+				+ "sua família exerce e sobre qual área? Que tipo de\r\n"
+				+ "reputação sua família tem entre os outros aristocratas da\r\n"
+				+ "região? Como as pessoas comuns consideram sua família?\r\n"
+				+ "Qual é sua posição na família? Um herdeiro ou chefe\r\n"
+				+ "da família? Você já herdou o título? Como você se sente\r\n"
+				+ "sobre essa responsabilidade? Você está tão abaixo da\r\n"
+				+ "linha de herança que ninguém se importa com o que você\r\n"
+				+ "faz, contanto que não envergonhe a família? Como é que o\r\n"
+				+ "chefe da família se sente sobre a sua carreira de\r\n"
+				+ "aventuras? Você está de bem com a família ou anda\r\n"
+				+ "afastado dela?\r\n"
+				+ "Sua família tem um brasão de armas? Uma insígnia\r\n"
+				+ "que você pode usar em um anel de sinete? Cores\r\n"
+				+ "específicas que você usa o tempo todo? Um animal que\r\n"
+				+ "você considera como um símbolo de sua linhagem ou um\r\n"
+				+ "membro espiritual da família?\r\n"
+				+ "Esses detalhes ajudam a estabelecer sua família e seu\r\n"
+				+ "título como características do mundo de campanha.\r\n"
+				+ "Proficiência em Perícias: História, Persuasão\r\n"
+				+ "Proficiência em Ferramentas: Um tipo de kit de jogos\r\n"
+				+ "Idiomas: Um à sua escolha\r\n"
+				+ "Equipamento: Um conjunto de trajes finos, um anel de\r\n"
+				+ "sinete, um pergaminho de linhagem e uma algibeira\r\n"
+				+ "contendo 25 po.\r\n";
+		
+		return descricao;
+	}
+	
+	public String getOrfao() {
+		String descricao = "ÓRFÃO\r\n"
+				+ "Você cresceu nas ruas, sozinho, órfão e pobre. Você não\r\n"
+				+ "tinha ninguém para cuidar de você ou te alimentar,\r\n"
+				+ "então, aprendeu a se virar sozinho. Você lutou ferozmente\r\n"
+				+ "por comida e se manteve constantemente atendo a outras\r\n"
+				+ "almas desesperadas que pudessem te roubar. Você\r\n"
+				+ "dormiu em telhados e becos, exposto aos elementos e\r\n"
+				+ "suportou doenças sem ajuda da medicina ou um lugar\r\n"
+				+ "para se recuperar. Você sobreviveu a despeito de tudo e,\r\n"
+				+ "conseguiu isso através de astucia, força, agilidade ou uma\r\n"
+				+ "combinação de cada.\r\n"
+				+ "Você começa sua carreira de aventureiro com dinheiro\r\n"
+				+ "o suficiente para viver modestamente, mas em segurança,\r\n"
+				+ "por pelo menos dez dias. Como você conseguiu esse\r\n"
+				+ "dinheiro? O que aconteceu para que você conseguisse se\r\n"
+				+ "libertar das circunstancias desesperadoras e embarcasse\r\n"
+				+ "em uma vida melhor?\r\n"
+				+ "Proficiência em Perícias: Furtividade, Prestidigitação\r\n"
+				+ "Proficiência em Ferramentas: Kit de disfarce,\r\n"
+				+ "ferramentas de ladrão\r\n"
+				+ "Equipamento: Uma faca pequena, um mapa da cidade\r\n"
+				+ "em que você cresceu, um rato de estimação, um\r\n"
+				+ "pequeno objeto para lembrar dos seus pais, um\r\n"
+				+ "conjunto de roupas comuns e uma algibeira contendo\r\n"
+				+ "10 po\r\n";
+		return descricao;
+	}
+	
+	public String getSabio() {
+		String descricao = "SÁBIO\r\n"
+				+ "Você ficou anos aprendendo sobre o conhecimento do\r\n"
+				+ "multiverso. Você decorou manuscritos, estudou\r\n"
+				+ "pergaminhos e escutou os grandes especialistas nos temas\r\n"
+				+ "que o interessam. Seus esforços fizeram de você um\r\n"
+				+ "mestre no seu campo de estudo.\r\n"
+				+ "Proficiência em Perícias: Arcanismo, História\r\n"
+				+ "Idiomas: Dois à sua escolha\r\n"
+				+ "Equipamento: Um vidro de tinta escura, uma pena, uma\r\n"
+				+ "faca pequena, uma carta de um falecido colega\r\n"
+				+ "perguntando a você algo que você nunca terá a chance\r\n"
+				+ "de responder, um conjunto de roupas comuns e uma\r\n"
+				+ "algibeira contendo 10 po\r\n";
+		return descricao;
+	}
+	
+	public String getSoldado() {
+		String descricao = "SOLDADO\r\n"
+				+ "A guerra esteve na sua vida desde que você se recorda.\r\n"
+				+ "Você foi treinado desde jovem, estudou o uso das armas e\r\n"
+				+ "armaduras, aprendeu técnicas básicas de sobrevivência,\r\n"
+				+ "incluindo como permanecer vivo no campo de batalha.\r\n"
+				+ "Você pode ter feito parte de uma armada nacional, ou\r\n"
+				+ "uma companhia de mercenários, talvez até mesmo uma\r\n"
+				+ "milícia local, que cresceu proeminentemente durante uma\r\n"
+				+ "guerra recente.\r\n"
+				+ "Quando você escolher esse antecedente, converse com\r\n"
+				+ "seu Mestre para determinar de qual organização militar\r\n"
+				+ "você fez parte, quão longe você progrediu na hierarquia e\r\n"
+				+ "que tipos de experiência você teve na sua carreira militar?\r\n"
+				+ "Foi um exército de guarda, uma patrulha de cidade ou a\r\n"
+				+ "milícia de uma pequena vila? Ou talvez você tenha\r\n"
+				+ "participado da defesa pessoal de um nobre, ou mercador,\r\n"
+				+ "ou de um cartel de mercenários.\r\n"
+				+ "Proficiência em Perícias: Atletismo, Intimidação\r\n"
+				+ "Proficiência em Ferramentas: Um tipo de kit de jogo,\r\n"
+				+ "veículo (terrestre)\r\n"
+				+ "Equipamento: Uma insígnia de patente, um fetiche\r\n"
+				+ "obtido de um inimigo caído (uma adaga, lâmina\r\n"
+				+ "partida ou tira de estandarte), um conjunto de dados\r\n"
+				+ "de osso ou baralho, um conjunto de roupas comuns e\r\n"
+				+ "uma algibeira contendo 10 po\r\n";
+		return descricao;
+	}
+	
+	public void setAcolito() {
 		getFicha().setAntecedente("Acólito");
 		List<String> profPericias = Arrays.asList("Intuição", "Religião");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
-		getFicha().setIdiomas(this.idiomas.setIdioma(getFicha().getIdiomas(), getFicha().getAntecedente()));
 		List<String> equipamentos = Arrays.asList("Símbolo sagrado", "Livro de preces", "Varetas de incenso (5)", "Vestimentas", "Conjunto de roupas comuns");
 		getFicha().setTesouro("Algibeira 15 po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setArtesaoDeGuilda() throws IOException {
+	public void setArtesaoDeGuilda() {
 		getFicha().setAntecedente("Artesão de guilda");
 		List<String> profPericias = Arrays.asList("Intuição", "Persuasão");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
-		getFicha().setProfi_ferramentas_peri(getEquips().setFerramentaArtesao());
-		getFicha().setIdiomas(this.idiomas.setIdioma(getFicha().getIdiomas(), getFicha().getAntecedente()));
-		getFicha().setEquipamentos(getEquips().setFerramentaArtesao());
+//		getFicha().setProfi_ferramentas_peri(getEquips().setFerramentaArtesao());
+//		getFicha().setIdiomas(this.idiomas.setIdioma(getFicha().getIdiomas(), getFicha().getAntecedente()));
+//		getFicha().setEquipamentos(getEquips().setFerramentaArtesao());
 		List<String> equipamentos = Arrays.asList("Carta de apresentação da sua guilda", "Conjunto de roupas de viajante", "Algibeira 15 po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setArtista() throws IOException {
+	public void setArtista() {
 		getFicha().setAntecedente("Artista");
 		List<String> profPericias = Arrays.asList("Acrobacia", "Atuação");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
 		getFicha().setProfi_ferramentas_peri("Kit de disfarce");
-		getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical());
-		getFicha().setEquipamentos(getEquips().setInstrumentoMusical());
+//		getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical());
+//		getFicha().setEquipamentos(getEquips().setInstrumentoMusical());
 		List<String> equipamentos = Arrays.asList("Presente de um admirador", "Traje", "Algibeira 15 po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setCharlatao() throws IOException {
+	public void setCharlatao() {
 		getFicha().setAntecedente("Charlatão");
 		List<String> profPericias = Arrays.asList("Enganação", "Prestidigitação");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
 		getFicha().setProfi_ferramentas_peri("Kit de disfarce");
 		getFicha().setProfi_ferramentas_peri("Kit de falsificação");
 		List<String> equipamentos = Arrays.asList("Conjunto de roupas finas", "Kit de disfarce", "Ferramentas de trapaça", "Algibeira 15po");
 		getFicha().setEquipamentos(equipamentos);
-		getFicha().setEquipamentos(getEquips().setEquipsCharlatao());
-		setAntecedente();
+//		getFicha().setEquipamentos(getEquips().setEquipsCharlatao());
 	}
 	
-	public void setCriminoso() throws IOException {
+	public void setCriminoso() {
 		getFicha().setAntecedente("Criminoso");
 		List<String> profPericias = Arrays.asList("Enganação", "Furtividade");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
 		getFicha().setProfi_ferramentas_peri("Kit de jogo");
 		getFicha().setProfi_ferramentas_peri("Ferramentas de ladrão");
 		List<String> equipamentos = Arrays.asList("Pé de cabra", "Conjunto de roupas escuras comuns com capuz", "Algibeira 15po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setEremita() throws IOException {
+	public void setEremita() {
 		getFicha().setAntecedente("Eremita");
 		List<String> profPericias = Arrays.asList("Medicina", "Religião");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
 		getFicha().setProfi_ferramentas_peri("Kit de herbalismo");
-		getFicha().setIdiomas(this.idiomas.setIdioma(1));
 		List<String> equipamentos = Arrays.asList("Estojo de pergaminho cheio de notas dos seus estudos e orações", "Cobertor de inverno", "Conjunto de roupas comuns", "Kit de herbalismo", "5po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setForasteiro() throws IOException {
+	public void setForasteiro() {
 		getFicha().setAntecedente("Forasteiro");
 		List<String> profPericias = Arrays.asList("Atletismo", "Sobrevivência");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
-		getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical());
-		getFicha().setIdiomas(this.idiomas.setIdioma(1));
+//		getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical());
 		List<String> equipamentos = Arrays.asList("Bordão", "Armadilha de caça", "Fetiche de um animal que você matou", "Conjunto de roupas de viajante", "Algibeira 10po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setHeroiDoPovo() throws IOException {
+	public void setHeroiDoPovo() {
 		getFicha().setAntecedente("Herói do povo");
 		List<String> profPericias = Arrays.asList("Adestrar Animais", "Sobrevivência");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
-		getFicha().setProfi_ferramentas_peri(getEquips().setFerramentaArtesao());
+//		getFicha().setProfi_ferramentas_peri(getEquips().setFerramentaArtesao());
 		getFicha().setProfi_ferramentas_peri("Veículos (terrestre)");
-		getFicha().setEquipamentos(getEquips().setFerramentaArtesao());
+//		getFicha().setEquipamentos(getEquips().setFerramentaArtesao());
 		List<String> equipamentos = Arrays.asList("Pá", "Pote de ferro", "Conjunto de roupas comuns", "Algibeira 10po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setMarinheiro() throws IOException {
+	public void setMarinheiro() {
 		getFicha().setAntecedente("Marinheiro");
 		List<String> profPericias = Arrays.asList("Atletismo", "Percepção");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
 		getFicha().setProfi_ferramentas_peri("Ferramentas de navegador");
 		getFicha().setProfi_ferramentas_peri("Veículos (aquático)");
 		List<String> equipamentos = Arrays.asList("Malagueta (clava)", "15M de corda de seda", "Amuleto da sorte", "Conjunto de trajes comuns", "Algibeira 10po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setNobre() throws IOException {
+	public void setNobre() {
 		getFicha().setAntecedente("Nobre");
 		List<String> profPericias = Arrays.asList("História", "Persuasão");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
 		getFicha().setProfi_ferramentas_peri("Kit de jogos");
-		getFicha().setIdiomas(this.idiomas.setIdioma(1));
 		List<String> equipamentos = Arrays.asList("Conjunto de trajes finos", "Anel de sinete", "Pergaminho de linhagem", "Algibeira 25po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setOrfao() throws IOException {
+	public void setOrfao() {
 		getFicha().setAntecedente("Órfão");
 		List<String> profPericias = Arrays.asList("Furtividade", "Prestidigitação");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
 		getFicha().setProfi_ferramentas_peri("Kit de disfarce");
 		getFicha().setProfi_ferramentas_peri("Ferramentas de ladrão");
 		List<String> equipamentos = Arrays.asList("Faca pequena", "Mapa da cidade que você cresceu", "Rato de estimação", "Pequeno objeto para lembrar dos seus pais", "Conjunto de roupas comuns", "Algibeira 10po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setSabio() throws IOException {
+	public void setSabio() {
 		getFicha().setAntecedente("Sábio");
 		List<String> profPericias = Arrays.asList("Arcanismo", "História");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
-		getFicha().setIdiomas(this.idiomas.setIdioma(2));
 		List<String> equipamentos = Arrays.asList("Vidro de tinta escura", "Pena", "Faca pequena", "Carta de um falecido colega perguntando a você algo que você nunca terá a chance de responder", "Conjunto de roupas comuns", "Algibeira 10po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setSoldado() throws IOException {
+	public void setSoldado()  {
 		getFicha().setAntecedente("Soldado");
 		List<String> profPericias = Arrays.asList("Atletismo", "Intimidação");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().setPericias(profPericias);
-//		getFicha() = this.proficiencia.getFicha();
 		List<String> equipamentos = Arrays.asList("Insígnia de patente", "Fetiche obtido de um inimigo caído", "Conjuto de dados de osso ou baralho", "Conjunto de roupas comuns", "Algibeira 10po");
 		getFicha().setEquipamentos(equipamentos);
-		setAntecedente();
 	}
 	
-	public void setAntecedente() throws IOException {
-		Scanner entrada = new Scanner(System.in);
-
-		boolean caracterLoop = false;
-		while(caracterLoop == false) {
-			int caracterMenu;
-			System.out.println("--Caracteristicas--");
-			System.out.println("Você deseja escolher as caracteristicas ou rolar o dado?\n1 - Rolar o dado.\n2 - Manual.");
-			
-			caracterMenu = entrada.nextInt();
-			switch(caracterMenu) {
-			case 1:
-				System.out.println("--Traços de Personalidade sorteadors--\n");
-				getFicha().setTracos_personalidade(getTracoRandom(getFicha().getAntecedente()));
-				System.out.println(getFicha().getTracos_personalidade().get(0) +"\n");
-				System.out.println(getFicha().getTracos_personalidade().get(1) +"\n");
-				System.out.println("Aperte qualquer tecla para continuar...");
-				System.in.read();
-				System.out.println("--Ideal sorteado--\n");
-				getFicha().setIdeal(getIdealRandom(getFicha().getAntecedente()));
-				System.out.println(getFicha().getIdeal() +"\n");
-				System.out.println("Aperte qualquer tecla para continuar...");
-				System.in.read();
-				System.out.println("--Vínculo--\n");
-				getFicha().setVinculo(getVinculoRandom(getFicha().getAntecedente()));
-				System.out.println(getFicha().getVinculo());
-				System.out.println("Aperte qualquer tecla para continuar...");
-				System.in.read();
-				System.out.println("--Defeito--\n");
-				getFicha().setDefeito(getDefeitoRandom(getFicha().getAntecedente()));
-				System.out.println(getFicha().getDefeito());
-				System.out.println("Aperte qualquer tecla para continuar...");
-				System.in.read();
-				caracterLoop = true;
-			break;
-			
-			case 2:
-				int caracterMenu2 = 1;
-				boolean caracterMenu2Loop = false;
-				while(caracterMenu2Loop == false) {
-					switch(caracterMenu2) {
-					case 1:
-						ArrayList<String> tracos = new ArrayList<String>();
-						tracos.addAll(getTraco(getFicha().getAntecedente()));
-						List<String> tracosEscolhidos = new ArrayList<String>();
-						int opcao;
-						int count = 2;
-						
-						while(count != 0) {
-							System.out.println("--Traços de Personalidade--\n");
-							System.out.println("Escolha " +count +" Traços de Personalidade:\n");
-							do{
-								for(int i = 0; i < tracos.size(); i++) {
-									System.out.println(i +tracos.get(i));
-									
-								}
-								
-								while(!entrada.hasNextInt()) {
-									System.out.println("Digite um numero!");
-									entrada.next();
-								}
-								
-								opcao = entrada.nextInt();
-							}while(opcao < 0 || opcao > tracos.size());
-							
-							if(confirmarDecisao(tracos.get(opcao)) == true) {
-								count--;
-								tracosEscolhidos.add(tracos.get(opcao));
-								tracos.remove(opcao);
-							}
-						}
-						getFicha().setTracos_personalidade(tracosEscolhidos);
-						
-						caracterMenu2 = 2;
-					break;
-					
-					case 2:
-						int opIdeal = 0;
-						boolean case2Loop = false;
-						while(case2Loop == false) {
-							do {
-								System.out.println("--Ideal--\n");
-								System.out.println("Escolha seu ideal:\n");
-								for(int i = 0; i < getIdeal(getFicha().getAntecedente()).size(); i++) {
-									System.out.println(i +getIdeal(getFicha().getAntecedente()).get(i));
-								}
-								
-								while(!entrada.hasNextInt()) {
-									System.out.println("Digite um numero!");
-									entrada.next();
-								}
-								
-								opIdeal = entrada.nextInt();
-							}while(opIdeal < 0 || opIdeal > getIdeal(getFicha().getAntecedente()).size());
-							if(confirmarDecisao(getIdeal(getFicha().getAntecedente()).get(opIdeal)) == true) case2Loop = true;
-							
-						}
-						
-						getFicha().setIdeal(getIdeal(getFicha().getAntecedente()).get(opIdeal));
-						caracterMenu2 = 3;
-					break;
-					
-					case 3:
-						int opVinculo = 0;
-						boolean case3Loop = false;
-						while(case3Loop == false) {
-							do {
-								System.out.println("--Vinculo--\n");
-								System.out.println("Escolha seu Vinculo:\n");
-								for(int i = 0; i < getVinculo(getFicha().getAntecedente()).size(); i++) {
-									System.out.println(i +getVinculo(getFicha().getAntecedente()).get(i));
-								}
-								
-								while(!entrada.hasNextInt()) {
-									System.out.println("Digite um numero!");
-									entrada.next();
-								}
-								
-								opVinculo = entrada.nextInt();
-							}while(opVinculo < 0 || opVinculo > getVinculo(getFicha().getAntecedente()).size());
-							
-							if(confirmarDecisao(getVinculo(getFicha().getAntecedente()).get(opVinculo)) == true) case3Loop = true;
-						}
-						
-						getFicha().setVinculo(getVinculo(getFicha().getAntecedente()).get(opVinculo));
-						caracterMenu2 = 4;
-					break;
-					
-					case 4:
-						int opDefeito = 0;
-						boolean case4Loop = false;
-						while(case4Loop == false) {
-							do {
-								System.out.println("--Defeito--\n");
-								System.out.println("Escolha seu defeito:\n");
-								for(int i = 0; i < getDefeito(getFicha().getAntecedente()).size(); i++) {
-									System.out.println(i +getDefeito(getFicha().getAntecedente()).get(i));
-								}
-								
-								while(!entrada.hasNextInt()) {
-									System.out.println("Digite um numero!");
-									entrada.next();
-								}
-								
-								opDefeito = entrada.nextInt();
-							}while(opDefeito  < 0 || opDefeito  > getDefeito(getFicha().getAntecedente()).size());
-							
-							if(confirmarDecisao(getDefeito(getFicha().getAntecedente()).get(opDefeito)) == true) case4Loop = true;
-						}
-						
-						getFicha().setDefeito(getDefeito(getFicha().getAntecedente()).get(opDefeito));
-						caracterMenu2Loop = true;
-					break;
-					}
-					
-				}
-			break;
-			}
-			
-			caracterLoop = true;
-		}
-		
-	}
-	
-	public boolean confirmarDecisao(String opcao) {
-		Scanner entrada = new Scanner(System.in);
-		
-		char decisao;
-		do {
-			System.out.println("\nTem certeza que deseja " +opcao +"? (Y/N)");
-			
-			decisao = entrada.next().charAt(0);
-		}while((Objects.equals(decisao, 'Y') || Objects.equals(decisao, 'y')  || Objects.equals(decisao, 'N') || Objects.equals(decisao, 'n')) == false);
-		
-		if(decisao == 'Y' || decisao == 'y') {
-			return true;
-		}
-		return false;
-	}
 	
 	public void setIdiomas(Idiomas idiomas) {
 		this.idiomas = idiomas;
 	}
 	
-//	public FichaDoPersonagem getFicha() {
-//		return ficha;
-//	}
-	
-//	public void setFicha(FichaDoPersonagem ficha) {
-//		getFicha() = ficha;
-//	}
+
 	
 //Antecedentes
 	//Acolito

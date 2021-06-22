@@ -8,11 +8,17 @@ import java.util.Scanner;
 
 public class Bardo extends Classes{
 	private SecureRandom random = new SecureRandom();
+	private List<String> pericias = Arrays.asList("Acrobacia", "Adestrar Animais", "Arcanismo", "Atletismo", "Enganação", "História", "Intuição", "Intimidação", "Investigação", "Medicina", "Natereza", "Percepção", "Atuação", "Persuasão", "Religião", "Prestidigitação", "Furtividade", "Sobrevivência");
+
 //	private String nome = "Bardo";
 //	private FichaDoPersonagem ficha;
 //	private Proficiencia proficiencia;
 //	private Equipamentos equips;
 //	private Magias magias;
+	
+	public List<String> getPericiasList(){
+		return this.pericias;
+	}
 	
 	public String bardoDescricao() {
 		String descricao = "Cantarolando enquanto entrelaça os seus dedos\r\n"
@@ -69,21 +75,17 @@ public class Bardo extends Classes{
 	public void setBardo() {
 		getFicha().setClasse("Bardo");
 		getFicha().setBonus_proficiencia(2);
-//		this.proficiencia.setFicha(ficha);
 		List<String> proficiencia_equips = Arrays.asList("Armaduras leves", "Armas simples", "Bestas de mão", "Espadas longas", "Rapieiras", "Espadas curtas");
 		getProficiencia().SetProfEquips(proficiencia_equips);
-		getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical(3));
+//		getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical(3));
 		List<String> proficiencia_resistencia = Arrays.asList("Destreza", "Carisma");
 		getProficiencia().SetResistencia(proficiencia_resistencia);
-		getProficiencia().setPericias(3);
-//		this.ficha = this.proficiencia.getFicha();
-		equips1();
-		equips2();
-		equips3();
-//		this.magias.setFicha(ficha);
-		getMagias().truquesBardo();
-		getMagias().setMagiasBardoLV1();
-//		this.ficha = this.magias.getFicha();
+//		getProficiencia().setPericias(3);
+//		equips1();
+//		equips2();
+//		equips3();
+//		getMagias().truquesBardo();
+//		getMagias().setMagiasBardoLV1();
 		getFicha().setHabilidade_conjuracao("Carisma");
 	}
 	
@@ -117,115 +119,115 @@ public class Bardo extends Classes{
 		return proficiencia+ModCarisma;
 	}
 	
-	public void equips1() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equip1Loop = false;
-		while(equip1Loop == false) {
-			int equip1Menu;
-			System.out.println("Escolha entre (1) um rapieira ou (2) uma espada longa ou (3) qualquer arma simples.");
-			
-			equip1Menu = entrada.nextInt();
-			switch(equip1Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.println("Tem certeza que deseja escolher Rapieira? (Y/N)");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_marciais_CAC().size(); i++) {
-							if(Objects.equals(new String("Rapieira"), getEquips().getArmas_marciais_CAC().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_marciais_CAC().get(i));
-							}
-						}
-						decisaoLoop = true;
-						equip1Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 2:
-				char decisaocase2;
-				boolean decisao2Loop = false;
-				while(decisao2Loop == false) {
-					System.out.println("Tem certeza que deseja escolher Espada longa? (Y/N)");
-					
-					decisaocase2 = entrada.next().charAt(0);
-					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
-						for(int i = 0; i < getEquips().getArmas_marciais_CAC().size(); i++) {
-							if(Objects.equals(new String("Espada Longa"), getEquips().getArmas_marciais_CAC().get(i))) {
-								getFicha().setEquipamentos(getEquips().getArmas_marciais_CAC().get(i));
-							}
-						}
-						decisao2Loop = true;
-						equip1Loop = true;
-					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
-						decisao2Loop = true;
-					}
-					
-				}
-				
-			break;
-			
-			case 3:
-				getFicha().setEquipamentos(getEquips().setArmasSimples());
-			break;
-			}
-		}
-	}
-	
-	public void equips2() {
-		getEquips().setPacotes("Pacote de Diplomata", "Pacote de Artista");
-	}
-	
-	public void equips3() {
-		Scanner entrada = new Scanner(System.in);
-		boolean equips3Loop = true;
-		int equips3Menu;
-		while(equips3Loop == false) {
-			
-			System.out.println("Escolha entre essas opções\n(1) um lute ou (2) qualquer outro instrumento musical:");
-			
-			while(!entrada.hasNextInt()) {
-				System.out.println("Digite um numero!");
-				entrada.next();
-			}
-			
-			equips3Menu = entrada.nextInt();
-			switch(equips3Menu) {
-			case 1:
-				char decisaocase1;
-				boolean decisaoLoop = false;
-				while(decisaoLoop == false) {
-					System.out.printf("Tem certeza que deseja escolher um lute? (Y/N)\n");
-					
-					decisaocase1 = entrada.next().charAt(0);
-					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
-						getFicha().setEquipamentos("Lute");
-						decisaoLoop = true;
-						equips3Loop = true;
-					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
-						decisaoLoop = true;
-					}
-				}
-				
-			break;
-			
-			case 2:
-				getFicha().setEquipamentos(getEquips().setInstrumentoMusical(1));
-			break;
-			
-			default:
-				System.out.println("Essa opção não existe!");
-			break;
-			}
-		}
-	}
+//	public void equips1() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equip1Loop = false;
+//		while(equip1Loop == false) {
+//			int equip1Menu;
+//			System.out.println("Escolha entre (1) um rapieira ou (2) uma espada longa ou (3) qualquer arma simples.");
+//			
+//			equip1Menu = entrada.nextInt();
+//			switch(equip1Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.println("Tem certeza que deseja escolher Rapieira? (Y/N)");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						for(int i = 0; i < getEquips().getArmas_marciais_CAC().size(); i++) {
+//							if(Objects.equals(new String("Rapieira"), getEquips().getArmas_marciais_CAC().get(i))) {
+//								getFicha().setEquipamentos(getEquips().getArmas_marciais_CAC().get(i));
+//							}
+//						}
+//						decisaoLoop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//					
+//				}
+//				
+//			break;
+//			
+//			case 2:
+//				char decisaocase2;
+//				boolean decisao2Loop = false;
+//				while(decisao2Loop == false) {
+//					System.out.println("Tem certeza que deseja escolher Espada longa? (Y/N)");
+//					
+//					decisaocase2 = entrada.next().charAt(0);
+//					if(decisaocase2 == 'Y' || decisaocase2 == 'y') {
+//						for(int i = 0; i < getEquips().getArmas_marciais_CAC().size(); i++) {
+//							if(Objects.equals(new String("Espada Longa"), getEquips().getArmas_marciais_CAC().get(i))) {
+//								getFicha().setEquipamentos(getEquips().getArmas_marciais_CAC().get(i));
+//							}
+//						}
+//						decisao2Loop = true;
+//						equip1Loop = true;
+//					}else if(decisaocase2 == 'N' || decisaocase2 == 'n') {
+//						decisao2Loop = true;
+//					}
+//					
+//				}
+//				
+//			break;
+//			
+//			case 3:
+//				getFicha().setEquipamentos(getEquips().setArmasSimples());
+//			break;
+//			}
+//		}
+//	}
+//	
+//	public void equips2() {
+//		getEquips().setPacotes("Pacote de Diplomata", "Pacote de Artista");
+//	}
+//	
+//	public void equips3() {
+//		Scanner entrada = new Scanner(System.in);
+//		boolean equips3Loop = true;
+//		int equips3Menu;
+//		while(equips3Loop == false) {
+//			
+//			System.out.println("Escolha entre essas opções\n(1) um lute ou (2) qualquer outro instrumento musical:");
+//			
+//			while(!entrada.hasNextInt()) {
+//				System.out.println("Digite um numero!");
+//				entrada.next();
+//			}
+//			
+//			equips3Menu = entrada.nextInt();
+//			switch(equips3Menu) {
+//			case 1:
+//				char decisaocase1;
+//				boolean decisaoLoop = false;
+//				while(decisaoLoop == false) {
+//					System.out.printf("Tem certeza que deseja escolher um lute? (Y/N)\n");
+//					
+//					decisaocase1 = entrada.next().charAt(0);
+//					if(decisaocase1 == 'Y' || decisaocase1 == 'y') {
+//						getFicha().setEquipamentos("Lute");
+//						decisaoLoop = true;
+//						equips3Loop = true;
+//					}else if(decisaocase1 == 'N' || decisaocase1 == 'n') {
+//						decisaoLoop = true;
+//					}
+//				}
+//				
+//			break;
+//			
+//			case 2:
+//				getFicha().setEquipamentos(getEquips().setInstrumentoMusical(1));
+//			break;
+//			
+//			default:
+//				System.out.println("Essa opção não existe!");
+//			break;
+//			}
+//		}
+//	}
 //Bardo feats padrao
 	public void bardoFeatsPadrao() {
 		System.out.println("CONJURAÇÃO\r\n\n"

@@ -29,7 +29,7 @@ import java.awt.event.ActionEvent;
 public class AtributosJanela extends JFrame {
 
 	private JPanel contentPane;
-	private JFormattedTextField[] formattedTextField;
+	private JTextField[] TextField;
 	private ArrayList<Integer> atributos = new ArrayList<Integer>();
 	/**
 	 * Launch the application.
@@ -63,7 +63,7 @@ public class AtributosJanela extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int atr = classe.getAtribuirHabilidades().setSorte();
-				formattedTextField[0].setText(Integer.toString(atr));
+				TextField[0].setText(Integer.toString(atr));
 			}
 		});
 		btnNewButton.setFont(new Font("Monotype Corsiva", Font.BOLD, 15));
@@ -74,7 +74,7 @@ public class AtributosJanela extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int atr = classe.getAtribuirHabilidades().setSorte();
-				formattedTextField[1].setText(Integer.toString(atr));
+				TextField[1].setText(Integer.toString(atr));
 			}
 		});
 		btnNewButton_1.setFont(new Font("Monotype Corsiva", Font.BOLD, 15));
@@ -120,7 +120,7 @@ public class AtributosJanela extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int atr = classe.getAtribuirHabilidades().setSorte();
-				formattedTextField[2].setText(Integer.toString(atr));
+				TextField[2].setText(Integer.toString(atr));
 			}
 		});
 		btnNewButton_2.setFont(new Font("Monotype Corsiva", Font.BOLD, 15));
@@ -131,7 +131,7 @@ public class AtributosJanela extends JFrame {
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int atr = classe.getAtribuirHabilidades().setSorte();
-				formattedTextField[3].setText(Integer.toString(atr));
+				TextField[3].setText(Integer.toString(atr));
 			}
 		});
 		btnNewButton_3.setFont(new Font("Monotype Corsiva", Font.BOLD, 15));
@@ -142,7 +142,7 @@ public class AtributosJanela extends JFrame {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int atr = classe.getAtribuirHabilidades().setSorte();
-				formattedTextField[4].setText(Integer.toString(atr));
+				TextField[4].setText(Integer.toString(atr));
 			}
 		});
 		btnNewButton_4.setFont(new Font("Monotype Corsiva", Font.BOLD, 15));
@@ -153,7 +153,7 @@ public class AtributosJanela extends JFrame {
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int atr = classe.getAtribuirHabilidades().setSorte();
-				formattedTextField[5].setText(Integer.toString(atr));
+				TextField[5].setText(Integer.toString(atr));
 			}
 		});
 		btnNewButton_5.setFont(new Font("Monotype Corsiva", Font.BOLD, 15));
@@ -163,8 +163,8 @@ public class AtributosJanela extends JFrame {
 		JButton btnNewButton_6 = new JButton("AVAN\u00C7AR");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(int i = 0; i < formattedTextField.length; i++) 
-					atributos.add(Integer.valueOf(formattedTextField[i].getText()));
+				for(int i = 0; i < TextField.length; i++) 
+					atributos.add(Integer.valueOf(TextField[i].getText()));
 				
 				classe.getAtribuirHabilidades().setAtributo(atributos);
 				AntecedentesJanela antecedentesJanela = new AntecedentesJanela(classe);
@@ -181,52 +181,42 @@ public class AtributosJanela extends JFrame {
 	
 	public void formattedTextfield() {
 		List<String> atributos = Arrays.asList("Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma");
-		formattedTextField = new JFormattedTextField[atributos.size()];
-		for(int i =0; i < formattedTextField.length; i++) {
-			formattedTextField[i] = new JFormattedTextField(createFormatter("##"));
-			formattedTextField[i].setHorizontalAlignment(SwingConstants.CENTER);
-			formattedTextField[i].setFont(new Font("Monotype Corsiva", Font.PLAIN, 22));
+		TextField = new JTextField[atributos.size()];
+		for(int i =0; i < TextField.length; i++) {
+			TextField[i] = new JTextField();
+			TextField[i].setHorizontalAlignment(SwingConstants.CENTER);
+			TextField[i].setFont(new Font("Monotype Corsiva", Font.PLAIN, 22));
 			formattedTextBounds(i);
-			contentPane.add(formattedTextField[i]);
+			contentPane.add(TextField[i]);
 		}
 	}
 	
 	public void formattedTextBounds(int i) {
 		switch(i) {
 		case 0:
-			formattedTextField[i].setBounds(22, 171, 79, 82);
+			TextField[i].setBounds(22, 171, 79, 82);
 		break;
 		
 		case 1:
-			formattedTextField[i].setBounds(165, 171, 79, 82);
+			TextField[i].setBounds(165, 171, 79, 82);
 		break;
 		
 		case 2:
-			formattedTextField[i].setBounds(297, 171, 79, 82);
+			TextField[i].setBounds(297, 171, 79, 82);
 		break;
 		
 		case 3:
-			formattedTextField[i].setBounds(443, 171, 79, 82);
+			TextField[i].setBounds(443, 171, 79, 82);
 		break;
 		
 		case 4:
-			formattedTextField[i].setBounds(593, 171, 79, 82);
+			TextField[i].setBounds(593, 171, 79, 82);
 		break;
 		
 		case 5:
-			formattedTextField[i].setBounds(724, 171, 79, 82);
+			TextField[i].setBounds(724, 171, 79, 82);
 		break;
 		}
-	}
-	
-	public MaskFormatter createFormatter(String s) {
-		MaskFormatter formatter = null;
-		try {
-			formatter = new MaskFormatter(s);
-		} catch (java.text.ParseException exc) {
-			//
-		}
-		return formatter;
 	}
 	
 }
