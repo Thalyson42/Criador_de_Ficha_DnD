@@ -38,7 +38,7 @@ public class AtributosJanela extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AtributosJanela frame = new AtributosJanela(null);
+					AtributosJanela frame = new AtributosJanela();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,7 @@ public class AtributosJanela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AtributosJanela(Classes classe) {
+	public AtributosJanela() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 865, 533);
@@ -62,7 +62,7 @@ public class AtributosJanela extends JFrame {
 		JButton btnNewButton = new JButton("ROLL");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int atr = classe.getAtribuirHabilidades().setSorte();
+				int atr = Classes.getAtribuirHabilidades().setSorte();
 				TextField[0].setText(Integer.toString(atr));
 			}
 		});
@@ -73,7 +73,7 @@ public class AtributosJanela extends JFrame {
 		JButton btnNewButton_1 = new JButton("ROLL");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int atr = classe.getAtribuirHabilidades().setSorte();
+				int atr = Classes.getAtribuirHabilidades().setSorte();
 				TextField[1].setText(Integer.toString(atr));
 			}
 		});
@@ -119,7 +119,7 @@ public class AtributosJanela extends JFrame {
 		JButton btnNewButton_2 = new JButton("ROLL");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int atr = classe.getAtribuirHabilidades().setSorte();
+				int atr = Classes.getAtribuirHabilidades().setSorte();
 				TextField[2].setText(Integer.toString(atr));
 			}
 		});
@@ -130,7 +130,7 @@ public class AtributosJanela extends JFrame {
 		JButton btnNewButton_3 = new JButton("ROLL");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int atr = classe.getAtribuirHabilidades().setSorte();
+				int atr = Classes.getAtribuirHabilidades().setSorte();
 				TextField[3].setText(Integer.toString(atr));
 			}
 		});
@@ -141,7 +141,7 @@ public class AtributosJanela extends JFrame {
 		JButton btnNewButton_4 = new JButton("ROLL");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int atr = classe.getAtribuirHabilidades().setSorte();
+				int atr = Classes.getAtribuirHabilidades().setSorte();
 				TextField[4].setText(Integer.toString(atr));
 			}
 		});
@@ -152,7 +152,7 @@ public class AtributosJanela extends JFrame {
 		JButton btnNewButton_5 = new JButton("ROLL");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int atr = classe.getAtribuirHabilidades().setSorte();
+				int atr = Classes.getAtribuirHabilidades().setSorte();
 				TextField[5].setText(Integer.toString(atr));
 			}
 		});
@@ -166,8 +166,8 @@ public class AtributosJanela extends JFrame {
 				for(int i = 0; i < TextField.length; i++) 
 					atributos.add(Integer.valueOf(TextField[i].getText()));
 				
-				classe.getAtribuirHabilidades().setAtributo(atributos);
-				AntecedentesJanela antecedentesJanela = new AntecedentesJanela(classe);
+				Classes.getAtribuirHabilidades().setAtributo(atributos);
+				AntecedentesJanela antecedentesJanela = new AntecedentesJanela();
 				setVisible(false);
 				antecedentesJanela.setVisible(true);
 			}

@@ -4,34 +4,25 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import CriadorDeFicha.Antecedentes;
-import CriadorDeFicha.AtribuirHabilidades;
-import CriadorDeFicha.Barbaro;
-import CriadorDeFicha.Bardo;
-import CriadorDeFicha.Bruxo;
+import Classes.Barbaro;
+import Classes.Bardo;
+import Classes.Bruxo;
+import Classes.Clerigo;
+import Classes.Druida;
+import Classes.Feiticeiro;
+import Classes.Guerreiro;
+import Classes.Ladino;
+import Classes.Mago;
+import Classes.Monge;
+import Classes.Paladino;
+import Classes.Patrulheiro;
 import CriadorDeFicha.Classes;
-import CriadorDeFicha.Clerigo;
-import CriadorDeFicha.Druida;
-import CriadorDeFicha.Equipamentos;
-import CriadorDeFicha.Feiticeiro;
-import CriadorDeFicha.Guerreiro;
-import CriadorDeFicha.Idiomas;
-import CriadorDeFicha.Ladino;
-import CriadorDeFicha.Magias;
-import CriadorDeFicha.Mago;
-import CriadorDeFicha.Monge;
-import CriadorDeFicha.Paladino;
-import CriadorDeFicha.Patrulheiro;
-import CriadorDeFicha.Proficiencia;
-import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;
@@ -40,7 +31,6 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -121,24 +111,8 @@ public class EscolherClasse extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					FichaDoPersonagem ficha = new FichaDoPersonagem();
-					Proficiencia proficiencia = new Proficiencia();
-					Equipamentos equips = new Equipamentos();
-					Magias magias = new Magias();
-					Idiomas idiomas = new Idiomas();
-					AtribuirHabilidades atribuirHabilidades = new AtribuirHabilidades();
-					Antecedentes antecedentes = new Antecedentes();
-					Classes classes = new Classes();
-					classes.salvarFicha(ficha);
-					classes.setEquips(equips);
-					classes.setProficiencia(proficiencia);
-					classes.setMagias(magias);
-					classes.setIdiomas(idiomas);
-					classes.setAtribuirHabilidades(atribuirHabilidades);
-					classes.setAntecedens(antecedentes);
-					
-					EscolherClasse frame = new EscolherClasse(classes);
+				try {			
+					EscolherClasse frame = new EscolherClasse();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -206,7 +180,7 @@ public class EscolherClasse extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EscolherClasse(Classes classe) {
+	public EscolherClasse() {
 		setTitle("Criando classe");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -249,7 +223,7 @@ public class EscolherClasse extends JFrame {
 		btnNewButton = new JButton("AVAN\u00C7AR");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ClasseSelecionada(comboBox.getItemAt(comboBox.getSelectedIndex()), classe);
+				ClasseSelecionada(comboBox.getItemAt(comboBox.getSelectedIndex()));
 				tabbedPane.setSelectedIndex(1);
 			}
 		});
@@ -278,9 +252,9 @@ public class EscolherClasse extends JFrame {
 		btnNewButton_2.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				salvaClasse(comboBox.getItemAt(comboBox.getSelectedIndex()), classe);
+				salvaClasse(comboBox.getItemAt(comboBox.getSelectedIndex()));
 					setVisible(false);
-					AtributosJanela atributosJanele = new AtributosJanela(classe);
+					AtributosJanela atributosJanele = new AtributosJanela();
 					atributosJanele.setVisible(true);
 			}
 		});
@@ -303,27 +277,27 @@ public class EscolherClasse extends JFrame {
 		
 	}
 	
-	public void salvaClasse(String classe, Classes ficha) {
+	public void salvaClasse(String classe) {
 		switch(classe) {
 		case "Barbaro":
 			for(int i = 0; i < checkList.length; i++) {
 				if (checkList[i].isSelected())
-					ficha.getProficiencia().aplicandoPericia(checkList[i].getText());
+					Classes.getProficiencia().aplicandoPericia(checkList[i].getText());
 			}
 			if(!comboBox_1.isEnabled()) {
 				ButtonModel b = buttonGroup.getSelection();
 				String t = b.getActionCommand();
-				ficha.getFicha().setEquipamentos(t);
+				Classes.getFicha().setEquipamentos(t);
 			}else {
-				ficha.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
+				Classes.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
 			}
 			
 			if(!comboBox_2.isEnabled()) {
 				ButtonModel b = buttonGroup.getSelection();
 				String t = b.getActionCommand();
-				ficha.getFicha().setEquipamentos(t);
+				Classes.getFicha().setEquipamentos(t);
 			}else {
-				ficha.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
+				Classes.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
 			}
 			
 			barbaro.setBarbaro();
@@ -332,28 +306,28 @@ public class EscolherClasse extends JFrame {
 		case "Bardo":
 			for(int i = 0; i < checkList.length; i++) {
 				if (checkList[i].isSelected())
-					ficha.getProficiencia().aplicandoPericia(checkList[i].getText());
+					Classes.getProficiencia().aplicandoPericia(checkList[i].getText());
 			}
-			ficha.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
-			ficha.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
-			ficha.getFicha().setEquipamentos(ficha.getEquips().confirmarPacotes(comboBox_3.getItemAt(comboBox_3.getSelectedIndex())));
+			Classes.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
+			Classes.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
+			Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(comboBox_3.getItemAt(comboBox_3.getSelectedIndex())));
 			
 			bardo.setBardo();
 		}
 	}
 	
-	public void ClasseSelecionada(String classe, Classes equips) {
-		equips.getEquips().iniciaAllarmas();
+	public void ClasseSelecionada(String classe) {
+		Classes.getEquips().iniciaAllarmas();
 
 		switch(classe) {
 		case "Barbaro":
 			pericias(barbaro.getPericiasList(), 2);
-			aba2equipamentos("Barbaro", equips);
+			aba2equipamentos("Barbaro");
 		break;
 		
 		case "Bardo":
 			pericias(bardo.getPericiasList(), 3);
-			aba2equipamentos("Bardo", equips);
+			aba2equipamentos("Bardo");
 		break;
 		
 		case "Bruxo":
@@ -389,9 +363,9 @@ public class EscolherClasse extends JFrame {
 		}
 	}
 	
-	public void aba2equipamentos(String classe, Classes equipsList) {
-		String[] equips = equipsList.getEquips().getArmas_marciais_CAC().toArray(new String[equipsList.getEquips().getArmas_marciais_CAC().size()]);
-		String[] equips2 = equipsList.getEquips().getArmasSimplesCAC().toArray(new String[equipsList.getEquips().getArmasSimplesCAC().size()]);
+	public void aba2equipamentos(String classe) {
+		String[] equips = Classes.getEquips().getArmas_marciais_CAC().toArray(new String[Classes.getEquips().getArmas_marciais_CAC().size()]);
+		String[] equips2 = Classes.getEquips().getArmasSimplesCAC().toArray(new String[Classes.getEquips().getArmasSimplesCAC().size()]);
 		switch(classe) {
 		case "Barbaro":
 			rdbtnNewRadioButton = new JRadioButton("Um Machado Grande");
@@ -438,7 +412,7 @@ public class EscolherClasse extends JFrame {
 		case "Bardo": //corrigir
 			String[] bardoEquips = {"Rapieira", "Espada Longa"};
 			String[] bardoPacotes = {"Pacote de Diplomata", "Pacote de Artista"};
-			String[] instrumento_musical = equipsList.getEquips().getInstrumentoMusical().toArray(new String[equipsList.getEquips().getInstrumentoMusical().size()]);
+			String[] instrumento_musical = Classes.getEquips().getInstrumentoMusical().toArray(new String[Classes.getEquips().getInstrumentoMusical().size()]);
 
 			comboBox_1 = new JComboBox<String>(bardoEquips);
 			comboBox_1.setBounds(589, 121, 342, 34);

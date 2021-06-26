@@ -1,4 +1,4 @@
-package CriadorDeFicha;
+package Races;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,37 +6,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import CriadorDeFicha.Classes;
+
 public class Racas extends Classes{
-	private String nome_raca;
-	private String Sub_racas_nome;
-//	private FichaDoPersonagem ficha;
-//	private Idiomas idiomas;
-	
-	public String getNome_raca() {
-		return nome_raca;
-	}
 
-	public void setNome_raca(String nome_raca) {
-		this.nome_raca = nome_raca;
-	}
-
-	public String getSub_racas_nome() {
-		return Sub_racas_nome;
-	}
-
-	public void setSub_racas_nome(String sub_racas_nome) {
-		Sub_racas_nome = sub_racas_nome;
-	}
 	
-//	public void setficha(FichaDoPersonagem ficha) {
-//		this.ficha = ficha;
-//	}
-	
-//	public FichaDoPersonagem getficha() {
-//		return ficha;
-//	}
-	
-	public void salvarRaca(int raca, int subraca) {
+	public void setRaca(int raca, int subraca) {
 		switch(raca) {
 		case 0:
 			setRacaAnao();
@@ -98,7 +73,7 @@ public class Racas extends Classes{
 		}
 	}
 	
-	public void salvarRaca(String raca) {
+	public void setRaca(String raca) {
 		switch(raca) {
 	
 		case "Draconato":
@@ -123,7 +98,7 @@ public class Racas extends Classes{
 		}
 	}
 	
-	public String descricaoRaca(int i) {
+	public String getDescricaoRaca(int i) {
 		switch(i) {
 		case 0:
 			return anaoDescricao();
@@ -156,7 +131,7 @@ public class Racas extends Classes{
 		return null;
 	}
 	
-	public String descricaoSubRaca(String raca, int subraca) {
+	public String getDescricaoSubRaca(String raca, int subraca) {
 		switch(raca) {
 		case "Anao":
 			if(subraca == 0) {

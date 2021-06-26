@@ -1,10 +1,12 @@
-package CriadorDeFicha;
+package Classes;
 
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+
+import CriadorDeFicha.Classes;
 
 public class Mago extends Classes{
 	private SecureRandom random = new SecureRandom();

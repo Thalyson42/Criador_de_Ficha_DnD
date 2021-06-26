@@ -35,7 +35,7 @@ public class Tela extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Tela frame = new Tela(null, null);
+					Tela frame = new Tela(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class Tela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Tela(Usuario usuario, Classes classe) {
+	public Tela(Usuario usuario) {
 		setResizable(false);
 		setTitle("Tela de Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,7 +87,7 @@ public class Tela extends JFrame {
 					if(usuariodao.verificarLogin(usuario)) {
 						JOptionPane.showMessageDialog(null, "Login feito!");
 						setVisible(false);
-						Menu menu = new Menu(classe);
+						Menu menu = new Menu();
 						menu.setVisible(true);
 						
 					}else {

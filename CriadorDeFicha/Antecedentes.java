@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Antecedentes extends Classes{
 //	private FichaDoPersonagem ficha;
-	private Idiomas idiomas;
+//	private Idiomas idiomas;
 //	private Equipamentos equips;
 //	private Proficiencia proficiencia;
 	private SecureRandom random = new SecureRandom();
@@ -1043,9 +1043,9 @@ public class Antecedentes extends Classes{
 	}
 	
 	
-	public void setIdiomas(Idiomas idiomas) {
-		this.idiomas = idiomas;
-	}
+//	public void setIdiomas(Idiomas idiomas) {
+//		this.idiomas = idiomas;
+//	}
 	
 
 	

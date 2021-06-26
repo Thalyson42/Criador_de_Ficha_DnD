@@ -84,18 +84,7 @@ public class AntecedentesJanela extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Antecedentes antecedentes = new Antecedentes();
-					Classes classe = new Classes();
-					Idiomas idiomas = new Idiomas();
-					Equipamentos equips = new Equipamentos();
-					FichaDoPersonagem ficha = new FichaDoPersonagem();
-					Proficiencia prof = new Proficiencia();
-					classe.setProficiencia(prof);
-					classe.setIdiomas(idiomas);
-					classe.salvarFicha(ficha);
-					classe.setAntecedens(antecedentes);
-					classe.setEquips(equips);
-					AntecedentesJanela frame = new AntecedentesJanela(classe);
+					AntecedentesJanela frame = new AntecedentesJanela();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -129,7 +118,7 @@ public class AntecedentesJanela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AntecedentesJanela(Classes classe) {
+	public AntecedentesJanela() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1087, 775);
 		contentPane = new JPanel();
@@ -149,7 +138,7 @@ public class AntecedentesJanela extends JFrame {
 		btnAvancar.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
 		btnAvancar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				selecionarAntecedente(cbAntecedentes.getItemAt(cbAntecedentes.getSelectedIndex()), classe);
+				selecionarAntecedente(cbAntecedentes.getItemAt(cbAntecedentes.getSelectedIndex()));
 			}
 		});
 		btnAvancar.setBounds(348, 619, 126, 36);
@@ -163,7 +152,7 @@ public class AntecedentesJanela extends JFrame {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 			//		lblNewLabel_1.setIcon(icones[subRacaSelecionada(comboBox.getItemAt(comboBox.getSelectedIndex()))]);
-					textAreaAntecedentes.setText(classe.getAntecedentes().descricaoAntecedente(cbAntecedentes.getSelectedIndex()));
+					textAreaAntecedentes.setText(Classes.getAntecedentes().descricaoAntecedente(cbAntecedentes.getSelectedIndex()));
 				}
 			}
 		});
@@ -178,7 +167,7 @@ public class AntecedentesJanela extends JFrame {
 		scrollPane.setBounds(537, 11, 499, 644);
 		panel.add(scrollPane);
 		
-		textAreaAntecedentes = new JTextArea(classe.getAntecedentes().descricaoAntecedente(0));
+		textAreaAntecedentes = new JTextArea(Classes.getAntecedentes().descricaoAntecedente(0));
 		textAreaAntecedentes.setEditable(false);
 		textAreaAntecedentes.setFont(new Font("Monotype Corsiva", Font.PLAIN, 18));
 		scrollPane.setViewportView(textAreaAntecedentes);
@@ -198,7 +187,7 @@ public class AntecedentesJanela extends JFrame {
 		btnNewButton_1.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				caracteristicas(cbAntecedentes.getItemAt(cbAntecedentes.getSelectedIndex()), classe);
+				caracteristicas(cbAntecedentes.getItemAt(cbAntecedentes.getSelectedIndex()));
 				tabbedPane.setSelectedIndex(2);
 			}
 		});
@@ -238,7 +227,7 @@ public class AntecedentesJanela extends JFrame {
 		JButton btRoll = new JButton("ROLL");
 		btRoll.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cbPersonalidade.setSelectedIndex(classe.getAntecedentes().getTIVD(8));
+				cbPersonalidade.setSelectedIndex(Classes.getAntecedentes().getTIVD(8));
 			}
 		});
 		btRoll.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
@@ -248,7 +237,7 @@ public class AntecedentesJanela extends JFrame {
 		JButton btRoll_2 = new JButton("ROLL");
 		btRoll_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cbIdeal.setSelectedIndex(classe.getAntecedentes().getTIVD(6));
+				cbIdeal.setSelectedIndex(Classes.getAntecedentes().getTIVD(6));
 			}
 		});
 		btRoll_2.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
@@ -258,7 +247,7 @@ public class AntecedentesJanela extends JFrame {
 		JButton btRoll_3 = new JButton("ROLL");
 		btRoll_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cbVinculo.setSelectedIndex(classe.getAntecedentes().getTIVD(6));
+				cbVinculo.setSelectedIndex(Classes.getAntecedentes().getTIVD(6));
 			}
 		});
 		btRoll_3.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
@@ -268,7 +257,7 @@ public class AntecedentesJanela extends JFrame {
 		JButton btRoll_4 = new JButton("ROLL");
 		btRoll_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cbDefeito.setSelectedIndex(classe.getAntecedentes().getTIVD(6));
+				cbDefeito.setSelectedIndex(Classes.getAntecedentes().getTIVD(6));
 			}
 		});
 		btRoll_4.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
@@ -278,8 +267,8 @@ public class AntecedentesJanela extends JFrame {
 		JButton btAvancar = new JButton("AVAN\u00C7AR");
 		btAvancar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				salvarAntecedente(cbAntecedentes.getItemAt(cbAntecedentes.getSelectedIndex()), classe);
-				BioJanela bioJanela = new BioJanela(classe);
+				salvarAntecedente(cbAntecedentes.getItemAt(cbAntecedentes.getSelectedIndex()));
+				BioJanela bioJanela = new BioJanela();
 				setVisible(false);
 				bioJanela.setVisible(true);
 			}
@@ -290,117 +279,117 @@ public class AntecedentesJanela extends JFrame {
 		tabbedPane.setEnabledAt(2, false);
 	}
 	
-	public void selecionarAntecedente(String antecedente, Classes listaIdioma) {
+	public void selecionarAntecedente(String antecedente) {
 		switch(antecedente) {
 		case "Acólito": case "Sábio":
-			idiomas(listaIdioma.getIdiomas().verificarIdiomas(listaIdioma.getFicha().getIdiomas()), 2);
+			idiomas(Classes.getIdiomas().verificarIdiomas(Classes.getFicha().getIdiomas()), 2);
 			tabbedPane.setSelectedIndex(1);
 		break;
 		
 		case "Artesão de guilda": 
-			idiomas(listaIdioma.getIdiomas().verificarIdiomas(listaIdioma.getFicha().getIdiomas()), 1);
-			ferramentaArtesao(listaIdioma);
+			idiomas(Classes.getIdiomas().verificarIdiomas(Classes.getFicha().getIdiomas()), 1);
+			ferramentaArtesao();
 			tabbedPane.setSelectedIndex(1);
 		
 		break;
 		
 		case "Eremita": case "Nobre":
-			idiomas(listaIdioma.getIdiomas().verificarIdiomas(listaIdioma.getFicha().getIdiomas()), 1);
+			idiomas(Classes.getIdiomas().verificarIdiomas(Classes.getFicha().getIdiomas()), 1);
 			tabbedPane.setSelectedIndex(1);
 		break;
 		
 		case "Forasteiro": 
-			idiomas(listaIdioma.getIdiomas().verificarIdiomas(listaIdioma.getFicha().getIdiomas()), 1);
-			instrumentoMusical(listaIdioma);
+			idiomas(Classes.getIdiomas().verificarIdiomas(Classes.getFicha().getIdiomas()), 1);
+			instrumentoMusical();
 			tabbedPane.setSelectedIndex(1);
 		break;
 		
 		case "Criminoso": case "Órfão": case "Soldado": case "Marinheiro":
-			caracteristicas(antecedente, listaIdioma);
+			caracteristicas(antecedente);
 			tabbedPane.setSelectedIndex(2);
 		break;
 		
 		case "Herói do Povo":
-			ferramentaArtesao(listaIdioma);
+			ferramentaArtesao();
 			tabbedPane.setSelectedIndex(1);
 		break;
 		
 		case "Artista":
-			instrumentoMusical(listaIdioma);
+			instrumentoMusical();
 			tabbedPane.setSelectedIndex(1);
 		break;
 		
 		case "Charlatão":
-			equipamentoCharlatao(listaIdioma);
+			equipamentoCharlatao();
 			tabbedPane.setSelectedIndex(1);
 		break;
 		}
 		
 	}
 	
-	public void salvarAntecedente(String antecedente,Classes classe) {
+	public void salvarAntecedente(String antecedente) {
 		switch(antecedente) {
 		case "Criminoso": case "Órfão": case "Soldado": case "Marinheiro":
-			svPIVD(classe, antecedente);
+			svPIVD(antecedente);
 		break;
 		
 		case "Acólito": case "Nobre": case "Sábio": case "Eremita":
 			for(int i = 0; i < checkList.length; i++)
 				if(checkList[i].isSelected())
-					classe.getFicha().setIdiomas(checkList[i].getText());
+					Classes.getFicha().setIdiomas(checkList[i].getText());
 			
-			svPIVD(classe, antecedente);
+			svPIVD(antecedente);
 		break;
 		
 		case "Artesão de guilda":
 			for(int i = 0; i < checkList.length; i++)
 				if(checkList[i].isSelected())
-					classe.getFicha().setIdiomas(checkList[i].getText());
+					Classes.getFicha().setIdiomas(checkList[i].getText());
 			
-			classe.getFicha().setProfi_ferramentas_peri(cbFerramentaArtesaoProf.getItemAt(cbFerramentaArtesaoProf.getSelectedIndex()));
-			classe.getFicha().setEquipamentos(cbFerramentaArtesaoEquip.getItemAt(cbFerramentaArtesaoEquip.getSelectedIndex()));
+			Classes.getFicha().setProfi_ferramentas_peri(cbFerramentaArtesaoProf.getItemAt(cbFerramentaArtesaoProf.getSelectedIndex()));
+			Classes.getFicha().setEquipamentos(cbFerramentaArtesaoEquip.getItemAt(cbFerramentaArtesaoEquip.getSelectedIndex()));
 			
-			svPIVD(classe, antecedente);
+			svPIVD(antecedente);
 		break;
 		
 		case "Herói do Povo":
-			classe.getFicha().setProfi_ferramentas_peri(cbFerramentaArtesaoProf.getItemAt(cbFerramentaArtesaoProf.getSelectedIndex()));
-			classe.getFicha().setEquipamentos(cbFerramentaArtesaoEquip.getItemAt(cbFerramentaArtesaoEquip.getSelectedIndex()));
+			Classes.getFicha().setProfi_ferramentas_peri(cbFerramentaArtesaoProf.getItemAt(cbFerramentaArtesaoProf.getSelectedIndex()));
+			Classes.getFicha().setEquipamentos(cbFerramentaArtesaoEquip.getItemAt(cbFerramentaArtesaoEquip.getSelectedIndex()));
 			
-			svPIVD(classe, antecedente);
+			svPIVD(antecedente);
 		break;
 		
 		case "Forasteiro":
 			for(int i = 0; i < checkList.length; i++)
 				if(checkList[i].isSelected())
-					classe.getFicha().setIdiomas(checkList[i].getText());
+					Classes.getFicha().setIdiomas(checkList[i].getText());
 			
-			classe.getFicha().setProfi_ferramentas_peri(cbInstrumentoMusicalProf.getItemAt(cbInstrumentoMusicalProf.getSelectedIndex()));
+			Classes.getFicha().setProfi_ferramentas_peri(cbInstrumentoMusicalProf.getItemAt(cbInstrumentoMusicalProf.getSelectedIndex()));
 			
-			svPIVD(classe, antecedente);
+			svPIVD(antecedente);
 		break;
 		
 		case "Artista":
-			classe.getFicha().setProfi_ferramentas_peri(cbInstrumentoMusicalProf.getItemAt(cbInstrumentoMusicalProf.getSelectedIndex()));
-			classe.getFicha().setEquipamentos(cbInstrumentoMusicalEquip.getItemAt(cbInstrumentoMusicalEquip.getSelectedIndex()));
+			Classes.getFicha().setProfi_ferramentas_peri(cbInstrumentoMusicalProf.getItemAt(cbInstrumentoMusicalProf.getSelectedIndex()));
+			Classes.getFicha().setEquipamentos(cbInstrumentoMusicalEquip.getItemAt(cbInstrumentoMusicalEquip.getSelectedIndex()));
 			
-			svPIVD(classe, antecedente);
+			svPIVD(antecedente);
 		break;
 		
 		case "Charlatão":
-			classe.getFicha().setEquipamentos(cbEquipamentoCharlataoProf.getItemAt(cbEquipamentoCharlataoProf.getSelectedIndex()));
+			Classes.getFicha().setEquipamentos(cbEquipamentoCharlataoProf.getItemAt(cbEquipamentoCharlataoProf.getSelectedIndex()));
 			
-			svPIVD(classe, antecedente);
+			svPIVD(antecedente);
 		break;
 		}
 	}
 	
-	public void svPIVD(Classes classe, String antecedente) {
-		classe.getFicha().setTracos_personalidade(cbPersonalidade.getItemAt(cbPersonalidade.getSelectedIndex()));
-		classe.getFicha().setIdeal(cbIdeal.getItemAt(cbIdeal.getSelectedIndex()));
-		classe.getFicha().setVinculo(cbVinculo.getItemAt(cbVinculo.getSelectedIndex()));
-		classe.getFicha().setDefeito(cbDefeito.getItemAt(cbDefeito.getSelectedIndex()));
-		classe.getAntecedentes().setAntecedente(antecedente);
+	public void svPIVD(String antecedente) {
+		Classes.getFicha().setTracos_personalidade(cbPersonalidade.getItemAt(cbPersonalidade.getSelectedIndex()));
+		Classes.getFicha().setIdeal(cbIdeal.getItemAt(cbIdeal.getSelectedIndex()));
+		Classes.getFicha().setVinculo(cbVinculo.getItemAt(cbVinculo.getSelectedIndex()));
+		Classes.getFicha().setDefeito(cbDefeito.getItemAt(cbDefeito.getSelectedIndex()));
+		Classes.getAntecedentes().setAntecedente(antecedente);
 	}
 	
 	public void idiomas(ArrayList<String> idiomas, int max_selections) {
@@ -424,8 +413,8 @@ public class AntecedentesJanela extends JFrame {
 		
 	}
 	
-	public void equipamentoCharlatao(Classes equipCharlatao) {
-		String[] equipamento_charlatao = convertCaracter(equipCharlatao.getEquips().getFerramentaArtesao());
+	public void equipamentoCharlatao() {
+		String[] equipamento_charlatao = convertCaracter(Classes.getEquips().getFerramentaArtesao());
 		
 		lblEquip = new JLabel("Equipamento Charlatão");
 		lblEquip.setFont(new Font("Monotype Corsiva", Font.BOLD, 20));
@@ -439,8 +428,8 @@ public class AntecedentesJanela extends JFrame {
 		panel_1.add(cbEquipamentoCharlataoProf);
 	}
 	
-	public void instrumentoMusical(Classes instrumentoMusical) {
-		String[] instrumento_musical = convertCaracter(instrumentoMusical.getEquips().getInstrumentoMusical());
+	public void instrumentoMusical() {
+		String[] instrumento_musical = convertCaracter(Classes.getEquips().getInstrumentoMusical());
 		
 		if(cbAntecedentes.getItemAt(cbAntecedentes.getSelectedIndex()).equals("Forasteiro")) {
 			lblProf = new JLabel("Proficiência Intrumento Musical");
@@ -479,8 +468,8 @@ public class AntecedentesJanela extends JFrame {
 		}
 	}
 	
-	public void ferramentaArtesao(Classes ferrArtesao) {
-		String[] ferramenta_artesao = convertCaracter(ferrArtesao.getEquips().getFerramentaArtesao());
+	public void ferramentaArtesao() {
+		String[] ferramenta_artesao = convertCaracter(Classes.getEquips().getFerramentaArtesao());
 		
 		lblProf = new JLabel("Proficiência Ferramenta de Artesão");
 		lblProf.setFont(new Font("Monotype Corsiva", Font.BOLD, 20));
@@ -592,11 +581,11 @@ public class AntecedentesJanela extends JFrame {
 	}
 	
 	
-	public void caracteristicas(String antecedente, Classes caracteristicas) {
-		String[] personalidade = convertCaracter(caracteristicas.getAntecedentes().getTraco(antecedente));
-		String[] ideal = convertCaracter(caracteristicas.getAntecedentes().getIdeal(antecedente));
-		String[] vinculo = convertCaracter(caracteristicas.getAntecedentes().getVinculo(antecedente));
-		String[] defeito = convertCaracter(caracteristicas.getAntecedentes().getDefeito(antecedente));
+	public void caracteristicas(String antecedente) {
+		String[] personalidade = convertCaracter(Classes.getAntecedentes().getTraco(antecedente));
+		String[] ideal = convertCaracter(Classes.getAntecedentes().getIdeal(antecedente));
+		String[] vinculo = convertCaracter(Classes.getAntecedentes().getVinculo(antecedente));
+		String[] defeito = convertCaracter(Classes.getAntecedentes().getDefeito(antecedente));
 		
 		spCbCaracters[0] = new JScrollPane();
 		cbPersonalidade = new JComboBox<String>(personalidade);

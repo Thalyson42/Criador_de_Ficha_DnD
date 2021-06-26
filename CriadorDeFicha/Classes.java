@@ -2,7 +2,7 @@ package CriadorDeFicha;
 
 import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
 
-public class Classes {
+public abstract class Classes {
 	private static String nome;
 	private static FichaDoPersonagem ficha;
 	private static Proficiencia proficiencia;
@@ -12,53 +12,53 @@ public class Classes {
 	private static AtribuirHabilidades atribuirHabilidades;
 	private static Antecedentes antecedentes;
 	
-	public String getNome() {
+	public static String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
+	public static void setNome(String nome) {
 		Classes.nome = nome;
 	}
-	public void setAtribuirHabilidades(AtribuirHabilidades atribuirHabilidades) {
+	public static void setAtribuirHabilidades(AtribuirHabilidades atribuirHabilidades) {
 		Classes.atribuirHabilidades = atribuirHabilidades;
 	}
-	public FichaDoPersonagem getFicha() {
+	public static FichaDoPersonagem getFicha() {
 		return ficha;
 	}
-	public void salvarFicha(FichaDoPersonagem ficha) {
+	public static void salvarFicha(FichaDoPersonagem ficha) {
 		Classes.ficha = ficha;
 	}
-	public Proficiencia getProficiencia() {
+	public static Proficiencia getProficiencia() {
 		return proficiencia;
 	}
-	public void setProficiencia(Proficiencia proficiencia) {
+	public static void setProficiencia(Proficiencia proficiencia) {
 		Classes.proficiencia = proficiencia;
 	}
-	public Equipamentos getEquips() {
+	public static Equipamentos getEquips() {
 		return equips;
 	}
-	public void setEquips(Equipamentos equips) {
+	public static void setEquips(Equipamentos equips) {
 		Classes.equips = equips;
 	}
-	public Magias getMagias() {
+	public static Magias getMagias() {
 		return magias;
 	}
-	public void setMagias(Magias magias) {
+	public static void setMagias(Magias magias) {
 		Classes.magias = magias;
 	}
-	public Idiomas getIdiomas() {
+	public static Idiomas getIdiomas() {
 		return idiomas;
 	}
-	public void setIdiomas(Idiomas idiomas) {
+	public static void setIdiomas(Idiomas idiomas) {
 		Classes.idiomas = idiomas;
 	}
-	public AtribuirHabilidades getAtribuirHabilidades() {
+	public static AtribuirHabilidades getAtribuirHabilidades() {
 		return atribuirHabilidades;
 	}
 	
-	public Antecedentes getAntecedentes() {
+	public static Antecedentes getAntecedentes() {
 		return antecedentes;
 	}
-	public void setAntecedens(Antecedentes antecedentes) {
+	public static void setAntecedens(Antecedentes antecedentes) {
 		Classes.antecedentes = antecedentes;
 	}
 	

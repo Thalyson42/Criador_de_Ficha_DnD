@@ -52,10 +52,7 @@ public class BioJanela extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FichaDoPersonagem ficha = new FichaDoPersonagem();
-					Classes classe = new Classes();
-					classe.salvarFicha(ficha);
-					BioJanela frame = new BioJanela(classe);
+					BioJanela frame = new BioJanela();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,7 +64,7 @@ public class BioJanela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public BioJanela(Classes classe) {
+	public BioJanela() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1087, 724);
@@ -164,18 +161,18 @@ public class BioJanela extends JFrame {
 		btnFinalizar = new JButton("FINALIZAR");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				classe.getFicha().setNome_personagem(tfNomePersonagem.getText());
-				classe.getFicha().setIdade(tfIdade.getText());
-				classe.getFicha().setAltura(tfAltura.getText());
-				classe.getFicha().setPeso(tfPeso.getText());
-				classe.getFicha().setOlhos(tfOlhos.getText());
-				classe.getFicha().setCabelo(tfCabelo.getText());
-				classe.getFicha().setPele(tfPele.getText());
+				Classes.getFicha().setNome_personagem(tfNomePersonagem.getText());
+				Classes.getFicha().setIdade(tfIdade.getText());
+				Classes.getFicha().setAltura(tfAltura.getText());
+				Classes.getFicha().setPeso(tfPeso.getText());
+				Classes.getFicha().setOlhos(tfOlhos.getText());
+				Classes.getFicha().setCabelo(tfCabelo.getText());
+				Classes.getFicha().setPele(tfPele.getText());
 				
 				JOptionPane.showMessageDialog(null, "Ficha Criada!");
-				Menu menu = new Menu(classe);
+				Menu menu = new Menu();
 				Usuario usuario = new Usuario();
-				usuario.setPersonagem(classe.getFicha());
+				usuario.setPersonagem(Classes.getFicha());
 				salvarPersonagem(usuario);
 				setVisible(false);
 				menu.setVisible(true);

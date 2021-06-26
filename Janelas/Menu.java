@@ -32,14 +32,7 @@ import javax.swing.ImageIcon;
 public class Menu extends JFrame {
 
 	private JPanel contentPane;
-	private FichaDoPersonagem ficha;
-	private Proficiencia proficiencia;
-	private Equipamentos equips;
-	private Magias magias;
-	private Idiomas idiomas;
-	private AtribuirHabilidades atribuirHabilidades;
-	private Antecedentes antecedentes;
-	private Classes classes;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -47,7 +40,7 @@ public class Menu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Menu frame = new Menu(null);
+					Menu frame = new Menu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -59,7 +52,7 @@ public class Menu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Menu(Classes classe) {
+	public Menu() {
 		setTitle("Menu");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -78,23 +71,9 @@ public class Menu extends JFrame {
 		criar_ficha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ficha = new FichaDoPersonagem();
-				proficiencia = new Proficiencia();
-				equips = new Equipamentos();
-				magias = new Magias();
-				idiomas = new Idiomas();
-				atribuirHabilidades = new AtribuirHabilidades();
-				antecedentes = new Antecedentes();
-				classes = new Classes();
-				classes.salvarFicha(ficha);
-				classes.setEquips(equips);
-				classes.setProficiencia(proficiencia);
-				classes.setMagias(magias);
-				classes.setIdiomas(idiomas);
-				classes.setAtribuirHabilidades(atribuirHabilidades);
-				classes.setAntecedens(antecedentes);
-				
-				EscolherRacaJanela criarficha = new EscolherRacaJanela(classes);
+				FichaDoPersonagem ficha = new FichaDoPersonagem();
+				Classes.salvarFicha(ficha);
+				EscolherRacaJanela criarficha = new EscolherRacaJanela();
 				criarficha.setVisible(true);
 				setVisible(false);
 			}
@@ -108,7 +87,7 @@ public class Menu extends JFrame {
 		JButton view_ficha = new JButton("Visualizar Ficha Do Personagem");
 		view_ficha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VisualizarFichaJanela visualizarficha = new VisualizarFichaJanela(classe);
+				VisualizarFichaJanela visualizarficha = new VisualizarFichaJanela();
 				setVisible(false);
 				visualizarficha.setVisible(true);
 				

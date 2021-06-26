@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import CriadorDeFicha.Classes;
-import CriadorDeFicha.Racas;
+import Races.Racas;
 import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JTabbedPane;
@@ -96,11 +96,7 @@ public class EscolherRacaJanela extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Racas raca = new Racas();
-					Classes classe = new Classes();
-					FichaDoPersonagem ficha = new FichaDoPersonagem();
-					classe.salvarFicha(ficha);
-					EscolherRacaJanela frame = new EscolherRacaJanela(classe);
+					EscolherRacaJanela frame = new EscolherRacaJanela();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -122,7 +118,7 @@ public class EscolherRacaJanela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EscolherRacaJanela(Classes classe) {
+	public EscolherRacaJanela() {
 		setResizable(false);
 		setForeground(SystemColor.text);
 		setFont(null);
@@ -168,8 +164,8 @@ public class EscolherRacaJanela extends JFrame {
 					tabbedPane.setSelectedIndex(2);
 				}else {
 					setVisible(false);
-					EscolherClasse escolherClasse = new EscolherClasse(classe);
-					racas.salvarRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
+					EscolherClasse escolherClasse = new EscolherClasse();
+					racas.setRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
 					escolherClasse.setVisible(true);
 				}
 			}
@@ -182,7 +178,7 @@ public class EscolherRacaJanela extends JFrame {
 		JButton btnNewButton_1 = new JButton("SAIR");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Menu menu = new Menu(null);
+				Menu menu = new Menu();
 				setVisible(false);
 				menu.setVisible(true);
 			}
@@ -197,7 +193,7 @@ public class EscolherRacaJanela extends JFrame {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					background.setIcon(icones[comboBox.getSelectedIndex()]);
-					areatext.setText(racas.descricaoRaca(comboBox.getSelectedIndex()));
+					areatext.setText(racas.getDescricaoRaca(comboBox.getSelectedIndex()));
 				}
 			}
 		});
@@ -218,7 +214,7 @@ public class EscolherRacaJanela extends JFrame {
 		scrollPane.setBounds(537, 11, 499, 644);
 		panel.add(scrollPane);
 		
-		areatext = new JTextArea(racas.descricaoRaca(0));
+		areatext = new JTextArea(racas.getDescricaoRaca(0));
 		areatext.setBackground(new Color(255, 153, 51));
 		areatext.setEditable(false);
 		scrollPane.setViewportView(areatext);
@@ -243,8 +239,8 @@ public class EscolherRacaJanela extends JFrame {
 				if(subRacaNomes[subRacaSelecionada(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()))].equals("alto_elfo")) {
 					tabbedPane.setSelectedIndex(2);
 				}else {
-					EscolherClasse escolherClasse = new EscolherClasse(classe);
-					racas.salvarRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
+					EscolherClasse escolherClasse = new EscolherClasse();
+					racas.setRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
 					setVisible(false);
 					escolherClasse.setVisible(true);					
 				}
@@ -256,7 +252,7 @@ public class EscolherRacaJanela extends JFrame {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					background2.setIcon(icones2[subRacaSelecionada(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()))]);
-					areatext2.setText(racas.descricaoSubRaca(comboBox.getItemAt(comboBox.getSelectedIndex()), comboBox_1.getSelectedIndex()));
+					areatext2.setText(racas.getDescricaoSubRaca(comboBox.getItemAt(comboBox.getSelectedIndex()), comboBox_1.getSelectedIndex()));
 				}
 			}
 		});
@@ -388,18 +384,18 @@ public class EscolherRacaJanela extends JFrame {
 				if(subRacaNomes[subRacaSelecionada(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()))].equals("alto_elfo")) {
 					ButtonModel b = buttonGroup.getSelection();
 					String t = b.getActionCommand();
-					racas.salvarRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
-					classe.getFicha().setIdiomas(t);
-					EscolherClasse escolherClasseJanela = new EscolherClasse(classe);
+					racas.setRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
+					Classes.getFicha().setIdiomas(t);
+					EscolherClasse escolherClasseJanela = new EscolherClasse();
 					setVisible(false);
 					escolherClasseJanela.setVisible(true);
 					
 				}else {
 					ButtonModel b = buttonGroup.getSelection();
 					String t = b.getActionCommand();
-					racas.salvarRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
-					classe.getFicha().setIdiomas(t);
-					EscolherClasse escolherClasseJanela = new EscolherClasse(classe);
+					racas.setRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
+					Classes.getFicha().setIdiomas(t);
+					EscolherClasse escolherClasseJanela = new EscolherClasse();
 					setVisible(false);
 					escolherClasseJanela.setVisible(true);
 				}

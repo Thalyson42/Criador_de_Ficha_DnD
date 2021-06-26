@@ -1,9 +1,11 @@
-package CriadorDeFicha;
+package Classes;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
+
+import CriadorDeFicha.Classes;
 
 public class Barbaro extends Classes{
 	private final List<String> pericias = Arrays.asList("Adestrar Animais", "Atletismo", "Intimidação", "Natureza", "Percepção", "Sobrevivência");
