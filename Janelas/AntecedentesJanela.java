@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import CriadorDeFicha.Antecedentes;
+import Backgrounds.Antecedentes;
 import CriadorDeFicha.Classes;
 import CriadorDeFicha.Equipamentos;
 import CriadorDeFicha.Idiomas;

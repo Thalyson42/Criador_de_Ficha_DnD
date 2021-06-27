@@ -1,4 +1,4 @@
-package CriadorDeFicha;
+package Backgrounds;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -7,11 +7,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import CriadorDeFicha.Classes;
+
 public class Antecedentes extends Classes{
-//	private FichaDoPersonagem ficha;
-//	private Idiomas idiomas;
-//	private Equipamentos equips;
-//	private Proficiencia proficiencia;
 	private SecureRandom random = new SecureRandom();
 	
 	public int getTIVD(int TIVD) {
@@ -24,20 +22,6 @@ public class Antecedentes extends Classes{
 		
 		return random-1;
 	}
-	
-//	public int getTracoRandom(String antecedente) {
-//		int random = 0;
-//			random = getTIVD(8)-1;
-//			
-//			if(random != reroll) {
-//				tracos.add(getTraco(antecedente, random));
-//				reroll = random;
-//				count--;
-//			}
-//		}
-//		
-//		return random;
-//	}
 	
 	public String descricaoAntecedente(int i) {
 		switch(i) {
@@ -207,7 +191,7 @@ public class Antecedentes extends Classes{
 		switch(antecedente) {
 		case "Acólito":
 			ideal = this.idealAcolito.get(i);
-		break;
+		break; 
 		
 		case "Artesão de guilda":
 			ideal = this.idealArtesao.get(i);
@@ -1042,12 +1026,6 @@ public class Antecedentes extends Classes{
 		getFicha().setEquipamentos(equipamentos);
 	}
 	
-	
-//	public void setIdiomas(Idiomas idiomas) {
-//		this.idiomas = idiomas;
-//	}
-	
-
 	
 //Antecedentes
 	//Acolito

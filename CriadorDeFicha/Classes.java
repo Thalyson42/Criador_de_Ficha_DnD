@@ -1,5 +1,6 @@
 package CriadorDeFicha;
 
+import Backgrounds.Antecedentes;
 import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
 
 public abstract class Classes {
