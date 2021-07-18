@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class FichaDoPersonagem {
-	private int idpersonagem =1;
+		
+	private int idpersonagem = 1;
 	private String nome_jogador;
 	private String nome_personagem;
 	private String classe;
@@ -21,7 +22,7 @@ public class FichaDoPersonagem {
 	private int classeDeArmadura = 0;
 	private String iniciativa;
 //Atributos
-	private int idatributo=1;
+	private int idatributo;
 	private int forca = 0;
 	private int destreza = 0;
 	private int constituicao = 0;
@@ -29,7 +30,7 @@ public class FichaDoPersonagem {
 	private int sabedoria = 0;
 	private int carisma = 0;
 //Atributos modificadores
-	private int idatributos_modificadores=1;
+	private int idatributos_modificadores;
 	private int forca_mod = 0;
 	private int destreza_mod = 0;
 	private int constituicao_mod = 0;
@@ -38,7 +39,7 @@ public class FichaDoPersonagem {
 	private int carisma_mod = 0;
 
 //Teste de resistencia
-	private int idteste_resistencia=1;
+	private int idteste_resistencia;
 	private int teste_forca = 0;
 	private int teste_destreza = 0;
 	private int teste_constituicao = 0;
@@ -46,7 +47,7 @@ public class FichaDoPersonagem {
 	private int teste_sabedoria = 0;
 	private int teste_carisma = 0;
 //Tem resistencia
-	private int idCteste=1;
+	private int idCteste;
 	private boolean tem_resForca = false;
 	private boolean tem_resDestreza = false;
 	private boolean tem_resConstituicao = false;
@@ -55,7 +56,7 @@ public class FichaDoPersonagem {
 	private boolean tem_resCarisma = false;
 //
 //Pericias
-	private int idpericias=1;
+	private int idpericias;
 	private int acrobacia = 0;
 	private int adestrar_animais = 0;
 	private int arcanismo = 0;
@@ -77,7 +78,7 @@ public class FichaDoPersonagem {
 	private int sobrevivencia = 0;
 //
 //Confirmar se ja tem proficiencia na pericia
-	private int idCpericia=1;
+	private int idCpericia;
 	private boolean tem_acrobacia = false;
 	private boolean tem_adestrar_animais = false;
 	private boolean tem_arcanismo = false;
@@ -98,7 +99,7 @@ public class FichaDoPersonagem {
 	private boolean tem_furtividade = false;
 	private boolean tem_sobrevivencia = false;
 //caracteristicas
-	private int idcaracteristica=1;
+	private int idcaracteristica;
 	private int percepcao_passiva = 0;
 	private ArrayList<Integer> idtracos_personalidade = new ArrayList<Integer>();
 	private ArrayList<String> tracos_personalidade = new ArrayList<String>();
@@ -120,7 +121,7 @@ public class FichaDoPersonagem {
 	private double peso_total = 0;
 //
 //Magias
-	private int idMagias=1;
+	private int idMagias;
 	private ArrayList<Integer> idtruques = new ArrayList<Integer>();
 	private ArrayList<String> truques = new ArrayList<String>();
 	private ArrayList<Integer> idmagiasLV1 = new ArrayList<Integer>();
@@ -146,7 +147,7 @@ public class FichaDoPersonagem {
 	private int bonus_ataque_magia = 0;
 //
 //Bio
-	private int bio_cod=1;
+	private int bio_cod;
 	private String idade;
 	private String tamanho;
 	private String altura;

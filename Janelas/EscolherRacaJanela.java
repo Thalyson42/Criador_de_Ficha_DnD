@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import CriadorDeFicha.Classes;
-import Races.Racas;
+import Races.ChosingRace;
 import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JTabbedPane;
@@ -45,7 +45,7 @@ import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.JEditorPane;
 
-public class EscolherRacaJanela extends JFrame {
+public class EscolherRacaJanela extends JFrame implements ChosingRace{
 
 	private JPanel contentPane2;
 	private JPanel panel_1;
@@ -58,8 +58,6 @@ public class EscolherRacaJanela extends JFrame {
 	private JComboBox<String> comboBox;
 	private JComboBox<String> comboBox_1;
 	
-
-	private Racas racas = new Racas();
 	private JTextField txtEscolhaUmIdioma;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
@@ -165,7 +163,7 @@ public class EscolherRacaJanela extends JFrame {
 				}else {
 					setVisible(false);
 					EscolherClasse escolherClasse = new EscolherClasse();
-					racas.setRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
+					ChosingRace.setRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
 					escolherClasse.setVisible(true);
 				}
 			}
@@ -193,7 +191,7 @@ public class EscolherRacaJanela extends JFrame {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					background.setIcon(icones[comboBox.getSelectedIndex()]);
-					areatext.setText(racas.getDescricaoRaca(comboBox.getSelectedIndex()));
+					areatext.setText(ChosingRace.getDescricaoRaca(comboBox.getSelectedIndex()));
 				}
 			}
 		});
@@ -214,7 +212,7 @@ public class EscolherRacaJanela extends JFrame {
 		scrollPane.setBounds(537, 11, 499, 644);
 		panel.add(scrollPane);
 		
-		areatext = new JTextArea(racas.getDescricaoRaca(0));
+		areatext = new JTextArea(ChosingRace.getDescricaoRaca(0));
 		areatext.setBackground(new Color(255, 153, 51));
 		areatext.setEditable(false);
 		scrollPane.setViewportView(areatext);
@@ -240,7 +238,7 @@ public class EscolherRacaJanela extends JFrame {
 					tabbedPane.setSelectedIndex(2);
 				}else {
 					EscolherClasse escolherClasse = new EscolherClasse();
-					racas.setRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
+					ChosingRace.setRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
 					setVisible(false);
 					escolherClasse.setVisible(true);					
 				}
@@ -252,7 +250,7 @@ public class EscolherRacaJanela extends JFrame {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					background2.setIcon(icones2[subRacaSelecionada(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()))]);
-					areatext2.setText(racas.getDescricaoSubRaca(comboBox.getItemAt(comboBox.getSelectedIndex()), comboBox_1.getSelectedIndex()));
+					areatext2.setText(ChosingRace.getDescricaoSubRaca(comboBox.getItemAt(comboBox.getSelectedIndex()), comboBox_1.getSelectedIndex()));
 				}
 			}
 		});
@@ -384,7 +382,7 @@ public class EscolherRacaJanela extends JFrame {
 				if(subRacaNomes[subRacaSelecionada(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()))].equals("alto_elfo")) {
 					ButtonModel b = buttonGroup.getSelection();
 					String t = b.getActionCommand();
-					racas.setRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
+					ChosingRace.setRaca(comboBox.getSelectedIndex(), comboBox_1.getSelectedIndex());
 					Classes.getFicha().setIdiomas(t);
 					EscolherClasse escolherClasseJanela = new EscolherClasse();
 					setVisible(false);
@@ -393,7 +391,7 @@ public class EscolherRacaJanela extends JFrame {
 				}else {
 					ButtonModel b = buttonGroup.getSelection();
 					String t = b.getActionCommand();
-					racas.setRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
+					ChosingRace.setRaca(comboBox.getItemAt(comboBox.getSelectedIndex()));
 					Classes.getFicha().setIdiomas(t);
 					EscolherClasse escolherClasseJanela = new EscolherClasse();
 					setVisible(false);

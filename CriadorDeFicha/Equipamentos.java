@@ -4,173 +4,135 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Equipamentos {
-//Armas//mudar
-	private List<String> ArmasSimples = Arrays.asList("Adaga", "Azagaia", "Bordão", "Clava Grande", "Foice Curta", "Lança", "Maça", "Machadinha", "Martelo Leve", "Porrete", "Arco Curto", "Besta leve", "Dardo", "Funda");
-	private ArrayList<String> Armas_simples_CAC = new ArrayList<String>();
+//Armas Simples corpo-a-corpo
 	private List<String> ArmasSimplesCAC = Arrays.asList("Adaga", "Azagaia", "Bordão", "Clava Grande", "Foice Curta", "Lança", "Maça", "Machadinha", "Martelo Leve", "Porrete");
-	private ArrayList<Integer> AS_CAC_preco = new ArrayList<Integer>();
 	private List<Integer> ASCACpreco = Arrays.asList(2, 5, 2, 2, 1, 1, 5, 5, 2, 1);
-	private ArrayList<String> AS_CAC_dano = new ArrayList<String>();
 	private List<String> ASCACdano = Arrays.asList("1d4 perfurante", "1d6 perfurante", "1d6 concussão", "1d8 concussão", "1d4 cortante", "1d6 perfurante", "1d6 concussão",
 			 "1d6 cortante", "1d4 concussão", "1d4 concussão");
-	private ArrayList<Double> AS_CAC_peso = new ArrayList<Double>();
 	private List<Double> ASCACpeso = Arrays.asList(0.5, 1.0, 2.0, 5.0, 1.0, 1.5, 2.0, 1.0, 1.0, 1.0);
-	private ArrayList<String> AS_CAC_propriedades = new ArrayList<String>();
 	private List<String> ASCACpropriedades = Arrays.asList("Acuidade, leve, arremesso (distância 6/18)", "Arremesso (distância 9/36)", "Versátil (1d8)", "Pesada, duas mãos", "Leve", "Arremesso (distância 6/18), versátil (1d8)", " ",
 			 "Leve, arremesso (distância 6/18)", "Leve, arremesso (distância 6/18)", "Leve");
 	
-	private ArrayList<String> Armas_simples_distancia = new ArrayList<String>();
+//Armas simples a distancia	
 	private List<String> ArmasSimplesDistancia = Arrays.asList("Arco Curto", "Besta leve", "Dardo", "Funda");
-	private ArrayList<Integer> AS_D_preco = new ArrayList<Integer>();
 	private List<Integer> ASDpreco = Arrays.asList(25, 25, 5, 1);
-	private ArrayList<String> AS_D_dano = new ArrayList<String>();
 	private List<String> ASDdano = Arrays.asList("1d6 perfurante", "1d8 perfurante", "1d4 perfurante", "1d4 concussão");
-	private ArrayList<Double> AS_D_peso = new ArrayList<Double>();
 	private List<Double> ASDpeso = Arrays.asList(1.0, 2.5, 0.1, 0.0);
-	private ArrayList<String> AS_D_propriedades = new ArrayList<String>();
 	private List<String> ASDpropriedades = Arrays.asList("Munição (distância 24/96), duas mãos", "Munição (distância 24/96), recarga, duas mãos", "Acuidade, arremesso (distância 6/18)", "Munição (distância 9/36)");
 	
-	private ArrayList<String> Armas_marciais_CAC = new ArrayList<String>();
+//Armas Marciais
 	private List<String> ArmasMarciaisCAC = Arrays.asList("Alabarda", "Cimitarra", "Chicote", "Espada Curta", "Espada Grande", "Espada Longa", "Glaive", "Lança de Montaria", "Lança Longa", "Maça Estrela",
 			 "Machado Grande", "Machado de Batalha", "Malho", "Mangual", "Martelo de Guerra", "Picareta de Guerra", "Rapieira", "Tridente");
-	private ArrayList<Integer> AM_CAC_preco = new ArrayList<Integer>();
 	private List<Integer> AMCACpreco = Arrays.asList(20, 25, 2, 10, 50, 15, 20, 10, 5, 15, 30, 10, 10, 10, 15, 5, 25, 5);
-	private ArrayList<String> AM_CAC_dano = new ArrayList<String>();
 	private List<String> AMCACdano = Arrays.asList("1d10 cortante", "1d6 cortante", "1d4 cortante", "1d6 perfurante", "2d6 cortante", "1d8 cortante", "1d10 cortante", "1d12 perfurante", "1d10 perfurante",
 			"1d8 perfurante", "1d12 cortante", "1d8 cortante", "2d6 concussão", "1d8 concussão", "1d8 concussão", "1d8 perfurante", "1d8 perfurante", "1d6 perfurante");
-	private ArrayList<Double> AM_CAC_peso = new ArrayList<Double>();
 	private List<Double> AMCACpeso = Arrays.asList(3.0, 1.5, 1.5, 1.0, 3.0, 1.5, 3.0, 3.0, 4.0, 2.0, 3.5, 2.0, 5.0, 1.0, 1.0, 1.0, 1.0, 2.0);
-	private ArrayList<String> AM_CAC_propriedades = new ArrayList<String>();
 	private List<String> AMCACpropriedades = Arrays.asList("Pesada, alcance, duas mãos", "Acuidade, leve", "Acuidade, alcance", "Acuidade leve", "Pesada, duas mãos", "Versátil (1d10)", "Pesada, alcance, duas mão", 
 			"Alcance, especial", "Pesada, alcance, duas mãos", " ", "Pesada, duas mãos", "Versátil (1d10)", "Pesada, duas mãos", " ", "Versátil (1d10)", " ", "Acuidade", "Arrenesso (6/18), versátil (1d8)");
 	
-	private ArrayList<String> Armas_marciais_distancia = new ArrayList<String>();
+//Armas marciais a distancia
 	private List<String> ArmasMarciaisD = Arrays.asList("Arco Longo", "Besta de Mão", "Besta Pesada", "Rede", "Zarabatana");
-	private ArrayList<Integer> AM_D_preco = new ArrayList<Integer>();
 	private List<Integer> AMDpreco = Arrays.asList(50, 75, 50, 1, 10);
-	private ArrayList<String> AM_D_dano = new ArrayList<String>();
 	private List<String> AMDdano = Arrays.asList("1d8 perfurante", "1d6 perfurante", "1d10 perfurante", " ", "1 perfurante");
-	private ArrayList<Double> AM_D_peso = new ArrayList<Double>();
 	private List<Double> AMDpeso = Arrays.asList(1.0, 1.5, 4.5, 1.5, 0.5);
-	private ArrayList<String> AM_D_propriedades = new ArrayList<String>();
 	private List<String> AMDpropriedades = Arrays.asList("Munição (distância 45/180), pesada, duas mãos", "Munição (distância 9/36), leve, recarga", "Munição (distância 30/120), pesada, recarga, duas mãos", 
 			"Especial, arremesso (distância 1,5/4,5)", "Munição (distância 7,5/30), recarga");
 
-	public void iniciaAllarmas() {
-		this.Armas_simples_CAC.addAll(this.ArmasSimplesCAC);
-		this.AS_CAC_preco.addAll(this.ASCACpreco);
-		this.AS_CAC_dano.addAll(this.ASCACdano);
-		this.AS_CAC_peso.addAll(this.ASCACpeso);
-		this.AS_CAC_propriedades.addAll(this.ASCACpropriedades);
-		
-		this.Armas_simples_distancia.addAll(this.ArmasSimplesDistancia);
-		this.AS_D_preco.addAll(this.ASDpreco);
-		this.AS_D_dano.addAll(this.ASDdano);
-		this.AS_D_peso.addAll(this.ASDpeso);
-		this.AS_D_propriedades.addAll(this.ASDpropriedades);
-		
-		this.Armas_marciais_CAC.addAll(this.ArmasMarciaisCAC);
-		this.AM_CAC_preco.addAll(this.AMCACpreco);
-		this.AM_CAC_dano.addAll(this.AMCACdano);
-		this.AM_CAC_peso.addAll(this.AMCACpeso);
-		this.AM_CAC_propriedades.addAll(this.AMCACpropriedades);
-		
-		this.Armas_marciais_distancia.addAll(this.ArmasMarciaisD);
-		this.AM_D_preco.addAll(this.AMDpreco);
-		this.AM_D_dano.addAll(this.AMDdano);
-		this.AM_D_peso.addAll(this.AMDpeso);
-		this.AM_D_propriedades.addAll(this.AMDpropriedades);
-	}
 	
 	public List<String> getArmasSimples(){
-		return ArmasSimples;
+		List<String> newList = Stream.concat(ArmasSimplesCAC.stream(), ArmasSimplesDistancia.stream())
+				.collect(Collectors.toList());
+		return newList;
 	}
 	
 	public List<String> getArmasSimplesCAC(){
 		return ArmasSimplesCAC;
 	}
 	
-	public ArrayList<String> getArmas_simples_CAC() {
-		return Armas_simples_CAC;
+	public List<Integer> getASCACpreco() {
+		return ASCACpreco;
 	}
 	
-	public ArrayList<Integer> getAS_CAC_preco() {
-		return AS_CAC_preco;
+	public List<String> getASCACdano() {
+		return ASCACdano;
 	}
 	
-	public ArrayList<String> getAS_CAC_dano() {
-		return AS_CAC_dano;
+	public List<Double> getASCACpeso() {
+		return ASCACpeso;
 	}
 	
-	public ArrayList<Double> getAS_CAC_peso() {
-		return AS_CAC_peso;
+	public List<String> getASCACpropriedades() {
+		return ASCACpropriedades;
 	}
 	
-	public ArrayList<String> getAS_CAC_propriedades() {
-		return AS_CAC_propriedades;
+	public List<String> getArmasSimplesDistancia() {
+		return ArmasSimplesDistancia;
 	}
 	
-	public ArrayList<String> getArmas_simples_distancia() {
-		return Armas_simples_distancia;
+	public List<Integer> getASDpreco() {
+		return ASDpreco;
 	}
 	
-	public ArrayList<Integer> getAS_D_preco() {
-		return AS_D_preco;
+	public List<String> getASDdano() {
+		return ASDdano;
 	}
 	
-	public ArrayList<String> getAS_D_dano() {
-		return AS_D_dano;
+	public List<Double> getASDpeso() {
+		return ASDpeso;
 	}
 	
-	public ArrayList<Double> getAS_D_peso() {
-		return AS_D_peso;
+	public List<String> getASDpropriedades() {
+		return ASDpropriedades;
 	}
 	
-	public ArrayList<String> getAS_D_propriedades() {
-		return AS_D_propriedades;
+	public List<String> getArmasMarciais() {
+		List<String> newList = Stream.concat(ArmasMarciaisCAC.stream(), ArmasMarciaisD.stream())
+				.collect(Collectors.toList());
+		return newList;
 	}
 	
-	public ArrayList<String> getArmas_marciais_CAC() {
-		return Armas_marciais_CAC;
+	public List<String> getArmasMarciaisCAC() {
+		return ArmasMarciaisCAC;
 	}
 	
-	public ArrayList<Integer> getAM_CAC_preco() {
-		return AM_CAC_preco;
+	public List<Integer> getAMCACpreco() {
+		return AMCACpreco;
 	}
 	
-	public ArrayList<String> getAM_CAC_dano() {
-		return AM_CAC_dano;
+	public List<String> getAMCACdano() {
+		return AMCACdano;
 	}
 	
-	public ArrayList<Double> getAM_CAC_peso() {
-		return AM_CAC_peso;
+	public List<Double> getAMCACpeso() {
+		return AMCACpeso;
 	}
 	
-	public ArrayList<String> getAM_CAC_propriedades() {
-		return AM_CAC_propriedades;
+	public List<String> getAMCACpropriedades() {
+		return AMCACpropriedades;
 	}
 	
-	public ArrayList<String> getArmas_marciais_distancia() {
-		return Armas_marciais_distancia;
+	public List<String> getArmasMarciaisD() {
+		return ArmasMarciaisD;
 	}
 	
-	public ArrayList<Integer> getAM_D_preco() {
-		return AM_D_preco;
+	public List<Integer> getAMDpreco() {
+		return AMDpreco;
 	}
 	
-	public ArrayList<String> getAM_D_dano() {
-		return AM_D_dano;
+	public List<String> getAMDdano() {
+		return AMDdano;
 	}
 	
-	public ArrayList<Double> getAM_D_peso() {
-		return AM_D_peso;
+	public List<Double> getAMDpeso() {
+		return AMDpeso;
 	}
 	
-	public ArrayList<String> getAM_D_propriedades() {
-		return AM_D_propriedades;
+	public List<String> getAMDpropriedades() {
+		return AMDpropriedades;
 	}
 	
 //	public String setArmasSimples() {

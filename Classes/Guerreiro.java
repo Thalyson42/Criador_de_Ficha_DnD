@@ -9,6 +9,7 @@ import java.util.Scanner;
 import CriadorDeFicha.Classes;
 
 public class Guerreiro extends Classes{
+	private List<String> pericias = Arrays.asList("Acrobacia", "Adestrar Animais", "Atletismo", "História", "Intuição", "Intimidação", "Percepção", "Sobrevivência");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Guerreiro";
 //	private FichaDoPersonagem ficha;
@@ -23,6 +24,10 @@ public class Guerreiro extends Classes{
 //	public FichaDoPersonagem getFicha() {
 //		return this.ficha;
 //	}
+	
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String guerreiroDescricao() {
 		String descricao = "GUERREIRO\r\n"
@@ -97,18 +102,10 @@ public class Guerreiro extends Classes{
 		getFicha().setClasse("Guerreiro");
 		getFicha().setBonus_proficiencia(2);
 		List<String> profEquips = Arrays.asList("Acolchoada", "Couro", "Couro Batido", "Gibão de Peles", "Camisão de Malha", "Brunea", "Peitoral", "Meia-Armadura", "Cota de Anéis", "Cota de Malha", "Cota de Talas", "Placas", "Escudos");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().SetProfEquips(profEquips);
 		List<String> profResistencia = Arrays.asList("Força", "Constituição");
 		getProficiencia().SetResistencia(profResistencia);
-		List<String> profPericias = Arrays.asList("Acrobocia", "Adrestrar Animais", "Atletismo", "História", "Intuição", "Intimidação", "Percepção", "Sobrevivência");
-		getProficiencia().setPericias(profPericias, 2);
-//		this.ficha = this.proficiencia.getFicha();
-//		equips1();
-//		equips2();
-//		equips3();
-//		equips4();
-		setEstiloDeLuta();
+//		setEstiloDeLuta();
 	}
 	
 	public int pontosVidaLV1(int modConstituicao) {

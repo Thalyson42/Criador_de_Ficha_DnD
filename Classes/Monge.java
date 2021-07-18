@@ -9,12 +9,17 @@ import java.util.Scanner;
 import CriadorDeFicha.Classes;
 
 public class Monge extends Classes{
+	private List<String> pericias = Arrays.asList("Acrobacia", "Atletismo", "Furtividade", "História", "Intuição", "Religião");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Monge";
 //	private FichaDoPersonagem ficha;
 //	private Proficiencia proficiencia;
 //	private Equipamentos equips;
 //	private Magias magias;
+	
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String mongeDescricao() {
 		String descricao = "MONGE\r\n"
@@ -85,17 +90,10 @@ public class Monge extends Classes{
 	public void setMonge() {
 		getFicha().setClasse("Monge");
 		getFicha().setBonus_proficiencia(2);
-//		this.proficiencia.setFicha(ficha);
 		List<String> profEquips = Arrays.asList("Armas simples", "Espadas curtas");
 		getProficiencia().SetProfEquips(profEquips);
 		List<String> profResistencia = Arrays.asList("Força", "Destreza");
 		getProficiencia().SetResistencia(profResistencia);
-		List<String> profPericias = Arrays.asList("Acrobacia", "Atletismo", "Furtividade", "História", "Intuição", "Religião");
-		getProficiencia().setPericias(profPericias, 2);
-//		this.ficha = this.proficiencia.getFicha();
-//		setProfFerramentas();
-//		equips1();
-//		equips2();
 		getFicha().setEquipamentos("Dardos (10)");
 		setDefesaSemArmadura();
 		setArtesMarciais();

@@ -3,7 +3,6 @@ package Classes;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
 
 import CriadorDeFicha.Classes;
 
@@ -138,9 +137,9 @@ public class Barbaro extends Classes{
 		List<String> proficiencia_equips = Arrays.asList("Armaduras leves", "Armaduras médias", "Escudos", "Armas simples", "Armas marciais");
 		getProficiencia().SetProfEquips(proficiencia_equips);			
 		
-		for(int i = 0; i < getEquips().getArmas_simples_CAC().size(); i++) {
-			if(Objects.equals(new String("Azagaia"), getEquips().getArmas_simples_CAC().get(i))) {
-				getFicha().setEquipamentos(getEquips().getArmas_simples_CAC().get(i) +" (4)");
+		for(int i = 0; i < getEquips().getArmasSimplesCAC().size(); i++) {
+			if(Objects.equals(new String("Azagaia"), getEquips().getArmasSimplesCAC().get(i))) {
+				getFicha().setEquipamentos(getEquips().getArmasSimplesCAC().get(i) +" (4)");
 			}
 		}
 		setbarFuria();

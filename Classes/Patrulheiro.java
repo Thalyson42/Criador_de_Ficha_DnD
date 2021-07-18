@@ -9,12 +9,17 @@ import java.util.Scanner;
 import CriadorDeFicha.Classes;
 
 public class Patrulheiro extends Classes{
+	private List<String> pericias = Arrays.asList("Acrobacia", "Adestrar Animais", "Atletismo", "Furtividade", "Intuição", "Investigação", "Natureza", "Percepção", "Sobrevivência");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Patrulheiro";
 //	private FichaDoPersonagem ficha;
 //	private Proficiencia proficiencia;
 //	private Equipamentos equips;
 //	private Magias magias;
+
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String patrulheiroDescricao() {
 		String descricao = "PATRULHEIRO\r\n"

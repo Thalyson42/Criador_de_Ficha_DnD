@@ -9,12 +9,17 @@ import java.util.Scanner;
 import CriadorDeFicha.Classes;
 
 public class Mago extends Classes{
+	private List<String> pericias = Arrays.asList("Arcanismo", "História", "Intuição", "Investigação", "Medicina", "Religião");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Mago";
 //	private FichaDoPersonagem ficha;
 //	private Proficiencia proficiencia;
 //	private Equipamentos equips;
 //	private Magias magias;
+	
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String magoDescricao() {
 		String descricao = "MAGO\r\n"
@@ -88,21 +93,13 @@ public class Mago extends Classes{
 	public void setMago() {
 		getFicha().setClasse("Mago");
 		getFicha().setBonus_proficiencia(2);
-//		this.proficiencia.setFicha(ficha);
 		List<String> profEquips = Arrays.asList("Adagas", "Dardos", "Fundas", "Bordões", "Bestas Leves");
 		getProficiencia().SetProfEquips(profEquips);
 		List<String> profResistencia = Arrays.asList("Inteligência", "Sabedoria");
 		getProficiencia().SetResistencia(profResistencia);
-		List<String> profPericias = Arrays.asList("Arcanismo", "História", "Intuição", "Investigação", "Medicina", "Religião");
-		getProficiencia().setPericias(profPericias, 2);
-//		this.ficha = this.proficiencia.getFicha();
-//		equips1();
-//		equips2();
-//		equips3();
 		getFicha().setEquipamentos("Grimório");
-//		this.magias.setFicha(ficha);
-		getMagias().truquesMago();
-		getMagias().setMagiasMagoLV1();
+//		getMagias().truquesMago();
+//		getMagias().setMagiasMagoLV1();
 //		this.ficha = this.magias.getFicha();
 		getFicha().setHabilidade_conjuracao("Inteligência");
 		setGrimorio();

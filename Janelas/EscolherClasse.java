@@ -10,19 +10,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Classes.Barbaro;
-import Classes.Bardo;
-import Classes.Bruxo;
-import Classes.Clerigo;
-import Classes.Druida;
-import Classes.Feiticeiro;
-import Classes.Guerreiro;
-import Classes.Ladino;
-import Classes.Mago;
-import Classes.Monge;
-import Classes.Paladino;
-import Classes.Patrulheiro;
+import Backgrounds.Antecedentes;
+import Classes.ChosingClass;
 import CriadorDeFicha.Classes;
+import CriadorDeFicha.Equipamentos;
+import CriadorDeFicha.Idiomas;
+import CriadorDeFicha.Proficiencia;
+import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;
@@ -31,6 +25,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -42,52 +37,35 @@ import javax.swing.ButtonModel;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public class EscolherClasse extends JFrame {
-	
-	private Barbaro barbaro = new Barbaro();
-	private Bardo bardo = new Bardo();
-	private Bruxo bruxo = new Bruxo();
-	private Clerigo clerigo = new Clerigo();
-	private Druida druida = new Druida();
-	private Feiticeiro feiticeiro = new Feiticeiro();
-	private Guerreiro guerreiro = new Guerreiro();
-	private Ladino ladino = new Ladino();
-	private Mago mago = new Mago();
-	private Monge monge = new Monge();
-	private Paladino paladino = new Paladino();
-	private Patrulheiro patrulheiro = new Patrulheiro();
+public class EscolherClasse extends JFrame implements ChosingClass{
+		
+	private int max_selections = 0;
+	private int selectionCounter = 0;
 	
 	private JPanel contentPane;
-	private JTextField txtEscolhaUmaClasse;
 	private JPanel panel;
-	private JComboBox<String> comboBox;
+	private JPanel panel_1;
+	private JTextField txtEscolhaUmaClasse;
 	private JButton btnNewButton;
 	private JLabel background;
 	private JTextArea areatext;
-	private JPanel panel_1;
 	private CheckBoxHandler manipulador;
 	private JCheckBox[] checkList;
-	private int max_selections = 0;
-	private int selectionCounter = 0;
-	private JComboBox<String> comboBox_1;
-	private JComboBox<String> comboBox_2;
-	private JComboBox<String> comboBox_3;
-	private JRadioButton rdbtnNewRadioButton;
-	private JRadioButton rdbtnNewRadioButton_1;
-	private JRadioButton rdbtnNewRadioButton_2;
-	private JRadioButton rdbtnNewRadioButton_3;
+	private JComboBox<String> chooseClass;
+	private JComboBox<String> equips1;
+	private JComboBox<String> equips2;
+	private JComboBox<String> equips3;
+	private JRadioButton[] chooseEquips;
 	private radioButtonHandlerGP1 rbhGroup1;
 	private radioButtonHandlerGP2 rbhGroup2;
 
 	
 //	private List<String> p = Arrays.asList("Acrobacia", "Adestrar Animais", "Arcanismo", "Atletismo", "Enganação", "História", "Intuição", "Intimidação", "Investigação", "Medicina", "Natereza", "Percepção", "Atuação", "Persuasão", "Religião", "Prestidigitação", "Furtividade", "Sobrevivência");
 	private JButton btnNewButton_2;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private ButtonGroup[] buttonGroup;
+//	private ButtonGroup buttonGroup_1;
 
 	
-	
-
 	private static final String nomes [] = {"Barbaro", "Bardo", "Bruxo", "Clerigo", "Druida", "Feiticeiro", "Guerreiro", "Ladino", "Mago", "Monge", "Paladino", "Patrulheiro"};
 //	private static final String imagens [] = {"/img/barbaro.jpg", "/img/bardo.jpg", "/img/bruxo.jpg", "/img/clerigo.jpg", "/img/druida.jpg", "/img/feiticeiro.jpg", "/img/guerreiro.jpg", "/img/ladino.jpg", "/img/mago.jpg", "/img/monge.jpg", "/img/paladino.jpg", "/img/patrulheiro.jpg"};
 //	private final Icon icones[] = {
@@ -112,6 +90,16 @@ public class EscolherClasse extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {			
+					Antecedentes antecedentes = new Antecedentes();
+					Idiomas idiomas = new Idiomas();
+					Equipamentos equips = new Equipamentos();
+					Proficiencia prof = new Proficiencia();
+					FichaDoPersonagem ficha = new FichaDoPersonagem();
+					Classes.salvarFicha(ficha);
+					Classes.setProficiencia(prof);
+					Classes.setIdiomas(idiomas);
+					Classes.setAntecedens(antecedentes);
+					Classes.setEquips(equips);
 					EscolherClasse frame = new EscolherClasse();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -148,13 +136,17 @@ public class EscolherClasse extends JFrame {
 
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			JRadioButton source = (JRadioButton) e.getSource();
 			
-			if(source.isSelected()) {
-				comboBox_1.setEnabled(false);
+			try {
+				if(e.getStateChange() == ItemEvent.SELECTED) {
+					equips1.setEnabled(true);
+					
+				}else {
+					equips1.setEnabled(false);
+				}
 				
-			}else {
-				comboBox_1.setEnabled(true);
+			} catch (NullPointerException e2) {
+				System.out.println(e2);
 			}
 			
 		}
@@ -165,17 +157,22 @@ public class EscolherClasse extends JFrame {
 
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			JRadioButton source = (JRadioButton) e.getSource();
-			
-			if(source.isSelected()) {
-				comboBox_2.setEnabled(false);
-			}else {
-				comboBox_2.setEnabled(true);
+
+			try {
+				if(e.getStateChange() == ItemEvent.SELECTED) {
+					equips2.setEnabled(true);
+				}else {
+					equips2.setEnabled(false);
+				}
+				
+			} catch (NullPointerException e2) {
+				System.out.println(e2);
 			}
 			
 		}
 		
 	}
+	
 	
 	/**
 	 * Create the frame.
@@ -198,20 +195,20 @@ public class EscolherClasse extends JFrame {
 		panel.setLayout(null);
 		tabbedPane.setEnabledAt(0, false);
 		
-		comboBox = new JComboBox<String>(nomes);
-		comboBox.setMaximumRowCount(nomes.length);
-		comboBox.addItemListener(new ItemListener() {
+		chooseClass = new JComboBox<String>(nomes);
+		chooseClass.setMaximumRowCount(nomes.length);
+		chooseClass.addItemListener(new ItemListener() {
 			
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getStateChange() == ItemEvent.SELECTED) {
-				//	background.setIcon(icones[comboBox.getSelectedIndex()]);
-					atualizarAreaText(comboBox.getItemAt(comboBox.getSelectedIndex()));
+				//	background.setIcon(icones[chooseClass.getSelectedIndex()]);
+					areatext.setText(ChosingClass.getDescriptionClass(chooseClass.getSelectedIndex()));
 				}
 			}
 		});
-		comboBox.setBounds(20, 483, 178, 36);
-		panel.add(comboBox);
+		chooseClass.setBounds(20, 483, 178, 36);
+		panel.add(chooseClass);
 		
 		txtEscolhaUmaClasse = new JTextField();
 		txtEscolhaUmaClasse.setText("Escolha uma classe");
@@ -223,7 +220,7 @@ public class EscolherClasse extends JFrame {
 		btnNewButton = new JButton("AVAN\u00C7AR");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ClasseSelecionada(comboBox.getItemAt(comboBox.getSelectedIndex()));
+				ClasseSelecionada(chooseClass.getItemAt(chooseClass.getSelectedIndex()));
 				tabbedPane.setSelectedIndex(1);
 			}
 		});
@@ -235,7 +232,7 @@ public class EscolherClasse extends JFrame {
 		panel.add(scrollPane);
 		
 		areatext = new JTextArea();
-		atualizarAreaText("Barbaro");
+		areatext.setText(ChosingClass.getDescriptionClass(0));
 		areatext.setEditable(false);
 		scrollPane.setViewportView(areatext);
 		
@@ -252,7 +249,7 @@ public class EscolherClasse extends JFrame {
 		btnNewButton_2.setFont(new Font("Monotype Corsiva", Font.BOLD, 17));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				salvaClasse(comboBox.getItemAt(comboBox.getSelectedIndex()));
+				salvaClasse(chooseClass.getItemAt(chooseClass.getSelectedIndex()));
 					setVisible(false);
 					AtributosJanela atributosJanele = new AtributosJanela();
 					atributosJanele.setVisible(true);
@@ -272,160 +269,512 @@ public class EscolherClasse extends JFrame {
 		panel_1.add(lblNewLabel_1);
 				
 		manipulador = new CheckBoxHandler();
-		rbhGroup1 = new radioButtonHandlerGP1();
-		rbhGroup2 = new radioButtonHandlerGP2();
 		
-	}
-	
-	public void salvaClasse(String classe) {
-		switch(classe) {
-		case "Barbaro":
-			for(int i = 0; i < checkList.length; i++) {
-				if (checkList[i].isSelected())
-					Classes.getProficiencia().aplicandoPericia(checkList[i].getText());
-			}
-			if(!comboBox_1.isEnabled()) {
-				ButtonModel b = buttonGroup.getSelection();
-				String t = b.getActionCommand();
-				Classes.getFicha().setEquipamentos(t);
-			}else {
-				Classes.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
-			}
-			
-			if(!comboBox_2.isEnabled()) {
-				ButtonModel b = buttonGroup.getSelection();
-				String t = b.getActionCommand();
-				Classes.getFicha().setEquipamentos(t);
-			}else {
-				Classes.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
-			}
-			
-			barbaro.setBarbaro();
-		break;
-		
-		case "Bardo":
-			for(int i = 0; i < checkList.length; i++) {
-				if (checkList[i].isSelected())
-					Classes.getProficiencia().aplicandoPericia(checkList[i].getText());
-			}
-			Classes.getFicha().setEquipamentos(comboBox_1.getItemAt(comboBox_1.getSelectedIndex()));
-			Classes.getFicha().setEquipamentos(comboBox_2.getItemAt(comboBox_2.getSelectedIndex()));
-			Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(comboBox_3.getItemAt(comboBox_3.getSelectedIndex())));
-			
-			bardo.setBardo();
-		}
 	}
 	
 	public void ClasseSelecionada(String classe) {
-		Classes.getEquips().iniciaAllarmas();
-
+		aba2equipamentos(classe);
+		
 		switch(classe) {
 		case "Barbaro":
 			pericias(barbaro.getPericiasList(), 2);
-			aba2equipamentos("Barbaro");
 		break;
 		
 		case "Bardo":
 			pericias(bardo.getPericiasList(), 3);
-			aba2equipamentos("Bardo");
 		break;
 		
 		case "Bruxo":
+			pericias(bruxo.getPericiasList(), 2);
 		break;
 		
 		case "Clerigo":
+			pericias(clerigo.getPericiasList(), 2);
 		break;
 		
 		case "Druida":
+			pericias(druida.getPericiasList(), 2);
 		break;
 		
 		case "Feiticeiro":
+			pericias(feiticeiro.getPericiasList(), 2);
 		break;
 		
 		case "Guerreiro":
+			pericias(guerreiro.getPericiasList(), 2);
 		break;
 		
 		case "Ladino":
+			pericias(guerreiro.getPericiasList(), 4);
 		break;
 		
 		case "Mago":
+			pericias(mago.getPericiasList(), 2);
 		break;
 		
 		case "Monge":
+			pericias(monge.getPericiasList(), 2);
 		break;
 		
 		case "Paladino":
+			pericias(paladino.getPericiasList(), 2);
 		break;
 		
 		case "Patrulheiro":
+			pericias(patrulheiro.getPericiasList(), 3);
 		break;
 		
 		}
 	}
 	
 	public void aba2equipamentos(String classe) {
-		String[] equips = Classes.getEquips().getArmas_marciais_CAC().toArray(new String[Classes.getEquips().getArmas_marciais_CAC().size()]);
-		String[] equips2 = Classes.getEquips().getArmasSimplesCAC().toArray(new String[Classes.getEquips().getArmasSimplesCAC().size()]);
+		String[] nameRadioButton;
+		String[] nameAction;
+		String[] equipaments;
+		String[] equipaments2;
+		int lengthButtonGroup = 0;
 		switch(classe) {
 		case "Barbaro":
-			rdbtnNewRadioButton = new JRadioButton("Um Machado Grande");
-			rdbtnNewRadioButton.setSelected(true);
-			buttonGroup.add(rdbtnNewRadioButton);
-			rdbtnNewRadioButton.setFont(new Font("Monotype Corsiva", Font.PLAIN, 17));
-			rdbtnNewRadioButton.setBounds(546, 78, 178, 23);
-			rdbtnNewRadioButton.setActionCommand("Grande Machado");
-			rdbtnNewRadioButton.addItemListener(rbhGroup1);
-			panel_1.add(rdbtnNewRadioButton);
+			equipaments = Classes.getEquips().getArmasMarciaisCAC().toArray(new String[Classes.getEquips().getArmasMarciaisCAC().size()]);
+			equipaments2 = Classes.getEquips().getArmasSimplesCAC().toArray(new String[Classes.getEquips().getArmasSimplesCAC().size()]);
+			nameRadioButton = new String[] {"Um Machado Grande", "Qualquer Arma Marcial Corpo-A-Corpo", "Dois Machados de Mão", "Qualquer Arma Simples"};
+			nameAction = new String[] {"Grande Machado", "", "(2) Machado de Mão", ""};
+			lengthButtonGroup = 2;
 			
-			rdbtnNewRadioButton_1 = new JRadioButton("Qualquer Arma Marcial Corpo-A-Corpo");
-			buttonGroup.add(rdbtnNewRadioButton_1);
-			rdbtnNewRadioButton_1.setFont(new Font("Monotype Corsiva", Font.PLAIN, 16));
-			rdbtnNewRadioButton_1.setBounds(793, 78, 255, 23);
-			panel_1.add(rdbtnNewRadioButton_1);
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
 			
-			comboBox_1 = new JComboBox<String>(equips);
-			comboBox_1.setBounds(589, 121, 342, 34);
-			comboBox_1.setEnabled(false);
-			panel_1.add(comboBox_1);
+			equips1 = new JComboBox<String>(equipaments);
+			equips1.setBounds(589, 121, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
 			
-			rdbtnNewRadioButton_2 = new JRadioButton("Dois Machados De M\u00E3o");
-			rdbtnNewRadioButton_2.setSelected(true);
-			buttonGroup_1.add(rdbtnNewRadioButton_2);
-			rdbtnNewRadioButton_2.setFont(new Font("Monotype Corsiva", Font.PLAIN, 17));
-			rdbtnNewRadioButton_2.setBounds(546, 199, 178, 23);
-			rdbtnNewRadioButton_2.setActionCommand("(2) Machados de Mão");
-			rdbtnNewRadioButton_2.addItemListener(rbhGroup2);
-			panel_1.add(rdbtnNewRadioButton_2);
-			
-			rdbtnNewRadioButton_3 = new JRadioButton("Qualquer Arma Simples");
-			buttonGroup_1.add(rdbtnNewRadioButton_3);
-			rdbtnNewRadioButton_3.setFont(new Font("Monotype Corsiva", Font.PLAIN, 17));
-			rdbtnNewRadioButton_3.setBounds(793, 199, 255, 23);
-			panel_1.add(rdbtnNewRadioButton_3);
-			
-			comboBox_2 = new JComboBox<String>(equips2);
-			comboBox_2.setBounds(589, 247, 342, 34);
-			comboBox_2.setEnabled(false);
-			panel_1.add(comboBox_2);
+			equips2 = new JComboBox<String>(equipaments2);
+			equips2.setBounds(589, 247, 342, 34);
+			equips2.setEnabled(false);
+			panel_1.add(equips2);
 		break;
 		
-		case "Bardo": //corrigir
-			String[] bardoEquips = {"Rapieira", "Espada Longa"};
-			String[] bardoPacotes = {"Pacote de Diplomata", "Pacote de Artista"};
+		case "Bardo": 
+			nameRadioButton = new String[] {"Rapieira", "Espada Longa", "Qualquer Arma Simples", "Pacote de Diplomata", "Pacote de Artista", "lute", "Qualquer outro instrumento musical"};
+			nameAction = new String[] {"Rapieira", "Espada Longa", "", "Pacote de Diplomata", "Pacote de Artista", "Lute", ""};
+			equipaments = Classes.getEquips().getArmasSimples().toArray(new String[Classes.getEquips().getArmasSimples().size()]);
 			String[] instrumento_musical = Classes.getEquips().getInstrumentoMusical().toArray(new String[Classes.getEquips().getInstrumentoMusical().size()]);
-
-			comboBox_1 = new JComboBox<String>(bardoEquips);
-			comboBox_1.setBounds(589, 121, 342, 34);
-			panel_1.add(comboBox_1);
+			lengthButtonGroup = 3;
 			
-			comboBox_2 = new JComboBox<String>(bardoPacotes);
-			comboBox_2.setBounds(589, 247, 342, 34);
-			panel_1.add(comboBox_2);
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
 			
-			comboBox_3 = new JComboBox<String>(instrumento_musical);
-			comboBox_3.setBounds(589, 361, 342, 34);
-			panel_1.add(comboBox_3);	
+			equips1 = new JComboBox<String>(equipaments);
+			equips1.setBounds(589, 121, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
+			
+			equips2 = new JComboBox<String>(instrumento_musical);
+			equips2.setBounds(589, 361, 342, 34);
+			equips2.setEnabled(false);
+			panel_1.add(equips2);	
 		
+		break;
+		
+		case "Bruxo":
+			nameRadioButton = new String[] {"Uma besta leve e 20 Virotes", "Qualquer Arma Simples", "Bolsa de componentes", "Foco arcano", "Pacote de Estudioso", "Pacote de Explorador"};
+			nameAction = new String[] {"Besta leve", "", "Bolsa de componentes", "Foco arcano", "Pacote de Estudioso", "Pacote de Explorador"};
+			equipaments = Classes.getEquips().getArmasSimples().toArray(new String[Classes.getEquips().getArmasSimples().size()]);
+			lengthButtonGroup = 3;
+			
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+			
+			equips1 = new JComboBox<String>(equipaments);
+			equips1.setBounds(589, 121, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
+			
+			equips2 = new JComboBox<String>(equipaments);
+			equips2.setBounds(589, 361, 342, 34);
+			panel_1.add(equips2);
+		break;
+		
+		case "Clerigo":
+			//corrigir
+			nameRadioButton = new String[] {"Uma maça", "Um martelo de guerra", "Brunea", "Armadura de couro", "Cota de malha", "Uma besta leve e 20 virotes", "Qualquer arma simples", "Pacote de Sacerdote", "Pacote de Aventureiro"};
+			nameAction = new String[] {"Uma maça", "Um martelo de guerra", "Brunea", "Armadura de couro", "Cota de malha", "Uma besta leve e 20 virotes", "", "Pacote de Sacerdote", "Pacote de Aventureiro"};
+			equipaments = Classes.getEquips().getArmasSimples().toArray(new String[Classes.getEquips().getArmasSimples().size()]);
+			lengthButtonGroup = 4;
+			
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+			
+			equips1 = new JComboBox<String>(equipaments);
+			equips1.setBounds(589, 308, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
+		break;
+		
+		case "Druida":
+			nameRadioButton = new String[] {"Um escudo de madeira", "Qualquer arma simples", "Uma cimitarra", "Qualquer arma corpo-a-corpo simples", "Pacote de Estudioso", "Pacote de Explorador"};
+			nameAction = new String[] {"Um escudo de madeira", "", "Uma cimitarra", "", "Pacote de Estudioso", "Pacote de Explorador"};
+			equipaments = Classes.getEquips().getArmasSimples().toArray(new String[Classes.getEquips().getArmasSimples().size()]);
+			equipaments2 = Classes.getEquips().getArmasSimplesCAC().toArray(new String[Classes.getEquips().getArmasSimplesCAC().size()]);
+			lengthButtonGroup = 3;
+			
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+			
+			equips1 = new JComboBox<String>(equipaments);
+			equips1.setBounds(589, 121, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
+			
+			equips2 = new JComboBox<String>(equipaments2);
+			equips2.setBounds(589, 247, 342, 34);
+			equips2.setEnabled(false);
+			panel_1.add(equips2);
+		break;
+		
+		case "Feiticeiro":
+			nameRadioButton = new String[] {"Uma besta leve e 20 virotes", "Qualquer arma simples", "Uma bolsa de componentes", "Um foco arcano", "Pacote de Explorador", "Pacote de Aventureiro"};
+			nameAction = new String[] {"Uma besta leve e 20 virotes", "", "Uma bolsa de componentes", "Um foco arcano", "Pacote de Explorador", "Pacote de Aventureiro"};
+			equipaments = Classes.getEquips().getArmasSimples().toArray(new String[Classes.getEquips().getArmasSimples().size()]);
+			lengthButtonGroup = 3;
+			
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+			
+			equips1 = new JComboBox<String>(equipaments);
+			equips1.setBounds(589, 121, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
+		break;
+		
+		case "Guerreiro":
+			//corrigir
+			nameRadioButton = new String[] {"Cota de malha", "Gibão de peles, Arco longo e 20 flechas", "Uma arma marcial e um escudo", "Duas armas marciais", "Uma besta leve e 20 virotes", "Dois machados de arremesso", "Pacote de Aventureiro", "Pacote de Explorador"};
+			nameAction = new String[] {"Cota de malha", "Gibão de peles", "Escudo", "", "Besta leve", "Machados de Arremesso (2)", "Pacote de Aventureiro", "Pacote de Explorador"};
+			equipaments = Classes.getEquips().getArmasMarciais().toArray(new String[Classes.getEquips().getArmasMarciais().size()]);
+			equipaments2 = Classes.getEquips().getArmasMarciais().toArray(new String[Classes.getEquips().getArmasMarciais().size()]);
+			lengthButtonGroup = 4;
+
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+			
+			equips1 = new JComboBox<String>(equipaments);
+			equips1.setBounds(589, 121, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
+			
+			equips2 = new JComboBox<String>(equipaments2);
+			equips2.setBounds(589, 121, 342, 34);
+			equips2.setEnabled(false);
+			panel_1.add(equips2);
+		break;
+		
+		case "Ladino":
+			nameRadioButton = new String[] {"Rapieira", "Espada longa", "Arco curto e uma aljava com 20 flechas", "Espada curta", "Pacote de Assaltante", "Pacote de Aventureiro", "Pacote de Explorador"};
+			nameAction = new String[] {"Rapieira", "Espada longa", "Arco curto", "Espada curta", "Pacote de Assaltante", "Pacote de Aventureiro", "Pacote de Explorador"};
+			lengthButtonGroup = 3;
+
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+		break;
+		
+		case "Mago":
+			nameRadioButton = new String[] {"Bordão", "Adaga", "Bolsa de componentes", "Foco arcano", "Pacote de Estudioso", "Pacote de Explorador"};
+			nameAction = new String[] {"Bordão", "Adaga", "Bolsa de componentes", "Foco arcano", "Pacote de Estudioso", "Pacote de Explorador"};
+			lengthButtonGroup = 3;
+			
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+		break;
+		
+		case "Monge":
+			nameRadioButton = new String[] {"Espada curta", "Qualquer arma simples", "Pacote de Explorador", "Pacote de Aventureiro"};
+			nameAction = new String[] {"Espada curta", "", "Pacote de Explorador", "Pacote de Aventureiro"};
+			equipaments = Classes.getEquips().getArmasSimples().toArray(new String[Classes.getEquips().getArmasSimples().size()]);
+			lengthButtonGroup = 2;
+			
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+			
+			equips1 = new JComboBox<String>(equipaments);
+			equips1.setBounds(589, 121, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
+		break;
+		
+		case "Paladino":
+			nameRadioButton = new String[] {"Uma arma marcial e um escudo", "Duas armas marciais", "Cinco azagais", "Qualquer arma simples corpo-a-corpo", "Pacote de Sacerdote", "Pacote de Aventureiro"};
+			nameAction = new String[] {"Escudo", "", "Cinco azagais", "", "Pacote de Sacerdote", "Pacote de Aventureiro"};
+			equipaments = Classes.getEquips().getArmasMarciais().toArray(new String[Classes.getEquips().getArmasMarciais().size()]);
+			equipaments2 = Classes.getEquips().getArmasMarciais().toArray(new String[Classes.getEquips().getArmasMarciais().size()]);
+			String[] equipaments3 = Classes.getEquips().getArmasSimplesCAC().toArray(new String[Classes.getEquips().getArmasSimplesCAC().size()]);
+			lengthButtonGroup = 3;
+			
+			autoGenerateJRadioButton(nameRadioButton, nameAction, lengthButtonGroup);
+			
+			equips3 = new JComboBox<String>(equipaments);
+			equips3.setBounds(589, 121, 342, 34);
+			panel_1.add(equips3);
+			
+			equips2 = new JComboBox<String>(equipaments2);
+			equips2.setBounds(589, 121, 342, 34);
+			equips2.setEnabled(false);
+			panel_1.add(equips2);
+			
+			equips1 = new JComboBox<String>(equipaments3);
+			equips1.setBounds(589, 121, 342, 34);
+			equips1.setEnabled(false);
+			panel_1.add(equips1);
+			
+		break;
+		
+		case "Patrulheiro":
+			
+		break;
+		}
+	}
+	
+	public void autoGenerateJRadioButton(String[] nameButton, String[] nameAction, int lengthButtonGroup) {
+		chooseEquips = new JRadioButton[nameButton.length];
+		rbhGroup1 = new radioButtonHandlerGP1();
+		rbhGroup2 = new radioButtonHandlerGP2();
+		buttonGroup = new ButtonGroup[lengthButtonGroup];
+		
+		for(int i = 0; i < buttonGroup.length; i++) {
+			buttonGroup[i] = new ButtonGroup();
+		}
+		
+		for(int i = 0; i < chooseEquips.length; i++){
+			chooseEquips[i] = new JRadioButton(nameButton[i]);
+			chooseEquips[i].setActionCommand(nameAction[i]);
+			chooseEquips[i].setFont(new Font("Monotype Corsiva", Font.PLAIN, 16));
+			autoAddJRadioButtonListener(i, chooseClass.getItemAt(chooseClass.getSelectedIndex()));
+			autoGenerateJRadioButtonBounds(i, chooseClass.getItemAt(chooseClass.getSelectedIndex()));
+			panel_1.add(chooseEquips[i]);
+		}
+	}
+	
+	public void autoAddJRadioButtonListener(int pos, String classe) {
+		switch(classe) {
+		case "Barbaro":
+			
+			if(pos == 0) {
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos == 2) {
+				buttonGroup[1].add(chooseEquips[pos]);
+			}
+			
+			if(pos == 1){
+				chooseEquips[pos].addItemListener(rbhGroup1);
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos == 3) {
+				chooseEquips[pos].addItemListener(rbhGroup2);
+				buttonGroup[1].add(chooseEquips[pos]);
+			}
+			
+		break;
+		
+		case "Bardo":
+			
+			if(pos <= 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos == 2) {
+				buttonGroup[0].add(chooseEquips[pos]);
+				chooseEquips[pos].addItemListener(rbhGroup1);
+			}else if(pos > 2 && pos <= 4){
+				buttonGroup[1].add(chooseEquips[pos]);
+			}else if(pos == 5) {
+				buttonGroup[2].add(chooseEquips[pos]);
+			}else {
+				buttonGroup[2].add(chooseEquips[pos]);
+				chooseEquips[pos].addItemListener(rbhGroup2);
+			}
+			
+		break;
+		
+		case "Bruxo":
+			if(pos == 0) {
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos == 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+				chooseEquips[pos].addItemListener(rbhGroup1);
+			}else if(pos > 1 && pos <= 3){
+				buttonGroup[1].add(chooseEquips[pos]);
+			}else{
+				buttonGroup[2].add(chooseEquips[pos]);
+			}
+		break;
+		
+		case "Clerigo":
+			if(pos <= 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos > 1 && pos < 5) {
+				buttonGroup[1].add(chooseEquips[pos]);
+			}else if(pos == 5) {
+				buttonGroup[2].add(chooseEquips[pos]);
+			}else if(pos == 6) {
+				buttonGroup[2].add(chooseEquips[pos]);
+				chooseEquips[pos].addItemListener(rbhGroup1);
+			}else {
+				buttonGroup[3].add(chooseEquips[pos]);
+			}
+		break;
+		
+		case "Druida":
+			if(pos == 0) {
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos == 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+				chooseEquips[pos].addItemListener(rbhGroup1);
+			}else if(pos == 2) {
+				buttonGroup[1].add(chooseEquips[pos]);
+			}else if(pos == 3) {
+				buttonGroup[1].add(chooseEquips[pos]);
+				chooseEquips[pos].addItemListener(rbhGroup2);
+			}else {
+				buttonGroup[2].add(chooseEquips[pos]);
+			}
+		break;
+		
+		case "Feiticeiro":
+			if(pos == 0) {
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos == 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+				chooseEquips[pos].addItemListener(rbhGroup1);
+			}else if(pos > 1 && pos < 4) {
+				buttonGroup[1].add(chooseEquips[pos]);
+			}else {
+				buttonGroup[2].add(chooseEquips[pos]);
+			}
+		break;
+		
+		case "Guerreiro":
+			if(pos <= 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos == 2) {
+				buttonGroup[1].add(chooseEquips[pos]);
+			}else if(pos == 3) {
+				buttonGroup[1].add(chooseEquips[pos]);
+				chooseEquips[pos].addItemListener(rbhGroup1);
+			}else if(pos > 3 && pos < 6) {
+				buttonGroup[2].add(chooseEquips[pos]);
+			}else {
+				buttonGroup[3].add(chooseEquips[pos]);
+			}
+		break;
+		
+		case "Ladino": case "Mago":
+			if(pos <= 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+			}else if(pos > 1 && pos < 4) {
+				buttonGroup[1].add(chooseEquips[pos]);
+			}else {
+				buttonGroup[2].add(chooseEquips[pos]);
+			}
+		break;
+		
+		case "Monge":
+			if(pos <= 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+				if(pos == 1)
+					chooseEquips[pos].addItemListener(rbhGroup1);
+			}else {
+				buttonGroup[1].add(chooseEquips[pos]);
+			}
+		break;
+		
+		case "Paladino":
+			if(pos <= 1) {
+				buttonGroup[0].add(chooseEquips[pos]);
+				if(pos == 1)
+					chooseEquips[pos].addItemListener(rbhGroup1);
+			}else if(pos > 1 && pos < 4) {
+				buttonGroup[1].add(chooseEquips[pos]);
+				if(pos == 3)
+					chooseEquips[pos].addItemListener(rbhGroup2);
+			}else {
+				buttonGroup[2].add(chooseEquips[pos]);
+			}
+		break;
+		
+		case "Patrulheiro":
+		break;
+		}
+	}
+	
+	public void autoGenerateJRadioButtonBounds(int pos, String selectedClass) {
+	
+		switch(pos) {
+		case 0:
+			if(selectedClass.equals("Bardo")) {
+				chooseEquips[0].setBounds(550, 78, 100, 23);
+			}else {
+				chooseEquips[0].setBounds(550, 78, 200, 23);				
+			}
+		break;
+		
+		case 1:
+			if(selectedClass.equals("Bardo")) {
+				chooseEquips[1].setBounds(700, 78, 150, 23);
+			}else if(selectedClass.equals("Clerigo")) {
+				chooseEquips[1].setBounds(850, 78, 180, 23);	
+			}else {
+				chooseEquips[1].setBounds(793, 78, 255, 23);
+			}
+		break;
+		
+		case 2:
+			if(selectedClass.equals("Bardo")) {
+				chooseEquips[2].setBounds(865, 78, 178, 23);
+			}else if(selectedClass.equals("Clerigo")) {
+				chooseEquips[2].setBounds(550, 169, 100, 23);	
+			}else {
+				chooseEquips[2].setBounds(546, 199, 178, 23);	
+			}
+		break;
+		
+		case 3:
+			if(selectedClass.equals("Bardo")) {
+				chooseEquips[3].setBounds(550, 199, 150, 23);
+			}else if(selectedClass.equals("Clerigo")) {
+				chooseEquips[3].setBounds(675, 169, 150, 23);
+			}else {
+				chooseEquips[3].setBounds(793, 199, 255, 23);	
+			}
+		break;
+		
+		case 4:
+			if(selectedClass.equals("Bardo")) {
+				chooseEquips[4].setBounds(865, 199, 255, 23);
+			}else if(selectedClass.equals("Clerigo")) {
+				chooseEquips[4].setBounds(850, 169, 255, 23);
+			}else if(selectedClass.equals("Druida")) {
+				chooseEquips[4].setBounds(550, 322, 200, 23);	
+			}else {
+				chooseEquips[4].setBounds(550, 282, 200, 23);	
+			}
+		break;
+		
+		case 5:
+			if(selectedClass.equals("Bardo")) {
+				chooseEquips[5].setBounds(600, 282, 100, 23);
+			}else if(selectedClass.equals("Clerigo")) {
+				chooseEquips[5].setBounds(550, 262, 200, 23);	
+			}else if(selectedClass.equals("Druida")) {
+				chooseEquips[5].setBounds(793, 322, 200, 23);	
+			}else {
+				chooseEquips[5].setBounds(793, 282, 200, 23);	
+			}
+		break;
+		
+		case 6:
+			if(selectedClass.equals("Bardo")) {
+				chooseEquips[6].setBounds(825, 282, 255, 23);
+			}else if(selectedClass.equals("Clerigo")) {
+				chooseEquips[6].setBounds(850, 262, 180, 23);	
+			}else {
+				chooseEquips[6].setBounds(793, 282, 255, 23);	
+			}
+		break;
+		
+		case 7:
+			chooseEquips[7].setBounds(550, 370, 255, 23);	
+		break;
+		
+		case 8:
+			chooseEquips[8].setBounds(850, 370, 255, 23);
 		break;
 		}
 	}
@@ -519,70 +868,291 @@ public class EscolherClasse extends JFrame {
 		}
 	}
 		
-	public void atualizarAreaText(String classes) {
-
-		switch(classes) {
+	public void salvaClasse(String classe) {
+		for(int i = 0; i < checkList.length; i++) {
+			if (checkList[i].isSelected())
+				Classes.getProficiencia().aplicandoPericia(checkList[i].getText());
+		}
+		
+		ButtonModel b;
+		String t;
+		switch(classe) {
 		case "Barbaro":
-			areatext.setText(barbaro.barbaroDescricao());
-			areatext.append(barbaro.barbaroCaracteristicasClasse());
-			areatext.append(barbaro.barbaroTabela());
+	
+			if(!equips1.isEnabled()) {
+				b = buttonGroup[0].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+				
+			}else {
+				Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+			}
+			
+			if(!equips2.isEnabled()) {
+				b = buttonGroup[1].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+			}else {
+				Classes.getFicha().setEquipamentos(equips2.getItemAt(equips2.getSelectedIndex()));
+			}
+			
+			barbaro.setBarbaro();
 		break;
 		
 		case "Bardo":
-			areatext.setText(bardo.bardoDescricao());
-			areatext.append(bardo.bardoCaracteristicas());
+			
+			if(!equips1.isEnabled()) {
+				b = buttonGroup[0].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+			}else {
+				Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+			}
+			
+			b = buttonGroup[1].getSelection();
+			t = b.getActionCommand();
+			Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));
+
+			if(!equips1.isEnabled()) {
+				b = buttonGroup[2].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+			}else {
+				Classes.getFicha().setEquipamentos(equips2.getItemAt(equips2.getSelectedIndex()));
+			}
+			
+			bardo.setBardo();
 		break;
 		
 		case "Bruxo":
-			areatext.setText(bruxo.bruxoDescricao());
-			areatext.append(bruxo.bruxoCaracteristicas());
+
+			if(!equips1.isEnabled()) {
+				b = buttonGroup[0].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+			}else {
+				Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+			}
+			
+			b = buttonGroup[1].getSelection();
+			t = b.getActionCommand();
+			Classes.getFicha().setEquipamentos(t);//corrigir
+			
+			b = buttonGroup[2].getSelection();
+			t = b.getActionCommand();
+			Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));
+			
+			//corrigir
+			Classes.getFicha().setEquipamentos("Armadura de couro");
+			Classes.getFicha().setEquipamentos("Adagas (2)");
+			bruxo.setBruxo();
 		break;
 		
 		case "Clerigo":
-			areatext.setText(clerigo.clerigoDescricao());
-			areatext.append(clerigo.clerigoCaracteristicasClasse());
+
+			for(int i = 0; i < 4; i++) {
+				b = buttonGroup[i].getSelection();
+				t = b.getActionCommand();
+				if(i < 2) {
+					Classes.getFicha().setEquipamentos(t);//corrigir						
+				}else if(i == 3) {
+					Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));			
+				}
+			}
+			
+			if(!equips1.isEnabled()) {
+				b = buttonGroup[2].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+			}else {
+				Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+			}
+			
+			Classes.getFicha().setEquipamentos("Escudo");
+			Classes.getFicha().setEquipamentos("Símbolo sagrado");
+			clerigo.setClerigo();
 		break;
 		
 		case "Druida":
-			areatext.setText(druida.druidaDescricao());
-			areatext.append(druida.CaracteristicasClasse());
+
+			if(!equips1.isEnabled()) {
+				b = buttonGroup[0].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+				
+			}else {
+				Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+			}
+			
+			if(!equips2.isEnabled()) {
+				b = buttonGroup[1].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+			}else {
+				Classes.getFicha().setEquipamentos(equips2.getItemAt(equips2.getSelectedIndex()));
+			}
+			
+			b = buttonGroup[2].getSelection();
+			t = b.getActionCommand();
+			Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));
+			
+			Classes.getFicha().setEquipamentos("Armadura de couro");
+			Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes("Pacote de Aventureiro"));
+			Classes.getFicha().setEquipamentos("Foco Druídico");
+			druida.setDruida();
 		break;
 		
 		case "Feiticeiro":
-			areatext.setText(feiticeiro.feiticeiroDescricao());
-			areatext.append(feiticeiro.caracteristicasClasse());
+			if(!equips1.isEnabled()) {
+				b = buttonGroup[0].getSelection();
+				t = b.getActionCommand();
+				Classes.getFicha().setEquipamentos(t);
+				
+			}else {
+				Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+			}
+			
+			for(int i = 0; i < 3; i++) {
+				b = buttonGroup[i].getSelection();
+				t = b.getActionCommand();
+				if(i == 1) {
+					Classes.getFicha().setEquipamentos(t);//corrigir						
+				}else if(i == 2) {
+					Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));			
+				}
+			}
+			feiticeiro.setFeiticeiro();
 		break;
 		
 		case "Guerreiro":
-			areatext.setText(guerreiro.guerreiroDescricao());
-			areatext.append(guerreiro.guerreiroCaracteristicas());
+			for(int i = 0; i < buttonGroup.length; i++) {
+				b = buttonGroup[i].getSelection();
+				t = b.getActionCommand();
+				
+				if(i == 0) {
+					
+					if(t.equals("Gibão de peles")) {
+						Classes.getFicha().setEquipamentos(t);
+						Classes.getFicha().setEquipamentos("Arco longo");
+						Classes.getFicha().setEquipamentos("Flechas (20)");
+					}else {
+						Classes.getFicha().setEquipamentos(t);
+					}
+					
+				}else if(i == 1) {
+					
+					if(!equips2.isEnabled()) {
+						Classes.getFicha().setEquipamentos(t);
+						Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+						
+					}else {
+						Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+						Classes.getFicha().setEquipamentos(equips2.getItemAt(equips2.getSelectedIndex()));
+					}
+					
+				}else if(i == 2) {
+					
+					if(t.equals("Besta leve")) {
+						Classes.getFicha().setEquipamentos(t);
+						Classes.getFicha().setEquipamentos("Virotes (20)");
+					}else {
+						Classes.getFicha().setEquipamentos(t);
+					}
+					
+				}else {
+					Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));
+				}
+				
+			}
+			guerreiro.setGuerreiro();
 		break;
 		
 		case "Ladino":
-			areatext.setText(ladino.ladinoDescricao());
-			areatext.append(ladino.ladinoCaracteristicas());
+			for(int i = 0; i < buttonGroup.length; i++) {
+				b = buttonGroup[i].getSelection();
+				t = b.getActionCommand();
+				
+				if(i == 1 || i == 2) {
+					
+					if(t.equals("Arco curto")) {
+						Classes.getFicha().setEquipamentos(t);
+						Classes.getFicha().setEquipamentos("Aljava");
+						Classes.getFicha().setEquipamentos("Flechas (20)");
+					}else {
+						Classes.getFicha().setEquipamentos(t);
+					}
+					
+				}else {
+					Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));
+				}
+			}
+			ladino.setLadino();
 		break;
 		
 		case "Mago":
-			areatext.setText(mago.magoDescricao());
-			areatext.append(mago.magoCaracteristicas());
+			for(int i = 0; i < buttonGroup.length; i++) {
+				b = buttonGroup[i].getSelection();
+				t = b.getActionCommand();
+				
+				if(i == 2) {
+					Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));
+				}else {
+					Classes.getFicha().setEquipamentos(t);
+				}
+			}
+			mago.setMago();
 		break;
 		
 		case "Monge":
-			areatext.setText(monge.mongeDescricao());
-			areatext.append(monge.mongeCaracteristicas());
+			for(int i = 0; i < buttonGroup.length; i++) {
+				b = buttonGroup[i].getSelection();
+				t = b.getActionCommand();
+				
+				if(i == 0) {
+					if(!equips1.isEnabled()) {
+						Classes.getFicha().setEquipamentos(t);
+					}else {
+						Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+					}
+					
+				}else {
+					Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));
+				}
+				
+			}
+			monge.setMonge();
 		break;
 		
 		case "Paladino":
-			areatext.setText(paladino.paladinoDescricao());
-			areatext.append(paladino.paladinoCaracteristicas());
+			for(int i = 0; i < buttonGroup.length; i++) {
+				b = buttonGroup[i].getSelection();
+				t = b.getActionCommand();
+				
+				if(i == 0) {
+					
+					if(!equips1.isEnabled()) {
+						Classes.getFicha().setEquipamentos(equips3.getItemAt(equips3.getSelectedIndex()));
+						Classes.getFicha().setEquipamentos(t);
+					}else {
+						Classes.getFicha().setEquipamentos(equips3.getItemAt(equips3.getSelectedIndex()));
+						Classes.getFicha().setEquipamentos(equips1.getItemAt(equips1.getSelectedIndex()));
+					}
+					
+				}else if (i == 1) {
+					
+					if(!equips2.isEnabled()) {
+						Classes.getFicha().setEquipamentos(t);
+					}else {
+						Classes.getFicha().setEquipamentos(equips2.getItemAt(equips2.getSelectedIndex()));
+					}
+					
+				}else {
+					Classes.getFicha().setEquipamentos(Classes.getEquips().confirmarPacotes(t));
+				}
+				
+			}
+			paladino.setPaladino();
 		break;
-		
-		case "Patrulheiro":
-			areatext.setText(patrulheiro.patrulheiroDescricao());
-			areatext.append(patrulheiro.patrulheiroCaracteristicas());
-		break;
-		
 		}
 	}
 }

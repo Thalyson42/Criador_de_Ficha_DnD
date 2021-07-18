@@ -6,9 +6,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
+
 import CriadorDeFicha.Classes;
 
 public class Bruxo extends Classes{
+	
+	private List<String> pericias = Arrays.asList("Arcanismo", "Enganação", "História", "Intimidação", "Investigação", "Natureza", "Religião");
+	
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Bruxo";
 //	private FichaDoPersonagem ficha;
@@ -23,6 +28,10 @@ public class Bruxo extends Classes{
 //	public FichaDoPersonagem getFicha() {
 //		return this.ficha;
 //	}
+	
+	public List<String> getPericiasList(){
+		return this.pericias;
+	}
 	
 	public String bruxoDescricao() {
 		String descricao ="Com um pseudodragão enrolado em seu ombro, um jovem\r\n"
@@ -81,21 +90,17 @@ public class Bruxo extends Classes{
 		List<String> proficiencia_equips = Arrays.asList("Armaduras leves", "Armas simples");
 		getProficiencia().SetProfEquips(proficiencia_equips);
 		List<String> proficiencia_resistencia = Arrays.asList("Sabedoria", "Carisma");
-		getProficiencia().SetResistencia(proficiencia_resistencia);
-		
-		List<String> pericias = Arrays.asList("Arcanismo", "Enganação", "História", "Intimidação", "Investigação", "Natureza", "Religião");
-		getProficiencia().setPericias(pericias ,2);
-//		this.ficha = this.proficiencia.getFicha();
+		getProficiencia().SetResistencia(proficiencia_resistencia);	
 //		equips1();
 //		equips2();
 //		equips3();
 //		this.magias.setFicha(ficha);
-		getMagias().truquesBruxo();
-		getMagias().setMagiasBruxoLV1();
+//		getMagias().truquesBruxo();
+//		getMagias().setMagiasBruxoLV1();
 //		this.ficha = this.magias.getFicha();
 //		getEquips().setArmasSimples();
-		getFicha().setEquipamentos("Armadura de couro");
-		getFicha().setEquipamentos("Adagas (2)");
+//		getFicha().setEquipamentos("Armadura de couro");
+//		getFicha().setEquipamentos("Adagas (2)");
 		getFicha().setHabilidade_conjuracao("Carisma");
 	}
 	

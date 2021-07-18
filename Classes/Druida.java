@@ -3,18 +3,22 @@ package Classes;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+
 
 import CriadorDeFicha.Classes;
 
 public class Druida extends Classes{
+	private List<String> pericias = Arrays.asList("Arcanismo", "Adestrar Animais", "Intuição", "Medicina", "Natureza", "Percepção", "Religião", "Sobrevivência");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Druida";
 //	private FichaDoPersonagem ficha;
 //	private Proficiencia proficiencia;
 //	private Equipamentos equips;
 //	private Magias magias;
+	
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String druidaDescricao() {
 		String descricao = "DRUIDA\r\n\n"
@@ -80,24 +84,14 @@ public class Druida extends Classes{
 		getFicha().setClasse("Druida");
 		getFicha().setBonus_proficiencia(2);
 		List<String> profEquips = Arrays.asList("Armaduras leves", "Armaduras médias", "Escudos", "Clavas", "Adagas", "Dardos", "Azagaias", "Maças", "Bordões", "Cimitarras", "Foices", "Fundas", "Lanças");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().SetProfEquips(profEquips);
 		getFicha().setProfi_ferramentas_peri("Kit de herbalismo");
 		List<String> profResistencia = Arrays.asList("Inteligência", "Sabedoria");
 		getProficiencia().SetResistencia(profResistencia);
-		List<String> profPericias = Arrays.asList("Arcanismo", "Adrestrar Animas", "Intuição", "Medicina", "Natureza", "Percepção", "Religião", "Sobrevivência");
-		getProficiencia().setPericias(profPericias, 2);
-//		this.ficha = this.proficiencia.getFicha();
-//		equips1();
-//		equips2();
-//		equips3();
-		getFicha().setEquipamentos("Armadura de couro");
-		getFicha().setEquipamentos(getEquips().confirmarPacotes("Pacote de Aventureiro"));
-		getFicha().setEquipamentos("Foco Druídico");
 		getFicha().setIdiomas("Druídico");
 //		this.magias.setFicha(ficha);
-		getMagias().truquesDruida();
-		getMagias().setMagiasDruidaLV1();
+//		getMagias().truquesDruida();
+//		getMagias().setMagiasDruidaLV1();
 //		this.ficha = this.magias.getFicha();
 		getFicha().setHabilidade_conjuracao("Sabedoria");
 	}

@@ -9,6 +9,7 @@ import java.util.Scanner;
 import CriadorDeFicha.Classes;
 
 public class Ladino extends Classes{
+	private List<String> pericias = Arrays.asList("Acrobacia", "Atletismo", "Atuação", "Enganação", "Furtividade", "Intimidação", "Intuição", "Investigação", "Percepção", "Persuasão", "Prestidigitação");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Ladino";
 //	private FichaDoPersonagem ficha;
@@ -23,6 +24,10 @@ public class Ladino extends Classes{
 //	public FichaDoPersonagem getFicha() {
 //		return this.ficha;
 //	}
+	
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String ladinoDescricao() {
 		String descricao = "LADINO\r\n"
@@ -95,13 +100,11 @@ public class Ladino extends Classes{
 		getFicha().setClasse("Ladino");
 		getFicha().setBonus_proficiencia(2);
 		List<String> profEquips = Arrays.asList("Acolchoada", "Couro", "Couro Batido");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().SetProfEquips(profEquips);
 		List<String> profResistencia = Arrays.asList("Destreza", "Inteligência");
 		getProficiencia().SetResistencia(profResistencia);
-		List<String> profPericias = Arrays.asList("Acrobacia", "Atletismo", "Atuação", "Enganação", "Furtividade", "Intimidação", "Intuição", "Investigação", "Percepção", "Persuasão", "Prestidigitação");
-		getProficiencia().setPericias(profPericias, 4);
-//		this.ficha = this.proficiencia.getFicha();
+		getFicha().setEquipamentos("Armadura de couro");
+		getFicha().setEquipamentos("Adagas (2)");
 		getFicha().setProfi_ferramentas_peri("Ferramentas de Ladrão");
 //		equips1();
 //		equips2();

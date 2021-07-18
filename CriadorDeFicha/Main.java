@@ -1,8 +1,5 @@
 package CriadorDeFicha;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 import Backgrounds.Antecedentes;
 import Janelas.Tela;
 

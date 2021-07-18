@@ -10,7 +10,7 @@ public abstract class Classes {
 	private static Equipamentos equips;
 	private static Magias magias;
 	private static Idiomas idiomas;
-	private static AtribuirHabilidades atribuirHabilidades;
+	private static AtribuirHabilidades atribuirHabilidades = new AtribuirHabilidades();
 	private static Antecedentes antecedentes;
 	
 	public static String getNome() {

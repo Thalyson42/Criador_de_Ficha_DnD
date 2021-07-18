@@ -3,12 +3,11 @@ package Classes;
 import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
 
 import CriadorDeFicha.Classes;
 
 public class Feiticeiro extends Classes{
+	private List<String> pericias = Arrays.asList("Arcanismo", "Enganação", "Intuição", "Intimidação", "Persuasão", "Religião");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Feiticeiro";
 //	private FichaDoPersonagem ficha;
@@ -23,6 +22,10 @@ public class Feiticeiro extends Classes{
 //	public FichaDoPersonagem getFicha() {
 //		return this.ficha;
 //	}
+	
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String feiticeiroDescricao() {
 		String descricao = "FEITICEIRO\r\n\n"
@@ -91,19 +94,11 @@ public class Feiticeiro extends Classes{
 		getFicha().setClasse("Feiticeiro");
 		getFicha().setBonus_proficiencia(2);
 		List<String> profEquips = Arrays.asList("Adagas", "Dardos", "Fundos", "Bordões", "Bestas Leves");
-//		this.proficiencia.setFicha(ficha);
 		getProficiencia().SetProfEquips(profEquips);
 		List<String> profResistencia = Arrays.asList("Constituição", "Carisma");
 		getProficiencia().SetResistencia(profResistencia);
-		List<String> profPericias = Arrays.asList("Arcanismo", "Enganação", "Intuição", "Intimidação", "Persuasão", "Religião");
-		getProficiencia().setPericias(profPericias, 2);
-//		this.ficha = this.proficiencia.getFicha();
-//		equips1();
-//		equips2();
-//		equips3();
-//		this.magias.setFicha(ficha);
-		getMagias().truquesFeiticeiro();
-		getMagias().setMagiasFeiticeiroLV1();
+//		getMagias().truquesFeiticeiro();
+//		getMagias().setMagiasFeiticeiroLV1();
 //		this.ficha = this.magias.getFicha();
 		getFicha().setHabilidade_conjuracao("Carisma");
 		

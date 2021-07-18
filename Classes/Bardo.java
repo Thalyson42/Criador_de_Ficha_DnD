@@ -79,15 +79,10 @@ public class Bardo extends Classes{
 		getFicha().setBonus_proficiencia(2);
 		List<String> proficiencia_equips = Arrays.asList("Armaduras leves", "Armas simples", "Bestas de mão", "Espadas longas", "Rapieiras", "Espadas curtas");
 		getProficiencia().SetProfEquips(proficiencia_equips);
-//		getFicha().setProfi_ferramentas_peri(getEquips().setInstrumentoMusical(3));
+		getFicha().setEquipamentos("Armadura de Couro"); //corrigir
+		getFicha().setEquipamentos("Adaga");
 		List<String> proficiencia_resistencia = Arrays.asList("Destreza", "Carisma");
 		getProficiencia().SetResistencia(proficiencia_resistencia);
-//		getProficiencia().setPericias(3);
-//		equips1();
-//		equips2();
-//		equips3();
-//		getMagias().truquesBardo();
-//		getMagias().setMagiasBardoLV1();
 		getFicha().setHabilidade_conjuracao("Carisma");
 	}
 	

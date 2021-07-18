@@ -2,6 +2,7 @@ package br.com.uninassau.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import br.com.uninassau.jdbc.connection.ConnectionFactory;
@@ -14,11 +15,46 @@ public class FichaDoPersonagemDAO {
 		this.conexao = ConnectionFactory.createConnection();
 	}
 	
+	public boolean characterAlreadyExist(int idpersonagem) {
+		String sql = "SELECT idpersonagem FROM personagem";
+		int id = 0;
+		PreparedStatement stmt = null;
+		
+		try {
+			stmt = conexao.prepareStatement(sql);
+			ResultSet rs;
+			
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				id = rs.getInt("idpersonagem");
+			}
+			
+			if(id == idpersonagem) {
+				stmt.close();
+				return true;
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
 	public void salvarPersonagem(Usuario usuario, int pos) {
 		String sql = "INSERT INTO personagem (idpersonagem, perfil_idperfil, nome, classe, raca, antecedente, pontos_xp, pontos_vida, nivel, classe_armadura, deslocamento, iniciativa, percepcao_passiva) "
 				+ "values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement stmt = null;
+		
+		int idpersonagem = usuario.getPersonagem().get(pos).getIdpersonagem();
+		
+		while(characterAlreadyExist(idpersonagem)) {
+			idpersonagem++;
+			usuario.getPersonagem().get(pos).setIdpersonagem(idpersonagem);
+		}
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
@@ -262,13 +298,13 @@ public class FichaDoPersonagemDAO {
 	}
 	
 	public void salvarTracosPersonalidade(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO tracos_personalidade (caracteristicas_idcaracteristicas, tracos_personalidade) values (?,?)";
+		String sql = "INSERT INTO tracos_personalidade (personagem_idpersonagem, tracos_personalidade) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdcaracteristica());
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdpersonagem());
 			stmt.setString(2, usuario.getPersonagem().get(pos).getTracos_personalidade().get(i));
 			stmt.execute();
 			stmt.close();
@@ -507,13 +543,13 @@ public class FichaDoPersonagemDAO {
 	}
 	
 	public void salvarFerramentas_pericias(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO array_ferramentas_pericias (caracteristicas_idcaracteristicas, array_ferramentas_pericias) values (?,?)";
+		String sql = "INSERT INTO array_ferramentas_pericias (personagem_idpersonagem, array_ferramentas_pericias) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdcaracteristica());
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdpersonagem());
 			stmt.setString(2, usuario.getPersonagem().get(pos).getProfi_ferramentas_peri().get(i));
 			stmt.execute();
 			stmt.close();
@@ -553,13 +589,13 @@ public class FichaDoPersonagemDAO {
 	}
 	
 	public void salvarEquipamentos(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO array_equipamentos (caracteristicas_idcaracteristicas, array_equipamentos) values (?,?)";
+		String sql = "INSERT INTO array_equipamentos (personagem_idpersonagem, array_equipamentos) values (?,?)";
 		
 		PreparedStatement stmt = null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdcaracteristica());
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdpersonagem());
 			stmt.setString(2, usuario.getPersonagem().get(pos).getEquipamentos().get(i));
 			stmt.execute();
 			stmt.close();
@@ -599,13 +635,13 @@ public class FichaDoPersonagemDAO {
 	}
 	
 	public void salvarIdioma(Usuario usuario, int pos, int i) {
-		String sql = "INSERT INTO array_idioma (caracteristicas_idcaracteristicas, array_idioma) values (?,?)";
+		String sql = "INSERT INTO array_idioma (personagem_idpersonagem, array_idioma) values (?,?)";
 		
 		PreparedStatement stmt =null;
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdcaracteristica());
+			stmt.setInt(1, usuario.getPersonagem().get(pos).getIdpersonagem());
 			stmt.setString(2, usuario.getPersonagem().get(pos).getIdiomas().get(i));
 			stmt.execute();
 			stmt.close();

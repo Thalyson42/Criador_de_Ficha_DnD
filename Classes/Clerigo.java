@@ -9,12 +9,17 @@ import java.util.Scanner;
 import CriadorDeFicha.Classes;
 
 public class Clerigo extends Classes{
+	private List<String> pericias = Arrays.asList("História", "Intuição", "Medicina", "Persuasão", "Religião");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Clerigo";
 //	private FichaDoPersonagem ficha;
 //	private Proficiencia proficiencia;
 //	private Equipamentos equips;
 //	private Magias magias;
+	
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String clerigoDescricao() {
 		String descricao = "CLÉRIGO\r\n\n"
@@ -74,24 +79,14 @@ public class Clerigo extends Classes{
 		getFicha().setClasse("Clerigo");
 		getFicha().setBonus_proficiencia(2);
 		List<String> profEquips = Arrays.asList("Armaduras leves", "Armaduras médias", "Escudos");
-//		getProficiencia().setFicha(ficha);
 		getProficiencia().SetProfEquips(profEquips);
-		getProficiencia().SetProfEquips(getEquips().getArmas_simples_CAC());
-		getProficiencia().SetProfEquips(getEquips().getArmas_simples_distancia());
+		getProficiencia().SetProfEquips(getEquips().getArmasSimplesCAC());
+		getProficiencia().SetProfEquips(getEquips().getArmasSimplesDistancia());
 		List<String> profResist = Arrays.asList("Sabedoria", "Carisma");
 		getProficiencia().SetResistencia(profResist);
-		List<String> profPericias = Arrays.asList("História", "Intuição", "Medicina", "Persuasão", "Religião");
-		getProficiencia().setPericias(profPericias, 2);
-//		this.ficha = this.proficiencia.getFicha();
-//		equips1();
-//		equips2();
-//		equips3();
-//		equips4();
-		getFicha().setEquipamentos("Escudo");
-		getFicha().setEquipamentos("Símbolo sagrado");
 //		this.magias.setFicha(ficha);
-		getMagias().truquesClerigo();
-		getMagias().setMagiasClerigoLV1();
+//		getMagias().truquesClerigo();
+//		getMagias().setMagiasClerigoLV1();
 //		this.ficha = this.magias.getFicha();
 		getFicha().setHabilidade_conjuracao("Sabedoria");
 	}

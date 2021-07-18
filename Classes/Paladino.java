@@ -9,12 +9,17 @@ import java.util.Scanner;
 import CriadorDeFicha.Classes;
 
 public class Paladino extends Classes{
+	private List<String> pericias = Arrays.asList("Atletismo", "Intuição", "Intimidação", "Medicina", "Persuasão", "Religião");
 	private SecureRandom random = new SecureRandom();
 //	private String nome = "Paladino";
 //	private FichaDoPersonagem ficha;
 //	private Proficiencia proficiencia;
 //	private Equipamentos equips;
 //	private Magias magias;
+
+	public List<String> getPericiasList() {
+		return pericias;
+	}
 	
 	public String paladinoDescricao() {
 		String descricao = "PALADINO\r\n"
@@ -85,18 +90,11 @@ public class Paladino extends Classes{
 	public void setPaladino() {
 		getFicha().setClasse("Paladino");
 		getFicha().setBonus_proficiencia(2);
-//		this.proficiencia.setFicha(ficha);
 		List<String> listaArmaduras = Arrays.asList("Armaduras Leves", "Armaduras Médias", "Armaduras Pesadas", "Armas Simples", "Armas Marciais");
 		getProficiencia().SetProfEquips(listaArmaduras);
 		getProficiencia().setProficienciaEscudos();
 		List<String> profResistencia = Arrays.asList("Sabedoria", "Carisma");
 		getProficiencia().SetResistencia(profResistencia);
-		List<String> profPericias = Arrays.asList("Atletismo", "Intuição", "Intimidação", "Medicina", "Persuasão", "Religião");
-		getProficiencia().setPericias(profPericias, 2);
-//		getFicha() = this.proficiencia.getFicha();
-//		equips1();
-//		equips2();
-//		equips3();
 		getFicha().setEquipamentos("Cota de malha");
 		getFicha().setEquipamentos("Símbolo sagrado");
 	}
