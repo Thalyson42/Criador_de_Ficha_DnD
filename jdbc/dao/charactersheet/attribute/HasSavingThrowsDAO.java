@@ -100,13 +100,13 @@ public class HasSavingThrowsDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				hasSavingThrows.setIdHasSavingThrows(rs.getInt("idsaving_throws"));
-				hasSavingThrows.setHasSavingStrength(rs.getBoolean("saving_strength"));
-				hasSavingThrows.setHasSavingDexterity(rs.getBoolean("saving_dexterity"));
-				hasSavingThrows.setHasSavingContitution(rs.getBoolean("saving_contitution"));
-				hasSavingThrows.setHasSavingIntellingece(rs.getBoolean("saving_intelligence"));
-				hasSavingThrows.setHasSavingWisdom(rs.getBoolean("saving_wisdom"));
-				hasSavingThrows.setHasSavingCharisma(rs.getBoolean("saving_charisma"));
+				hasSavingThrows.setIdHasSavingThrows(rs.getInt("idhas_savingthrows"));
+				hasSavingThrows.setHasSavingStrength(rs.getBoolean("has_savingstrength"));
+				hasSavingThrows.setHasSavingDexterity(rs.getBoolean("has_savingdexterity"));
+				hasSavingThrows.setHasSavingContitution(rs.getBoolean("has_savingconstitution"));
+				hasSavingThrows.setHasSavingIntellingece(rs.getBoolean("has_savingintelligence"));
+				hasSavingThrows.setHasSavingWisdom(rs.getBoolean("has_savingwisdom"));
+				hasSavingThrows.setHasSavingCharisma(rs.getBoolean("has_savingcharisma"));
 			}
 			stmt.close();
 			rs.close();

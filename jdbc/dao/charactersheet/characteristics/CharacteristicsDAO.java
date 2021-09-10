@@ -67,6 +67,7 @@ public class CharacteristicsDAO {
 			stmt.setString(1, characteristics.getIdeals());
 			stmt.setString(2, characteristics.getBonds());
 			stmt.setString(3, characteristics.getFlaws());
+			stmt.setInt(4, characteristics.getIDCharacteristic());
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
@@ -79,7 +80,7 @@ public class CharacteristicsDAO {
 		int sheetID = sheet.getIdCharacterSheet();
 		Characteristics characteristics = new Characteristics();
 		String sql = "SELECT idcharacteristics, ideals, bonds, flaws "
-				+ "FROM characteristics"
+				+ "FROM characteristics "
 				+ "WHERE charactersheet_idcharactersheet=?";
 		
 		PreparedStatement stmt = null;

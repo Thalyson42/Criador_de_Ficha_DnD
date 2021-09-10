@@ -2,12 +2,47 @@ package jdbc.main;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import jdbc.model.user.User;
+import jdbc.dao.charactersheet.BiographyDAO;
 import jdbc.dao.charactersheet.CharacterSheetDAO;
+import jdbc.dao.charactersheet.ClassFeatsDAO;
+import jdbc.dao.charactersheet.EquipmentsDAO;
+import jdbc.dao.charactersheet.LanguagesDAO;
+import jdbc.dao.charactersheet.ProficienceEquipmentsDAO;
+import jdbc.dao.charactersheet.ProficienceToolsDAO;
+import jdbc.dao.charactersheet.attribute.AttributeDAO;
+import jdbc.dao.charactersheet.attribute.AttributeModDAO;
+import jdbc.dao.charactersheet.attribute.HasSavingThrowsDAO;
+import jdbc.dao.charactersheet.attribute.SavingThrowsDAO;
+import jdbc.dao.charactersheet.characteristics.CharacteristicsDAO;
+import jdbc.dao.charactersheet.characteristics.PersonalityTraitsDAO;
+import jdbc.dao.charactersheet.skills.HasSkillDAO;
+import jdbc.dao.charactersheet.skills.SkillsDAO;
+import jdbc.dao.charactersheet.spell.CantripsDAO;
+import jdbc.dao.charactersheet.spell.SpellDAO;
+import jdbc.dao.charactersheet.spell.SpellsDAO;
 import jdbc.dao.user.ProfileDAO;
 import jdbc.dao.user.UserDAO;
+import jdbc.model.characterSheet.Biography;
 import jdbc.model.characterSheet.CharacterSheet;
+import jdbc.model.characterSheet.ClassFeats;
+import jdbc.model.characterSheet.Equipments;
+import jdbc.model.characterSheet.Languages;
+import jdbc.model.characterSheet.ProficienceEquipments;
+import jdbc.model.characterSheet.ProficienceTools;
+import jdbc.model.characterSheet.attribute.Attribute;
+import jdbc.model.characterSheet.attribute.AttributeMod;
+import jdbc.model.characterSheet.attribute.HasSavingThrows;
+import jdbc.model.characterSheet.attribute.SavingThrows;
+import jdbc.model.characterSheet.characteristics.Characteristics;
+import jdbc.model.characterSheet.characteristics.PersonalityTraits;
+import jdbc.model.characterSheet.skills.HasSkills;
+import jdbc.model.characterSheet.skills.Skills;
+import jdbc.model.characterSheet.spells.Cantrips;
+import jdbc.model.characterSheet.spells.Spell;
+import jdbc.model.characterSheet.spells.Spells;
 import jdbc.model.user.Profile;
 import jdbc.connection.ConnectionFactory;
 
@@ -23,78 +58,21 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		User user = new User();
-		UserDAO userdao = new UserDAO();
-		Profile profile = new Profile();
-		ProfileDAO profiledao = new ProfileDAO();
-		CharacterSheet sheet = new CharacterSheet();
-		CharacterSheetDAO sheetdao = new CharacterSheetDAO();
-		ArrayList<CharacterSheet> character = new ArrayList<CharacterSheet>();
 
-		
-		String login = "Froko";
-		String password = "123123";
-		
-		user = userdao.readUser(login, password);
-		
-		user.setCharacterSheet(sheetdao.readCharacterSheet(user));
-		
-		character = user.getCharacterSheet();
-		
-		sheet = character.get(1);
-//		sheet.setPlayerName("bleble");
-//		sheet.setCharacterName("e");
-//		sheet.setCharacterClass("chalass");
-//		sheet.setRace("race");
-//		sheet.setAlignment("alignment");
-//		sheet.setBackground("background");
-//		sheet.setProficienceBonus(2);
-//		sheet.setInspiration(true);
-//		sheet.setXpPoints(1.200);
-//		sheet.setLifePoints(15);
-//		sheet.setLevel(3);
-//		sheet.setArmorClass(14);
-//		sheet.setHitDice("hit_dice");
-//		sheet.setSpeed("speed");
-//		sheet.setInitiative("initiative");
-//		sheet.setPassivePerception(16);
-		
-		sheetdao.deleteCharacterSheet(sheet, user);
-		user.removeCharacterSheet(sheet);
-		
 
+
+		SpellDAO spellDao = new SpellDAO();
+		Cantrips cantrip = new Cantrips();
+		CantripsDAO cantripDao = new CantripsDAO();
+		Spells spells = new Spells();
 		
+		spells.setIdSpells(1);
+		
+		cantrip.setIDCantrip(1);
+		cantrip.setCantripDescription("mudou");
+		
+		cantripDao.deleteCantrips(spells, cantrip);
 	
-//		sheetdao.createCharacterSheet(sheet, user);
-		
-		
-		
-		
-//		profiledao.createProfile(user);
 
-		
-//		profile = user.getProfile();
-//		
-//		profiledao.deleteProfile(profile);
-//		
-//		String profileName = "Thalyson";
-//		int age = 25;
-//		String sex = "Masculino";
-//		String profileDescription = "funcionou";
-//		String email = "thalyson107@gmail.com";
-//		String phone = "8388725484151";
-//		
-//		profile.setProfileName(profileName);
-//		profile.setAge(age);
-//		profile.setSex(sex);
-//		profile.setProfileDescription(profileDescription);
-//		profile.setEmail(email);
-//		profile.setPhone(phone);
-//		
-//		profile = profiledao.readProfile(user);
-//		System.out.println(profile.getProfileName()+"\n"+profile.getAge()+"\n"+profile.getSex()+"\n"+profile.getProfileDescription()+"\n"+profile.getEmail()+"\n"+profile.getPhone());
-//		
-		
 	}
-
 }

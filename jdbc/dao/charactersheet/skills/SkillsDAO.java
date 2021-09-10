@@ -20,7 +20,7 @@ public class SkillsDAO {
 	public void createSkills(Skills skills, CharacterSheet sheet) {
 		int sheetId = sheet.getIdCharacterSheet();
 		String sql = "INSERT INTO skills "
-				+ "(idskill, acrobatics, animal_handling, arcana, athletics, deception, history, insight, "
+				+ "(idskills, acrobatics, animal_handling, arcana, athletics, deception, history, insight, "
 				+ "intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleigth_of_hand, "
 				+ "stealth, survival, charactersheet_idcharactersheet) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
@@ -59,7 +59,7 @@ public class SkillsDAO {
 	}
 	
 	public void deleteSkills(Skills skills) {
-		String sql = "DELETE FROM skills WHERE idskill=?";
+		String sql = "DELETE FROM skills WHERE idskills=?";
 		
 		PreparedStatement stmt = null;
 		
@@ -79,7 +79,7 @@ public class SkillsDAO {
 				+ "acrobatics=?, animal_handling=?, arcana=?, athletics=?, deception=?, history=?, insight=?, "
 				+ "intimidation=?, investigation=?, medicine=?, nature=?, perception=?, performance=?, persuasion=?, religion=?, sleigth_of_hand=?, "
 				+ "stealth=?, survival=? "
-				+ "WHERE idskill=?";
+				+ "WHERE idskills=?";
 		
 		PreparedStatement stmt = null;
 		
@@ -115,7 +115,7 @@ public class SkillsDAO {
 	public Skills readSkills(CharacterSheet sheet) {
 		int sheetId = sheet.getIdCharacterSheet();
 		Skills skills = new Skills();
-		String sql = "SELECT idskill, acrobatics, animal_handling, arcana, athletics, deception, history, insight, "
+		String sql = "SELECT idskills, acrobatics, animal_handling, arcana, athletics, deception, history, insight, "
 				+ "intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleigth_of_hand, "
 				+ "stealth, survival "
 				+ "FROM skills "
@@ -130,7 +130,7 @@ public class SkillsDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				skills.setIdskills(rs.getInt("idskill"));
+				skills.setIdskills(rs.getInt("idskills"));
 				skills.setAcrobatics(rs.getInt("acrobatics"));
 				skills.setAnimalHandling(rs.getInt("animal_handling"));
 				skills.setArcana(rs.getInt("arcana"));

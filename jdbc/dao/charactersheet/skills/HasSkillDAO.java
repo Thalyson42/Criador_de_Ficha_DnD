@@ -22,7 +22,7 @@ public class HasSkillDAO {
 		String sql = "INSERT INTO has_skils "
 				+ "(idhas_skils, has_acrobatics, has_animal_handling, has_arcana, has_athletics, has_deception, has_history, has_insight, "
 				+ "has_intimidation, has_investigation, has_medicine, has_nature, has_perception, has_performance, has_persuasion, has_religion, "
-				+ "has_sleigth_of_hand, has_stealth, , has_survival, charactersheet_idcharactersheet) "
+				+ "has_sleigth_of_hand, has_stealth, has_survival, charactersheet_idcharactersheet) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
 		
 		PreparedStatement stmt = null;
@@ -130,25 +130,25 @@ public class HasSkillDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
-				hasSkills.setIdHasSkills(rs.getInt("idskill"));
-				hasSkills.setHasAcrobatics(rs.getBoolean("acrobatics"));
-				hasSkills.setHasAnimalHandling(rs.getBoolean("animal_handling"));
-				hasSkills.setHasArcana(rs.getBoolean("arcana"));
-				hasSkills.setHasAthletics(rs.getBoolean("athletics"));
-				hasSkills.setHasDeception(rs.getBoolean("deception"));
-				hasSkills.setHasHistory(rs.getBoolean("history"));
-				hasSkills.setHasInsight(rs.getBoolean("insight"));
-				hasSkills.setHasIntimidation(rs.getBoolean("intimidation"));
+				hasSkills.setIdHasSkills(rs.getInt("idhas_skils"));
+				hasSkills.setHasAcrobatics(rs.getBoolean("has_acrobatics"));
+				hasSkills.setHasAnimalHandling(rs.getBoolean("has_animal_handling"));
+				hasSkills.setHasArcana(rs.getBoolean("has_arcana"));
+				hasSkills.setHasAthletics(rs.getBoolean("has_athletics"));
+				hasSkills.setHasDeception(rs.getBoolean("has_deception"));
+				hasSkills.setHasHistory(rs.getBoolean("has_history"));
+				hasSkills.setHasInsight(rs.getBoolean("has_insight"));
+				hasSkills.setHasIntimidation(rs.getBoolean("has_intimidation"));
 				hasSkills.setHasInvestigation(rs.getBoolean("has_investigation"));
-				hasSkills.setHasMedicine(rs.getBoolean("medicine"));
-				hasSkills.setHasNature(rs.getBoolean("nature"));
-				hasSkills.setHasPerception(rs.getBoolean("perception"));
-				hasSkills.setHasPerformance(rs.getBoolean("performance"));
-				hasSkills.setHasPersuasion(rs.getBoolean("persuasion"));
-				hasSkills.setHasReligion(rs.getBoolean("religion"));
-				hasSkills.setHasSleigthOfHand(rs.getBoolean("sleigth_of_hand"));
-				hasSkills.setHasStealth(rs.getBoolean("stealth"));
-				hasSkills.setHasSurvival(rs.getBoolean("survival"));
+				hasSkills.setHasMedicine(rs.getBoolean("has_medicine"));
+				hasSkills.setHasNature(rs.getBoolean("has_nature"));
+				hasSkills.setHasPerception(rs.getBoolean("has_perception"));
+				hasSkills.setHasPerformance(rs.getBoolean("has_performance"));
+				hasSkills.setHasPersuasion(rs.getBoolean("has_persuasion"));
+				hasSkills.setHasReligion(rs.getBoolean("has_religion"));
+				hasSkills.setHasSleigthOfHand(rs.getBoolean("has_sleigth_of_hand"));
+				hasSkills.setHasStealth(rs.getBoolean("has_stealth"));
+				hasSkills.setHasSurvival(rs.getBoolean("has_survival"));
 			}
 			stmt.close();
 			rs.close();

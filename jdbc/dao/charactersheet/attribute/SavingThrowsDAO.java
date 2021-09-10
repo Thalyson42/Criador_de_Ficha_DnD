@@ -45,7 +45,7 @@ public class SavingThrowsDAO {
 	}
 	
 	public void deleteSavingThrows(SavingThrows attributeMod) {
-		String sql = "DELETE FROM attribute_mod WHERE idattribute_mod=?";
+		String sql = "DELETE FROM saving_throws WHERE idsaving_throws=?";
 		
 		PreparedStatement stmt = null;
 		
@@ -61,7 +61,7 @@ public class SavingThrowsDAO {
 	}
 	
 	public void updateSavingThrows(SavingThrows attributeMod) {
-		String sql = "UPDATE attribute_mod SET "
+		String sql = "UPDATE saving_throws SET "
 				+ "saving_strength=?, saving_dexterity=?, saving_contitution=?, saving_intelligence=?, saving_wisdom=?, saving_charisma=? "
 				+ "WHERE idsaving_throws=?";
 		

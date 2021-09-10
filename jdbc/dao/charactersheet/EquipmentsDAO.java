@@ -21,7 +21,7 @@ public class EquipmentsDAO {
 	
 	public void createEquipments(CharacterSheet sheet, Equipments equips) {
 		int idCharacterSheet = sheet.getIdCharacterSheet();
-		String sql = "INSERT INTO equipaments (idequipments, equipment, charactersheet_idcharactersheet) "
+		String sql = "INSERT INTO equipments (idequipments, equipment, charactersheet_idcharactersheet) "
 				+ "VALUES (?, ?, ?)";
 		
 		PreparedStatement stmt = null;

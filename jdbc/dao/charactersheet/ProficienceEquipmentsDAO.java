@@ -20,7 +20,7 @@ public class ProficienceEquipmentsDAO {
 	
 	public void createProficienceEquipments(CharacterSheet sheet, ProficienceEquipments proficienceEquipments) {
 		int idCharacterSheet = sheet.getIdCharacterSheet();
-		String sql = "INSERT INTO languages (idproficience_equipments, proficience_equip, charactersheet_idcharactersheet) "
+		String sql = "INSERT INTO proficience_equipments (idproficience_equipments, proficience_equip, charactersheet_idcharactersheet) "
 				+ "VALUES (?, ?, ?)";
 		
 		PreparedStatement stmt = null;

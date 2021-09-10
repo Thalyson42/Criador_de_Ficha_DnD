@@ -20,9 +20,9 @@ public class BiographyDAO {
 	public void createBiography(Biography biography, CharacterSheet sheet) {
 		int idCharacterSheet = sheet.getIdCharacterSheet();
 		String sql = "INSERT INTO biography "
-				+ "(idbiography, age, height, weight, eyes, skin, hair, character_appearance, "
-				+ "allies_organization, character_backstory, additional_features_traits, treasure, charactersheet_idcharactersheet) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "(idbiography, character_name, age, height, weight, eyes, skin, hair, character_appearance, "
+				+ "allies_organizations, character_backstory, additional_features_traits, treasure, charactersheet_idcharactersheet) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement stmt = null;
 		
@@ -68,9 +68,8 @@ public class BiographyDAO {
 	}
 	
 	public void updateBiography(Biography biography) {
-		String sql = "UPDATE biography "
-				+ "SET age=?, height=?, weight=?, eyes=?, skin=?, hair=?, character_appearance=?, "
-				+ "allies_organization=?, character_backstory=?, additional_features_traits=?, treasure=? "
+		String sql = "UPDATE biography SET character_name=?, age=?, height=?, weight=?, eyes=?, skin=?, hair=?, character_appearance=?, "
+				+ "allies_organizations=?, character_backstory=?, additional_features_traits=?, treasure=? "
 				+ "WHERE idbiography=?";
 		
 		PreparedStatement stmt = null;
@@ -101,8 +100,8 @@ public class BiographyDAO {
 	public Biography readBiography(CharacterSheet sheet) {
 		int idCharacterSheet = sheet.getIdCharacterSheet();
 		Biography biography = new Biography();
-		String sql = "SELECT idbiography, age, height, weight, eyes, skin, hair, character_appearance, "
-				+ "allies_organization, character_backstory, additional_features_traits, treasure "
+		String sql = "SELECT idbiography, character_name, age, height, weight, eyes, skin, hair, character_appearance, "
+				+ "allies_organizations, character_backstory, additional_features_traits, treasure "
 				+ "FROM biography "
 				+ "WHERE charactersheet_idcharactersheet=?";
 		
