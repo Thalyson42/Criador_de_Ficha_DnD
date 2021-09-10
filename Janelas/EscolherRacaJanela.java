@@ -18,7 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import CriadorDeFicha.Classes;
 import Races.ChosingRace;
-import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
+import jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JButton;

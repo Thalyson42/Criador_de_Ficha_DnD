@@ -5,8 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import br.com.uninassau.jdbc.dao.UsuarioDAO;
-import br.com.uninassau.jdbc.modelo.Usuario;
+import jdbc.dao.UsuarioDAO;
+import jdbc.modelo.Usuario;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

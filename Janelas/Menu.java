@@ -14,7 +14,7 @@ import CriadorDeFicha.Equipamentos;
 import CriadorDeFicha.Idiomas;
 import CriadorDeFicha.Magias;
 import CriadorDeFicha.Proficiencia;
-import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
+import jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;

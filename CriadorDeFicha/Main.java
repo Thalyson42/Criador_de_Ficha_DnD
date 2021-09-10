@@ -2,10 +2,9 @@ package CriadorDeFicha;
 
 import Backgrounds.Antecedentes;
 import Janelas.Tela;
+import jdbc.modelo.*;
 
 import java.io.IOException;
-
-import br.com.uninassau.jdbc.modelo.*;
 public class Main {
 
 	public static void main(String[] args) throws IOException {

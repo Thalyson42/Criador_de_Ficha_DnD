@@ -1,4 +1,4 @@
-package br.com.uninassau.jdbc.modelo;
+package jdbc.modelo;
 
 import java.util.ArrayList;
 

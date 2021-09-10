@@ -1,4 +1,4 @@
-package br.com.uninassau.jdbc.connection;
+package jdbc.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,19 +6,23 @@ import java.sql.SQLException;
 
 
 public class ConnectionFactory {
+	private static Connection connection = null;
+	
 	public static Connection createConnection() throws SQLException{
 		try {
-			
-			Connection conexao = null;
 			String url = "jdbc:mysql://localhost:3306/projeto_bd?useTimezone=true&serverTimezone=UTC";
 			String user = "root";
 			String password = "12369514";
-			conexao = DriverManager.getConnection(url, user, password);
-			System.out.println("Conectado com sucesso!");
-			return conexao;
+			connection = DriverManager.getConnection(url, user, password);
+			System.out.println("Connected!");
+			return connection;
 		
 		}catch (SQLException msg) {
 			throw new RuntimeException(msg);
 		}
+	}
+	
+	public static Connection getConnection() {
+		return connection;
 	}
 }

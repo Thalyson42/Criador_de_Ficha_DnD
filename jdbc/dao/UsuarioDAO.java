@@ -1,12 +1,12 @@
-package br.com.uninassau.jdbc.dao;
+package jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.com.uninassau.jdbc.connection.ConnectionFactory;
-import br.com.uninassau.jdbc.modelo.Usuario;
+import jdbc.connection.ConnectionFactory;
+import jdbc.modelo.Usuario;
 
 public class UsuarioDAO {
 	private Connection conexao;

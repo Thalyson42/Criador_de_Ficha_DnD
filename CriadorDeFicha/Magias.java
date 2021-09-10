@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
-import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
+import jdbc.modelo.FichaDoPersonagem;
 
 public class Magias {
 	private FichaDoPersonagem ficha;

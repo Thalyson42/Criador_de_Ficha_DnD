@@ -16,7 +16,7 @@ import CriadorDeFicha.Classes;
 import CriadorDeFicha.Equipamentos;
 import CriadorDeFicha.Idiomas;
 import CriadorDeFicha.Proficiencia;
-import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
+import jdbc.modelo.FichaDoPersonagem;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JComboBox;

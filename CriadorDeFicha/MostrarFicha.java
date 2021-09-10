@@ -1,6 +1,6 @@
 package CriadorDeFicha;
 
-import br.com.uninassau.jdbc.modelo.FichaDoPersonagem;
+import jdbc.modelo.FichaDoPersonagem;
 
 public class MostrarFicha {
 	private FichaDoPersonagem ficha;

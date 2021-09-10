@@ -1,4 +1,4 @@
-package br.com.uninassau.jdbc.modelo;
+package jdbc.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -161,114 +161,114 @@ public class FichaDoPersonagem {
 	private String caracteristicas_tracos_adicionais;
 	private String tesouro;
 //
-	
-	public int getBio_cod() {
-		return bio_cod;
-	}
-
-	public void setBio_cod(int bio_cod) {
-		this.bio_cod = bio_cod;
-	}
-	
-	public String getNome_jogador() {
-		return nome_jogador;
-	}
-	
-	public void setNome_jogador(String nome_jogador) {
-		this.nome_jogador = nome_jogador;
-	}
-	
-	public String getNome_personagem() {
-		return nome_personagem;
-	}
-	
-	public void setNome_personagem(String nome_personagem) {
-		this.nome_personagem = nome_personagem;
-	}
-	
-	public String getClasse() {
-		return classe;
-	}
-	
-	public void setClasse(String classe) {
-		this.classe = classe;
-	}
-	
-	public int getNivel() {
-		return nivel;
-	}
-	
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
-	}
-	
-	public String getRaca() {
-		return raca;
-	}
-	
-	public void setRaca(String raca) {
-		this.raca = raca;
-	}
-	
-	public String getAlinhamento() {
-		return alinhamento;
-	}
-	
-	public void setAlinhamento(String alinhamento) {
-		this.alinhamento = alinhamento;
-	}
-	
-	public String getAntecedente() {
-		return antecedente;
-	}
-	
-	public void setAntecedente(String antecedente) {
-		this.antecedente = antecedente;
-	}
-	
-	public double getExp() {
-		return exp;
-	}
-	
-	public void setExp(double exp) {
-		this.exp = exp;
-	}
-	
-	public int getBonus_proficiencia() {
-		return bonus_proficiencia;
-	}
-	
-	public void setBonus_proficiencia(int bonus_proficiencia) {
-		this.bonus_proficiencia = bonus_proficiencia;
-	}
-	
-	public boolean getInspiracao() {
-		return inspiracao;
-	}
-	
-	public void setInspiracao(boolean inspiracao) {
-		this.inspiracao = inspiracao;
-	}
-	
-	public String getDeslocamento() {
-		return deslocamento;
-	}
-	
-	public void setDeslocamento(String deslocamento) {
-		this.deslocamento = deslocamento;
-	}
-	
-	public String getIniciativa() {
-		return iniciativa;
-	}
-
-	public void setIniciativa(String iniciativa) {
-		this.iniciativa = iniciativa;
-	}
-	
-	public int getPontos_vida() {
-		return pontos_vida;
-	}
+//	
+//	public int getBio_cod() {
+//		return bio_cod;
+//	}
+//
+//	public void setBio_cod(int bio_cod) {
+//		this.bio_cod = bio_cod;
+//	}
+//	
+//	public String getNome_jogador() {
+//		return nome_jogador;
+//	}
+//	
+//	public void setNome_jogador(String nome_jogador) {
+//		this.nome_jogador = nome_jogador;
+//	}
+//	
+//	public String getNome_personagem() {
+//		return nome_personagem;
+//	}
+//	
+//	public void setNome_personagem(String nome_personagem) {
+//		this.nome_personagem = nome_personagem;
+//	}
+//	
+//	public String getClasse() {
+//		return classe;
+//	}
+//	
+//	public void setClasse(String classe) {
+//		this.classe = classe;
+//	}
+//	
+//	public int getNivel() {
+//		return nivel;
+//	}
+//	
+//	public void setNivel(int nivel) {
+//		this.nivel = nivel;
+//	}
+//	
+//	public String getRaca() {
+//		return raca;
+//	}
+//	
+//	public void setRaca(String raca) {
+//		this.raca = raca;
+//	}
+//	
+//	public String getAlinhamento() {
+//		return alinhamento;
+//	}
+//	
+//	public void setAlinhamento(String alinhamento) {
+//		this.alinhamento = alinhamento;
+//	}
+//	
+//	public String getAntecedente() {
+//		return antecedente;
+//	}
+//	
+//	public void setAntecedente(String antecedente) {
+//		this.antecedente = antecedente;
+//	}
+//	
+//	public double getExp() {
+//		return exp;
+//	}
+//	
+//	public void setExp(double exp) {
+//		this.exp = exp;
+//	}
+//	
+//	public int getBonus_proficiencia() {
+//		return bonus_proficiencia;
+//	}
+//	
+//	public void setBonus_proficiencia(int bonus_proficiencia) {
+//		this.bonus_proficiencia = bonus_proficiencia;
+//	}
+//	
+//	public boolean getInspiracao() {
+//		return inspiracao;
+//	}
+//	
+//	public void setInspiracao(boolean inspiracao) {
+//		this.inspiracao = inspiracao;
+//	}
+//	
+//	public String getDeslocamento() {
+//		return deslocamento;
+//	}
+//	
+//	public void setDeslocamento(String deslocamento) {
+//		this.deslocamento = deslocamento;
+//	}
+//	
+//	public String getIniciativa() {
+//		return iniciativa;
+//	}
+//
+//	public void setIniciativa(String iniciativa) {
+//		this.iniciativa = iniciativa;
+//	}
+//	
+//	public int getPontos_vida() {
+//		return pontos_vida;
+//	}
 	
 	public void setPontos_vida() {
 		if(Objects.equals(new String("Barbaro"), this.classe)) {
